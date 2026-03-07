@@ -1,0 +1,23 @@
+# CI / tooling
+.github/
+.vscode/
+.idea/
+
+# Build artifacts
+build/
+doc/
+
+# IDE files
+*.iml
+.metadata
+
+# Example platform directories and dev tools (unnecessary for pub.dev)
+example/android/
+example/ios/
+example/web/
+example/widgetbook/
+
+# Legacy root platform directories
+android/
+ios/
+web/

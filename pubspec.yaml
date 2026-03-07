@@ -1,8 +1,14 @@
 name: nebula_ui
 description: "Nebula UI — A token-driven Flutter Design System with space-inspired aesthetics, layered architecture, and responsive scaling."
 version: 0.1.0
-homepage: https://github.com/nayadev/nebula_ui
-publish_to: 'none'
+repository: https://github.com/nayadev/nebula_ui
+issue_tracker: https://github.com/nayadev/nebula_ui/issues
+
+topics:
+  - design-system
+  - ui
+  - tokens
+  - theme
 
 environment:
   sdk: ^3.11.1
@@ -17,8 +23,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  widgetbook: ^3.10.0
-  widgetbook_annotation: ^3.2.0
 
 flutter:
   uses-material-design: true

@@ -61,8 +61,8 @@ foundation → tokens → theme → components
 ## Commands
 
 ```sh
-flutter analyze                                # Static analysis
-flutter test                                   # Run tests
-flutter run                                    # Example app
-flutter run -t widgetbook/widgetbook_app.dart  # Component catalog
+flutter analyze                                          # Static analysis
+flutter test                                             # Package tests
+cd example && flutter run                                # Example app
+cd example && flutter run -t widgetbook/widgetbook_app.dart  # Component catalog
 ```

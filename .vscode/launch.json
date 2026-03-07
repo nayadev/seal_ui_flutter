@@ -5,6 +5,7 @@
       "name": "Widgetbook",
       "request": "launch",
       "type": "dart",
+      "cwd": "example",
       "program": "widgetbook/widgetbook_app.dart",
       "args": [
         "--dart-define=FLUTTER_WEB_USE_SKIA=true"
@@ -14,6 +15,7 @@
       "name": "Example App",
       "request": "launch",
       "type": "dart",
+      "cwd": "example",
       "program": "lib/main.dart"
     }
   ]

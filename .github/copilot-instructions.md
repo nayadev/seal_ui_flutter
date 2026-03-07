@@ -185,10 +185,10 @@ SizedBox(height: context.dimension.md),
 
 ### Widgetbook
 
-- The component catalog lives in `widgetbook/widgetbook_app.dart`.
+- The component catalog lives in `example/widgetbook/widgetbook_app.dart`.
 - Components are organized into categories: **Components**, **Tokens**, **Layout**.
 - Every new component should include at least one Widgetbook use case.
-- Run with: `flutter run -t widgetbook/widgetbook_app.dart`
+- Run with: `cd example && flutter run -t widgetbook/widgetbook_app.dart`
 
 ---
 
@@ -196,10 +196,10 @@ SizedBox(height: context.dimension.md),
 
 | Command | Purpose |
 |---|---|
-| `flutter analyze` | Run static analysis |
-| `flutter test` | Run all tests |
-| `flutter run` | Run the example app (`lib/main.dart`) |
-| `flutter run -t widgetbook/widgetbook_app.dart` | Run the Widgetbook catalog |
+| `flutter analyze` | Run static analysis (package) |
+| `flutter test` | Run package tests |
+| `cd example && flutter run` | Run the example app |
+| `cd example && flutter run -t widgetbook/widgetbook_app.dart` | Run the Widgetbook catalog |
 
 ---
 
