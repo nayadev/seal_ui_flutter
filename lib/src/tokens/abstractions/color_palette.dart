@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import '../base/nebula_state_color.dart';
+
 /// Abstract contract for the Nebula UI color palette.
 ///
 /// Implementations provide concrete color values for dark and light themes.
@@ -60,4 +62,18 @@ abstract class ColorPalette {
 
   /// Error semantic color.
   Color get error;
+
+  // ── State Colors ────────────────────────────────────────────────────────
+
+  /// Foreground color states for interactive widgets (text, icons, borders).
+  ///
+  /// Typically based on [primary]. Provides [NebulaStateColor.active] and
+  /// [NebulaStateColor.disabled] variants.
+  NebulaStateColor get foreground;
+
+  /// Background/fill color states for interactive widgets (fills, surfaces).
+  ///
+  /// Typically based on [primary]. Provides [NebulaStateColor.active] and
+  /// [NebulaStateColor.disabled] variants.
+  NebulaStateColor get fill;
 }

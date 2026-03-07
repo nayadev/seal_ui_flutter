@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import '../abstractions/color_palette.dart';
+import '../base/nebula_state_color.dart';
 
 /// Light color palette — a clean, bright alternative theme.
 ///
@@ -61,4 +62,12 @@ class LightColorPalette extends ColorPalette {
 
   @override
   Color get error => const Color(0xFFE04564);
+
+  // ── State Colors ────────────────────────────────────────────────────────
+
+  @override
+  NebulaStateColor get foreground => NebulaStateColor(primary);
+
+  @override
+  NebulaStateColor get fill => NebulaStateColor(primary);
 }

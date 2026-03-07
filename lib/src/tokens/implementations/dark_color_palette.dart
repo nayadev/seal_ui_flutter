@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import '../abstractions/color_palette.dart';
+import '../base/nebula_state_color.dart';
 
 /// Dark color palette — the **primary** Nebula UI experience.
 ///
@@ -61,4 +62,12 @@ class DarkColorPalette extends ColorPalette {
 
   @override
   Color get error => const Color(0xFFFF6B8A);
+
+  // ── State Colors ────────────────────────────────────────────────────────
+
+  @override
+  NebulaStateColor get foreground => NebulaStateColor(primary);
+
+  @override
+  NebulaStateColor get fill => NebulaStateColor(primary);
 }

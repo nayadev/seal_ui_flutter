@@ -63,9 +63,9 @@ class NebulaPrimaryButton extends StatelessWidget {
     return FilledButton(
       onPressed: _isDisabled ? null : onPressed,
       style: FilledButton.styleFrom(
-        backgroundColor: colors.primary,
+        backgroundColor: colors.fill.active,
         foregroundColor: colors.textPrimary,
-        disabledBackgroundColor: colors.primary.withValues(alpha: 0.4),
+        disabledBackgroundColor: colors.fill.disabled,
         disabledForegroundColor: colors.textPrimary.withValues(alpha: 0.4),
         padding: EdgeInsets.symmetric(
           horizontal: dimension.lg,

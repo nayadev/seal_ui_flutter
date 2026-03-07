@@ -34,6 +34,7 @@ export 'src/tokens/abstractions/typography_tokens.dart';
 // ── Tokens · Base ──────────────────────────────────────────────────────────
 export 'src/tokens/base/nebula_radius.dart';
 export 'src/tokens/base/nebula_dimension.dart';
+export 'src/tokens/base/nebula_state_color.dart';
 
 // ── Tokens · Implementations ───────────────────────────────────────────────
 export 'src/tokens/implementations/dark_color_palette.dart';

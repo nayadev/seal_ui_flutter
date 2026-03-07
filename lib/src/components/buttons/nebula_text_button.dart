@@ -55,8 +55,8 @@ class NebulaTextButton extends StatelessWidget {
     return TextButton(
       onPressed: _isDisabled ? null : onPressed,
       style: TextButton.styleFrom(
-        foregroundColor: colors.primary,
-        disabledForegroundColor: colors.primary.withValues(alpha: 0.4),
+        foregroundColor: colors.foreground.active,
+        disabledForegroundColor: colors.foreground.disabled,
         padding: EdgeInsets.symmetric(
           horizontal: dimension.md,
           vertical: dimension.sm,
@@ -66,7 +66,7 @@ class NebulaTextButton extends StatelessWidget {
         ),
         textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
       ),
-      child: _buildContent(context, colors.primary, typo),
+      child: _buildContent(context, colors.foreground.active, typo),
     );
   }
 
@@ -80,7 +80,7 @@ class NebulaTextButton extends StatelessWidget {
     }
 
     final underlineColor = _isDisabled
-        ? foreground.withValues(alpha: 0.4)
+        ? context.themeTokens.colors.foreground.disabled
         : foreground;
 
     if (icon != null) {

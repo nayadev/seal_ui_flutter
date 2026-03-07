@@ -47,12 +47,12 @@ class NebulaOutlineButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: _isDisabled ? null : onPressed,
       style: OutlinedButton.styleFrom(
-        foregroundColor: colors.primary,
-        disabledForegroundColor: colors.primary.withValues(alpha: 0.4),
+        foregroundColor: colors.foreground.active,
+        disabledForegroundColor: colors.foreground.disabled,
         side: BorderSide(
           color: _isDisabled
-              ? colors.primary.withValues(alpha: 0.4)
-              : colors.primary,
+              ? colors.foreground.disabled
+              : colors.foreground.active,
         ),
         padding: EdgeInsets.symmetric(
           horizontal: dimension.lg,
@@ -63,7 +63,7 @@ class NebulaOutlineButton extends StatelessWidget {
         ),
         textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
       ),
-      child: _buildContent(context, colors.primary, typo),
+      child: _buildContent(context, colors.foreground.active, typo),
     );
   }
 
