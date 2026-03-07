@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Widgetbook",
+      "request": "launch",
+      "type": "dart",
+      "program": "widgetbook/widgetbook_app.dart",
+      "args": [
+        "--dart-define=FLUTTER_WEB_USE_SKIA=true"
+      ]
+    },
+    {
+      "name": "Example App",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart"
+    }
+  ]
+}

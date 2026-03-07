@@ -1,17 +1,68 @@
-# nebula_ui
+# Nebula UI
 
-A new Flutter project.
+A **token-driven Flutter Design System** with space-inspired aesthetics, layered architecture, and responsive scaling.
 
-## Getting Started
+Purple-based palettes, subtle gradients, and a dark-first experience — designed to be reusable across multiple applications.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Design Tokens** — colors, typography, gradients, spacing, and radius managed as structured tokens
+- **Dark & Light Themes** — dark mode is the primary experience, with full light theme support
+- **Responsive Scaling** — typography and spacing scale proportionally across mobile, tablet, and desktop
+- **Layered Architecture** — strict `foundation → tokens → theme → components` dependency direction
+- **Material Integration** — extends and composes Material widgets with token-driven styling
+- **Widgetbook Catalog** — visual component catalog for browsing and testing every component
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Quick Start
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+import 'package:nebula_ui/nebula_ui.dart';
+
+MaterialApp(
+  theme: NebulaThemeFactory.dark(),
+  builder: (context, child) {
+    final scaleFactor = NebulaResponsive.scaleOf(context);
+    final tokens = NebulaThemeFactory.darkTokens(scaleFactor: scaleFactor);
+    return NebulaTheme(tokens: tokens, child: child!);
+  },
+  home: const MyHomePage(),
+);
+```
+
+Access tokens anywhere via context extensions:
+
+```dart
+final colors = context.themeTokens.colors;
+final typo = context.themeTokens.typography;
+padding: EdgeInsets.all(context.dimension.lg),
+context.dimension.md.verticalGap,
+```
+
+## Architecture
+
+```
+foundation → tokens → theme → components
+```
+
+| Layer | Purpose |
+|---|---|
+| **foundation** | Breakpoints, responsive utilities |
+| **tokens** | Color palettes, typography, gradients, spacing, radius |
+| **theme** | Token container, theme factory, InheritedWidget |
+| **components** | Buttons, inputs, containers, loaders |
+
+## Components
+
+- `NebulaPrimaryButton` — solid and gradient variants, loading state, optional icon
+- `NebulaTextField` — token-styled text input with prefix/suffix icons
+- `NebulaContainer` — surface box with optional gradient and border
+- `NebulaLoader` — spinner with size presets and optional label
+
+## Commands
+
+```sh
+flutter analyze                                # Static analysis
+flutter test                                   # Run tests
+flutter run                                    # Example app
+flutter run -t widgetbook/widgetbook_app.dart  # Component catalog
+```
