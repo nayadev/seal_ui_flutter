@@ -14,10 +14,14 @@ enum NebulaLoaderSize {
   /// 40 × 40
   large(40);
 
-  const NebulaLoaderSize(this.dimension);
+  const NebulaLoaderSize(this._dimension);
 
   /// The width and height of the indicator.
-  final double dimension;
+  final double _dimension;
+
+  /// Resolves the actual dimension by applying the current [NebulaDimension] scale
+  double dimension(BuildContext context) =>
+      context.dimension.scaled(_dimension);
 }
 
 /// A loading indicator styled with Nebula UI tokens.
@@ -70,10 +74,10 @@ class NebulaLoader extends StatelessWidget {
     final effectiveColor = color ?? tokens.colors.primary;
 
     final indicator = SizedBox(
-      width: size.dimension,
-      height: size.dimension,
+      width: size.dimension(context),
+      height: size.dimension(context),
       child: CircularProgressIndicator(
-        strokeWidth: _strokeWidth,
+        strokeWidth: context.dimension.scaled(_strokeWidth),
         color: effectiveColor,
       ),
     );

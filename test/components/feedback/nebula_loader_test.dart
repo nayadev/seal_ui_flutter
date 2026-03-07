@@ -13,6 +13,12 @@ Widget _wrap(Widget child) {
   );
 }
 
+/// Scale factor applied in the default test environment (800 px ≙ tablet).
+const _kTestScaleFactor = 1.125;
+
+/// Rounds [base] × [_kTestScaleFactor] like [NebulaDimension] does.
+double _scaled(double base) => (base * _kTestScaleFactor).roundToDouble();
+
 void main() {
   group('NebulaLoader', () {
     testWidgets('renders a CircularProgressIndicator', (tester) async {
@@ -27,8 +33,8 @@ void main() {
       await tester.pump();
 
       final sizedBox = tester.widget<SizedBox>(find.byType(SizedBox).first);
-      expect(sizedBox.width, 24);
-      expect(sizedBox.height, 24);
+      expect(sizedBox.width, _scaled(24));
+      expect(sizedBox.height, _scaled(24));
     });
 
     testWidgets('renders small size (16x16)', (tester) async {
@@ -38,8 +44,8 @@ void main() {
       await tester.pump();
 
       final sizedBox = tester.widget<SizedBox>(find.byType(SizedBox).first);
-      expect(sizedBox.width, 16);
-      expect(sizedBox.height, 16);
+      expect(sizedBox.width, _scaled(16));
+      expect(sizedBox.height, _scaled(16));
     });
 
     testWidgets('renders large size (40x40)', (tester) async {
@@ -49,8 +55,8 @@ void main() {
       await tester.pump();
 
       final sizedBox = tester.widget<SizedBox>(find.byType(SizedBox).first);
-      expect(sizedBox.width, 40);
-      expect(sizedBox.height, 40);
+      expect(sizedBox.width, _scaled(40));
+      expect(sizedBox.height, _scaled(40));
     });
 
     testWidgets('uses custom color when provided', (tester) async {
@@ -70,7 +76,7 @@ void main() {
       final indicator = tester.widget<CircularProgressIndicator>(
         find.byType(CircularProgressIndicator),
       );
-      expect(indicator.strokeWidth, 5.0);
+      expect(indicator.strokeWidth, _scaled(5.0));
     });
 
     testWidgets('shows label text below spinner', (tester) async {

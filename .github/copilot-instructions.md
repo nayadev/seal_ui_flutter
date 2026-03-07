@@ -194,6 +194,27 @@ SizedBox(height: context.dimension.md),
 - Integrate with Material — extend or compose Material widgets, don't fight them.
 - Design for future extension: prefer composition, accept optional parameters.
 
+### Responsive Dimensions
+
+- **Every numeric value that affects visual size must scale responsively** — use `context.dimension` tokens or `context.dimension.scaled()` instead of raw constants.
+- For standard spacing, use the named tokens: `dimension.xs`, `dimension.md`, `dimension.lg`, etc.
+- For custom sizes (icon sizes, fallback font sizes, loader dimensions, etc.), wrap them with `context.dimension.scaled()`.
+- This ensures all visual measurements participate in breakpoint scaling (mobile 1.0×, tablet 1.125×, desktop 1.5×).
+
+```dart
+// ❌ Bad — raw constant doesn't scale with breakpoint
+Icon(icon, size: TypographyTokens.kDefaultButtonIconSize),
+
+// ❌ Bad — hardcoded pixel value
+Icon(icon, size: 18),
+
+// ✅ Good — scales proportionally across breakpoints
+Icon(icon, size: context.dimension.scaled(TypographyTokens.kDefaultButtonIconSize)),
+
+// ✅ Good — standard spacing token already scales
+padding: EdgeInsets.all(context.dimension.md),
+```
+
 ### Testing
 
 - Avoid `pumpAndSettle()` when the widget tree contains indefinite animations (e.g., `NebulaLoader`). Use `pump()` instead.

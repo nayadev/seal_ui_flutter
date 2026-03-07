@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../tokens/base/nebula_dimension.dart';
+
 /// Adds an underline decoration below any widget.
 ///
 /// ```dart
-/// Text('Learn more').withUnderline(color: colors.primary);
+/// Text('Learn more').withUnderline(
+///   context: context,
+///   color: colors.primary,
+/// );
 /// ```
 extension NebulaUnderlineExtension on Widget {
   /// Default stroke width of the underline.
@@ -14,19 +19,22 @@ extension NebulaUnderlineExtension on Widget {
 
   /// Wraps this widget with a bottom border acting as an underline.
   ///
+  /// [context] is used to resolve responsive scaling.
   /// [color] sets the underline color.
   /// [thickness] controls the stroke width (default `1.5`).
   /// [offset] controls the gap between the widget and the line (default `2.0`).
   Widget withUnderline({
+    required BuildContext context,
     required Color color,
     double thickness = kDefaultThickness,
     double offset = kDefaultOffset,
   }) {
+    final dimension = context.dimension;
     return Container(
-      padding: EdgeInsets.only(bottom: offset),
+      padding: EdgeInsets.only(bottom: dimension.scaled(offset)),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: color, width: thickness),
+          bottom: BorderSide(color: color, width: dimension.scaled(thickness)),
         ),
       ),
       child: this,

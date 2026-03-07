@@ -96,10 +96,18 @@ class NebulaTextField extends StatelessWidget {
         filled: true,
         fillColor: colors.surfaceAlt,
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: colors.textSecondary, size: _kIconSize)
+            ? Icon(
+                prefixIcon,
+                color: colors.textSecondary,
+                size: context.dimension.scaled(_kIconSize),
+              )
             : null,
         suffixIcon: suffixIcon != null
-            ? Icon(suffixIcon, color: colors.textSecondary, size: _kIconSize)
+            ? Icon(
+                suffixIcon,
+                color: colors.textSecondary,
+                size: context.dimension.scaled(_kIconSize),
+              )
             : null,
         contentPadding: EdgeInsets.symmetric(
           horizontal: context.dimension.md,
