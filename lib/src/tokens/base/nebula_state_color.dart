@@ -11,12 +11,17 @@ import 'dart:ui';
 /// final fgDisabled = colors.foreground.disabled;
 /// ```
 class NebulaStateColor {
+  /// Default opacity applied to the disabled color variant.
+  static const double kDefaultDisabledOpacity = 0.4;
+
   /// Creates a state color pair from a [base] color.
   ///
   /// The [disabled] variant defaults to the [base] with 40% opacity.
-  NebulaStateColor(Color base, {double disabledOpacity = 0.4})
-    : active = base,
-      disabled = base.withValues(alpha: disabledOpacity);
+  NebulaStateColor(
+    Color base, {
+    double disabledOpacity = kDefaultDisabledOpacity,
+  }) : active = base,
+       disabled = base.withValues(alpha: disabledOpacity);
 
   /// The color for the active/enabled state.
   final Color active;

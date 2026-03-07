@@ -6,6 +6,12 @@ import 'package:flutter/material.dart';
 /// Text('Learn more').withUnderline(color: colors.primary);
 /// ```
 extension NebulaUnderlineExtension on Widget {
+  /// Default stroke width of the underline.
+  static const double kDefaultThickness = 1.5;
+
+  /// Default gap between the widget and the underline.
+  static const double kDefaultOffset = 2.0;
+
   /// Wraps this widget with a bottom border acting as an underline.
   ///
   /// [color] sets the underline color.
@@ -13,8 +19,8 @@ extension NebulaUnderlineExtension on Widget {
   /// [offset] controls the gap between the widget and the line (default `2.0`).
   Widget withUnderline({
     required Color color,
-    double thickness = 1.5,
-    double offset = 2.0,
+    double thickness = kDefaultThickness,
+    double offset = kDefaultOffset,
   }) {
     return Container(
       padding: EdgeInsets.only(bottom: offset),

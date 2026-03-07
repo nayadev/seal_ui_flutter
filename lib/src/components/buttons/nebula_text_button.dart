@@ -25,7 +25,7 @@ class NebulaTextButton extends StatelessWidget {
     this.onPressed,
     this.isLoading = false,
     this.icon,
-    this.iconSize = 18.0,
+    this.iconSize = TypographyTokens.kDefaultButtonIconSize,
   });
 
   /// Button label text.
@@ -74,7 +74,7 @@ class NebulaTextButton extends StatelessWidget {
     if (isLoading) {
       final style = typography.body;
       final lineHeight =
-          (style.fontSize ?? 16) *
+          (style.fontSize ?? TypographyTokens.kBodyFontSize) *
           (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
       return NebulaBouncingDots(
         color: foreground,
@@ -90,7 +90,7 @@ class NebulaTextButton extends StatelessWidget {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 18),
+          Icon(icon, size: TypographyTokens.kDefaultButtonIconSize),
           context.dimension.xxs.horizontalGap,
           Text(label),
         ],

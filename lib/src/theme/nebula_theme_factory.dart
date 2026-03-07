@@ -56,6 +56,11 @@ abstract final class NebulaThemeFactory {
 
   // ── Internal ─────────────────────────────────────────────────────────
 
+  static const double _kSecondaryContainerOpacity = 0.15;
+  static const double _kOutlineVariantOpacity = 0.5;
+  static const double _kDividerThickness = 1;
+  static const double _kFocusedBorderWidth = 2;
+
   static ThemeData _buildTheme(
     NebulaThemeTokens tokens,
     Brightness brightness,
@@ -71,7 +76,9 @@ abstract final class NebulaThemeFactory {
       onPrimaryContainer: colors.textPrimary,
       secondary: colors.accentBlue,
       onSecondary: colors.textPrimary,
-      secondaryContainer: colors.accentBlue.withValues(alpha: 0.15),
+      secondaryContainer: colors.accentBlue.withValues(
+        alpha: _kSecondaryContainerOpacity,
+      ),
       onSecondaryContainer: colors.accentBlue,
       tertiary: colors.accentGreen,
       onTertiary: colors.textPrimary,
@@ -81,7 +88,7 @@ abstract final class NebulaThemeFactory {
       onSurface: colors.textPrimary,
       surfaceContainerHighest: colors.surfaceAlt,
       outline: colors.border,
-      outlineVariant: colors.border.withValues(alpha: 0.5),
+      outlineVariant: colors.border.withValues(alpha: _kOutlineVariantOpacity),
     );
 
     final textTheme = TextTheme(
@@ -107,7 +114,10 @@ abstract final class NebulaThemeFactory {
           side: BorderSide(color: colors.border),
         ),
       ),
-      dividerTheme: DividerThemeData(color: colors.border, thickness: 1),
+      dividerTheme: DividerThemeData(
+        color: colors.border,
+        thickness: _kDividerThickness,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: colors.surfaceAlt,
@@ -121,7 +131,10 @@ abstract final class NebulaThemeFactory {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: NebulaRadius.borderRadiusSm,
-          borderSide: BorderSide(color: colors.primary, width: 2),
+          borderSide: BorderSide(
+            color: colors.primary,
+            width: _kFocusedBorderWidth,
+          ),
         ),
         hintStyle: typography.body.copyWith(color: colors.textSecondary),
         labelStyle: typography.small.copyWith(color: colors.textSecondary),

@@ -44,6 +44,12 @@ class NebulaLoader extends StatelessWidget {
   /// Custom color — defaults to `colors.primary`.
   final Color? color;
 
+  /// Stroke width used for the large size preset.
+  static const double _kStrokeWidthLarge = 3.0;
+
+  /// Stroke width used for small and medium size presets.
+  static const double _kStrokeWidthDefault = 2.5;
+
   /// Custom stroke width — defaults to `2.5` for small/medium, `3.0` for
   /// large.
   final double? strokeWidth;
@@ -53,7 +59,9 @@ class NebulaLoader extends StatelessWidget {
 
   double get _strokeWidth {
     if (strokeWidth != null) return strokeWidth!;
-    return size == NebulaLoaderSize.large ? 3.0 : 2.5;
+    return size == NebulaLoaderSize.large
+        ? _kStrokeWidthLarge
+        : _kStrokeWidthDefault;
   }
 
   @override

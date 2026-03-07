@@ -27,51 +27,74 @@ class DefaultTypography extends TypographyTokens {
 
   double _scaled(double base) => (base * scaleFactor).roundToDouble();
 
+  // ── Font sizes ────────────────────────────────────────────────────
+  static const double _kDisplayFontSize = 48;
+  static const double _kHeadlineFontSize = 32;
+  static const double _kTitleFontSize = 22;
+  static const double _kBodyFontSize = 16;
+  static const double _kSmallFontSize = 14;
+  static const double _kCaptionFontSize = 12;
+
+  // ── Line heights ──────────────────────────────────────────────────
+  static const double _kDisplayLineHeight = 1.15;
+  static const double _kHeadlineLineHeight = 1.25;
+  static const double _kTitleLineHeight = 1.3;
+  static const double _kBodyLineHeight = 1.5;
+  static const double _kSmallLineHeight = 1.45;
+  static const double _kCaptionLineHeight = 1.4;
+
+  // ── Letter spacings ───────────────────────────────────────────────
+  static const double _kDisplayLetterSpacing = -1.2;
+  static const double _kHeadlineLetterSpacing = -0.8;
+  static const double _kTitleLetterSpacing = -0.3;
+  static const double _kSmallLetterSpacing = 0.1;
+  static const double _kCaptionLetterSpacing = 0.3;
+
   @override
   TextStyle get display => GoogleFonts.inter(
-    fontSize: _scaled(48),
+    fontSize: _scaled(_kDisplayFontSize),
     fontWeight: FontWeight.w700,
-    letterSpacing: -1.2,
-    height: 1.15,
+    letterSpacing: _kDisplayLetterSpacing,
+    height: _kDisplayLineHeight,
   );
 
   @override
   TextStyle get headline => GoogleFonts.inter(
-    fontSize: _scaled(32),
+    fontSize: _scaled(_kHeadlineFontSize),
     fontWeight: FontWeight.w600,
-    letterSpacing: -0.8,
-    height: 1.25,
+    letterSpacing: _kHeadlineLetterSpacing,
+    height: _kHeadlineLineHeight,
   );
 
   @override
   TextStyle get title => GoogleFonts.inter(
-    fontSize: _scaled(22),
+    fontSize: _scaled(_kTitleFontSize),
     fontWeight: FontWeight.w600,
-    letterSpacing: -0.3,
-    height: 1.3,
+    letterSpacing: _kTitleLetterSpacing,
+    height: _kTitleLineHeight,
   );
 
   @override
   TextStyle get body => GoogleFonts.inter(
-    fontSize: _scaled(16),
+    fontSize: _scaled(_kBodyFontSize),
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
-    height: 1.5,
+    height: _kBodyLineHeight,
   );
 
   @override
   TextStyle get small => GoogleFonts.inter(
-    fontSize: _scaled(14),
+    fontSize: _scaled(_kSmallFontSize),
     fontWeight: FontWeight.w400,
-    letterSpacing: 0.1,
-    height: 1.45,
+    letterSpacing: _kSmallLetterSpacing,
+    height: _kSmallLineHeight,
   );
 
   @override
   TextStyle get caption => GoogleFonts.inter(
-    fontSize: _scaled(12),
+    fontSize: _scaled(_kCaptionFontSize),
     fontWeight: FontWeight.w500,
-    letterSpacing: 0.3,
-    height: 1.4,
+    letterSpacing: _kCaptionLetterSpacing,
+    height: _kCaptionLineHeight,
   );
 }

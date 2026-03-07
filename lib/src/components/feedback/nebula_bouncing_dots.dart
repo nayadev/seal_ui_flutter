@@ -10,11 +10,26 @@ import 'package:flutter/material.dart';
 /// NebulaBouncingDots(color: Colors.white, size: 8)
 /// ```
 class NebulaBouncingDots extends StatefulWidget {
+  /// Default diameter of each dot.
+  static const double kDefaultDotSize = 6.0;
+
+  /// Default horizontal spacing between dots.
+  static const double kDefaultDotSpacing = 4.0;
+
+  /// Duration (in milliseconds) of one full animation cycle.
+  static const int kAnimationDurationMs = 1200;
+
+  /// Delay multiplier between successive dot animations.
+  static const double kDelayMultiplier = 0.15;
+
+  /// Fraction of the cycle during which a dot actively bounces.
+  static const double kActiveCycleFraction = 0.4;
+
   const NebulaBouncingDots({
     super.key,
     required this.color,
-    this.size = 6.0,
-    this.spacing = 4.0,
+    this.size = kDefaultDotSize,
+    this.spacing = kDefaultDotSpacing,
     this.height,
   });
 
@@ -45,7 +60,9 @@ class _NebulaBouncingDotsState extends State<NebulaBouncingDots>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1200),
+      duration: const Duration(
+        milliseconds: NebulaBouncingDots.kAnimationDurationMs,
+      ),
     )..repeat();
   }
 
@@ -63,13 +80,12 @@ class _NebulaBouncingDotsState extends State<NebulaBouncingDots>
         final dots = Row(
           mainAxisSize: MainAxisSize.min,
           children: List.generate(3, (index) {
-            final delay = index * 0.15;
+            final delay = index * NebulaBouncingDots.kDelayMultiplier;
             final raw = (_controller.value - delay) % 1.0;
-            // Each dot uses a smooth sine wave over 40% of the cycle,
-            // resting gently for the remaining 60%.
-            final active = raw < 0.4;
+            final activeFraction = NebulaBouncingDots.kActiveCycleFraction;
+            final active = raw < activeFraction;
             final bounce = active
-                ? math.sin((raw / 0.4) * math.pi) * widget.size
+                ? math.sin((raw / activeFraction) * math.pi) * widget.size
                 : 0.0;
 
             return Padding(

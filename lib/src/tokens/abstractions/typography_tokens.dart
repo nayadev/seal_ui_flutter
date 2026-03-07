@@ -9,6 +9,12 @@ abstract class TypographyTokens {
   /// Flutter's default line height multiplier when [TextStyle.height] is null.
   static const double kDefaultLineHeightMultiplier = 1.2;
 
+  /// Default font size for body text, used as a fallback.
+  static const double kBodyFontSize = 16;
+
+  /// Default button icon size shared across all Nebula button components.
+  static const double kDefaultButtonIconSize = 18;
+
   /// Large display text — hero sections.
   TextStyle get display;
 

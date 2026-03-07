@@ -73,7 +73,7 @@ class NebulaOutlineButton extends StatelessWidget {
     if (isLoading) {
       final style = typography.body;
       final lineHeight =
-          (style.fontSize ?? 16) *
+          (style.fontSize ?? TypographyTokens.kBodyFontSize) *
           (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
       return NebulaBouncingDots(color: foreground, height: lineHeight);
     }
@@ -82,7 +82,7 @@ class NebulaOutlineButton extends StatelessWidget {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 18),
+          Icon(icon, size: TypographyTokens.kDefaultButtonIconSize),
           context.dimension.xxs.horizontalGap,
           Text(label),
         ],

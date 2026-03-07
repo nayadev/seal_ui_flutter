@@ -19,6 +19,12 @@ import '../feedback/nebula_bouncing_dots.dart';
 /// )
 /// ```
 class NebulaPrimaryButton extends StatelessWidget {
+  /// Opacity applied to foreground text when the button is disabled.
+  static const double _kDisabledTextOpacity = 0.4;
+
+  /// Opacity applied to the gradient button shell when disabled.
+  static const double _kDisabledButtonOpacity = 0.45;
+
   const NebulaPrimaryButton({
     super.key,
     required this.label,
@@ -68,7 +74,9 @@ class NebulaPrimaryButton extends StatelessWidget {
         backgroundColor: colors.fill.active,
         foregroundColor: colors.textPrimary,
         disabledBackgroundColor: colors.fill.disabled,
-        disabledForegroundColor: colors.textPrimary.withValues(alpha: 0.4),
+        disabledForegroundColor: colors.textPrimary.withValues(
+          alpha: _kDisabledTextOpacity,
+        ),
         padding: EdgeInsets.symmetric(
           horizontal: dimension.lg,
           vertical: dimension.md,
@@ -86,7 +94,7 @@ class NebulaPrimaryButton extends StatelessWidget {
     if (isLoading) {
       final style = typography.body;
       final lineHeight =
-          (style.fontSize ?? 16) *
+          (style.fontSize ?? TypographyTokens.kBodyFontSize) *
           (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
       return NebulaBouncingDots(color: textColor, height: lineHeight);
     }
@@ -95,7 +103,7 @@ class NebulaPrimaryButton extends StatelessWidget {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 18),
+          Icon(icon, size: TypographyTokens.kDefaultButtonIconSize),
           context.dimension.xxs.horizontalGap,
           Text(label),
         ],
@@ -125,7 +133,7 @@ class _GradientButtonShell extends StatelessWidget {
     final gradient = tokens.gradients.primaryGradient;
 
     return AnimatedOpacity(
-      opacity: isDisabled ? 0.45 : 1.0,
+      opacity: isDisabled ? NebulaPrimaryButton._kDisabledButtonOpacity : 1.0,
       duration: const Duration(milliseconds: 200),
       child: DecoratedBox(
         decoration: BoxDecoration(

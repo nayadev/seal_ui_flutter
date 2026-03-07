@@ -15,6 +15,18 @@ import '../../tokens/base/nebula_dimension.dart';
 /// )
 /// ```
 class NebulaTextField extends StatelessWidget {
+  /// Opacity applied to hint text.
+  static const double _kHintTextOpacity = 0.6;
+
+  /// Opacity applied to the border when the field is disabled.
+  static const double _kDisabledBorderOpacity = 0.4;
+
+  /// Default icon size for prefix/suffix icons.
+  static const double _kIconSize = 20;
+
+  /// Border width for the focused input border.
+  static const double _kFocusedBorderWidth = 2;
+
   const NebulaTextField({
     super.key,
     this.controller,
@@ -79,15 +91,15 @@ class NebulaTextField extends StatelessWidget {
         hintText: hint,
         labelStyle: typo.small.copyWith(color: colors.textSecondary),
         hintStyle: typo.body.copyWith(
-          color: colors.textSecondary.withValues(alpha: 0.6),
+          color: colors.textSecondary.withValues(alpha: _kHintTextOpacity),
         ),
         filled: true,
         fillColor: colors.surfaceAlt,
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: colors.textSecondary, size: 20)
+            ? Icon(prefixIcon, color: colors.textSecondary, size: _kIconSize)
             : null,
         suffixIcon: suffixIcon != null
-            ? Icon(suffixIcon, color: colors.textSecondary, size: 20)
+            ? Icon(suffixIcon, color: colors.textSecondary, size: _kIconSize)
             : null,
         contentPadding: EdgeInsets.symmetric(
           horizontal: context.dimension.md,
@@ -103,11 +115,16 @@ class NebulaTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: NebulaRadius.borderRadiusSm,
-          borderSide: BorderSide(color: colors.primary, width: 2),
+          borderSide: BorderSide(
+            color: colors.primary,
+            width: _kFocusedBorderWidth,
+          ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: NebulaRadius.borderRadiusSm,
-          borderSide: BorderSide(color: colors.border.withValues(alpha: 0.4)),
+          borderSide: BorderSide(
+            color: colors.border.withValues(alpha: _kDisabledBorderOpacity),
+          ),
         ),
       ),
     );
