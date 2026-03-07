@@ -15,6 +15,7 @@ class NebulaBouncingDots extends StatefulWidget {
     required this.color,
     this.size = 6.0,
     this.spacing = 4.0,
+    this.height,
   });
 
   /// Color of the dots.
@@ -25,6 +26,11 @@ class NebulaBouncingDots extends StatefulWidget {
 
   /// Horizontal spacing between dots.
   final double spacing;
+
+  /// Fixed height for the widget. When set, the dots are vertically centered
+  /// and the bounce animation stays within this box — keeping the button
+  /// the same size as its text state.
+  final double? height;
 
   @override
   State<NebulaBouncingDots> createState() => _NebulaBouncingDotsState();
@@ -54,7 +60,7 @@ class _NebulaBouncingDotsState extends State<NebulaBouncingDots>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, _) {
-        return Row(
+        final dots = Row(
           mainAxisSize: MainAxisSize.min,
           children: List.generate(3, (index) {
             final delay = index * 0.15;
@@ -75,6 +81,14 @@ class _NebulaBouncingDotsState extends State<NebulaBouncingDots>
             );
           }),
         );
+
+        if (widget.height != null) {
+          return SizedBox(
+            height: widget.height,
+            child: Align(widthFactor: 1.0, child: dots),
+          );
+        }
+        return dots;
       },
     );
   }

@@ -84,6 +84,22 @@ Internal implementation details (`src/`) must remain private. Never import from 
 - Use `const` constructors wherever possible.
 - Prefer `final` variables over mutable ones.
 
+### Magic Numbers
+
+- **Never use magic numbers.** Extract numeric literals into named constants, design tokens, or well-named variables.
+- If a value is used in more than one place, it **must** be a shared constant.
+- Even if used once, a literal without clear meaning should be assigned to a descriptive variable or constant.
+
+```dart
+// ❌ Bad
+final lineHeight = fontSize * 1.2;
+padding: EdgeInsets.all(16),
+
+// ✅ Good
+final lineHeight = fontSize * TypographyTokens.kDefaultLineHeightMultiplier;
+padding: EdgeInsets.all(context.dimension.md),
+```
+
 ### Early Return
 
 - **Always prefer early return** to reduce nesting and improve readability.

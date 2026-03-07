@@ -6,6 +6,9 @@ import 'package:flutter/painting.dart';
 abstract class TypographyTokens {
   const TypographyTokens();
 
+  /// Flutter's default line height multiplier when [TextStyle.height] is null.
+  static const double kDefaultLineHeightMultiplier = 1.2;
+
   /// Large display text — hero sections.
   TextStyle get display;
 

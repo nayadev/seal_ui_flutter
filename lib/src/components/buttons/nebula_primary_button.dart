@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../theme/nebula_theme.dart';
 import '../../theme/nebula_theme_tokens.dart';
+import '../../tokens/abstractions/typography_tokens.dart';
 import '../../tokens/base/nebula_radius.dart';
 import '../../tokens/base/nebula_dimension.dart';
 import '../feedback/nebula_bouncing_dots.dart';
@@ -83,7 +84,11 @@ class NebulaPrimaryButton extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, Color textColor, typography) {
     if (isLoading) {
-      return NebulaBouncingDots(color: textColor);
+      final style = typography.body;
+      final lineHeight =
+          (style.fontSize ?? 16) *
+          (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
+      return NebulaBouncingDots(color: textColor, height: lineHeight);
     }
 
     if (icon != null) {
