@@ -62,7 +62,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(find.byType(NebulaBouncingDots), findsOneWidget);
       expect(find.text('Loading'), findsNothing);
     });
 
@@ -142,7 +142,7 @@ void main() {
 
       await tester.tap(find.byType(InkWell));
       expect(tapped, isFalse);
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(find.byType(NebulaBouncingDots), findsOneWidget);
     });
   });
 }

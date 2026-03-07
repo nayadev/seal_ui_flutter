@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../theme/nebula_theme.dart';
 import '../../tokens/base/nebula_radius.dart';
 import '../../tokens/base/nebula_dimension.dart';
+import '../../foundation/nebula_underline_extension.dart';
+import '../feedback/nebula_bouncing_dots.dart';
 
 /// A borderless, background-less button styled with Nebula UI tokens.
 ///
@@ -42,9 +44,6 @@ class NebulaTextButton extends StatelessWidget {
 
   bool get _isDisabled => onPressed == null || isLoading;
 
-  static const double kUnderlineThickness = 1.5;
-  static const double kUnderlineOffset = 2.0;
-
   @override
   Widget build(BuildContext context) {
     final tokens = context.themeTokens;
@@ -72,11 +71,9 @@ class NebulaTextButton extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, Color foreground, typography) {
     if (isLoading) {
-      return SizedBox(
-        height: context.dimension.lg,
-        width: context.dimension.lg,
-        child: CircularProgressIndicator(strokeWidth: 2, color: foreground),
-      );
+      return NebulaBouncingDots(
+        color: foreground,
+      ).withUnderline(color: foreground, offset: 5.0);
     }
 
     final underlineColor = _isDisabled
@@ -84,35 +81,16 @@ class NebulaTextButton extends StatelessWidget {
         : foreground;
 
     if (icon != null) {
-      return Container(
-        padding: const EdgeInsets.only(bottom: kUnderlineOffset),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: underlineColor,
-              width: kUnderlineThickness,
-            ),
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 18),
-            context.dimension.xxs.horizontalGap,
-            Text(label),
-          ],
-        ),
-      );
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 18),
+          context.dimension.xxs.horizontalGap,
+          Text(label),
+        ],
+      ).withUnderline(color: underlineColor);
     }
 
-    return Container(
-      padding: const EdgeInsets.only(bottom: kUnderlineOffset),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: underlineColor, width: kUnderlineThickness),
-        ),
-      ),
-      child: Text(label),
-    );
+    return Text(label).withUnderline(color: underlineColor);
   }
 }

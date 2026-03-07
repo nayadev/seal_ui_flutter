@@ -4,6 +4,7 @@ import '../../theme/nebula_theme.dart';
 import '../../theme/nebula_theme_tokens.dart';
 import '../../tokens/base/nebula_radius.dart';
 import '../../tokens/base/nebula_dimension.dart';
+import '../feedback/nebula_bouncing_dots.dart';
 
 /// A primary action button styled with Nebula UI tokens.
 ///
@@ -82,11 +83,7 @@ class NebulaPrimaryButton extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, Color textColor, typography) {
     if (isLoading) {
-      return SizedBox(
-        height: context.dimension.lg,
-        width: context.dimension.lg,
-        child: CircularProgressIndicator(strokeWidth: 2, color: textColor),
-      );
+      return NebulaBouncingDots(color: textColor);
     }
 
     if (icon != null) {

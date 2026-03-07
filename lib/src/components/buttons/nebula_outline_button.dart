@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/nebula_theme.dart';
 import '../../tokens/base/nebula_radius.dart';
 import '../../tokens/base/nebula_dimension.dart';
+import '../feedback/nebula_bouncing_dots.dart';
 
 /// A secondary action button with an outlined border styled with Nebula UI tokens.
 ///
@@ -69,11 +70,7 @@ class NebulaOutlineButton extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, Color foreground, typography) {
     if (isLoading) {
-      return SizedBox(
-        height: context.dimension.lg,
-        width: context.dimension.lg,
-        child: CircularProgressIndicator(strokeWidth: 2, color: foreground),
-      );
+      return NebulaBouncingDots(color: foreground);
     }
 
     if (icon != null) {

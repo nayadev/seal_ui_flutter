@@ -63,7 +63,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(find.byType(NebulaBouncingDots), findsOneWidget);
       expect(find.text('Loading'), findsNothing);
     });
 

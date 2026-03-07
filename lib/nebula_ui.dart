@@ -25,6 +25,7 @@ library;
 // ── Foundation ─────────────────────────────────────────────────────────────
 export 'src/foundation/nebula_breakpoints.dart';
 export 'src/foundation/nebula_responsive.dart';
+export 'src/foundation/nebula_underline_extension.dart';
 
 // ── Tokens · Abstractions ──────────────────────────────────────────────────
 export 'src/tokens/abstractions/color_palette.dart';
@@ -51,6 +52,7 @@ export 'src/theme/nebula_theme_tokens.dart';
 export 'src/components/buttons/nebula_outline_button.dart';
 export 'src/components/buttons/nebula_primary_button.dart';
 export 'src/components/buttons/nebula_text_button.dart';
+export 'src/components/feedback/nebula_bouncing_dots.dart';
 export 'src/components/feedback/nebula_loader.dart';
 export 'src/components/inputs/nebula_text_field.dart';
 export 'src/components/layout/nebula_container.dart';
