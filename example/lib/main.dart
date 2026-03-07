@@ -128,6 +128,18 @@ class _ExampleHome extends StatelessWidget {
                     isLoading: true,
                     onPressed: null,
                   ),
+                  NebulaTextButton(label: 'Learn more', onPressed: () {}),
+                  NebulaTextButton(
+                    label: 'Skip',
+                    icon: Icons.arrow_forward_rounded,
+                    onPressed: () {},
+                  ),
+                  const NebulaTextButton(label: 'Disabled'),
+                  const NebulaTextButton(
+                    label: 'Loading',
+                    isLoading: true,
+                    onPressed: null,
+                  ),
                 ],
               ),
 

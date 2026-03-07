@@ -193,6 +193,46 @@ class NebulaWidgetbook extends StatelessWidget {
                     ),
                   ],
                 ),
+                WidgetbookComponent(
+                  name: 'NebulaTextButton',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Default',
+                      builder: (context) => Center(
+                        child: NebulaTextButton(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Learn more',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'With Icon',
+                      builder: (context) => Center(
+                        child: NebulaTextButton(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Skip',
+                          ),
+                          icon: Icons.arrow_forward_rounded,
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             WidgetbookFolder(
