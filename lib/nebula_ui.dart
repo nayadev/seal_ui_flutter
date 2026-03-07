@@ -47,6 +47,7 @@ export 'src/theme/nebula_theme_factory.dart';
 export 'src/theme/nebula_theme_tokens.dart';
 
 // ── Components ─────────────────────────────────────────────────────────────
+export 'src/components/buttons/nebula_outline_button.dart';
 export 'src/components/buttons/nebula_primary_button.dart';
 export 'src/components/feedback/nebula_loader.dart';
 export 'src/components/inputs/nebula_text_field.dart';

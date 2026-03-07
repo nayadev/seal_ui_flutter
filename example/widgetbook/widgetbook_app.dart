@@ -153,6 +153,46 @@ class NebulaWidgetbook extends StatelessWidget {
                     ),
                   ],
                 ),
+                WidgetbookComponent(
+                  name: 'NebulaOutlineButton',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Default',
+                      builder: (context) => Center(
+                        child: NebulaOutlineButton(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Cancel',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'With Icon',
+                      builder: (context) => Center(
+                        child: NebulaOutlineButton(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Favorite',
+                          ),
+                          icon: Icons.star_outline_rounded,
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             WidgetbookFolder(

@@ -192,6 +192,37 @@ SizedBox(height: context.dimension.md),
 
 ---
 
+## New Component Checklist
+
+When adding a new component to Nebula UI, follow these steps in order:
+
+1. **Create the widget file** in the appropriate subfolder under `lib/src/components/` (e.g., `buttons/`, `inputs/`, `feedback/`, `layout/`).
+   - File name: `nebula_<component_name>.dart` (snake_case with `nebula_` prefix).
+   - Class name: `Nebula<ComponentName>` (PascalCase with `Nebula` prefix).
+   - Use design tokens via `context.themeTokens` — never hardcode colors, spacing, or typography.
+   - Use `context.dimension` for padding/margins and `NebulaRadius` for border radius.
+   - Compose or extend Material widgets.
+   - Add `///` doc comments to the class and all public members.
+
+2. **Export in the barrel file** `lib/nebula_ui.dart` under the `Components` section, keeping alphabetical order within each subfolder group.
+
+3. **Write tests** in `test/` mirroring the `lib/src/` path (e.g., `test/components/buttons/nebula_outline_button_test.dart`).
+   - Wrap widgets with `NebulaTheme` + `MaterialApp` in test helpers.
+   - Test: rendering, interaction (tap/enabled/disabled), loading state, and icon/slot variants.
+   - Use `pump()` instead of `pumpAndSettle()` when indefinite animations are present.
+
+4. **Add Widgetbook use cases** in `example/widgetbook/widgetbook_app.dart`.
+   - Place the new `WidgetbookComponent` inside the correct `WidgetbookFolder` and category.
+   - Include at least one use case with relevant knobs (string, boolean, dropdown).
+
+5. **Update the example app** in `example/lib/main.dart` to showcase the new component.
+
+6. **Run validation**:
+   - `flutter analyze` — must pass with zero warnings.
+   - `flutter test` — all tests must pass.
+
+---
+
 ## Project Commands
 
 | Command | Purpose |

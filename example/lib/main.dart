@@ -116,6 +116,18 @@ class _ExampleHome extends StatelessWidget {
                     isLoading: true,
                     onPressed: null,
                   ),
+                  NebulaOutlineButton(label: 'Outline', onPressed: () {}),
+                  NebulaOutlineButton(
+                    label: 'With Icon',
+                    icon: Icons.star_outline_rounded,
+                    onPressed: () {},
+                  ),
+                  const NebulaOutlineButton(label: 'Disabled'),
+                  const NebulaOutlineButton(
+                    label: 'Loading',
+                    isLoading: true,
+                    onPressed: null,
+                  ),
                 ],
               ),
 
