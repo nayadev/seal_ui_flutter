@@ -206,32 +206,42 @@ class NebulaFilledButton extends StatelessWidget {
     Color textColor,
     TypographyTokens typography,
   ) {
-    if (isLoading) {
-      final style = typography.body;
-      final lineHeight =
-          (style.fontSize ??
-              context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
-          (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
-      return NebulaBouncingDots(color: textColor, height: lineHeight);
-    }
+    final content = icon != null
+        ? Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                size: context.dimension.scaled(
+                  TypographyTokens.kDefaultButtonIconSize,
+                ),
+              ),
+              context.dimension.xxs.horizontalGap,
+              Text(label),
+            ],
+          )
+        : Text(label);
 
-    if (icon != null) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: context.dimension.scaled(
-              TypographyTokens.kDefaultButtonIconSize,
-            ),
-          ),
-          context.dimension.xxs.horizontalGap,
-          Text(label),
-        ],
-      );
-    }
+    if (!isLoading) return content;
 
-    return Text(label);
+    final style = typography.body;
+    final lineHeight =
+        (style.fontSize ??
+            context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
+        (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Visibility(
+          visible: false,
+          maintainSize: true,
+          maintainAnimation: true,
+          maintainState: true,
+          child: content,
+        ),
+        NebulaBouncingDots(color: textColor, height: lineHeight),
+      ],
+    );
   }
 }
 

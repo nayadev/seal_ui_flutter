@@ -69,7 +69,7 @@ void main() {
       await tester.pump();
 
       expect(find.byType(NebulaBouncingDots), findsOneWidget);
-      expect(find.text('Loading'), findsNothing);
+      expect(find.text('Loading'), findsOneWidget);
     });
 
     testWidgets('renders icon when provided', (tester) async {
@@ -281,7 +281,7 @@ void main() {
       await tester.pump();
 
       expect(find.byType(NebulaBouncingDots), findsOneWidget);
-      expect(find.text('Wait'), findsNothing);
+      expect(find.text('Wait'), findsOneWidget);
     });
   });
 
@@ -372,7 +372,7 @@ void main() {
       await tester.pump();
 
       expect(find.byType(NebulaBouncingDots), findsOneWidget);
-      expect(find.text('Wait'), findsNothing);
+      expect(find.text('Wait'), findsOneWidget);
     });
   });
 }

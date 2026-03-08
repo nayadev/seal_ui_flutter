@@ -67,7 +67,7 @@ void main() {
       await tester.pump();
 
       expect(find.byType(NebulaBouncingDots), findsOneWidget);
-      expect(find.text('Loading'), findsNothing);
+      expect(find.text('Loading'), findsOneWidget);
     });
 
     testWidgets('renders icon when provided', (tester) async {

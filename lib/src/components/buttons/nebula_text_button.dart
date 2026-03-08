@@ -202,39 +202,49 @@ class NebulaTextButton extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context, Color foreground, typography) {
-    if (isLoading) {
-      final style = typography.body;
-      final lineHeight =
-          (style.fontSize ??
-              context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
-          (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
-      return NebulaBouncingDots(
-        color: foreground,
-        height: lineHeight,
-      ).withUnderline(context: context, color: foreground);
-    }
-
     final underlineColor = _isDisabled
         ? context.themeTokens.colors.foreground.disabled
         : foreground;
 
-    if (icon != null) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: context.dimension.scaled(
-              TypographyTokens.kDefaultButtonIconSize,
-            ),
-          ),
-          context.dimension.xxs.horizontalGap,
-          Text(label),
-        ],
-      ).withUnderline(context: context, color: underlineColor);
-    }
+    final content = icon != null
+        ? Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                size: context.dimension.scaled(
+                  TypographyTokens.kDefaultButtonIconSize,
+                ),
+              ),
+              context.dimension.xxs.horizontalGap,
+              Text(label),
+            ],
+          ).withUnderline(context: context, color: underlineColor)
+        : Text(label).withUnderline(context: context, color: underlineColor);
 
-    return Text(label).withUnderline(context: context, color: underlineColor);
+    if (!isLoading) return content;
+
+    final style = typography.body;
+    final lineHeight =
+        (style.fontSize ??
+            context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
+        (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Visibility(
+          visible: false,
+          maintainSize: true,
+          maintainAnimation: true,
+          maintainState: true,
+          child: content,
+        ),
+        NebulaBouncingDots(
+          color: foreground,
+          height: lineHeight,
+        ).withUnderline(context: context, color: foreground),
+      ],
+    );
   }
 }
 
