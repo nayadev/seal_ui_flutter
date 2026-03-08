@@ -15,4 +15,10 @@ abstract class GradientTokens {
 
   /// Surface gradient — very subtle, used as background sheen.
   LinearGradient get surfaceGradient;
+
+  /// Surface gradient tinted with the primary color.
+  LinearGradient get surfacePrimaryGradient;
+
+  /// Surface gradient tinted with accent colors.
+  LinearGradient get surfaceAccentGradient;
 }

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../tokens/base/nebula_dimension.dart';
 import '../tokens/base/nebula_radius.dart';
 import '../tokens/implementations/dark_color_palette.dart';
-import '../tokens/implementations/default_gradients.dart';
+import '../tokens/implementations/dark_gradients.dart';
 import '../tokens/implementations/default_typography.dart';
 import '../tokens/implementations/light_color_palette.dart';
+import '../tokens/implementations/light_gradients.dart';
 import 'nebula_theme_tokens.dart';
 
 /// Factory for creating [NebulaThemeTokens] and Material [ThemeData].
@@ -29,7 +30,7 @@ abstract final class NebulaThemeFactory {
     return NebulaThemeTokens(
       colors: const DarkColorPalette(),
       typography: DefaultTypography(scaleFactor: scaleFactor),
-      gradients: const DefaultGradients(),
+      gradients: const DarkGradients(),
     );
   }
 
@@ -40,7 +41,7 @@ abstract final class NebulaThemeFactory {
     return NebulaThemeTokens(
       colors: const LightColorPalette(),
       typography: DefaultTypography(scaleFactor: scaleFactor),
-      gradients: const DefaultGradients(),
+      gradients: const LightGradients(),
     );
   }
 
@@ -74,13 +75,13 @@ abstract final class NebulaThemeFactory {
       onPrimary: colors.textPrimary,
       primaryContainer: colors.primaryTint,
       onPrimaryContainer: colors.textPrimary,
-      secondary: colors.accentBlue,
+      secondary: colors.accent,
       onSecondary: colors.textPrimary,
-      secondaryContainer: colors.accentBlue.withValues(
+      secondaryContainer: colors.accent.withValues(
         alpha: _kSecondaryContainerOpacity,
       ),
-      onSecondaryContainer: colors.accentBlue,
-      tertiary: colors.accentGreen,
+      onSecondaryContainer: colors.accent,
+      tertiary: colors.accentSecondary,
       onTertiary: colors.textPrimary,
       error: colors.error,
       onError: colors.textPrimary,

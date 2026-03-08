@@ -26,7 +26,7 @@ void main() {
 
     expect(captured.colors, isA<DarkColorPalette>());
     expect(captured.typography, isA<DefaultTypography>());
-    expect(captured.gradients, isA<DefaultGradients>());
+    expect(captured.gradients, isA<DarkGradients>());
   });
 
   testWidgets('NebulaTheme falls back to dark tokens without ancestor', (

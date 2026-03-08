@@ -23,10 +23,13 @@ class DarkColorPalette extends ColorPalette {
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accentBlue => const Color(0xFF5BA8FF);
+  Color get accent => const Color(0xFF5BA8FF);
 
   @override
-  Color get accentGreen => const Color(0xFF4DDEB0);
+  Color get accentSecondary => const Color(0xFF4DDEB0);
+
+  @override
+  Color get onAccent => const Color(0xFF0F0F1A);
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
@@ -46,6 +49,9 @@ class DarkColorPalette extends ColorPalette {
 
   @override
   Color get textSecondary => const Color(0xFF9E9BB3);
+
+  @override
+  Color get onPrimary => const Color(0xFFF0ECF9);
 
   // ── Border ─────────────────────────────────────────────────────────────
 

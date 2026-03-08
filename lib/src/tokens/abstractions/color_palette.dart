@@ -22,11 +22,14 @@ abstract class ColorPalette {
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
-  /// Blue accent color.
-  Color get accentBlue;
+  /// Primary accent color.
+  Color get accent;
 
-  /// Green accent color.
-  Color get accentGreen;
+  /// Secondary accent color.
+  Color get accentSecondary;
+
+  /// Foreground color for content placed over accent-colored surfaces.
+  Color get onAccent;
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
@@ -46,6 +49,12 @@ abstract class ColorPalette {
 
   /// Secondary / muted text color.
   Color get textSecondary;
+
+  /// Foreground color for content placed over the [primary] fill.
+  ///
+  /// Guarantees readability on filled primary-colored surfaces
+  /// (e.g. buttons, badges).
+  Color get onPrimary;
 
   // ── Border ─────────────────────────────────────────────────────────────
 

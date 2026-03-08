@@ -2,11 +2,11 @@ import 'package:flutter/painting.dart';
 
 import '../abstractions/gradient_tokens.dart';
 
-/// Default gradient tokens for the dark Nebula UI theme.
+/// Dark gradient tokens for the Nebula UI theme.
 ///
 /// Purple → Blue gradient is the primary visual identity.
-class DefaultGradients extends GradientTokens {
-  const DefaultGradients();
+class DarkGradients extends GradientTokens {
+  const DarkGradients();
 
   @override
   LinearGradient get primaryGradient => const LinearGradient(
@@ -24,10 +24,21 @@ class DefaultGradients extends GradientTokens {
 
   @override
   LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [
-      Color.fromARGB(50, 155, 109, 255),
-      Color.fromARGB(50, 91, 168, 255),
-    ],
+    colors: [Color(0x329B6DFF), Color(0x325BA8FF)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  @override
+  LinearGradient get surfacePrimaryGradient => const LinearGradient(
+    colors: [Color(0x339B6DFF), Color(0x337B4FD4)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  @override
+  LinearGradient get surfaceAccentGradient => const LinearGradient(
+    colors: [Color(0x335BA8FF), Color(0x334DDEB0)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

@@ -59,12 +59,14 @@ class NebulaPrimaryButton extends StatelessWidget {
 
     final dimension = context.dimension;
 
+    final onPrimary = colors.onPrimary;
+
     if (useGradient) {
       return _GradientButtonShell(
         tokens: tokens,
         isDisabled: _isDisabled,
         onPressed: onPressed,
-        child: _buildContent(context, colors.textPrimary, typo),
+        child: _buildContent(context, onPrimary, typo),
       );
     }
 
@@ -72,9 +74,9 @@ class NebulaPrimaryButton extends StatelessWidget {
       onPressed: _isDisabled ? null : onPressed,
       style: FilledButton.styleFrom(
         backgroundColor: colors.fill.active,
-        foregroundColor: colors.textPrimary,
+        foregroundColor: onPrimary,
         disabledBackgroundColor: colors.fill.disabled,
-        disabledForegroundColor: colors.textPrimary.withValues(
+        disabledForegroundColor: onPrimary.withValues(
           alpha: _kDisabledTextOpacity,
         ),
         padding: EdgeInsets.symmetric(
@@ -86,7 +88,7 @@ class NebulaPrimaryButton extends StatelessWidget {
         ),
         textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
       ),
-      child: _buildContent(context, colors.textPrimary, typo),
+      child: _buildContent(context, onPrimary, typo),
     );
   }
 
@@ -158,11 +160,11 @@ class _GradientButtonShell extends StatelessWidget {
               ),
               child: DefaultTextStyle.merge(
                 style: tokens.typography.body.copyWith(
-                  color: tokens.colors.textPrimary,
+                  color: tokens.colors.onPrimary,
                   fontWeight: FontWeight.w600,
                 ),
                 child: IconTheme.merge(
-                  data: IconThemeData(color: tokens.colors.textPrimary),
+                  data: IconThemeData(color: tokens.colors.onPrimary),
                   child: child,
                 ),
               ),
