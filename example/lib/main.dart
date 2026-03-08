@@ -197,6 +197,51 @@ class _ExampleHome extends StatelessWidget {
               context.dimension.xl.verticalGap,
 
               Text(
+                'Card',
+                style: typo.title.copyWith(color: colors.textPrimary),
+              ),
+              context.dimension.md.verticalGap,
+              NebulaCard(
+                header: Text(
+                  'Nebula Card',
+                  style: typo.title.copyWith(color: colors.textPrimary),
+                ),
+                body: Text(
+                  'A themed card with header, body, and footer sections using design tokens.',
+                  style: typo.body.copyWith(color: colors.textSecondary),
+                ),
+                footer: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    NebulaOutlineButton(label: 'Cancel', onPressed: () {}),
+                    context.dimension.sm.horizontalGap,
+                    NebulaPrimaryButton(label: 'Confirm', onPressed: () {}),
+                  ],
+                ),
+              ),
+              context.dimension.sm.verticalGap,
+              NebulaCard(
+                gradient: tokens.gradients.surfaceGradient,
+                showBorder: false,
+                header: Row(
+                  children: [
+                    Icon(Icons.auto_awesome, color: colors.textPrimary),
+                    context.dimension.xs.horizontalGap,
+                    Text(
+                      'Gradient Card',
+                      style: typo.title.copyWith(color: colors.textPrimary),
+                    ),
+                  ],
+                ),
+                body: Text(
+                  'A card with gradient background and no footer.',
+                  style: typo.body.copyWith(color: colors.textPrimary),
+                ),
+              ),
+
+              context.dimension.xl.verticalGap,
+
+              Text(
                 'Loader',
                 style: typo.title.copyWith(color: colors.textPrimary),
               ),

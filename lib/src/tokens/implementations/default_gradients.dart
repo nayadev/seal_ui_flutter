@@ -24,7 +24,10 @@ class DefaultGradients extends GradientTokens {
 
   @override
   LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0x0D9B6DFF), Color(0x0D5BA8FF)],
+    colors: [
+      Color.fromARGB(50, 155, 109, 255),
+      Color.fromARGB(50, 91, 168, 255),
+    ],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

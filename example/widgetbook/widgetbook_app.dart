@@ -481,6 +481,128 @@ class NebulaWidgetbook extends StatelessWidget {
           name: 'Layout',
           children: [
             WidgetbookFolder(
+              name: 'Cards',
+              children: [
+                WidgetbookComponent(
+                  name: 'NebulaCard',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Default',
+                      builder: (context) {
+                        final tokens = context.themeTokens;
+                        final colors = tokens.colors;
+                        final typo = tokens.typography;
+                        return Center(
+                          child: NebulaCard(
+                            showBorder: context.knobs.boolean(
+                              label: 'Show Border',
+                              initialValue: true,
+                            ),
+                            elevation: context.knobs.object.dropdown<double>(
+                              label: 'Elevation',
+                              options: [0, 2, 4, 8],
+                              initialOption: 2,
+                              labelBuilder: (v) => v.toString(),
+                            ),
+                            header: Text(
+                              context.knobs.string(
+                                label: 'Header',
+                                initialValue: 'Card Title',
+                              ),
+                              style: typo.title.copyWith(
+                                color: colors.textPrimary,
+                              ),
+                            ),
+                            body: Text(
+                              'This is the card body with some descriptive content.',
+                              style: typo.body.copyWith(
+                                color: colors.textSecondary,
+                              ),
+                            ),
+                            footer: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                NebulaTextButton(
+                                  label: 'Cancel',
+                                  onPressed: () {},
+                                ),
+                                NebulaPrimaryButton(
+                                  label: 'Confirm',
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    WidgetbookUseCase(
+                      name: 'With Gradient',
+                      builder: (context) {
+                        final tokens = context.themeTokens;
+                        final colors = tokens.colors;
+                        final typo = tokens.typography;
+                        return Center(
+                          child: NebulaCard(
+                            gradient: tokens.gradients.surfaceGradient,
+                            showBorder: false,
+                            header: Text(
+                              'Gradient Card',
+                              style: typo.title.copyWith(
+                                color: colors.textPrimary,
+                              ),
+                            ),
+                            body: Text(
+                              'A card with a gradient background.',
+                              style: typo.body.copyWith(
+                                color: colors.textPrimary,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Tappable',
+                      builder: (context) {
+                        final tokens = context.themeTokens;
+                        final colors = tokens.colors;
+                        final typo = tokens.typography;
+                        return Center(
+                          child: NebulaCard(
+                            onTap: () {},
+                            header: Row(
+                              children: [
+                                Icon(
+                                  Icons.touch_app_rounded,
+                                  color: colors.primary,
+                                ),
+                                SizedBox(width: context.dimension.xs),
+                                Expanded(
+                                  child: Text(
+                                    'Tappable Card',
+                                    style: typo.title.copyWith(
+                                      color: colors.textPrimary,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            body: Text(
+                              'Tap this card to trigger an action.',
+                              style: typo.body.copyWith(
+                                color: colors.textSecondary,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            WidgetbookFolder(
               name: 'Containers',
               children: [
                 WidgetbookComponent(

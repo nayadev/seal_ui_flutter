@@ -55,4 +55,5 @@ export 'src/components/buttons/nebula_text_button.dart';
 export 'src/components/feedback/nebula_bouncing_dots.dart';
 export 'src/components/feedback/nebula_loader.dart';
 export 'src/components/inputs/nebula_text_field.dart';
+export 'src/components/layout/nebula_card.dart';
 export 'src/components/layout/nebula_container.dart';
