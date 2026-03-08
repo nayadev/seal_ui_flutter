@@ -1,0 +1,248 @@
+// ignore_for_file: depend_on_referenced_packages
+import 'package:flutter/material.dart';
+import 'package:widgetbook/widgetbook.dart';
+
+import 'package:nebula_ui/nebula_ui.dart';
+
+/// Builds the **Layout** category for the Widgetbook catalog.
+WidgetbookCategory buildLayoutCategory() {
+  return WidgetbookCategory(
+    name: 'Layout',
+    children: [
+      _buildCardsFolder(),
+      _buildContainersFolder(),
+      _buildSpacingFolder(),
+    ],
+  );
+}
+
+// ── Cards ────────────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildCardsFolder() {
+  return WidgetbookFolder(
+    name: 'Cards',
+    children: [
+      WidgetbookComponent(
+        name: 'NebulaCard',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) {
+              final tokens = context.themeTokens;
+              final colors = tokens.colors;
+              final typo = tokens.typography;
+              return Center(
+                child: NebulaCard(
+                  showBorder: context.knobs.boolean(
+                    label: 'Show Border',
+                    initialValue: true,
+                  ),
+                  elevation: context.knobs.object.dropdown<double>(
+                    label: 'Elevation',
+                    options: [0, 2, 4, 8],
+                    initialOption: 2,
+                    labelBuilder: (v) => v.toString(),
+                  ),
+                  header: Text(
+                    context.knobs.string(
+                      label: 'Header',
+                      initialValue: 'Card Title',
+                    ),
+                    style: typo.title.copyWith(color: colors.textPrimary),
+                  ),
+                  body: Text(
+                    'This is the card body with some descriptive content.',
+                    style: typo.body.copyWith(color: colors.textSecondary),
+                  ),
+                  footer: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      NebulaTextButton.primary(
+                        label: 'Cancel',
+                        onPressed: () {},
+                      ),
+                      NebulaFilledButton.primary(
+                        label: 'Confirm',
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'With Gradient',
+            builder: (context) {
+              final tokens = context.themeTokens;
+              final colors = tokens.colors;
+              final typo = tokens.typography;
+              return Center(
+                child: NebulaCard(
+                  gradient: tokens.gradients.surfaceGradient,
+                  showBorder: false,
+                  header: Text(
+                    'Gradient Card',
+                    style: typo.title.copyWith(color: colors.textPrimary),
+                  ),
+                  body: Text(
+                    'A card with a gradient background.',
+                    style: typo.body.copyWith(color: colors.textPrimary),
+                  ),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Tappable',
+            builder: (context) {
+              final tokens = context.themeTokens;
+              final colors = tokens.colors;
+              final typo = tokens.typography;
+              return Center(
+                child: NebulaCard(
+                  onTap: () {},
+                  header: Row(
+                    children: [
+                      Icon(Icons.touch_app_rounded, color: colors.primary),
+                      SizedBox(width: context.dimension.xs),
+                      Expanded(
+                        child: Text(
+                          'Tappable Card',
+                          style: typo.title.copyWith(color: colors.textPrimary),
+                        ),
+                      ),
+                    ],
+                  ),
+                  body: Text(
+                    'Tap this card to trigger an action.',
+                    style: typo.body.copyWith(color: colors.textSecondary),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+// ── Containers ───────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildContainersFolder() {
+  return WidgetbookFolder(
+    name: 'Containers',
+    children: [
+      WidgetbookComponent(
+        name: 'NebulaContainer',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) {
+              final tokens = context.themeTokens;
+              return Center(
+                child: NebulaContainer(
+                  showBorder: context.knobs.boolean(
+                    label: 'Show Border',
+                    initialValue: true,
+                  ),
+                  child: Text(
+                    'Nebula UI Container',
+                    style: tokens.typography.body.copyWith(
+                      color: tokens.colors.textPrimary,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'With Gradient',
+            builder: (context) {
+              final tokens = context.themeTokens;
+              return Center(
+                child: NebulaContainer(
+                  gradient: tokens.gradients.surfaceGradient,
+                  showBorder: true,
+                  child: Text(
+                    'Gradient surface container',
+                    style: tokens.typography.body.copyWith(
+                      color: tokens.colors.textPrimary,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+// ── Spacing ──────────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildSpacingFolder() {
+  return WidgetbookFolder(
+    name: 'Spacing',
+    children: [
+      WidgetbookComponent(
+        name: 'Spacing Scale',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Visual Guide',
+            builder: (context) {
+              final tokens = context.themeTokens;
+              final dimension = context.dimension;
+              final entries = <String, double>{
+                'xxxs (2)': dimension.xxxs,
+                'xxs (4)': dimension.xxs,
+                'xs (8)': dimension.xs,
+                'sm (12)': dimension.sm,
+                'md (16)': dimension.md,
+                'lg (24)': dimension.lg,
+                'xl (32)': dimension.xl,
+                'xxl (48)': dimension.xxl,
+                'xxxl (64)': dimension.xxxl,
+              };
+
+              return SingleChildScrollView(
+                padding: EdgeInsets.all(dimension.lg),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: entries.entries.map((e) {
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: dimension.sm),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 90,
+                            child: Text(
+                              e.key,
+                              style: tokens.typography.caption.copyWith(
+                                color: tokens.colors.textSecondary,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: e.value,
+                            height: dimension.md,
+                            decoration: BoxDecoration(
+                              color: tokens.colors.primary,
+                              borderRadius: NebulaRadius.borderRadiusXs,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    ],
+  );
+}
