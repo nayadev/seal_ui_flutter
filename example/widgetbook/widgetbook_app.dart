@@ -217,9 +217,9 @@ class NebulaWidgetbook extends StatelessWidget {
                   name: 'NebulaOutlineButton',
                   useCases: [
                     WidgetbookUseCase(
-                      name: 'Default',
+                      name: 'Primary',
                       builder: (context) => Center(
-                        child: NebulaOutlineButton(
+                        child: NebulaOutlineButton.primary(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Cancel',
@@ -239,9 +239,97 @@ class NebulaWidgetbook extends StatelessWidget {
                       ),
                     ),
                     WidgetbookUseCase(
+                      name: 'Accent',
+                      builder: (context) => Center(
+                        child: NebulaOutlineButton.accent(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Details',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent Secondary',
+                      builder: (context) => Center(
+                        child: NebulaOutlineButton.accentSecondary(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Info',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Gradient',
+                      builder: (context) => Center(
+                        child: NebulaOutlineButton.gradient(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Explore',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent Gradient',
+                      builder: (context) => Center(
+                        child: NebulaOutlineButton.accentGradient(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Discover',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
                       name: 'With Icon',
                       builder: (context) => Center(
-                        child: NebulaOutlineButton(
+                        child: NebulaOutlineButton.primary(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Favorite',
@@ -257,9 +345,9 @@ class NebulaWidgetbook extends StatelessWidget {
                   name: 'NebulaTextButton',
                   useCases: [
                     WidgetbookUseCase(
-                      name: 'Default',
+                      name: 'Primary',
                       builder: (context) => Center(
-                        child: NebulaTextButton(
+                        child: NebulaTextButton.primary(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Learn more',
@@ -279,9 +367,97 @@ class NebulaWidgetbook extends StatelessWidget {
                       ),
                     ),
                     WidgetbookUseCase(
+                      name: 'Accent',
+                      builder: (context) => Center(
+                        child: NebulaTextButton.accent(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Details',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent Secondary',
+                      builder: (context) => Center(
+                        child: NebulaTextButton.accentSecondary(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Info',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Gradient',
+                      builder: (context) => Center(
+                        child: NebulaTextButton.gradient(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Discover',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent Gradient',
+                      builder: (context) => Center(
+                        child: NebulaTextButton.accentGradient(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Explore',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
                       name: 'With Icon',
                       builder: (context) => Center(
-                        child: NebulaTextButton(
+                        child: NebulaTextButton.primary(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Skip',
@@ -582,7 +758,7 @@ class NebulaWidgetbook extends StatelessWidget {
                             footer: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                NebulaTextButton(
+                                NebulaTextButton.primary(
                                   label: 'Cancel',
                                   onPressed: () {},
                                 ),

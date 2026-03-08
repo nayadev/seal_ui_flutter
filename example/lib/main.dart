@@ -93,7 +93,13 @@ class _ExampleHome extends StatelessWidget {
                 'Buttons',
                 style: typo.title.copyWith(color: colors.textPrimary),
               ),
+
               context.dimension.md.verticalGap,
+              Text(
+                'Filled',
+                style: typo.subtitle.copyWith(color: colors.textSecondary),
+              ),
+              context.dimension.sm.verticalGap,
               Wrap(
                 spacing: context.dimension.sm,
                 runSpacing: context.dimension.sm,
@@ -126,26 +132,81 @@ class _ExampleHome extends StatelessWidget {
                     isLoading: true,
                     onPressed: null,
                   ),
-                  NebulaOutlineButton(label: 'Outline', onPressed: () {}),
-                  NebulaOutlineButton(
+                ],
+              ),
+
+              context.dimension.md.verticalGap,
+              Text(
+                'Outline',
+                style: typo.subtitle.copyWith(color: colors.textSecondary),
+              ),
+              context.dimension.sm.verticalGap,
+              Wrap(
+                spacing: context.dimension.sm,
+                runSpacing: context.dimension.sm,
+                children: [
+                  NebulaOutlineButton.primary(
+                    label: 'Primary',
+                    onPressed: () {},
+                  ),
+                  NebulaOutlineButton.accent(label: 'Accent', onPressed: () {}),
+                  NebulaOutlineButton.accentSecondary(
+                    label: 'Accent Secondary',
+                    onPressed: () {},
+                  ),
+                  NebulaOutlineButton.gradient(
+                    label: 'Gradient',
+                    onPressed: () {},
+                  ),
+                  NebulaOutlineButton.accentGradient(
+                    label: 'Accent Gradient',
+                    onPressed: () {},
+                  ),
+                  NebulaOutlineButton.primary(
                     label: 'With Icon',
                     icon: Icons.star_outline_rounded,
                     onPressed: () {},
                   ),
-                  const NebulaOutlineButton(label: 'Disabled'),
-                  const NebulaOutlineButton(
+                  const NebulaOutlineButton.primary(label: 'Disabled'),
+                  const NebulaOutlineButton.primary(
                     label: 'Loading',
                     isLoading: true,
                     onPressed: null,
                   ),
-                  NebulaTextButton(label: 'Learn more', onPressed: () {}),
-                  NebulaTextButton(
-                    label: 'Skip',
+                ],
+              ),
+
+              context.dimension.md.verticalGap,
+              Text(
+                'Text',
+                style: typo.subtitle.copyWith(color: colors.textSecondary),
+              ),
+              context.dimension.sm.verticalGap,
+              Wrap(
+                spacing: context.dimension.sm,
+                runSpacing: context.dimension.sm,
+                children: [
+                  NebulaTextButton.primary(label: 'Primary', onPressed: () {}),
+                  NebulaTextButton.accent(label: 'Accent', onPressed: () {}),
+                  NebulaTextButton.accentSecondary(
+                    label: 'Accent Secondary',
+                    onPressed: () {},
+                  ),
+                  NebulaTextButton.gradient(
+                    label: 'Gradient',
+                    onPressed: () {},
+                  ),
+                  NebulaTextButton.accentGradient(
+                    label: 'Accent Gradient',
+                    onPressed: () {},
+                  ),
+                  NebulaTextButton.primary(
+                    label: 'With Icon',
                     icon: Icons.arrow_forward_rounded,
                     onPressed: () {},
                   ),
-                  const NebulaTextButton(label: 'Disabled'),
-                  const NebulaTextButton(
+                  const NebulaTextButton.primary(label: 'Disabled'),
+                  const NebulaTextButton.primary(
                     label: 'Loading',
                     isLoading: true,
                     onPressed: null,
@@ -223,7 +284,10 @@ class _ExampleHome extends StatelessWidget {
                 footer: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    NebulaOutlineButton(label: 'Cancel', onPressed: () {}),
+                    NebulaOutlineButton.primary(
+                      label: 'Cancel',
+                      onPressed: () {},
+                    ),
                     context.dimension.sm.horizontalGap,
                     NebulaFilledButton.primary(
                       label: 'Confirm',

@@ -24,6 +24,9 @@ abstract class TypographyTokens {
   /// Title — card or dialog titles.
   TextStyle get title;
 
+  /// Subtitle — subsection headings and secondary titles.
+  TextStyle get subtitle;
+
   /// Body — default readable text.
   TextStyle get body;
 

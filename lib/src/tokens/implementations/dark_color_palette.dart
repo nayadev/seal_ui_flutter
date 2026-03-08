@@ -23,10 +23,10 @@ class DarkColorPalette extends ColorPalette {
   // ── Accent ─────────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF4A96E8);
+  Color get accent => const Color(0xFF32B88C);
 
   @override
-  Color get accentSecondary => const Color(0xFF32B88C);
+  Color get accentSecondary => const Color(0xFF4A96E8);
 
   @override
   Color get onAccent => const Color(0xFFF0ECF9);

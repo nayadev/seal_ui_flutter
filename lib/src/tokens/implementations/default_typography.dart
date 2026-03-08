@@ -31,6 +31,7 @@ class DefaultTypography extends TypographyTokens {
   static const double _kDisplayFontSize = 48;
   static const double _kHeadlineFontSize = 32;
   static const double _kTitleFontSize = 22;
+  static const double _kSubtitleFontSize = 18;
   static const double _kBodyFontSize = 16;
   static const double _kSmallFontSize = 14;
   static const double _kCaptionFontSize = 12;
@@ -39,6 +40,7 @@ class DefaultTypography extends TypographyTokens {
   static const double _kDisplayLineHeight = 1.15;
   static const double _kHeadlineLineHeight = 1.25;
   static const double _kTitleLineHeight = 1.3;
+  static const double _kSubtitleLineHeight = 1.4;
   static const double _kBodyLineHeight = 1.5;
   static const double _kSmallLineHeight = 1.45;
   static const double _kCaptionLineHeight = 1.4;
@@ -47,6 +49,7 @@ class DefaultTypography extends TypographyTokens {
   static const double _kDisplayLetterSpacing = -1.2;
   static const double _kHeadlineLetterSpacing = -0.8;
   static const double _kTitleLetterSpacing = -0.3;
+  static const double _kSubtitleLetterSpacing = -0.1;
   static const double _kSmallLetterSpacing = 0.1;
   static const double _kCaptionLetterSpacing = 0.3;
 
@@ -72,6 +75,14 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w600,
     letterSpacing: _kTitleLetterSpacing,
     height: _kTitleLineHeight,
+  );
+
+  @override
+  TextStyle get subtitle => GoogleFonts.inter(
+    fontSize: _scaled(_kSubtitleFontSize),
+    fontWeight: FontWeight.w500,
+    letterSpacing: _kSubtitleLetterSpacing,
+    height: _kSubtitleLineHeight,
   );
 
   @override

@@ -14,10 +14,10 @@ Widget _wrap(Widget child) {
 }
 
 void main() {
-  group('NebulaTextButton', () {
+  group('NebulaTextButton.primary', () {
     testWidgets('renders label text', (tester) async {
       await tester.pumpWidget(
-        _wrap(NebulaTextButton(label: 'Learn more', onPressed: () {})),
+        _wrap(NebulaTextButton.primary(label: 'Learn more', onPressed: () {})),
       );
       await tester.pump();
 
@@ -28,7 +28,10 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
-          NebulaTextButton(label: 'Tap Me', onPressed: () => tapped = true),
+          NebulaTextButton.primary(
+            label: 'Tap Me',
+            onPressed: () => tapped = true,
+          ),
         ),
       );
       await tester.pump();
@@ -40,7 +43,9 @@ void main() {
     testWidgets('does not call onPressed when disabled', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
-        _wrap(const NebulaTextButton(label: 'Disabled', onPressed: null)),
+        _wrap(
+          const NebulaTextButton.primary(label: 'Disabled', onPressed: null),
+        ),
       );
       await tester.pump();
 
@@ -53,7 +58,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          const NebulaTextButton(
+          const NebulaTextButton.primary(
             label: 'Loading',
             isLoading: true,
             onPressed: null,
@@ -69,7 +74,7 @@ void main() {
     testWidgets('renders icon when provided', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          NebulaTextButton(
+          NebulaTextButton.primary(
             label: 'Skip',
             icon: Icons.arrow_forward,
             onPressed: () {},
@@ -84,11 +89,272 @@ void main() {
 
     testWidgets('uses TextButton internally', (tester) async {
       await tester.pumpWidget(
-        _wrap(NebulaTextButton(label: 'Test', onPressed: () {})),
+        _wrap(NebulaTextButton.primary(label: 'Test', onPressed: () {})),
       );
       await tester.pump();
 
       expect(find.byType(TextButton), findsOneWidget);
+    });
+  });
+
+  group('NebulaTextButton.accent', () {
+    testWidgets('renders label text', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.accent(label: 'Details', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.text('Details'), findsOneWidget);
+    });
+
+    testWidgets('calls onPressed when tapped', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.accent(label: 'Go', onPressed: () => tapped = true),
+        ),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Go'));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('does not call onPressed when disabled', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(const NebulaTextButton.accent(label: 'Off', onPressed: null)),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Off'));
+      expect(tapped, isFalse);
+    });
+
+    testWidgets('uses TextButton internally', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.accent(label: 'A', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.byType(TextButton), findsOneWidget);
+    });
+  });
+
+  group('NebulaTextButton.accentSecondary', () {
+    testWidgets('renders label text', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.accentSecondary(label: 'Info', onPressed: () {}),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.text('Info'), findsOneWidget);
+    });
+
+    testWidgets('calls onPressed when tapped', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.accentSecondary(
+            label: 'Go',
+            onPressed: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Go'));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('does not call onPressed when disabled', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          const NebulaTextButton.accentSecondary(label: 'Off', onPressed: null),
+        ),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Off'));
+      expect(tapped, isFalse);
+    });
+
+    testWidgets('uses TextButton internally', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.accentSecondary(label: 'A', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.byType(TextButton), findsOneWidget);
+    });
+  });
+
+  group('NebulaTextButton.gradient', () {
+    testWidgets('renders label text', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.gradient(label: 'Discover', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.text('Discover'), findsOneWidget);
+    });
+
+    testWidgets('calls onPressed when tapped', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.gradient(
+            label: 'Go',
+            onPressed: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Go'));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('does not call onPressed when disabled', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(const NebulaTextButton.gradient(label: 'Off', onPressed: null)),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Off'));
+      expect(tapped, isFalse);
+    });
+
+    testWidgets('wraps with ShaderMask', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.gradient(label: 'G', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.byType(ShaderMask), findsOneWidget);
+      expect(find.byType(TextButton), findsOneWidget);
+    });
+
+    testWidgets('renders icon when provided', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.gradient(
+            label: 'Nav',
+            icon: Icons.explore,
+            onPressed: () {},
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.byIcon(Icons.explore), findsOneWidget);
+      expect(find.text('Nav'), findsOneWidget);
+    });
+
+    testWidgets('shows loading indicator when isLoading is true', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          const NebulaTextButton.gradient(
+            label: 'Wait',
+            isLoading: true,
+            onPressed: null,
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.byType(NebulaBouncingDots), findsOneWidget);
+      expect(find.text('Wait'), findsNothing);
+    });
+  });
+
+  group('NebulaTextButton.accentGradient', () {
+    testWidgets('renders label text', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.accentGradient(label: 'More', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.text('More'), findsOneWidget);
+    });
+
+    testWidgets('calls onPressed when tapped', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.accentGradient(
+            label: 'Go',
+            onPressed: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Go'));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('does not call onPressed when disabled', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          const NebulaTextButton.accentGradient(label: 'Off', onPressed: null),
+        ),
+      );
+      await tester.pump();
+
+      await tester.tap(find.text('Off'));
+      expect(tapped, isFalse);
+    });
+
+    testWidgets('wraps with ShaderMask', (tester) async {
+      await tester.pumpWidget(
+        _wrap(NebulaTextButton.accentGradient(label: 'AG', onPressed: () {})),
+      );
+      await tester.pump();
+
+      expect(find.byType(ShaderMask), findsOneWidget);
+      expect(find.byType(TextButton), findsOneWidget);
+    });
+
+    testWidgets('renders icon when provided', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          NebulaTextButton.accentGradient(
+            label: 'Nav',
+            icon: Icons.star,
+            onPressed: () {},
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.byIcon(Icons.star), findsOneWidget);
+      expect(find.text('Nav'), findsOneWidget);
+    });
+
+    testWidgets('shows loading indicator when isLoading is true', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          const NebulaTextButton.accentGradient(
+            label: 'Wait',
+            isLoading: true,
+            onPressed: null,
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.byType(NebulaBouncingDots), findsOneWidget);
+      expect(find.text('Wait'), findsNothing);
     });
   });
 }

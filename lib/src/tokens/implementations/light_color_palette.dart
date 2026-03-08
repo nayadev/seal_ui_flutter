@@ -23,10 +23,10 @@ class LightColorPalette extends ColorPalette {
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF3D8BDF);
+  Color get accent => const Color(0xFF2DB88A);
 
   @override
-  Color get accentSecondary => const Color(0xFF2DB88A);
+  Color get accentSecondary => const Color(0xFF3D8BDF);
 
   @override
   Color get onAccent => const Color(0xFFFFFFFF);
