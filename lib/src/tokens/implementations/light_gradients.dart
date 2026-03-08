@@ -18,7 +18,7 @@ class LightGradients extends GradientTokens {
 
   @override
   LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF7B4FD4), Color(0xFF4DDEB0)],
+    colors: [Color(0xFF7B4FD4), Color(0xFF32B88C)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

@@ -98,20 +98,30 @@ class _ExampleHome extends StatelessWidget {
                 spacing: context.dimension.sm,
                 runSpacing: context.dimension.sm,
                 children: [
-                  NebulaPrimaryButton(label: 'Solid', onPressed: () {}),
-                  NebulaPrimaryButton(
-                    label: 'Gradient',
-                    useGradient: true,
+                  NebulaFilledButton.primary(
+                    label: 'Primary',
                     onPressed: () {},
                   ),
-                  NebulaPrimaryButton(
+                  NebulaFilledButton.accent(label: 'Accent', onPressed: () {}),
+                  NebulaFilledButton.accentSecondary(
+                    label: 'Accent Secondary',
+                    onPressed: () {},
+                  ),
+                  NebulaFilledButton.gradient(
+                    label: 'Gradient',
+                    onPressed: () {},
+                  ),
+                  NebulaFilledButton.accentGradient(
+                    label: 'Accent Gradient',
+                    onPressed: () {},
+                  ),
+                  NebulaFilledButton.gradient(
                     label: 'Explore',
                     icon: Icons.rocket_launch_rounded,
-                    useGradient: true,
                     onPressed: () {},
                   ),
-                  const NebulaPrimaryButton(label: 'Disabled'),
-                  const NebulaPrimaryButton(
+                  const NebulaFilledButton.primary(label: 'Disabled'),
+                  const NebulaFilledButton.primary(
                     label: 'Loading',
                     isLoading: true,
                     onPressed: null,
@@ -215,7 +225,10 @@ class _ExampleHome extends StatelessWidget {
                   children: [
                     NebulaOutlineButton(label: 'Cancel', onPressed: () {}),
                     context.dimension.sm.horizontalGap,
-                    NebulaPrimaryButton(label: 'Confirm', onPressed: () {}),
+                    NebulaFilledButton.primary(
+                      label: 'Confirm',
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ),

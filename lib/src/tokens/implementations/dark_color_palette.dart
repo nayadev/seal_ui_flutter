@@ -12,24 +12,24 @@ class DarkColorPalette extends ColorPalette {
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF9B6DFF);
+  Color get primary => const Color(0xFF8055E0);
 
   @override
-  Color get primaryTint => const Color(0xFFB794FF);
+  Color get primaryTint => const Color(0xFF9B6DFF);
 
   @override
-  Color get primaryShade => const Color(0xFF7B4FD4);
+  Color get primaryShade => const Color(0xFF6340B8);
 
-  // ── Accent ─────────────────────────────────────────────────────────────
-
-  @override
-  Color get accent => const Color(0xFF5BA8FF);
+  // ── Accent ─────────────────────────────────────────────────────────────────
 
   @override
-  Color get accentSecondary => const Color(0xFF4DDEB0);
+  Color get accent => const Color(0xFF4A96E8);
 
   @override
-  Color get onAccent => const Color(0xFF0F0F1A);
+  Color get accentSecondary => const Color(0xFF32B88C);
+
+  @override
+  Color get onAccent => const Color(0xFFF0ECF9);
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 

@@ -10,35 +10,35 @@ class DarkGradients extends GradientTokens {
 
   @override
   LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF9B6DFF), Color(0xFF5BA8FF)],
+    colors: [Color(0xFF8055E0), Color(0xFF4A96E8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF7B4FD4), Color(0xFF4DDEB0)],
+    colors: [Color(0xFF6340B8), Color(0xFF32B88C)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0x329B6DFF), Color(0x325BA8FF)],
+    colors: [Color(0x328055E0), Color(0x324A96E8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0x339B6DFF), Color(0x337B4FD4)],
+    colors: [Color(0x338055E0), Color(0x336340B8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0x335BA8FF), Color(0x334DDEB0)],
+    colors: [Color(0x334A96E8), Color(0x3332B88C)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

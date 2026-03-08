@@ -14,7 +14,7 @@ import '../../../nebula_ui.dart';
 ///   footer: Row(
 ///     mainAxisAlignment: MainAxisAlignment.end,
 ///     children: [
-///       NebulaPrimaryButton(label: 'OK', onPressed: () {}),
+///       NebulaFilledButton.primary(label: 'OK', onPressed: () {}),
 ///     ],
 ///   ),
 /// )

@@ -86,17 +86,60 @@ class NebulaWidgetbook extends StatelessWidget {
               name: 'Buttons',
               children: [
                 WidgetbookComponent(
-                  name: 'NebulaPrimaryButton',
+                  name: 'NebulaFilledButton',
                   useCases: [
                     WidgetbookUseCase(
-                      name: 'Solid',
+                      name: 'Primary',
                       builder: (context) => Center(
-                        child: NebulaPrimaryButton(
+                        child: NebulaFilledButton.primary(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Get Started',
                           ),
-                          useGradient: false,
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent',
+                      builder: (context) => Center(
+                        child: NebulaFilledButton.accent(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Continue',
+                          ),
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent Secondary',
+                      builder: (context) => Center(
+                        child: NebulaFilledButton.accentSecondary(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Confirm',
+                          ),
                           isLoading: context.knobs.boolean(
                             label: 'Loading',
                             initialValue: false,
@@ -114,12 +157,33 @@ class NebulaWidgetbook extends StatelessWidget {
                     WidgetbookUseCase(
                       name: 'Gradient',
                       builder: (context) => Center(
-                        child: NebulaPrimaryButton(
+                        child: NebulaFilledButton.gradient(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Launch',
                           ),
-                          useGradient: true,
+                          isLoading: context.knobs.boolean(
+                            label: 'Loading',
+                            initialValue: false,
+                          ),
+                          onPressed:
+                              context.knobs.boolean(
+                                label: 'Enabled',
+                                initialValue: true,
+                              )
+                              ? () {}
+                              : null,
+                        ),
+                      ),
+                    ),
+                    WidgetbookUseCase(
+                      name: 'Accent Gradient',
+                      builder: (context) => Center(
+                        child: NebulaFilledButton.accentGradient(
+                          label: context.knobs.string(
+                            label: 'Label',
+                            initialValue: 'Boost',
+                          ),
                           isLoading: context.knobs.boolean(
                             label: 'Loading',
                             initialValue: false,
@@ -137,16 +201,12 @@ class NebulaWidgetbook extends StatelessWidget {
                     WidgetbookUseCase(
                       name: 'With Icon',
                       builder: (context) => Center(
-                        child: NebulaPrimaryButton(
+                        child: NebulaFilledButton.gradient(
                           label: context.knobs.string(
                             label: 'Label',
                             initialValue: 'Explore',
                           ),
                           icon: Icons.rocket_launch_rounded,
-                          useGradient: context.knobs.boolean(
-                            label: 'Use Gradient',
-                            initialValue: true,
-                          ),
                           onPressed: () {},
                         ),
                       ),
@@ -526,7 +586,7 @@ class NebulaWidgetbook extends StatelessWidget {
                                   label: 'Cancel',
                                   onPressed: () {},
                                 ),
-                                NebulaPrimaryButton(
+                                NebulaFilledButton.primary(
                                   label: 'Confirm',
                                   onPressed: () {},
                                 ),
