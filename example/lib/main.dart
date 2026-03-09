@@ -6,6 +6,7 @@ import 'sections/cards_section.dart';
 import 'sections/containers_section.dart';
 import 'sections/inputs_section.dart';
 import 'sections/loader_section.dart';
+import 'sections/snackbar_section.dart';
 
 /// Example app demonstrating the Nebula UI Design System.
 ///
@@ -98,6 +99,8 @@ class _ExampleHome extends StatelessWidget {
               const CardsSection(),
               dimension.xl.verticalGap,
               const LoaderSection(),
+              dimension.xl.verticalGap,
+              const SnackbarSection(),
               dimension.xxxl.verticalGap,
             ],
           ),

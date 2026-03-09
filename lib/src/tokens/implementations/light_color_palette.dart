@@ -69,6 +69,9 @@ class LightColorPalette extends ColorPalette {
   @override
   Color get error => const Color(0xFFE04564);
 
+  @override
+  Color get info => const Color(0xFF3D8BDF);
+
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override

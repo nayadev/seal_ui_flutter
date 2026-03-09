@@ -69,6 +69,9 @@ class DarkColorPalette extends ColorPalette {
   @override
   Color get error => const Color(0xFFFF6B8A);
 
+  @override
+  Color get info => const Color(0xFF4A96E8);
+
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override

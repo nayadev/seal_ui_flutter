@@ -707,6 +707,184 @@ WidgetbookFolder _buildFeedbackFolder() {
           ),
         ],
       ),
+      WidgetbookComponent(
+        name: 'NebulaSnackbar',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Info',
+            builder: (context) {
+              final message = context.knobs.string(
+                label: 'Message',
+                initialValue: 'Something you should know.',
+              );
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: '',
+              );
+              final alignment = context.knobs.object
+                  .dropdown<NebulaSnackbarAlignment>(
+                    label: 'Alignment',
+                    options: NebulaSnackbarAlignment.values,
+                    initialOption: NebulaSnackbarAlignment.top,
+                    labelBuilder: (a) => a.name,
+                  );
+              return Center(
+                child: NebulaFilledButton.primary(
+                  label: 'Show Info Snackbar',
+                  onPressed: () => NebulaSnackbar.info(
+                    message: message,
+                    title: title.isEmpty ? null : title,
+                    alignment: alignment,
+                  ).show(context),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Success',
+            builder: (context) {
+              final message = context.knobs.string(
+                label: 'Message',
+                initialValue: 'Your changes have been saved.',
+              );
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Success',
+              );
+              final alignment = context.knobs.object
+                  .dropdown<NebulaSnackbarAlignment>(
+                    label: 'Alignment',
+                    options: NebulaSnackbarAlignment.values,
+                    initialOption: NebulaSnackbarAlignment.top,
+                    labelBuilder: (a) => a.name,
+                  );
+              return Center(
+                child: NebulaFilledButton.accent(
+                  label: 'Show Success Snackbar',
+                  onPressed: () => NebulaSnackbar.success(
+                    message: message,
+                    title: title.isEmpty ? null : title,
+                    alignment: alignment,
+                  ).show(context),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Warning',
+            builder: (context) {
+              final message = context.knobs.string(
+                label: 'Message',
+                initialValue: 'This action might have side effects.',
+              );
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Warning',
+              );
+              final alignment = context.knobs.object
+                  .dropdown<NebulaSnackbarAlignment>(
+                    label: 'Alignment',
+                    options: NebulaSnackbarAlignment.values,
+                    initialOption: NebulaSnackbarAlignment.top,
+                    labelBuilder: (a) => a.name,
+                  );
+              return Center(
+                child: NebulaFilledButton.primary(
+                  label: 'Show Warning Snackbar',
+                  onPressed: () => NebulaSnackbar.warning(
+                    message: message,
+                    title: title.isEmpty ? null : title,
+                    alignment: alignment,
+                  ).show(context),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Error',
+            builder: (context) {
+              final message = context.knobs.string(
+                label: 'Message',
+                initialValue: 'Something went wrong. Please try again.',
+              );
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Error',
+              );
+              final alignment = context.knobs.object
+                  .dropdown<NebulaSnackbarAlignment>(
+                    label: 'Alignment',
+                    options: NebulaSnackbarAlignment.values,
+                    initialOption: NebulaSnackbarAlignment.top,
+                    labelBuilder: (a) => a.name,
+                  );
+              final showAction = context.knobs.boolean(
+                label: 'Show Action',
+                initialValue: false,
+              );
+              return Center(
+                child: NebulaFilledButton.primary(
+                  label: 'Show Error Snackbar',
+                  onPressed: () => NebulaSnackbar.error(
+                    message: message,
+                    title: title.isEmpty ? null : title,
+                    alignment: alignment,
+                    actionLabel: showAction ? 'Retry' : null,
+                    onAction: showAction ? () {} : null,
+                  ).show(context),
+                ),
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) {
+              final message = context.knobs.string(
+                label: 'Message',
+                initialValue: 'Achievement unlocked!',
+              );
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Congrats',
+              );
+              final alignment = context.knobs.object
+                  .dropdown<NebulaSnackbarAlignment>(
+                    label: 'Alignment',
+                    options: NebulaSnackbarAlignment.values,
+                    initialOption: NebulaSnackbarAlignment.top,
+                    labelBuilder: (a) => a.name,
+                  );
+              final useGradient = context.knobs.boolean(
+                label: 'Use Gradient',
+                initialValue: true,
+              );
+              final showAction = context.knobs.boolean(
+                label: 'Show Action',
+                initialValue: false,
+              );
+              return Center(
+                child: NebulaFilledButton.gradient(
+                  label: 'Show Custom Snackbar',
+                  onPressed: () => NebulaSnackbar.custom(
+                    message: message,
+                    title: title.isEmpty ? null : title,
+                    icon: Icons.emoji_events_rounded,
+                    color: useGradient
+                        ? null
+                        : context.themeTokens.colors.primary,
+                    gradient: useGradient
+                        ? context.themeTokens.gradients.primaryGradient
+                        : null,
+                    alignment: alignment,
+                    actionLabel: showAction ? 'View' : null,
+                    onAction: showAction ? () {} : null,
+                  ).show(context),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     ],
   );
 }

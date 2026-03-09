@@ -72,6 +72,9 @@ abstract class ColorPalette {
   /// Error semantic color.
   Color get error;
 
+  /// Info semantic color.
+  Color get info;
+
   // ── State Colors ────────────────────────────────────────────────────────
 
   /// Foreground color states for interactive widgets (text, icons, borders).
