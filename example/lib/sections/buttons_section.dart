@@ -120,6 +120,48 @@ class ButtonsSection extends StatelessWidget {
         ),
         dimension.md.verticalGap,
         Text(
+          'Icon Button',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: [
+            NebulaIconButton.primary(
+              icon: Icons.close_rounded,
+              onPressed: () {},
+              tooltip: 'Close',
+            ),
+            NebulaIconButton.accent(
+              icon: Icons.more_vert_rounded,
+              onPressed: () {},
+              tooltip: 'More',
+            ),
+            NebulaIconButton.accentSecondary(
+              icon: Icons.info_outline_rounded,
+              onPressed: () {},
+              tooltip: 'Info',
+            ),
+            NebulaIconButton.gradient(
+              icon: Icons.tune_rounded,
+              onPressed: () {},
+              tooltip: 'Filter',
+            ),
+            NebulaIconButton.accentGradient(
+              icon: Icons.search_rounded,
+              onPressed: () {},
+              tooltip: 'Search',
+            ),
+            const NebulaIconButton.primary(
+              icon: Icons.block_rounded,
+              onPressed: null,
+              tooltip: 'Disabled',
+            ),
+          ],
+        ),
+        dimension.md.verticalGap,
+        Text(
           'Icon Button — Filled',
           style: typo.subtitle.copyWith(color: colors.textSecondary),
         ),
@@ -196,48 +238,6 @@ class ButtonsSection extends StatelessWidget {
               tooltip: 'Boost',
             ),
             const NebulaOutlineIconButton.primary(
-              icon: Icons.block_rounded,
-              onPressed: null,
-              tooltip: 'Disabled',
-            ),
-          ],
-        ),
-        dimension.md.verticalGap,
-        Text(
-          'Icon Button — Ghost',
-          style: typo.subtitle.copyWith(color: colors.textSecondary),
-        ),
-        dimension.sm.verticalGap,
-        Wrap(
-          spacing: dimension.sm,
-          runSpacing: dimension.sm,
-          children: [
-            NebulaIconButton.primary(
-              icon: Icons.close_rounded,
-              onPressed: () {},
-              tooltip: 'Close',
-            ),
-            NebulaIconButton.accent(
-              icon: Icons.more_vert_rounded,
-              onPressed: () {},
-              tooltip: 'More',
-            ),
-            NebulaIconButton.accentSecondary(
-              icon: Icons.info_outline_rounded,
-              onPressed: () {},
-              tooltip: 'Info',
-            ),
-            NebulaIconButton.gradient(
-              icon: Icons.tune_rounded,
-              onPressed: () {},
-              tooltip: 'Filter',
-            ),
-            NebulaIconButton.accentGradient(
-              icon: Icons.search_rounded,
-              onPressed: () {},
-              tooltip: 'Search',
-            ),
-            const NebulaIconButton.primary(
               icon: Icons.block_rounded,
               onPressed: null,
               tooltip: 'Disabled',
