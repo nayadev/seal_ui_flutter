@@ -75,13 +75,10 @@ class _ExampleHome extends StatelessWidget {
                     'Nebula UI',
                     style: typo.headline.copyWith(color: colors.primary),
                   ),
-                  IconButton(
-                    icon: Icon(
-                      isDark
-                          ? Icons.light_mode_rounded
-                          : Icons.dark_mode_rounded,
-                      color: colors.textSecondary,
-                    ),
+                  NebulaIconButton.gradient(
+                    icon: isDark
+                        ? Icons.light_mode_rounded
+                        : Icons.dark_mode_rounded,
                     onPressed: onToggleTheme,
                   ),
                 ],

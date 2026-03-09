@@ -28,20 +28,20 @@ abstract final class NebulaRadius {
   // ── BorderRadius helpers ─────────────────────────────────────────────
 
   /// [BorderRadius] variant of [xs].
-  static final BorderRadius borderRadiusXs = BorderRadius.all(xs);
+  static const BorderRadius borderRadiusXs = BorderRadius.all(xs);
 
   /// [BorderRadius] variant of [sm].
-  static final BorderRadius borderRadiusSm = BorderRadius.all(sm);
+  static const BorderRadius borderRadiusSm = BorderRadius.all(sm);
 
   /// [BorderRadius] variant of [md].
-  static final BorderRadius borderRadiusMd = BorderRadius.all(md);
+  static const BorderRadius borderRadiusMd = BorderRadius.all(md);
 
   /// [BorderRadius] variant of [lg].
-  static final BorderRadius borderRadiusLg = BorderRadius.all(lg);
+  static const BorderRadius borderRadiusLg = BorderRadius.all(lg);
 
   /// [BorderRadius] variant of [xl].
-  static final BorderRadius borderRadiusXl = BorderRadius.all(xl);
+  static const BorderRadius borderRadiusXl = BorderRadius.all(xl);
 
   /// [BorderRadius] pill shape.
-  static final BorderRadius borderRadiusFull = BorderRadius.all(full);
+  static const BorderRadius borderRadiusFull = BorderRadius.all(full);
 }

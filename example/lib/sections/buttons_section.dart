@@ -118,6 +118,132 @@ class ButtonsSection extends StatelessWidget {
             ),
           ],
         ),
+        dimension.md.verticalGap,
+        Text(
+          'Icon Button — Filled',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: [
+            NebulaFilledIconButton.primary(
+              icon: Icons.add_rounded,
+              onPressed: () {},
+              tooltip: 'Add',
+            ),
+            NebulaFilledIconButton.accent(
+              icon: Icons.star_rounded,
+              onPressed: () {},
+              tooltip: 'Favorite',
+            ),
+            NebulaFilledIconButton.accentSecondary(
+              icon: Icons.edit_rounded,
+              onPressed: () {},
+              tooltip: 'Edit',
+            ),
+            NebulaFilledIconButton.gradient(
+              icon: Icons.rocket_launch_rounded,
+              onPressed: () {},
+              tooltip: 'Launch',
+            ),
+            NebulaFilledIconButton.accentGradient(
+              icon: Icons.bolt_rounded,
+              onPressed: () {},
+              tooltip: 'Boost',
+            ),
+            const NebulaFilledIconButton.primary(
+              icon: Icons.block_rounded,
+              onPressed: null,
+              tooltip: 'Disabled',
+            ),
+          ],
+        ),
+        dimension.md.verticalGap,
+        Text(
+          'Icon Button — Outline',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: [
+            NebulaOutlineIconButton.primary(
+              icon: Icons.share_rounded,
+              onPressed: () {},
+              tooltip: 'Share',
+            ),
+            NebulaOutlineIconButton.accent(
+              icon: Icons.bookmark_outline_rounded,
+              onPressed: () {},
+              tooltip: 'Save',
+            ),
+            NebulaOutlineIconButton.accentSecondary(
+              icon: Icons.tune_rounded,
+              onPressed: () {},
+              tooltip: 'Filter',
+            ),
+            NebulaOutlineIconButton.gradient(
+              icon: Icons.auto_awesome_rounded,
+              onPressed: () {},
+              tooltip: 'Magic',
+            ),
+            NebulaOutlineIconButton.accentGradient(
+              icon: Icons.flash_on_rounded,
+              onPressed: () {},
+              tooltip: 'Boost',
+            ),
+            const NebulaOutlineIconButton.primary(
+              icon: Icons.block_rounded,
+              onPressed: null,
+              tooltip: 'Disabled',
+            ),
+          ],
+        ),
+        dimension.md.verticalGap,
+        Text(
+          'Icon Button — Ghost',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: [
+            NebulaIconButton.primary(
+              icon: Icons.close_rounded,
+              onPressed: () {},
+              tooltip: 'Close',
+            ),
+            NebulaIconButton.accent(
+              icon: Icons.more_vert_rounded,
+              onPressed: () {},
+              tooltip: 'More',
+            ),
+            NebulaIconButton.accentSecondary(
+              icon: Icons.info_outline_rounded,
+              onPressed: () {},
+              tooltip: 'Info',
+            ),
+            NebulaIconButton.gradient(
+              icon: Icons.tune_rounded,
+              onPressed: () {},
+              tooltip: 'Filter',
+            ),
+            NebulaIconButton.accentGradient(
+              icon: Icons.search_rounded,
+              onPressed: () {},
+              tooltip: 'Search',
+            ),
+            const NebulaIconButton.primary(
+              icon: Icons.block_rounded,
+              onPressed: null,
+              tooltip: 'Disabled',
+            ),
+          ],
+        ),
       ],
     );
   }
