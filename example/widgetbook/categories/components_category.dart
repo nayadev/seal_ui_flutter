@@ -27,110 +27,98 @@ WidgetbookFolder _buildButtonsFolder() {
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => Center(
-              child: NebulaFilledButton.primary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Get Started',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledButton.primary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Get Started',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => Center(
-              child: NebulaFilledButton.accent(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Continue',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledButton.accent(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Continue',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => Center(
-              child: NebulaFilledButton.accentSecondary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Confirm',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledButton.accentSecondary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Confirm',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => Center(
-              child: NebulaFilledButton.gradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Launch',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledButton.gradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Launch',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => Center(
-              child: NebulaFilledButton.accentGradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Boost',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledButton.accentGradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Boost',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'With Icon',
-            builder: (context) => Center(
-              child: NebulaFilledButton.gradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Explore',
-                ),
-                icon: Icons.rocket_launch_rounded,
-                onPressed: () {},
+            builder: (context) => NebulaFilledButton.gradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Explore',
               ),
+              icon: Icons.rocket_launch_rounded,
+              onPressed: () {},
             ),
           ),
         ],
@@ -140,110 +128,98 @@ WidgetbookFolder _buildButtonsFolder() {
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => Center(
-              child: NebulaOutlineButton.primary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Cancel',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineButton.primary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Cancel',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => Center(
-              child: NebulaOutlineButton.accent(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Details',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineButton.accent(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Details',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => Center(
-              child: NebulaOutlineButton.accentSecondary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Info',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineButton.accentSecondary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Info',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => Center(
-              child: NebulaOutlineButton.gradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Explore',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineButton.gradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Explore',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => Center(
-              child: NebulaOutlineButton.accentGradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Discover',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineButton.accentGradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Discover',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'With Icon',
-            builder: (context) => Center(
-              child: NebulaOutlineButton.primary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Favorite',
-                ),
-                icon: Icons.star_outline_rounded,
-                onPressed: () {},
+            builder: (context) => NebulaOutlineButton.primary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Favorite',
               ),
+              icon: Icons.star_outline_rounded,
+              onPressed: () {},
             ),
           ),
         ],
@@ -253,110 +229,98 @@ WidgetbookFolder _buildButtonsFolder() {
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => Center(
-              child: NebulaTextButton.primary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Learn more',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaTextButton.primary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Learn more',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => Center(
-              child: NebulaTextButton.accent(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Details',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaTextButton.accent(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Details',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => Center(
-              child: NebulaTextButton.accentSecondary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Info',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaTextButton.accentSecondary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Info',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => Center(
-              child: NebulaTextButton.gradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Discover',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaTextButton.gradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Discover',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => Center(
-              child: NebulaTextButton.accentGradient(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Explore',
-                ),
-                isLoading: context.knobs.boolean(
-                  label: 'Loading',
-                  initialValue: false,
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaTextButton.accentGradient(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Explore',
               ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'With Icon',
-            builder: (context) => Center(
-              child: NebulaTextButton.primary(
-                label: context.knobs.string(
-                  label: 'Label',
-                  initialValue: 'Skip',
-                ),
-                icon: Icons.arrow_forward_rounded,
-                onPressed: () {},
+            builder: (context) => NebulaTextButton.primary(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Skip',
               ),
+              icon: Icons.arrow_forward_rounded,
+              onPressed: () {},
             ),
           ),
         ],
@@ -366,82 +330,72 @@ WidgetbookFolder _buildButtonsFolder() {
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => Center(
-              child: NebulaFilledIconButton.primary(
-                icon: Icons.add_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Add item',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledIconButton.primary(
+              icon: Icons.add_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Add item',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => Center(
-              child: NebulaFilledIconButton.accent(
-                icon: Icons.star_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Favorite',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledIconButton.accent(
+              icon: Icons.star_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Favorite',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => Center(
-              child: NebulaFilledIconButton.accentSecondary(
-                icon: Icons.edit_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Edit',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledIconButton.accentSecondary(
+              icon: Icons.edit_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Edit',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => Center(
-              child: NebulaFilledIconButton.gradient(
-                icon: Icons.rocket_launch_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Launch',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledIconButton.gradient(
+              icon: Icons.rocket_launch_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Launch',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => Center(
-              child: NebulaFilledIconButton.accentGradient(
-                icon: Icons.bolt_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Boost',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaFilledIconButton.accentGradient(
+              icon: Icons.bolt_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Boost',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
         ],
@@ -451,82 +405,72 @@ WidgetbookFolder _buildButtonsFolder() {
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => Center(
-              child: NebulaOutlineIconButton.primary(
-                icon: Icons.share_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Share',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineIconButton.primary(
+              icon: Icons.share_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Share',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => Center(
-              child: NebulaOutlineIconButton.accent(
-                icon: Icons.bookmark_outline_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Save',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineIconButton.accent(
+              icon: Icons.bookmark_outline_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Save',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => Center(
-              child: NebulaOutlineIconButton.accentSecondary(
-                icon: Icons.tune_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Filter',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineIconButton.accentSecondary(
+              icon: Icons.tune_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Filter',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => Center(
-              child: NebulaOutlineIconButton.gradient(
-                icon: Icons.auto_awesome_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Magic',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineIconButton.gradient(
+              icon: Icons.auto_awesome_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Magic',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => Center(
-              child: NebulaOutlineIconButton.accentGradient(
-                icon: Icons.flash_on_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Boost',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaOutlineIconButton.accentGradient(
+              icon: Icons.flash_on_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Boost',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
         ],
@@ -536,82 +480,72 @@ WidgetbookFolder _buildButtonsFolder() {
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => Center(
-              child: NebulaIconButton.primary(
-                icon: Icons.close_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Close',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaIconButton.primary(
+              icon: Icons.close_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Close',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => Center(
-              child: NebulaIconButton.accent(
-                icon: Icons.more_vert_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'More',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaIconButton.accent(
+              icon: Icons.more_vert_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'More',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => Center(
-              child: NebulaIconButton.accentSecondary(
-                icon: Icons.info_outline_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Info',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaIconButton.accentSecondary(
+              icon: Icons.info_outline_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Info',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => Center(
-              child: NebulaIconButton.gradient(
-                icon: Icons.tune_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Filter',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaIconButton.gradient(
+              icon: Icons.tune_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Filter',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => Center(
-              child: NebulaIconButton.accentGradient(
-                icon: Icons.search_rounded,
-                tooltip: context.knobs.string(
-                  label: 'Tooltip',
-                  initialValue: 'Search',
-                ),
-                onPressed:
-                    context.knobs.boolean(label: 'Enabled', initialValue: true)
-                    ? () {}
-                    : null,
+            builder: (context) => NebulaIconButton.accentGradient(
+              icon: Icons.search_rounded,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Search',
               ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
         ],
@@ -697,11 +631,9 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Show Label',
                 initialValue: false,
               );
-              return Center(
-                child: NebulaLoader(
-                  size: size,
-                  label: showLabel ? 'Loading…' : null,
-                ),
+              return NebulaLoader(
+                size: size,
+                label: showLabel ? 'Loading…' : null,
               );
             },
           ),
@@ -728,15 +660,13 @@ WidgetbookFolder _buildFeedbackFolder() {
                     initialOption: NebulaSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
-              return Center(
-                child: NebulaFilledButton.primary(
-                  label: 'Show Info Snackbar',
-                  onPressed: () => NebulaSnackbar.info(
-                    message: message,
-                    title: title.isEmpty ? null : title,
-                    alignment: alignment,
-                  ).show(context),
-                ),
+              return NebulaFilledButton.primary(
+                label: 'Show Info Snackbar',
+                onPressed: () => NebulaSnackbar.info(
+                  message: message,
+                  title: title.isEmpty ? null : title,
+                  alignment: alignment,
+                ).show(context),
               );
             },
           ),
@@ -758,15 +688,13 @@ WidgetbookFolder _buildFeedbackFolder() {
                     initialOption: NebulaSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
-              return Center(
-                child: NebulaFilledButton.accent(
-                  label: 'Show Success Snackbar',
-                  onPressed: () => NebulaSnackbar.success(
-                    message: message,
-                    title: title.isEmpty ? null : title,
-                    alignment: alignment,
-                  ).show(context),
-                ),
+              return NebulaFilledButton.accent(
+                label: 'Show Success Snackbar',
+                onPressed: () => NebulaSnackbar.success(
+                  message: message,
+                  title: title.isEmpty ? null : title,
+                  alignment: alignment,
+                ).show(context),
               );
             },
           ),
@@ -788,15 +716,13 @@ WidgetbookFolder _buildFeedbackFolder() {
                     initialOption: NebulaSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
-              return Center(
-                child: NebulaFilledButton.primary(
-                  label: 'Show Warning Snackbar',
-                  onPressed: () => NebulaSnackbar.warning(
-                    message: message,
-                    title: title.isEmpty ? null : title,
-                    alignment: alignment,
-                  ).show(context),
-                ),
+              return NebulaFilledButton.primary(
+                label: 'Show Warning Snackbar',
+                onPressed: () => NebulaSnackbar.warning(
+                  message: message,
+                  title: title.isEmpty ? null : title,
+                  alignment: alignment,
+                ).show(context),
               );
             },
           ),
@@ -822,17 +748,15 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Show Action',
                 initialValue: false,
               );
-              return Center(
-                child: NebulaFilledButton.primary(
-                  label: 'Show Error Snackbar',
-                  onPressed: () => NebulaSnackbar.error(
-                    message: message,
-                    title: title.isEmpty ? null : title,
-                    alignment: alignment,
-                    actionLabel: showAction ? 'Retry' : null,
-                    onAction: showAction ? () {} : null,
-                  ).show(context),
-                ),
+              return NebulaFilledButton.primary(
+                label: 'Show Error Snackbar',
+                onPressed: () => NebulaSnackbar.error(
+                  message: message,
+                  title: title.isEmpty ? null : title,
+                  alignment: alignment,
+                  actionLabel: showAction ? 'Retry' : null,
+                  onAction: showAction ? () {} : null,
+                ).show(context),
               );
             },
           ),
@@ -862,24 +786,22 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Show Action',
                 initialValue: false,
               );
-              return Center(
-                child: NebulaFilledButton.gradient(
-                  label: 'Show Custom Snackbar',
-                  onPressed: () => NebulaSnackbar.custom(
-                    message: message,
-                    title: title.isEmpty ? null : title,
-                    icon: Icons.emoji_events_rounded,
-                    color: useGradient
-                        ? null
-                        : context.themeTokens.colors.primary,
-                    gradient: useGradient
-                        ? context.themeTokens.gradients.primaryGradient
-                        : null,
-                    alignment: alignment,
-                    actionLabel: showAction ? 'View' : null,
-                    onAction: showAction ? () {} : null,
-                  ).show(context),
-                ),
+              return NebulaFilledButton.gradient(
+                label: 'Show Custom Snackbar',
+                onPressed: () => NebulaSnackbar.custom(
+                  message: message,
+                  title: title.isEmpty ? null : title,
+                  icon: Icons.emoji_events_rounded,
+                  color: useGradient
+                      ? null
+                      : context.themeTokens.colors.primary,
+                  gradient: useGradient
+                      ? context.themeTokens.gradients.primaryGradient
+                      : null,
+                  alignment: alignment,
+                  actionLabel: showAction ? 'View' : null,
+                  onAction: showAction ? () {} : null,
+                ).show(context),
               );
             },
           ),
