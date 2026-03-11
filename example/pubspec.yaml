@@ -17,6 +17,21 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   widgetbook: ^3.10.0
+  widgetbook_documentation_addon: ^1.0.1+2
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/markdown/components/buttons/nebulafilledbutton/
+    - assets/markdown/components/buttons/nebulaoutlinebutton/
+    - assets/markdown/components/buttons/nebulatextbutton/
+    - assets/markdown/components/buttons/nebulafillediconbutton/
+    - assets/markdown/components/buttons/nebulaoutlineiconbutton/
+    - assets/markdown/components/buttons/nebulaiconbutton/
+    - assets/markdown/components/inputs/nebulatextfield/
+    - assets/markdown/components/feedback/nebulaloader/
+    - assets/markdown/components/feedback/nebulasnackbar/
+    - assets/markdown/layout/cards/nebulacard/
+    - assets/markdown/layout/containers/nebulacontainer/
+    - assets/markdown/layout/spacing/spacing-scale/

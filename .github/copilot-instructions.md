@@ -252,9 +252,18 @@ When adding a new component to Nebula UI, follow these steps in order:
    - Place the new `WidgetbookComponent` inside the correct `WidgetbookFolder` and category.
    - Include at least one use case with relevant knobs (string, boolean, dropdown).
 
-5. **Update the example app** in `example/lib/main.dart` to showcase the new component.
+5. **Create Widgetbook documentation snippets** for every use case added in the previous step.
+   - For each `WidgetbookUseCase`, create a Markdown file at:
+     `example/assets/markdown/<WidgetbookCategory>/<WidgetbookFolder>/<WidgetbookComponent>/<WidgetbookUseCase>.md`
+   - All path segments must be **lowercased** and **spaces replaced by `-`** (mirrors the widgetbook URL `?path=` parameter).
+   - Example: a use case named `"With Icon"` inside `Components > Buttons > NebulaFilledButton` maps to:
+     `example/assets/markdown/components/buttons/nebulafilledbutton/with-icon.md`
+   - Each file must contain at minimum: a short description and a fenced `dart` code block with a minimal, copy-paste-ready snippet.
+   - Declare the new folder in `example/pubspec.yaml` under `flutter: assets:` (one entry per directory, trailing `/`).
 
-6. **Run validation**:
+6. **Update the example app** in `example/lib/main.dart` to showcase the new component.
+
+7. **Run validation**:
    - `flutter analyze` — must pass with zero warnings.
    - `flutter test` — all tests must pass.
 

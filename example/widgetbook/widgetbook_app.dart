@@ -1,8 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'package:nebula_ui/nebula_ui.dart';
+
+import 'nebula_documentation_addon.dart';
 
 import 'categories/components_category.dart';
 import 'categories/layout_category.dart';
@@ -31,6 +34,7 @@ class NebulaWidgetbook extends StatelessWidget {
         );
       },
       addons: [
+        NebulaDocumentationAddon(assetBundle: rootBundle),
         ThemeAddon<NebulaThemeTokens>(
           themes: [
             WidgetbookTheme(
