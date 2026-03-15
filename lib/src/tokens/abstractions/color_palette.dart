@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import '../base/nebula_state_color.dart';
+import '../base/seal_state_color.dart';
 
-/// Abstract contract for the Nebula UI color palette.
+/// Abstract contract for the Seal UI color palette.
 ///
 /// Implementations provide concrete color values for dark and light themes.
 /// The palette is purple-centered with blue and green accents.
@@ -79,13 +79,13 @@ abstract class ColorPalette {
 
   /// Foreground color states for interactive widgets (text, icons, borders).
   ///
-  /// Typically based on [primary]. Provides [NebulaStateColor.active] and
-  /// [NebulaStateColor.disabled] variants.
-  NebulaStateColor get foreground;
+  /// Typically based on [primary]. Provides [SealStateColor.active] and
+  /// [SealStateColor.disabled] variants.
+  SealStateColor get foreground;
 
   /// Background/fill color states for interactive widgets (fills, surfaces).
   ///
-  /// Typically based on [primary]. Provides [NebulaStateColor.active] and
-  /// [NebulaStateColor.disabled] variants.
-  NebulaStateColor get fill;
+  /// Typically based on [primary]. Provides [SealStateColor.active] and
+  /// [SealStateColor.disabled] variants.
+  SealStateColor get fill;
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
-/// Showcases the four [NebulaSnackbar] semantic variants plus custom ones.
+/// Showcases the four [SealSnackbar] semantic variants plus custom ones.
 class SnackbarSection extends StatelessWidget {
   const SnackbarSection({super.key});
 
@@ -20,39 +20,39 @@ class SnackbarSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaFilledButton.gradient(
+            SealFilledButton.gradient(
               label: 'Info',
-              onPressed: () => NebulaSnackbar.info(
+              onPressed: () => SealSnackbar.info(
                 message: 'This is an informational message.',
                 title: 'Info',
               ).show(context),
             ),
-            NebulaFilledButton.accentGradient(
+            SealFilledButton.accentGradient(
               label: 'Success',
-              onPressed: () => NebulaSnackbar.success(
+              onPressed: () => SealSnackbar.success(
                 message: 'Your changes have been saved.',
                 title: 'Success',
               ).show(context),
             ),
-            NebulaFilledButton.primary(
+            SealFilledButton.primary(
               label: 'Warning',
-              onPressed: () => NebulaSnackbar.warning(
+              onPressed: () => SealSnackbar.warning(
                 message: 'This action might have side effects.',
                 title: 'Warning',
               ).show(context),
             ),
-            NebulaFilledButton.primary(
+            SealFilledButton.primary(
               label: 'Error',
-              onPressed: () => NebulaSnackbar.error(
+              onPressed: () => SealSnackbar.error(
                 message: 'Something went wrong. Please try again.',
                 title: 'Error',
                 actionLabel: 'Retry',
                 onAction: () {},
               ).show(context),
             ),
-            NebulaFilledButton.primary(
+            SealFilledButton.primary(
               label: 'Custom (color)',
-              onPressed: () => NebulaSnackbar.custom(
+              onPressed: () => SealSnackbar.custom(
                 message: 'You have unlocked a special trophy.',
                 title: 'Achievement',
                 icon: Icons.emoji_events_rounded,
@@ -61,9 +61,9 @@ class SnackbarSection extends StatelessWidget {
                 onAction: () {},
               ).show(context),
             ),
-            NebulaFilledButton.gradient(
+            SealFilledButton.gradient(
               label: 'Custom (gradient)',
-              onPressed: () => NebulaSnackbar.custom(
+              onPressed: () => SealSnackbar.custom(
                 message: 'You have unlocked a special trophy.',
                 title: 'Achievement',
                 icon: Icons.emoji_events_rounded,

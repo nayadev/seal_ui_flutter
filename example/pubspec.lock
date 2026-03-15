@@ -328,13 +328,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.17.5"
-  nebula_ui:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.1.0"
   nested:
     dependency: transitive
     description:
@@ -447,6 +440,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  seal_ui:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.1.0"
   sky_engine:
     dependency: transitive
     description: flutter

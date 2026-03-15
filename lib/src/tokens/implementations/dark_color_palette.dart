@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import '../abstractions/color_palette.dart';
-import '../base/nebula_state_color.dart';
+import '../base/seal_state_color.dart';
 
-/// Dark color palette — the **primary** Nebula UI experience.
+/// Dark color palette — the **primary** Seal UI experience.
 ///
 /// Deep, space-inspired backgrounds with vibrant purple accents.
 class DarkColorPalette extends ColorPalette {
@@ -75,8 +75,8 @@ class DarkColorPalette extends ColorPalette {
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override
-  NebulaStateColor get foreground => NebulaStateColor(primary);
+  SealStateColor get foreground => SealStateColor(primary);
 
   @override
-  NebulaStateColor get fill => NebulaStateColor(primary);
+  SealStateColor get fill => SealStateColor(primary);
 }

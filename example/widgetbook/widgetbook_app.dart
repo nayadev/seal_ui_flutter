@@ -3,57 +3,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:widgetbook/widgetbook.dart';
 
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
-import 'nebula_documentation_addon.dart';
+import 'seal_documentation_addon.dart';
 
 import 'categories/components_category.dart';
 import 'categories/layout_category.dart';
 import 'categories/tokens_category.dart';
 
-/// Entry point for the Nebula UI Widgetbook catalog.
+/// Entry point for the Seal UI Widgetbook catalog.
 ///
 /// Run with:
 /// ```sh
 /// flutter run -t widgetbook/widgetbook_app.dart
 /// ```
 void main() {
-  runApp(const NebulaWidgetbook());
+  runApp(const SealWidgetbook());
 }
 
-class NebulaWidgetbook extends StatelessWidget {
-  const NebulaWidgetbook({super.key});
+class SealWidgetbook extends StatelessWidget {
+  const SealWidgetbook({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Widgetbook.material(
       appBuilder: (context, child) {
-        return NebulaTheme(
-          tokens: NebulaThemeFactory.darkTokens(),
+        return SealTheme(
+          tokens: SealThemeFactory.darkTokens(),
           child: child,
         );
       },
       addons: [
-        NebulaDocumentationAddon(assetBundle: rootBundle),
-        ThemeAddon<NebulaThemeTokens>(
+        SealDocumentationAddon(assetBundle: rootBundle),
+        ThemeAddon<SealThemeTokens>(
           themes: [
             WidgetbookTheme(
               name: 'Dark',
-              data: NebulaThemeFactory.darkTokens(),
+              data: SealThemeFactory.darkTokens(),
             ),
             WidgetbookTheme(
               name: 'Light',
-              data: NebulaThemeFactory.lightTokens(),
+              data: SealThemeFactory.lightTokens(),
             ),
           ],
           themeBuilder: (context, theme, child) {
             final isDark = theme.colors is DarkColorPalette;
-            return NebulaTheme(
+            return SealTheme(
               tokens: theme,
               child: Theme(
                 data: isDark
-                    ? NebulaThemeFactory.dark()
-                    : NebulaThemeFactory.light(),
+                    ? SealThemeFactory.dark()
+                    : SealThemeFactory.light(),
                 child: ColoredBox(color: theme.colors.background, child: child),
               ),
             );

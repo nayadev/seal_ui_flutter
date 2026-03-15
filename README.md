@@ -1,4 +1,4 @@
-# Nebula UI
+# Seal UI
 
 A **token-driven Flutter Design System** with space-inspired aesthetics, layered architecture, and responsive scaling.
 
@@ -16,14 +16,14 @@ Purple-based palettes, subtle gradients, and a dark-first experience — designe
 ## Quick Start
 
 ```dart
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 MaterialApp(
-  theme: NebulaThemeFactory.dark(),
+  theme: SealThemeFactory.dark(),
   builder: (context, child) {
-    final scaleFactor = NebulaResponsive.scaleOf(context);
-    final tokens = NebulaThemeFactory.darkTokens(scaleFactor: scaleFactor);
-    return NebulaTheme(tokens: tokens, child: child!);
+    final scaleFactor = SealResponsive.scaleOf(context);
+    final tokens = SealThemeFactory.darkTokens(scaleFactor: scaleFactor);
+    return SealTheme(tokens: tokens, child: child!);
   },
   home: const MyHomePage(),
 );
@@ -53,10 +53,10 @@ foundation → tokens → theme → components
 
 ## Components
 
-- `NebulaPrimaryButton` — solid and gradient variants, loading state, optional icon
-- `NebulaTextField` — token-styled text input with prefix/suffix icons
-- `NebulaContainer` — surface box with optional gradient and border
-- `NebulaLoader` — spinner with size presets and optional label
+- `SealPrimaryButton` — solid and gradient variants, loading state, optional icon
+- `SealTextField` — token-styled text input with prefix/suffix icons
+- `SealContainer` — surface box with optional gradient and border
+- `SealLoader` — spinner with size presets and optional label
 
 ## Commands
 

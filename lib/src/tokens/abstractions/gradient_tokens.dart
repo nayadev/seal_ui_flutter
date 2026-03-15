@@ -1,6 +1,6 @@
 import 'package:flutter/painting.dart';
 
-/// Abstract contract for Nebula UI gradient tokens.
+/// Abstract contract for Seal UI gradient tokens.
 ///
 /// Gradients are a core part of the visual identity and should be
 /// used tastefully on buttons, highlights, and accent elements.

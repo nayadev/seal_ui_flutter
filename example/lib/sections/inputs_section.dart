@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases text field variants.
 class InputsSection extends StatelessWidget {
@@ -16,13 +16,13 @@ class InputsSection extends StatelessWidget {
       children: [
         Text('Inputs', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.md.verticalGap,
-        const NebulaTextField(
+        const SealTextField(
           label: 'Email',
           hint: 'you@example.com',
           prefixIcon: Icons.email_outlined,
         ),
         dimension.sm.verticalGap,
-        const NebulaTextField(
+        const SealTextField(
           label: 'Password',
           hint: '••••••••',
           obscureText: true,

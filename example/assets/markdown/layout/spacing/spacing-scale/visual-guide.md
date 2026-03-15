@@ -1,6 +1,6 @@
 # Spacing Scale — Visual Guide
 
-The Nebula spacing system is based on a **base token scale** that adapts proportionally across breakpoints via a scale factor.
+The Seal spacing system is based on a **base token scale** that adapts proportionally across breakpoints via a scale factor.
 
 | Token | Base value | Mobile (1.0×) | Tablet (1.125×) | Desktop (1.5×) |
 |-------|-----------|--------------|----------------|---------------|

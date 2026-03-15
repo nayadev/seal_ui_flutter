@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases container variants: default and gradient.
 class ContainersSection extends StatelessWidget {
@@ -20,14 +20,14 @@ class ContainersSection extends StatelessWidget {
           style: typo.title.copyWith(color: colors.textPrimary),
         ),
         dimension.md.verticalGap,
-        NebulaContainer(
+        SealContainer(
           child: Row(
             children: [
               Icon(Icons.auto_awesome, color: colors.primary),
               dimension.sm.horizontalGap,
               Expanded(
                 child: Text(
-                  'A NebulaContainer using surface color and border tokens.',
+                  'A SealContainer using surface color and border tokens.',
                   style: typo.body.copyWith(color: colors.textPrimary),
                 ),
               ),
@@ -35,7 +35,7 @@ class ContainersSection extends StatelessWidget {
           ),
         ),
         dimension.sm.verticalGap,
-        NebulaContainer(
+        SealContainer(
           gradient: tokens.gradients.surfaceGradient,
           child: Text(
             'Gradient surface container.',

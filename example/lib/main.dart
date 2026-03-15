@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 import 'sections/buttons_section.dart';
 import 'sections/cards_section.dart';
@@ -8,39 +8,39 @@ import 'sections/inputs_section.dart';
 import 'sections/loader_section.dart';
 import 'sections/snackbar_section.dart';
 
-/// Example app demonstrating the Nebula UI Design System.
+/// Example app demonstrating the Seal UI Design System.
 ///
 /// For the component catalog, run:
 /// ```sh
 /// flutter run -t widgetbook/widgetbook_app.dart
 /// ```
 void main() {
-  runApp(const NebulaExampleApp());
+  runApp(const SealExampleApp());
 }
 
-class NebulaExampleApp extends StatefulWidget {
-  const NebulaExampleApp({super.key});
+class SealExampleApp extends StatefulWidget {
+  const SealExampleApp({super.key});
 
   @override
-  State<NebulaExampleApp> createState() => _NebulaExampleAppState();
+  State<SealExampleApp> createState() => _SealExampleAppState();
 }
 
-class _NebulaExampleAppState extends State<NebulaExampleApp> {
+class _SealExampleAppState extends State<SealExampleApp> {
   bool _isDark = true;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nebula UI — Example',
+      title: 'Seal UI — Example',
       debugShowCheckedModeBanner: false,
-      theme: _isDark ? NebulaThemeFactory.dark() : NebulaThemeFactory.light(),
+      theme: _isDark ? SealThemeFactory.dark() : SealThemeFactory.light(),
       builder: (context, child) {
-        final scaleFactor = NebulaResponsive.scaleOf(context);
+        final scaleFactor = SealResponsive.scaleOf(context);
         final tokens = _isDark
-            ? NebulaThemeFactory.darkTokens(scaleFactor: scaleFactor)
-            : NebulaThemeFactory.lightTokens(scaleFactor: scaleFactor);
+            ? SealThemeFactory.darkTokens(scaleFactor: scaleFactor)
+            : SealThemeFactory.lightTokens(scaleFactor: scaleFactor);
 
-        return NebulaTheme(tokens: tokens, child: child!);
+        return SealTheme(tokens: tokens, child: child!);
       },
       home: _ExampleHome(
         isDark: _isDark,
@@ -73,10 +73,10 @@ class _ExampleHome extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Nebula UI',
+                    'Seal UI',
                     style: typo.headline.copyWith(color: colors.primary),
                   ),
-                  NebulaIconButton.gradient(
+                  SealIconButton.gradient(
                     icon: isDark
                         ? Icons.light_mode_rounded
                         : Icons.dark_mode_rounded,

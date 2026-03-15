@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Builds the **Tokens** category for the Widgetbook catalog.
 WidgetbookCategory buildTokensCategory() {
@@ -202,7 +202,7 @@ class _ColorSwatch extends StatelessWidget {
           height: 72,
           decoration: BoxDecoration(
             color: color,
-            borderRadius: NebulaRadius.borderRadiusSm,
+            borderRadius: SealRadius.borderRadiusSm,
             border: Border.all(color: textColor.withValues(alpha: 0.12)),
           ),
         ),
@@ -231,7 +231,7 @@ class _GradientPreview extends StatelessWidget {
       height: 80,
       decoration: BoxDecoration(
         gradient: gradient,
-        borderRadius: NebulaRadius.borderRadiusMd,
+        borderRadius: SealRadius.borderRadiusMd,
       ),
       alignment: Alignment.center,
       child: Text(

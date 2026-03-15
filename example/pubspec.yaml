@@ -1,5 +1,5 @@
-name: nebula_ui_example
-description: Example app for the Nebula UI Design System.
+name: seal_ui_example
+description: Example app for the Seal UI Design System.
 publish_to: 'none'
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  nebula_ui:
+  seal_ui:
     path: ../
 
 dev_dependencies:
@@ -23,15 +23,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/markdown/components/buttons/nebulafilledbutton/
-    - assets/markdown/components/buttons/nebulaoutlinebutton/
-    - assets/markdown/components/buttons/nebulatextbutton/
-    - assets/markdown/components/buttons/nebulafillediconbutton/
-    - assets/markdown/components/buttons/nebulaoutlineiconbutton/
-    - assets/markdown/components/buttons/nebulaiconbutton/
-    - assets/markdown/components/inputs/nebulatextfield/
-    - assets/markdown/components/feedback/nebulaloader/
-    - assets/markdown/components/feedback/nebulasnackbar/
-    - assets/markdown/layout/cards/nebulacard/
-    - assets/markdown/layout/containers/nebulacontainer/
+    - assets/markdown/components/buttons/sealfilledbutton/
+    - assets/markdown/components/buttons/sealoutlinebutton/
+    - assets/markdown/components/buttons/sealtextbutton/
+    - assets/markdown/components/buttons/sealfillediconbutton/
+    - assets/markdown/components/buttons/sealoutlineiconbutton/
+    - assets/markdown/components/buttons/sealiconbutton/
+    - assets/markdown/components/inputs/sealtextfield/
+    - assets/markdown/components/feedback/sealloader/
+    - assets/markdown/components/feedback/sealsnackbar/
+    - assets/markdown/layout/cards/sealcard/
+    - assets/markdown/layout/containers/sealcontainer/
     - assets/markdown/layout/spacing/spacing-scale/

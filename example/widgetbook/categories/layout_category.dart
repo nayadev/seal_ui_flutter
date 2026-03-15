@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Builds the **Layout** category for the Widgetbook catalog.
 WidgetbookCategory buildLayoutCategory() {
@@ -23,7 +23,7 @@ WidgetbookFolder _buildCardsFolder() {
     name: 'Cards',
     children: [
       WidgetbookComponent(
-        name: 'NebulaCard',
+        name: 'SealCard',
         useCases: [
           WidgetbookUseCase(
             name: 'Default',
@@ -32,7 +32,7 @@ WidgetbookFolder _buildCardsFolder() {
               final colors = tokens.colors;
               final typo = tokens.typography;
               return Center(
-                child: NebulaCard(
+                child: SealCard(
                   showBorder: context.knobs.boolean(
                     label: 'Show Border',
                     initialValue: true,
@@ -57,11 +57,11 @@ WidgetbookFolder _buildCardsFolder() {
                   footer: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      NebulaTextButton.primary(
+                      SealTextButton.primary(
                         label: 'Cancel',
                         onPressed: () {},
                       ),
-                      NebulaFilledButton.primary(
+                      SealFilledButton.primary(
                         label: 'Confirm',
                         onPressed: () {},
                       ),
@@ -78,7 +78,7 @@ WidgetbookFolder _buildCardsFolder() {
               final colors = tokens.colors;
               final typo = tokens.typography;
               return Center(
-                child: NebulaCard(
+                child: SealCard(
                   gradient: tokens.gradients.surfaceGradient,
                   showBorder: false,
                   header: Text(
@@ -100,7 +100,7 @@ WidgetbookFolder _buildCardsFolder() {
               final colors = tokens.colors;
               final typo = tokens.typography;
               return Center(
-                child: NebulaCard(
+                child: SealCard(
                   onTap: () {},
                   header: Row(
                     children: [
@@ -135,20 +135,20 @@ WidgetbookFolder _buildContainersFolder() {
     name: 'Containers',
     children: [
       WidgetbookComponent(
-        name: 'NebulaContainer',
+        name: 'SealContainer',
         useCases: [
           WidgetbookUseCase(
             name: 'Default',
             builder: (context) {
               final tokens = context.themeTokens;
               return Center(
-                child: NebulaContainer(
+                child: SealContainer(
                   showBorder: context.knobs.boolean(
                     label: 'Show Border',
                     initialValue: true,
                   ),
                   child: Text(
-                    'Nebula UI Container',
+                    'Seal UI Container',
                     style: tokens.typography.body.copyWith(
                       color: tokens.colors.textPrimary,
                     ),
@@ -162,7 +162,7 @@ WidgetbookFolder _buildContainersFolder() {
             builder: (context) {
               final tokens = context.themeTokens;
               return Center(
-                child: NebulaContainer(
+                child: SealContainer(
                   gradient: tokens.gradients.surfaceGradient,
                   showBorder: true,
                   child: Text(
@@ -230,7 +230,7 @@ WidgetbookFolder _buildSpacingFolder() {
                             height: dimension.md,
                             decoration: BoxDecoration(
                               color: tokens.colors.primary,
-                              borderRadius: NebulaRadius.borderRadiusXs,
+                              borderRadius: SealRadius.borderRadiusXs,
                             ),
                           ),
                         ],

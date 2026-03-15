@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases loader size variants and label.
 class LoaderSection extends StatelessWidget {
@@ -19,10 +19,10 @@ class LoaderSection extends StatelessWidget {
         Row(
           spacing: dimension.lg,
           children: [
-            NebulaLoader(size: NebulaLoaderSize.small),
-            NebulaLoader(size: NebulaLoaderSize.medium),
-            NebulaLoader(size: NebulaLoaderSize.large),
-            NebulaLoader(size: NebulaLoaderSize.medium, label: 'Loading…'),
+            SealLoader(size: SealLoaderSize.small),
+            SealLoader(size: SealLoaderSize.medium),
+            SealLoader(size: SealLoaderSize.large),
+            SealLoader(size: SealLoaderSize.medium, label: 'Loading…'),
           ],
         ),
       ],

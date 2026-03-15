@@ -3,8 +3,8 @@
 ## 0.1.0
 
 - Initial release.
-- **Foundation**: `NebulaBreakpoints`, `NebulaResponsive` with responsive scale factors.
-- **Tokens**: `ColorPalette` (dark & light), `TypographyTokens`, `GradientTokens`, `NebulaDimension`, `NebulaRadius`.
-- **Theme**: `NebulaTheme` InheritedWidget, `NebulaThemeFactory`, `NebulaThemeTokens`.
-- **Components**: `NebulaPrimaryButton`, `NebulaTextField`, `NebulaContainer`, `NebulaLoader`.
-- **Extensions**: `context.themeTokens`, `context.dimension`, `NebulaDimensionDouble` gap helpers.
+- **Foundation**: `SealBreakpoints`, `SealResponsive` with responsive scale factors.
+- **Tokens**: `ColorPalette` (dark & light), `TypographyTokens`, `GradientTokens`, `SealDimension`, `SealRadius`.
+- **Theme**: `SealTheme` InheritedWidget, `SealThemeFactory`, `SealThemeTokens`.
+- **Components**: `SealPrimaryButton`, `SealTextField`, `SealContainer`, `SealLoader`.
+- **Extensions**: `context.themeTokens`, `context.dimension`, `SealDimensionDouble` gap helpers.

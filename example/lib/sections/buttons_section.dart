@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases all button variants: Filled, Outline, and Text.
 class ButtonsSection extends StatelessWidget {
@@ -26,24 +26,24 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaFilledButton.primary(label: 'Primary', onPressed: () {}),
-            NebulaFilledButton.accent(label: 'Accent', onPressed: () {}),
-            NebulaFilledButton.accentSecondary(
+            SealFilledButton.primary(label: 'Primary', onPressed: () {}),
+            SealFilledButton.accent(label: 'Accent', onPressed: () {}),
+            SealFilledButton.accentSecondary(
               label: 'Accent Secondary',
               onPressed: () {},
             ),
-            NebulaFilledButton.gradient(label: 'Gradient', onPressed: () {}),
-            NebulaFilledButton.accentGradient(
+            SealFilledButton.gradient(label: 'Gradient', onPressed: () {}),
+            SealFilledButton.accentGradient(
               label: 'Accent Gradient',
               onPressed: () {},
             ),
-            NebulaFilledButton.gradient(
+            SealFilledButton.gradient(
               label: 'Explore',
               icon: Icons.rocket_launch_rounded,
               onPressed: () {},
             ),
-            const NebulaFilledButton.primary(label: 'Disabled'),
-            const NebulaFilledButton.primary(
+            const SealFilledButton.primary(label: 'Disabled'),
+            const SealFilledButton.primary(
               label: 'Loading',
               isLoading: true,
               onPressed: null,
@@ -60,24 +60,24 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaOutlineButton.primary(label: 'Primary', onPressed: () {}),
-            NebulaOutlineButton.accent(label: 'Accent', onPressed: () {}),
-            NebulaOutlineButton.accentSecondary(
+            SealOutlineButton.primary(label: 'Primary', onPressed: () {}),
+            SealOutlineButton.accent(label: 'Accent', onPressed: () {}),
+            SealOutlineButton.accentSecondary(
               label: 'Accent Secondary',
               onPressed: () {},
             ),
-            NebulaOutlineButton.gradient(label: 'Gradient', onPressed: () {}),
-            NebulaOutlineButton.accentGradient(
+            SealOutlineButton.gradient(label: 'Gradient', onPressed: () {}),
+            SealOutlineButton.accentGradient(
               label: 'Accent Gradient',
               onPressed: () {},
             ),
-            NebulaOutlineButton.primary(
+            SealOutlineButton.primary(
               label: 'With Icon',
               icon: Icons.star_outline_rounded,
               onPressed: () {},
             ),
-            const NebulaOutlineButton.primary(label: 'Disabled'),
-            const NebulaOutlineButton.primary(
+            const SealOutlineButton.primary(label: 'Disabled'),
+            const SealOutlineButton.primary(
               label: 'Loading',
               isLoading: true,
               onPressed: null,
@@ -94,24 +94,24 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaTextButton.primary(label: 'Primary', onPressed: () {}),
-            NebulaTextButton.accent(label: 'Accent', onPressed: () {}),
-            NebulaTextButton.accentSecondary(
+            SealTextButton.primary(label: 'Primary', onPressed: () {}),
+            SealTextButton.accent(label: 'Accent', onPressed: () {}),
+            SealTextButton.accentSecondary(
               label: 'Accent Secondary',
               onPressed: () {},
             ),
-            NebulaTextButton.gradient(label: 'Gradient', onPressed: () {}),
-            NebulaTextButton.accentGradient(
+            SealTextButton.gradient(label: 'Gradient', onPressed: () {}),
+            SealTextButton.accentGradient(
               label: 'Accent Gradient',
               onPressed: () {},
             ),
-            NebulaTextButton.primary(
+            SealTextButton.primary(
               label: 'With Icon',
               icon: Icons.arrow_forward_rounded,
               onPressed: () {},
             ),
-            const NebulaTextButton.primary(label: 'Disabled'),
-            const NebulaTextButton.primary(
+            const SealTextButton.primary(label: 'Disabled'),
+            const SealTextButton.primary(
               label: 'Loading',
               isLoading: true,
               onPressed: null,
@@ -128,32 +128,32 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaIconButton.primary(
+            SealIconButton.primary(
               icon: Icons.close_rounded,
               onPressed: () {},
               tooltip: 'Close',
             ),
-            NebulaIconButton.accent(
+            SealIconButton.accent(
               icon: Icons.more_vert_rounded,
               onPressed: () {},
               tooltip: 'More',
             ),
-            NebulaIconButton.accentSecondary(
+            SealIconButton.accentSecondary(
               icon: Icons.info_outline_rounded,
               onPressed: () {},
               tooltip: 'Info',
             ),
-            NebulaIconButton.gradient(
+            SealIconButton.gradient(
               icon: Icons.tune_rounded,
               onPressed: () {},
               tooltip: 'Filter',
             ),
-            NebulaIconButton.accentGradient(
+            SealIconButton.accentGradient(
               icon: Icons.search_rounded,
               onPressed: () {},
               tooltip: 'Search',
             ),
-            const NebulaIconButton.primary(
+            const SealIconButton.primary(
               icon: Icons.block_rounded,
               onPressed: null,
               tooltip: 'Disabled',
@@ -170,32 +170,32 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaFilledIconButton.primary(
+            SealFilledIconButton.primary(
               icon: Icons.add_rounded,
               onPressed: () {},
               tooltip: 'Add',
             ),
-            NebulaFilledIconButton.accent(
+            SealFilledIconButton.accent(
               icon: Icons.star_rounded,
               onPressed: () {},
               tooltip: 'Favorite',
             ),
-            NebulaFilledIconButton.accentSecondary(
+            SealFilledIconButton.accentSecondary(
               icon: Icons.edit_rounded,
               onPressed: () {},
               tooltip: 'Edit',
             ),
-            NebulaFilledIconButton.gradient(
+            SealFilledIconButton.gradient(
               icon: Icons.rocket_launch_rounded,
               onPressed: () {},
               tooltip: 'Launch',
             ),
-            NebulaFilledIconButton.accentGradient(
+            SealFilledIconButton.accentGradient(
               icon: Icons.bolt_rounded,
               onPressed: () {},
               tooltip: 'Boost',
             ),
-            const NebulaFilledIconButton.primary(
+            const SealFilledIconButton.primary(
               icon: Icons.block_rounded,
               onPressed: null,
               tooltip: 'Disabled',
@@ -212,32 +212,32 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            NebulaOutlineIconButton.primary(
+            SealOutlineIconButton.primary(
               icon: Icons.share_rounded,
               onPressed: () {},
               tooltip: 'Share',
             ),
-            NebulaOutlineIconButton.accent(
+            SealOutlineIconButton.accent(
               icon: Icons.bookmark_outline_rounded,
               onPressed: () {},
               tooltip: 'Save',
             ),
-            NebulaOutlineIconButton.accentSecondary(
+            SealOutlineIconButton.accentSecondary(
               icon: Icons.tune_rounded,
               onPressed: () {},
               tooltip: 'Filter',
             ),
-            NebulaOutlineIconButton.gradient(
+            SealOutlineIconButton.gradient(
               icon: Icons.auto_awesome_rounded,
               onPressed: () {},
               tooltip: 'Magic',
             ),
-            NebulaOutlineIconButton.accentGradient(
+            SealOutlineIconButton.accentGradient(
               icon: Icons.flash_on_rounded,
               onPressed: () {},
               tooltip: 'Boost',
             ),
-            const NebulaOutlineIconButton.primary(
+            const SealOutlineIconButton.primary(
               icon: Icons.block_rounded,
               onPressed: null,
               tooltip: 'Disabled',

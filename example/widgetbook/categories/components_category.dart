@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Builds the **Components** category for the Widgetbook catalog.
 WidgetbookCategory buildComponentsCategory() {
@@ -23,11 +23,11 @@ WidgetbookFolder _buildButtonsFolder() {
     name: 'Buttons',
     children: [
       WidgetbookComponent(
-        name: 'NebulaFilledButton',
+        name: 'SealFilledButton',
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => NebulaFilledButton.primary(
+            builder: (context) => SealFilledButton.primary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Get Started',
@@ -44,7 +44,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => NebulaFilledButton.accent(
+            builder: (context) => SealFilledButton.accent(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Continue',
@@ -61,7 +61,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => NebulaFilledButton.accentSecondary(
+            builder: (context) => SealFilledButton.accentSecondary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Confirm',
@@ -78,7 +78,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => NebulaFilledButton.gradient(
+            builder: (context) => SealFilledButton.gradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Launch',
@@ -95,7 +95,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => NebulaFilledButton.accentGradient(
+            builder: (context) => SealFilledButton.accentGradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Boost',
@@ -112,7 +112,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'With Icon',
-            builder: (context) => NebulaFilledButton.gradient(
+            builder: (context) => SealFilledButton.gradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Explore',
@@ -124,11 +124,11 @@ WidgetbookFolder _buildButtonsFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'NebulaOutlineButton',
+        name: 'SealOutlineButton',
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => NebulaOutlineButton.primary(
+            builder: (context) => SealOutlineButton.primary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Cancel',
@@ -145,7 +145,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => NebulaOutlineButton.accent(
+            builder: (context) => SealOutlineButton.accent(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Details',
@@ -162,7 +162,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => NebulaOutlineButton.accentSecondary(
+            builder: (context) => SealOutlineButton.accentSecondary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Info',
@@ -179,7 +179,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => NebulaOutlineButton.gradient(
+            builder: (context) => SealOutlineButton.gradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Explore',
@@ -196,7 +196,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => NebulaOutlineButton.accentGradient(
+            builder: (context) => SealOutlineButton.accentGradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Discover',
@@ -213,7 +213,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'With Icon',
-            builder: (context) => NebulaOutlineButton.primary(
+            builder: (context) => SealOutlineButton.primary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Favorite',
@@ -225,11 +225,11 @@ WidgetbookFolder _buildButtonsFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'NebulaTextButton',
+        name: 'SealTextButton',
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => NebulaTextButton.primary(
+            builder: (context) => SealTextButton.primary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Learn more',
@@ -246,7 +246,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => NebulaTextButton.accent(
+            builder: (context) => SealTextButton.accent(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Details',
@@ -263,7 +263,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => NebulaTextButton.accentSecondary(
+            builder: (context) => SealTextButton.accentSecondary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Info',
@@ -280,7 +280,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => NebulaTextButton.gradient(
+            builder: (context) => SealTextButton.gradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Discover',
@@ -297,7 +297,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => NebulaTextButton.accentGradient(
+            builder: (context) => SealTextButton.accentGradient(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Explore',
@@ -314,7 +314,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'With Icon',
-            builder: (context) => NebulaTextButton.primary(
+            builder: (context) => SealTextButton.primary(
               label: context.knobs.string(
                 label: 'Label',
                 initialValue: 'Skip',
@@ -326,11 +326,11 @@ WidgetbookFolder _buildButtonsFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'NebulaFilledIconButton',
+        name: 'SealFilledIconButton',
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => NebulaFilledIconButton.primary(
+            builder: (context) => SealFilledIconButton.primary(
               icon: Icons.add_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -344,7 +344,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => NebulaFilledIconButton.accent(
+            builder: (context) => SealFilledIconButton.accent(
               icon: Icons.star_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -358,7 +358,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => NebulaFilledIconButton.accentSecondary(
+            builder: (context) => SealFilledIconButton.accentSecondary(
               icon: Icons.edit_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -372,7 +372,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => NebulaFilledIconButton.gradient(
+            builder: (context) => SealFilledIconButton.gradient(
               icon: Icons.rocket_launch_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -386,7 +386,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => NebulaFilledIconButton.accentGradient(
+            builder: (context) => SealFilledIconButton.accentGradient(
               icon: Icons.bolt_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -401,11 +401,11 @@ WidgetbookFolder _buildButtonsFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'NebulaOutlineIconButton',
+        name: 'SealOutlineIconButton',
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => NebulaOutlineIconButton.primary(
+            builder: (context) => SealOutlineIconButton.primary(
               icon: Icons.share_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -419,7 +419,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => NebulaOutlineIconButton.accent(
+            builder: (context) => SealOutlineIconButton.accent(
               icon: Icons.bookmark_outline_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -433,7 +433,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => NebulaOutlineIconButton.accentSecondary(
+            builder: (context) => SealOutlineIconButton.accentSecondary(
               icon: Icons.tune_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -447,7 +447,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => NebulaOutlineIconButton.gradient(
+            builder: (context) => SealOutlineIconButton.gradient(
               icon: Icons.auto_awesome_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -461,7 +461,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => NebulaOutlineIconButton.accentGradient(
+            builder: (context) => SealOutlineIconButton.accentGradient(
               icon: Icons.flash_on_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -476,11 +476,11 @@ WidgetbookFolder _buildButtonsFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'NebulaIconButton',
+        name: 'SealIconButton',
         useCases: [
           WidgetbookUseCase(
             name: 'Primary',
-            builder: (context) => NebulaIconButton.primary(
+            builder: (context) => SealIconButton.primary(
               icon: Icons.close_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -494,7 +494,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent',
-            builder: (context) => NebulaIconButton.accent(
+            builder: (context) => SealIconButton.accent(
               icon: Icons.more_vert_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -508,7 +508,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Secondary',
-            builder: (context) => NebulaIconButton.accentSecondary(
+            builder: (context) => SealIconButton.accentSecondary(
               icon: Icons.info_outline_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -522,7 +522,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Gradient',
-            builder: (context) => NebulaIconButton.gradient(
+            builder: (context) => SealIconButton.gradient(
               icon: Icons.tune_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -536,7 +536,7 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
           WidgetbookUseCase(
             name: 'Accent Gradient',
-            builder: (context) => NebulaIconButton.accentGradient(
+            builder: (context) => SealIconButton.accentGradient(
               icon: Icons.search_rounded,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
@@ -561,13 +561,13 @@ WidgetbookFolder _buildInputsFolder() {
     name: 'Inputs',
     children: [
       WidgetbookComponent(
-        name: 'NebulaTextField',
+        name: 'SealTextField',
         useCases: [
           WidgetbookUseCase(
             name: 'Default',
             builder: (context) => Padding(
               padding: EdgeInsets.all(context.dimension.lg),
-              child: NebulaTextField(
+              child: SealTextField(
                 label: context.knobs.string(
                   label: 'Label',
                   initialValue: 'Email',
@@ -594,7 +594,7 @@ WidgetbookFolder _buildInputsFolder() {
             name: 'Password',
             builder: (context) => Padding(
               padding: EdgeInsets.all(context.dimension.lg),
-              child: NebulaTextField(
+              child: SealTextField(
                 label: 'Password',
                 hint: '••••••••',
                 obscureText: true,
@@ -616,22 +616,22 @@ WidgetbookFolder _buildFeedbackFolder() {
     name: 'Feedback',
     children: [
       WidgetbookComponent(
-        name: 'NebulaLoader',
+        name: 'SealLoader',
         useCases: [
           WidgetbookUseCase(
             name: 'Default',
             builder: (context) {
-              final size = context.knobs.object.dropdown<NebulaLoaderSize>(
+              final size = context.knobs.object.dropdown<SealLoaderSize>(
                 label: 'Size',
-                options: NebulaLoaderSize.values,
-                initialOption: NebulaLoaderSize.medium,
+                options: SealLoaderSize.values,
+                initialOption: SealLoaderSize.medium,
                 labelBuilder: (s) => s.name,
               );
               final showLabel = context.knobs.boolean(
                 label: 'Show Label',
                 initialValue: false,
               );
-              return NebulaLoader(
+              return SealLoader(
                 size: size,
                 label: showLabel ? 'Loading…' : null,
               );
@@ -640,7 +640,7 @@ WidgetbookFolder _buildFeedbackFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'NebulaSnackbar',
+        name: 'SealSnackbar',
         useCases: [
           WidgetbookUseCase(
             name: 'Info',
@@ -654,15 +654,15 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: '',
               );
               final alignment = context.knobs.object
-                  .dropdown<NebulaSnackbarAlignment>(
+                  .dropdown<SealSnackbarAlignment>(
                     label: 'Alignment',
-                    options: NebulaSnackbarAlignment.values,
-                    initialOption: NebulaSnackbarAlignment.top,
+                    options: SealSnackbarAlignment.values,
+                    initialOption: SealSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
-              return NebulaFilledButton.primary(
+              return SealFilledButton.primary(
                 label: 'Show Info Snackbar',
-                onPressed: () => NebulaSnackbar.info(
+                onPressed: () => SealSnackbar.info(
                   message: message,
                   title: title.isEmpty ? null : title,
                   alignment: alignment,
@@ -682,15 +682,15 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Success',
               );
               final alignment = context.knobs.object
-                  .dropdown<NebulaSnackbarAlignment>(
+                  .dropdown<SealSnackbarAlignment>(
                     label: 'Alignment',
-                    options: NebulaSnackbarAlignment.values,
-                    initialOption: NebulaSnackbarAlignment.top,
+                    options: SealSnackbarAlignment.values,
+                    initialOption: SealSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
-              return NebulaFilledButton.accent(
+              return SealFilledButton.accent(
                 label: 'Show Success Snackbar',
-                onPressed: () => NebulaSnackbar.success(
+                onPressed: () => SealSnackbar.success(
                   message: message,
                   title: title.isEmpty ? null : title,
                   alignment: alignment,
@@ -710,15 +710,15 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Warning',
               );
               final alignment = context.knobs.object
-                  .dropdown<NebulaSnackbarAlignment>(
+                  .dropdown<SealSnackbarAlignment>(
                     label: 'Alignment',
-                    options: NebulaSnackbarAlignment.values,
-                    initialOption: NebulaSnackbarAlignment.top,
+                    options: SealSnackbarAlignment.values,
+                    initialOption: SealSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
-              return NebulaFilledButton.primary(
+              return SealFilledButton.primary(
                 label: 'Show Warning Snackbar',
-                onPressed: () => NebulaSnackbar.warning(
+                onPressed: () => SealSnackbar.warning(
                   message: message,
                   title: title.isEmpty ? null : title,
                   alignment: alignment,
@@ -738,19 +738,19 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Error',
               );
               final alignment = context.knobs.object
-                  .dropdown<NebulaSnackbarAlignment>(
+                  .dropdown<SealSnackbarAlignment>(
                     label: 'Alignment',
-                    options: NebulaSnackbarAlignment.values,
-                    initialOption: NebulaSnackbarAlignment.top,
+                    options: SealSnackbarAlignment.values,
+                    initialOption: SealSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
               final showAction = context.knobs.boolean(
                 label: 'Show Action',
                 initialValue: false,
               );
-              return NebulaFilledButton.primary(
+              return SealFilledButton.primary(
                 label: 'Show Error Snackbar',
-                onPressed: () => NebulaSnackbar.error(
+                onPressed: () => SealSnackbar.error(
                   message: message,
                   title: title.isEmpty ? null : title,
                   alignment: alignment,
@@ -772,10 +772,10 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Congrats',
               );
               final alignment = context.knobs.object
-                  .dropdown<NebulaSnackbarAlignment>(
+                  .dropdown<SealSnackbarAlignment>(
                     label: 'Alignment',
-                    options: NebulaSnackbarAlignment.values,
-                    initialOption: NebulaSnackbarAlignment.top,
+                    options: SealSnackbarAlignment.values,
+                    initialOption: SealSnackbarAlignment.top,
                     labelBuilder: (a) => a.name,
                   );
               final useGradient = context.knobs.boolean(
@@ -786,9 +786,9 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Show Action',
                 initialValue: false,
               );
-              return NebulaFilledButton.gradient(
+              return SealFilledButton.gradient(
                 label: 'Show Custom Snackbar',
-                onPressed: () => NebulaSnackbar.custom(
+                onPressed: () => SealSnackbar.custom(
                   message: message,
                   title: title.isEmpty ? null : title,
                   icon: Icons.emoji_events_rounded,

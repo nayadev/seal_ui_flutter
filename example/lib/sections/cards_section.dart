@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nebula_ui/nebula_ui.dart';
+import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases card variants: default with footer and gradient.
 class CardsSection extends StatelessWidget {
@@ -17,9 +17,9 @@ class CardsSection extends StatelessWidget {
       children: [
         Text('Card', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.md.verticalGap,
-        NebulaCard(
+        SealCard(
           header: Text(
-            'Nebula Card',
+            'Seal Card',
             style: typo.title.copyWith(color: colors.textPrimary),
           ),
           body: Text(
@@ -29,14 +29,14 @@ class CardsSection extends StatelessWidget {
           footer: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              NebulaOutlineButton.gradient(label: 'Cancel', onPressed: () {}),
+              SealOutlineButton.gradient(label: 'Cancel', onPressed: () {}),
               dimension.sm.horizontalGap,
-              NebulaFilledButton.gradient(label: 'Confirm', onPressed: () {}),
+              SealFilledButton.gradient(label: 'Confirm', onPressed: () {}),
             ],
           ),
         ),
         dimension.sm.verticalGap,
-        NebulaCard(
+        SealCard(
           gradient: tokens.gradients.surfaceGradient,
           showBorder: false,
           header: Row(

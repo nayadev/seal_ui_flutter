@@ -2,7 +2,7 @@ import 'package:flutter/painting.dart';
 
 import '../abstractions/gradient_tokens.dart';
 
-/// Light-mode gradient tokens for the Nebula UI theme.
+/// Light-mode gradient tokens for the Seal UI theme.
 ///
 /// Shares the same primary and accent gradients but uses a softer
 /// surface gradient that blends naturally with light backgrounds.

@@ -2,7 +2,7 @@ import 'package:flutter/painting.dart';
 
 import '../abstractions/gradient_tokens.dart';
 
-/// Dark gradient tokens for the Nebula UI theme.
+/// Dark gradient tokens for the Seal UI theme.
 ///
 /// Purple → Blue gradient is the primary visual identity.
 class DarkGradients extends GradientTokens {

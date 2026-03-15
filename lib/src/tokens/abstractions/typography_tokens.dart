@@ -1,6 +1,6 @@
 import 'package:flutter/painting.dart';
 
-/// Abstract contract for Nebula UI typography tokens.
+/// Abstract contract for Seal UI typography tokens.
 ///
 /// Implementations map each token to a concrete [TextStyle].
 abstract class TypographyTokens {
@@ -12,7 +12,7 @@ abstract class TypographyTokens {
   /// Default font size for body text, used as a fallback.
   static const double kBodyFontSize = 16;
 
-  /// Default button icon size shared across all Nebula button components.
+  /// Default button icon size shared across all Seal button components.
   static const double kDefaultButtonIconSize = 18;
 
   /// Large display text — hero sections.
