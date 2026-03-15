@@ -46,8 +46,31 @@ export 'src/tokens/implementations/light_gradients.dart';
 
 // ── Theme ──────────────────────────────────────────────────────────────────
 export 'src/theme/seal_theme.dart';
+export 'src/theme/seal_theme_controller.dart';
 export 'src/theme/seal_theme_factory.dart';
+export 'src/theme/seal_theme_provider.dart';
 export 'src/theme/seal_theme_tokens.dart';
+
+// ── Themes · Nebula ────────────────────────────────────────────────────────
+export 'src/themes/nebula/nebula_theme_factory.dart';
+export 'src/themes/nebula/tokens/nebula_color_palette.dart';
+export 'src/themes/nebula/tokens/nebula_gradients.dart';
+export 'src/themes/nebula/tokens/nebula_light_color_palette.dart';
+export 'src/themes/nebula/tokens/nebula_light_gradients.dart';
+
+// ── Themes · Arctic ────────────────────────────────────────────────────────
+export 'src/themes/arctic/arctic_theme_factory.dart';
+export 'src/themes/arctic/tokens/arctic_color_palette.dart';
+export 'src/themes/arctic/tokens/arctic_dark_color_palette.dart';
+export 'src/themes/arctic/tokens/arctic_gradients.dart';
+export 'src/themes/arctic/tokens/arctic_light_gradients.dart';
+
+// ── Themes · Deep Ocean ────────────────────────────────────────────────────
+export 'src/themes/deep_ocean/deep_ocean_theme_factory.dart';
+export 'src/themes/deep_ocean/tokens/deep_ocean_color_palette.dart';
+export 'src/themes/deep_ocean/tokens/deep_ocean_gradients.dart';
+export 'src/themes/deep_ocean/tokens/deep_ocean_light_color_palette.dart';
+export 'src/themes/deep_ocean/tokens/deep_ocean_light_gradients.dart';
 
 // ── Components ─────────────────────────────────────────────────────────────
 export 'src/components/buttons/seal_filled_button.dart';

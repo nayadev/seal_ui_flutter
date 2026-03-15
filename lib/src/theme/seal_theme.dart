@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import 'seal_theme_factory.dart';
+import 'seal_theme_provider.dart';
 import 'seal_theme_tokens.dart';
 
 /// An [InheritedWidget] that makes [SealThemeTokens] available to the widget
@@ -35,6 +36,9 @@ class SealTheme extends InheritedWidget {
 
 /// Convenience extension to access [SealThemeTokens] directly from a [BuildContext].
 ///
+/// Checks for a [SealThemeProvider] first (preferred, supports runtime
+/// switching), then falls back to a legacy [SealTheme], then to dark defaults.
+///
 /// Example usage:
 /// ```dart
 /// final colors = context.themeTokens.colors;
@@ -42,7 +46,18 @@ class SealTheme extends InheritedWidget {
 /// final gradients = context.themeTokens.gradients;
 /// ```
 extension BuildContextSealTheme on BuildContext {
-  /// Shortcut to access [SealThemeTokens] directly from a [BuildContext].
-  /// Equivalent to `SealTheme.of(context)`.
-  SealThemeTokens get themeTokens => SealTheme.of(this);
+  /// Returns the active [SealThemeTokens] from the nearest ancestor.
+  ///
+  /// Resolution order:
+  /// 1. [SealThemeProvider] — preferred for runtime theme switching.
+  /// 2. [SealTheme] — legacy static provider, kept for backward compatibility.
+  /// 3. Dark defaults — fallback when no provider is found.
+  SealThemeTokens get themeTokens {
+    final provider = dependOnInheritedWidgetOfExactType<SealThemeProvider>();
+    if (provider != null) return provider.notifier!.tokens;
+
+    // Fall back to legacy SealTheme for backward compatibility.
+    final theme = dependOnInheritedWidgetOfExactType<SealTheme>();
+    return theme?.tokens ?? SealThemeFactory.darkTokens();
+  }
 }

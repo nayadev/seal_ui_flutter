@@ -31,6 +31,7 @@ abstract final class SealThemeFactory {
       colors: const DarkColorPalette(),
       typography: DefaultTypography(scaleFactor: scaleFactor),
       gradients: const DarkGradients(),
+      brightness: Brightness.dark,
     );
   }
 
@@ -42,6 +43,7 @@ abstract final class SealThemeFactory {
       colors: const LightColorPalette(),
       typography: DefaultTypography(scaleFactor: scaleFactor),
       gradients: const LightGradients(),
+      brightness: Brightness.light,
     );
   }
 
@@ -55,6 +57,22 @@ abstract final class SealThemeFactory {
   static ThemeData light({double scaleFactor = 1.0}) =>
       _buildTheme(lightTokens(scaleFactor: scaleFactor), Brightness.light);
 
+  /// Builds a Material 3 [ThemeData] from any [SealThemeTokens] set.
+  ///
+  /// Use [tokens.brightness] to specify whether to produce a dark or light
+  /// Material theme.
+  ///
+  /// ```dart
+  /// final data = SealThemeFactory.buildMaterialTheme(
+  ///   NebulaThemeFactory.tokens(),
+  ///   Brightness.dark,
+  /// );
+  /// ```
+  static ThemeData buildMaterialTheme(
+    SealThemeTokens tokens,
+    Brightness brightness,
+  ) => _buildTheme(tokens, brightness);
+
   // ── Internal ─────────────────────────────────────────────────────────
 
   static const double _kSecondaryContainerOpacity = 0.15;
@@ -62,10 +80,7 @@ abstract final class SealThemeFactory {
   static const double _kDividerThickness = 1;
   static const double _kFocusedBorderWidth = 2;
 
-  static ThemeData _buildTheme(
-    SealThemeTokens tokens,
-    Brightness brightness,
-  ) {
+  static ThemeData _buildTheme(SealThemeTokens tokens, Brightness brightness) {
     final colors = tokens.colors;
     final typography = tokens.typography;
 

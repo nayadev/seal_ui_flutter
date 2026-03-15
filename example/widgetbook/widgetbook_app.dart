@@ -28,8 +28,8 @@ class SealWidgetbook extends StatelessWidget {
   Widget build(BuildContext context) {
     return Widgetbook.material(
       appBuilder: (context, child) {
-        return SealTheme(
-          tokens: SealThemeFactory.darkTokens(),
+        return SealThemeScope(
+          tokens: NebulaThemeFactory.tokens(),
           child: child,
         );
       },
@@ -38,22 +38,38 @@ class SealWidgetbook extends StatelessWidget {
         ThemeAddon<SealThemeTokens>(
           themes: [
             WidgetbookTheme(
-              name: 'Dark',
-              data: SealThemeFactory.darkTokens(),
+              name: 'Nebula · Dark',
+              data: NebulaThemeFactory.tokens(),
             ),
             WidgetbookTheme(
-              name: 'Light',
-              data: SealThemeFactory.lightTokens(),
+              name: 'Nebula · Light',
+              data: NebulaThemeFactory.tokens(brightness: Brightness.light),
+            ),
+            WidgetbookTheme(
+              name: 'Arctic · Light',
+              data: ArcticThemeFactory.tokens(),
+            ),
+            WidgetbookTheme(
+              name: 'Arctic · Dark',
+              data: ArcticThemeFactory.tokens(brightness: Brightness.dark),
+            ),
+            WidgetbookTheme(
+              name: 'Deep Ocean · Dark',
+              data: DeepOceanThemeFactory.tokens(),
+            ),
+            WidgetbookTheme(
+              name: 'Deep Ocean · Light',
+              data: DeepOceanThemeFactory.tokens(brightness: Brightness.light),
             ),
           ],
           themeBuilder: (context, theme, child) {
-            final isDark = theme.colors is DarkColorPalette;
-            return SealTheme(
+            return SealThemeScope(
               tokens: theme,
               child: Theme(
-                data: isDark
-                    ? SealThemeFactory.dark()
-                    : SealThemeFactory.light(),
+                data: SealThemeFactory.buildMaterialTheme(
+                  theme,
+                  theme.brightness,
+                ),
                 child: ColoredBox(color: theme.colors.background, child: child),
               ),
             );
