@@ -115,6 +115,7 @@ class SealSheet extends StatelessWidget {
       radius: SealRadius.borderRadiusLg,
       padding: EdgeInsets.all(dimension.lg),
       border: Border.all(color: colors.border),
+      useSafeArea: false,
       scrollable: scrollable,
       draggable: draggable,
       child: child,
