@@ -78,18 +78,30 @@ export 'src/theme/themes/terminal/tokens/terminal_light_color_palette.dart';
 export 'src/theme/themes/terminal/tokens/terminal_light_gradients.dart';
 
 // ── Components ─────────────────────────────────────────────────────────────
+
+// Buttons
 export 'src/components/buttons/seal_filled_button.dart';
 export 'src/components/buttons/seal_filled_icon_button.dart';
 export 'src/components/buttons/seal_icon_button.dart';
 export 'src/components/buttons/seal_outline_button.dart';
 export 'src/components/buttons/seal_outline_icon_button.dart';
 export 'src/components/buttons/seal_text_button.dart';
+
+// Feedback
 export 'src/components/feedback/seal_alert.dart';
 export 'src/components/feedback/seal_bouncing_dots.dart';
 export 'src/components/feedback/seal_loader.dart';
+export 'src/components/feedback/seal_progress.dart';
 export 'src/components/feedback/seal_toast.dart';
+
+// Inputs
+export 'src/components/inputs/seal_checkbox.dart';
 export 'src/components/inputs/seal_text_field.dart';
+
+// Interaction
 export 'src/components/interaction/seal_pressable.dart';
+
+// Layout
 export 'src/components/layout/seal_card.dart';
 export 'src/components/layout/seal_container.dart';
 export 'src/components/layout/seal_divider.dart';
