@@ -3,7 +3,7 @@ import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases all input and form control components: [SealCheckbox],
 /// [SealRadioGroup], [SealSelect], [SealSlider], [SealSwitch],
-/// [SealTextarea], [SealTextField], and [SealInputOTP].
+/// [SealTextarea], [SealTextField], [SealInputOTP], and [SealCalendar].
 class InputsSection extends StatefulWidget {
   const InputsSection({super.key});
 
@@ -18,6 +18,7 @@ class _InputsSectionState extends State<InputsSection> {
   String? _selectTheme;
   bool _switchA = false;
   bool _switchB = true;
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -213,6 +214,20 @@ class _InputsSectionState extends State<InputsSection> {
               children: List.generate(3, (_) => const SealInputOTPSlot()),
             ),
           ],
+        ),
+
+        dimension.xl.verticalGap,
+
+        // ── Calendar ─────────────────────────────────────────────────────
+        Text(
+          'Calendar',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealCalendar(
+          selected: _selectedDate,
+          allowDeselection: true,
+          onChanged: (date) => setState(() => _selectedDate = date),
         ),
       ],
     );
