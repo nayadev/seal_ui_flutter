@@ -44,6 +44,18 @@ class InputsSection extends StatelessWidget {
           hint: 'Disabled',
           enabled: false,
         ),
+        dimension.lg.verticalGap,
+
+        Text(
+          'Slider',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealSlider(value: 0.4, onChanged: (_) {}),
+        dimension.xs.verticalGap,
+        SealSlider(value: 60, min: 0, max: 100, divisions: 10, onChanged: (_) {}),
+        dimension.xs.verticalGap,
+        const SealSlider(value: 0.5, enabled: false),
       ],
     );
   }

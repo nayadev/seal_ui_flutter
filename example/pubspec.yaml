@@ -31,6 +31,7 @@ flutter:
     - assets/markdown/components/inputs/sealcheckbox/
     - assets/markdown/components/inputs/sealradiogroup/
     - assets/markdown/components/inputs/sealselect/
+    - assets/markdown/components/inputs/sealslider/
     - assets/markdown/components/inputs/sealswitch/
     - assets/markdown/components/inputs/sealtextarea/
     - assets/markdown/components/inputs/sealtextfield/
