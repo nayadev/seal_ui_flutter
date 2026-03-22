@@ -117,6 +117,7 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 | `ShadToast` / `ShadToaster` | `SealToast` |
 | `ShadCard` | `SealCard` |
 | `ShadDialog.raw(...)` | `SealDialog` |
+| `ShadPopover` / `ShadPopoverController` | `SealPopover` / `SealPopoverController` |
 | `ShadSheet` / `showShadSheet` | `SealSheet` / `showSealSheet` |
 | `ShadAccordion` / `ShadAccordionItem` | `SealAccordion` / `SealAccordionItem` |
 | `ShadTabs` / `ShadTabsList` / `ShadTabsContent` | `SealTabs` / `SealTab` |

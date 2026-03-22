@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
-/// Showcases overlay components: [SealDialog] and [SealSheet].
+/// Showcases overlay components: [SealDialog], [SealPopover], and [SealSheet].
 class OverlaySection extends StatelessWidget {
   const OverlaySection({super.key});
 
@@ -76,6 +76,16 @@ class OverlaySection extends StatelessWidget {
 
         dimension.xl.verticalGap,
 
+        // ── Popover ──────────────────────────────────────────────────────
+        Text(
+          'Popover',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        const _PopoverExample(),
+
+        dimension.xl.verticalGap,
+
         // ── Sheet ────────────────────────────────────────────────────────
         Text(
           'Sheet',
@@ -128,6 +138,56 @@ class OverlaySection extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _PopoverExample extends StatefulWidget {
+  const _PopoverExample();
+
+  @override
+  State<_PopoverExample> createState() => _PopoverExampleState();
+}
+
+class _PopoverExampleState extends State<_PopoverExample> {
+  final _controller = SealPopoverController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.themeTokens.colors;
+    final typo = context.themeTokens.typography;
+    final dimension = context.dimension;
+
+    return SealPopover(
+      controller: _controller,
+      popover: (context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Popover title',
+            style: typo.small.copyWith(
+              color: colors.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          dimension.xxs.verticalGap,
+          Text(
+            'Place content for the popover here.',
+            style: typo.small.copyWith(color: colors.textSecondary),
+          ),
+        ],
+      ),
+      child: SealOutlineButton.primary(
+        label: const Text('Open Popover'),
+        onPressed: _controller.toggle,
+      ),
     );
   }
 }

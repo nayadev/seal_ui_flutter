@@ -109,6 +109,7 @@ export 'src/components/interaction/seal_tooltip.dart';
 
 // Overlay
 export 'src/components/overlay/seal_dialog.dart';
+export 'src/components/overlay/seal_popover.dart';
 export 'src/components/overlay/seal_sheet.dart';
 
 // Layout

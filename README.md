@@ -122,6 +122,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 | Component | Description |
 |---|---|
 | `SealDialog` | Modal dialog with title, description, and actions; `.alert` variant for destructive confirmations |
+| `SealPopover` | Token-styled floating panel anchored to any widget; controlled via `SealPopoverController` or `visible` |
 | `SealSheet` | Slide-in panel from any edge via `showSealSheet`; smart safe-area padding per side |
 
 `SealSheetSide` controls the sheet edge: `top`, `right`, `bottom` (default), `left`.
