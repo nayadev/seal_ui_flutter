@@ -26,7 +26,7 @@ foundation → tokens → theme → components
 | **foundation** | Breakpoints, responsive utilities | `lib/src/foundation/` |
 | **tokens** | Color palettes, typography, gradients, spacing, radius | `lib/src/tokens/` |
 | **theme** | Token container, theme factory, InheritedWidget | `lib/src/theme/` |
-| **components** | Reusable UI widgets (buttons, inputs, layout, feedback) | `lib/src/components/` |
+| **components** | Reusable UI widgets (buttons, inputs, layout, feedback, overlay, interaction) | `lib/src/components/` |
 
 ### Token Architecture
 
@@ -107,9 +107,22 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 | `ShadButton.raw(...)` | `SealFilledButton`, `SealOutlineButton`, `SealTextButton` |
 | `ShadIconButton.raw(...)` | `SealFilledIconButton`, `SealOutlineIconButton`, `SealIconButton` |
 | `ShadInput` | `SealTextField` |
+| `ShadTextarea` | `SealTextarea` |
+| `ShadCheckbox` | `SealCheckbox` |
+| `ShadSwitch` | `SealSwitch` |
+| `ShadSlider` | `SealSlider` |
+| `ShadRadioGroup` / `ShadRadioItem` | `SealRadioGroup` / `SealRadioItem` |
+| `ShadSelect` / `ShadOption` | `SealSelect` / `SealSelectOption` |
 | `ShadAlert.raw(...)` | `SealAlert` |
 | `ShadToast` / `ShadToaster` | `SealToast` |
 | `ShadCard` | `SealCard` |
+| `ShadDialog.raw(...)` | `SealDialog` |
+| `ShadSheet` / `showShadSheet` | `SealSheet` / `showSealSheet` |
+| `ShadAccordion` / `ShadAccordionItem` | `SealAccordion` / `SealAccordionItem` |
+| `ShadTabs` / `ShadTabsList` / `ShadTabsContent` | `SealTabs` / `SealTab` |
+| `ShadAvatar` | `SealAvatar` |
+| `ShadBadge` | `SealBadge` |
+| `ShadTooltip` | `SealTooltip` |
 
 **Using a component inside another component:**
 When a Seal component needs to render another interactive element (e.g., an action button inside a toast), always use the corresponding `Seal*` wrapper — never the underlying `Shad*` widget directly. If no existing `Seal*` variant supports the required styling, add a `custom` factory to the wrapper first.
@@ -338,7 +351,7 @@ padding: EdgeInsets.all(context.dimension.md),
 
 When adding a new component to Seal UI, follow these steps in order:
 
-1. **Create the widget file** in the appropriate subfolder under `lib/src/components/` (e.g., `buttons/`, `inputs/`, `feedback/`, `layout/`).
+1. **Create the widget file** in the appropriate subfolder under `lib/src/components/` (e.g., `buttons/`, `feedback/`, `inputs/`, `interaction/`, `layout/`, `overlay/`).
    - File name: `seal_<component_name>.dart` (snake_case with `seal_` prefix).
    - Class name: `Seal<ComponentName>` (PascalCase with `Seal` prefix).
    - **Wrap the closest `shadcn_ui` primitive** — check if a `Shad*` widget already covers the use case before building from scratch.
