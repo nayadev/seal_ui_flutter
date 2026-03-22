@@ -131,6 +131,7 @@ class SealDialog extends StatelessWidget {
         padding: EdgeInsets.all(dimension.lg),
         border: Border.all(color: colors.border),
         scrollable: scrollable,
+        useSafeArea: false,
         child: child,
       );
     }
@@ -144,6 +145,7 @@ class SealDialog extends StatelessWidget {
       padding: EdgeInsets.all(dimension.lg),
       border: Border.all(color: colors.border),
       scrollable: scrollable,
+      useSafeArea: false,
       child: child,
     );
   }
