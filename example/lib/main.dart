@@ -21,9 +21,10 @@ void main() {
 
 /// The available Seal UI themes for runtime switching.
 enum SealThemeOption {
-  nebula('Nebula'),
   arctic('Arctic'),
-  deepOcean('Deep Ocean');
+  deepOcean('Deep Ocean'),
+  nebula('Nebula'),
+  terminal('Terminal');
 
   const SealThemeOption(this.label);
 
@@ -61,6 +62,10 @@ class _SealExampleAppState extends State<SealExampleApp> {
           brightness: _brightness,
         ),
         SealThemeOption.deepOcean => DeepOceanThemeFactory.tokens(
+          scaleFactor: scaleFactor,
+          brightness: _brightness,
+        ),
+        SealThemeOption.terminal => TerminalThemeFactory.tokens(
           scaleFactor: scaleFactor,
           brightness: _brightness,
         ),
@@ -143,7 +148,7 @@ class _ExampleHome extends StatelessWidget {
               ),
               dimension.xxs.verticalGap,
               Text(
-                'A token-driven Flutter Design System with space-inspired aesthetics.',
+                'A token-driven Flutter Design System with bold, curated themes.',
                 style: typo.body.copyWith(color: colors.textSecondary),
               ),
               dimension.xl.verticalGap,

@@ -54,12 +54,12 @@ class SealWidgetbook extends StatelessWidget {
               data: NebulaThemeFactory.tokens(brightness: Brightness.light),
             ),
             WidgetbookTheme(
-              name: 'Arctic · Light',
-              data: ArcticThemeFactory.tokens(),
-            ),
-            WidgetbookTheme(
               name: 'Arctic · Dark',
               data: ArcticThemeFactory.tokens(brightness: Brightness.dark),
+            ),
+            WidgetbookTheme(
+              name: 'Arctic · Light',
+              data: ArcticThemeFactory.tokens(),
             ),
             WidgetbookTheme(
               name: 'Deep Ocean · Dark',
@@ -68,6 +68,14 @@ class SealWidgetbook extends StatelessWidget {
             WidgetbookTheme(
               name: 'Deep Ocean · Light',
               data: DeepOceanThemeFactory.tokens(brightness: Brightness.light),
+            ),
+            WidgetbookTheme(
+              name: 'Terminal · Dark',
+              data: TerminalThemeFactory.tokens(),
+            ),
+            WidgetbookTheme(
+              name: 'Terminal · Light',
+              data: TerminalThemeFactory.tokens(brightness: Brightness.light),
             ),
           ],
           themeBuilder: (context, theme, child) {

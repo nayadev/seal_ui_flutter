@@ -1,8 +1,8 @@
 # Seal UI
 
-A **token-driven Flutter Design System** with space-inspired aesthetics, layered architecture, and responsive scaling.
+A **token-driven Flutter Design System** with bold, curated themes, layered architecture, and responsive scaling.
 
-Purple-based palettes, subtle gradients, and a dark-first experience — designed to be reusable across multiple applications.
+Expressive palettes, subtle gradients, and a dark-first experience — designed to be reusable across multiple applications.
 
 ## Features
 

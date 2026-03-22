@@ -1,9 +1,9 @@
 /// # Seal UI
 ///
-/// A token-driven Flutter Design System with space-inspired aesthetics.
+/// A token-driven Flutter Design System with bold, curated themes.
 ///
 /// Seal UI provides a layered architecture of design tokens, theming, and
-/// ready-to-use components — featuring purple-based palettes, subtle gradients,
+/// ready-to-use components — featuring expressive palettes, subtle gradients,
 /// and responsive scaling out of the box.
 ///
 /// ## Quick start
@@ -69,6 +69,13 @@ export 'src/theme/themes/deep_ocean/tokens/deep_ocean_color_palette.dart';
 export 'src/theme/themes/deep_ocean/tokens/deep_ocean_gradients.dart';
 export 'src/theme/themes/deep_ocean/tokens/deep_ocean_light_color_palette.dart';
 export 'src/theme/themes/deep_ocean/tokens/deep_ocean_light_gradients.dart';
+
+// ── Themes · Terminal ──────────────────────────────────────────────────────
+export 'src/theme/themes/terminal/terminal_theme_factory.dart';
+export 'src/theme/themes/terminal/tokens/terminal_color_palette.dart';
+export 'src/theme/themes/terminal/tokens/terminal_gradients.dart';
+export 'src/theme/themes/terminal/tokens/terminal_light_color_palette.dart';
+export 'src/theme/themes/terminal/tokens/terminal_light_gradients.dart';
 
 // ── Components ─────────────────────────────────────────────────────────────
 export 'src/components/buttons/seal_filled_button.dart';

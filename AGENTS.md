@@ -5,7 +5,7 @@
 Seal UI is a **token-driven Flutter Design System package** built on top of [`shadcn_ui`](https://pub.dev/packages/shadcn_ui).
 It is designed to be reusable across multiple applications — it is **not** a standalone app.
 
-The visual identity is inspired by space aesthetics, purple-based palettes, subtle gradients, and modern developer tools. The feel is **modern, minimal, elegant, slightly futuristic, and professional**.
+Each theme has its own distinct visual identity — from cosmic nebulae to vintage terminals — united by subtle gradients and a modern developer tool aesthetic. The feel is **modern, minimal, elegant, slightly futuristic, and professional**.
 
 **Dark mode is the primary experience**, but a light theme must always be supported.
 
