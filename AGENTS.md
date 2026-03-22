@@ -130,6 +130,7 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 | `ShadTabs` / `ShadTabsList` / `ShadTabsContent` | `SealTabs` / `SealTab` |
 | `ShadAvatar` | `SealAvatar` |
 | `ShadBadge` | `SealBadge` |
+| `ShadSeparator` | `SealSeparator` (`.vertical`) |
 | `ShadTooltip` | `SealTooltip` |
 
 **Using a component inside another component:**

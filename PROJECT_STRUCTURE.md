@@ -57,7 +57,7 @@ components/
     seal_badge.dart
     seal_card.dart
     seal_container.dart
-    seal_divider.dart
+    seal_separator.dart
     seal_tabs.dart
   overlay/
     seal_dialog.dart

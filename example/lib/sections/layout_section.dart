@@ -221,6 +221,35 @@ class LayoutSection extends StatelessWidget {
 
         dimension.xl.verticalGap,
 
+        // ── Separator ─────────────────────────────────────────────────────
+        Text(
+          'Separator',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Horizontal', style: typo.small.copyWith(color: colors.textSecondary)),
+            const SealSeparator(),
+            Text('After separator', style: typo.small.copyWith(color: colors.textPrimary)),
+          ],
+        ),
+        dimension.sm.verticalGap,
+        SizedBox(
+          height: 48,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Left', style: typo.small.copyWith(color: colors.textPrimary)),
+              const SealSeparator.vertical(),
+              Text('Right', style: typo.small.copyWith(color: colors.textPrimary)),
+            ],
+          ),
+        ),
+
+        dimension.xl.verticalGap,
+
         // ── Menubar ───────────────────────────────────────────────────────
         Text(
           'Menubar',

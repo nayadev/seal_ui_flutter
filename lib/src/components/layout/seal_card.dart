@@ -118,7 +118,9 @@ class SealCard extends StatelessWidget {
 
     if (body != null) {
       if (sections.isNotEmpty) {
-        sections.add(SealDivider(height: dimension.lg));
+        sections.add(SealSeparator(
+          margin: EdgeInsets.symmetric(vertical: dimension.sm),
+        ));
       }
       sections.add(body!);
     }

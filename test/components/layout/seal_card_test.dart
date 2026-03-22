@@ -68,14 +68,14 @@ void main() {
 
       // Footer goes into ShadCard.footer (separate slot), so only one divider
       // is added — between header and body.
-      expect(find.byType(SealDivider), findsOneWidget);
+      expect(find.byType(SealSeparator), findsOneWidget);
     });
 
     testWidgets('shows no divider with single section', (tester) async {
       await tester.pumpWidget(_wrap(const SealCard(body: Text('Only body'))));
       await tester.pump();
 
-      expect(find.byType(SealDivider), findsNothing);
+      expect(find.byType(SealSeparator), findsNothing);
     });
 
     testWidgets('renders border when showBorder is true', (tester) async {

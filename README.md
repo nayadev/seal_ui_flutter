@@ -111,7 +111,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 | `SealBadge` | Semantic status pill — primary, accent, secondary, outline, success, warning, error |
 | `SealCard` | Themed surface card with header, body, footer, gradient, and tap support |
 | `SealContainer` | Surface box with optional gradient and border |
-| `SealDivider` | Token-styled horizontal divider |
+| `SealSeparator` | Token-styled horizontal divider |
 | `SealTabs` / `SealTab` | Tabbed content switcher |
 
 ### Feedback
