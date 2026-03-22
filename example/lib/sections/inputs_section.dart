@@ -3,7 +3,7 @@ import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases all input and form control components: [SealCheckbox],
 /// [SealRadioGroup], [SealSelect], [SealSlider], [SealSwitch],
-/// [SealTextarea], and [SealTextField].
+/// [SealTextarea], [SealTextField], and [SealInputOTP].
 class InputsSection extends StatefulWidget {
   const InputsSection({super.key});
 
@@ -192,6 +192,27 @@ class _InputsSectionState extends State<InputsSection> {
           obscureText: true,
           prefixIcon: LucideIcons.lock,
           suffixIcon: LucideIcons.eyeOff,
+        ),
+
+        dimension.xl.verticalGap,
+
+        // ── OTP ──────────────────────────────────────────────────────────
+        Text(
+          'OTP',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealInputOTP(
+          maxLength: 6,
+          onChanged: (_) {},
+          children: [
+            SealInputOTPGroup(
+              children: List.generate(3, (_) => const SealInputOTPSlot()),
+            ),
+            SealInputOTPGroup(
+              children: List.generate(3, (_) => const SealInputOTPSlot()),
+            ),
+          ],
         ),
       ],
     );

@@ -88,6 +88,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 
 | Component | Description |
 |---|---|
+| `SealInputOTP` / `SealInputOTPGroup` / `SealInputOTPSlot` | Token-styled OTP input; compose groups and slots for any digit layout |
 | `SealCheckbox` | Token-styled checkbox with optional label and sublabel |
 | `SealRadioGroup` / `SealRadioItem` | Radio button group, horizontal or vertical |
 | `SealSelect` / `SealSelectOption` | Dropdown selector with optional label |
