@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Seal UI is a **token-driven Flutter Design System package** that extends Material widgets.
+Seal UI is a **token-driven Flutter Design System package** built on top of [`shadcn_ui`](https://pub.dev/packages/shadcn_ui).
 It is designed to be reusable across multiple applications — it is **not** a standalone app.
 
 The visual identity is inspired by space aesthetics, purple-based palettes, subtle gradients, and modern developer tools. The feel is **modern, minimal, elegant, slightly futuristic, and professional**.
@@ -53,15 +53,67 @@ Typography and spacing scale proportionally across breakpoints via a **scale fac
 ### Theme System
 
 - `SealThemeTokens` is the token container holding colors, typography, and gradients.
-- `SealThemeFactory` builds dark/light `SealThemeTokens` and Material `ThemeData`.
-- `SealTheme` is the `InheritedWidget` that provides tokens to the widget tree.
+- `SealThemeFactory` builds dark/light `SealThemeTokens`, Material `ThemeData`, and `ShadThemeData`.
+- `SealThemeController` is a `ChangeNotifier` that allows runtime theme switching.
+- `SealThemeProvider` is an `InheritedNotifier` that exposes the controller to the tree.
+- `SealThemeScope` is the **recommended entry point** — it wires `ShadTheme`, `ShadToaster`, and `SealThemeProvider` together in a single widget.
+
+### App Setup Pattern
+
+Wrap your root widget with `SealThemeScope`. It automatically injects the shadcn theme, the toast system, and the Seal token provider:
+
+```dart
+SealThemeScope(
+  tokens: NebulaThemeFactory.tokens(),
+  child: MaterialApp(home: MyHome()),
+)
+```
+
+For runtime theme switching, use `SealThemeProvider` + `SealThemeController` directly:
+
+```dart
+final controller = SealThemeController(
+  initialTokens: NebulaThemeFactory.tokens(),
+);
+
+SealThemeProvider(
+  controller: controller,
+  child: MaterialApp(home: MyHome()),
+)
+
+// Switch theme at runtime:
+controller.setTheme(ArcticThemeFactory.tokens());
+```
+
+### shadcn_ui Integration
+
+Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitives:
+
+- **Never use raw `Shad*` widgets directly in consuming apps** — always use the `Seal*` wrappers.
+- When building a new Seal component, **prefer composing an existing `Shad*` widget** rather than building from scratch with Material or basic Flutter widgets.
+- Pass Seal design tokens (colors, typography, radius, spacing) into the `Shad*` widget's styling parameters.
+- When a `Shad*` widget doesn't support the styling needed, wrap it with a `DecoratedBox`, `ClipRRect`, or similar Flutter primitive — do not reach for Material widgets.
+
+**Key shadcn primitives currently in use:**
+
+| `Shad*` primitive | Seal wrapper |
+|---|---|
+| `ShadButton.raw(...)` | `SealFilledButton`, `SealOutlineButton`, `SealTextButton` |
+| `ShadIconButton.raw(...)` | `SealFilledIconButton`, `SealOutlineIconButton`, `SealIconButton` |
+| `ShadInput` | `SealTextField` |
+| `ShadAlert.raw(...)` | `SealAlert` |
+| `ShadToast` / `ShadToaster` | `SealToast` |
+| `ShadCard` | `SealCard` |
+
+**Using a component inside another component:**
+When a Seal component needs to render another interactive element (e.g., an action button inside a toast), always use the corresponding `Seal*` wrapper — never the underlying `Shad*` widget directly. If no existing `Seal*` variant supports the required styling, add a `custom` factory to the wrapper first.
 
 ---
 
 ## Naming Conventions
 
-- All public classes use the `Seal` prefix: `SealTheme`, `SealPrimaryButton`, `SealTextField`, `SealContainer`, `SealLoader`, `SealDimension`, `SealRadius`, `SealBreakpoints`, `SealResponsive`.
-- File names mirror class names in snake_case with the `seal_` prefix: `seal_theme.dart`, `seal_primary_button.dart`, etc.
+- All public classes use the `Seal` prefix: `SealTheme`, `SealFilledButton`, `SealTextField`, `SealContainer`, `SealLoader`, `SealDimension`, `SealRadius`, `SealBreakpoints`, `SealResponsive`.
+- File names mirror class names in snake_case with the `seal_` prefix: `seal_theme.dart`, `seal_filled_button.dart`, etc.
 - Token abstractions keep their descriptive names without prefix: `ColorPalette`, `TypographyTokens`, `GradientTokens`.
 - Implementations use descriptive names: `DarkColorPalette`, `LightColorPalette`, `DefaultTypography`, `DefaultGradients`.
 
@@ -191,8 +243,25 @@ SizedBox(height: context.dimension.md),
 - Components must use **design tokens** — never hardcode colors, spacing, or typography.
 - Access tokens via `context.themeTokens`.
 - Respect `SealDimension` for padding/margins and `SealRadius` for border radius.
-- Integrate with Material — extend or compose Material widgets, don't fight them.
+- **Wrap `shadcn_ui` primitives** — do not compose raw Material or basic Flutter widgets when an equivalent `Shad*` widget exists.
+- When using a Seal component inside another Seal component, always use the `Seal*` wrapper — never the underlying `Shad*` primitive.
 - Design for future extension: prefer composition, accept optional parameters.
+
+### Button Variants
+
+All six button types follow a consistent variant pattern with named factories:
+
+| Factory | Description |
+|---|---|
+| `.primary` | Brand primary color |
+| `.accent` | Accent color |
+| `.accentSecondary` | Muted accent |
+| `.gradient` | Primary gradient fill |
+| `.accentGradient` | Accent gradient fill |
+| `.custom(color:)` | Arbitrary solid color |
+| `.custom(gradient:)` | Arbitrary gradient |
+
+The `custom` factory is available on all six button types (`SealFilledButton`, `SealOutlineButton`, `SealTextButton`, `SealFilledIconButton`, `SealOutlineIconButton`, `SealIconButton`).
 
 ### Responsive Dimensions
 
@@ -223,6 +292,7 @@ padding: EdgeInsets.all(context.dimension.md),
 ### Widgetbook
 
 - The component catalog lives in `example/widgetbook/widgetbook_app.dart`.
+- Category builders are split into separate files under `example/widgetbook/categories/`.
 - Components are organized into categories: **Components**, **Tokens**, **Layout**.
 - Every new component should include at least one Widgetbook use case.
 - Run with: `cd example && flutter run -t widgetbook/widgetbook_app.dart`
@@ -236,19 +306,19 @@ When adding a new component to Seal UI, follow these steps in order:
 1. **Create the widget file** in the appropriate subfolder under `lib/src/components/` (e.g., `buttons/`, `inputs/`, `feedback/`, `layout/`).
    - File name: `seal_<component_name>.dart` (snake_case with `seal_` prefix).
    - Class name: `Seal<ComponentName>` (PascalCase with `Seal` prefix).
+   - **Wrap the closest `shadcn_ui` primitive** — check if a `Shad*` widget already covers the use case before building from scratch.
    - Use design tokens via `context.themeTokens` — never hardcode colors, spacing, or typography.
    - Use `context.dimension` for padding/margins and `SealRadius` for border radius.
-   - Compose or extend Material widgets.
    - Add `///` doc comments to the class and all public members.
 
 2. **Export in the barrel file** `lib/seal_ui.dart` under the `Components` section, keeping alphabetical order within each subfolder group.
 
 3. **Write tests** in `test/` mirroring the `lib/src/` path (e.g., `test/components/buttons/seal_outline_button_test.dart`).
-   - Wrap widgets with `SealTheme` + `MaterialApp` in test helpers.
+   - Wrap widgets with `SealThemeScope` + `MaterialApp` in test helpers.
    - Test: rendering, interaction (tap/enabled/disabled), loading state, and icon/slot variants.
    - Use `pump()` instead of `pumpAndSettle()` when indefinite animations are present.
 
-4. **Add Widgetbook use cases** in `example/widgetbook/widgetbook_app.dart`.
+4. **Add Widgetbook use cases** in the appropriate category file under `example/widgetbook/categories/`.
    - Place the new `WidgetbookComponent` inside the correct `WidgetbookFolder` and category.
    - Include at least one use case with relevant knobs (string, boolean, dropdown).
 
@@ -284,6 +354,7 @@ When adding a new component to Seal UI, follow these steps in order:
 
 | Package | Purpose |
 |---|---|
+| `shadcn_ui` | Component primitives and base theme system |
 | `google_fonts` | Inter font family for typography tokens |
 | `widgetbook` | Component catalog and visual testing |
 | `flutter_lints` | Lint rules |
