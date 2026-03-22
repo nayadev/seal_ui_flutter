@@ -57,6 +57,19 @@ class FeedbackSection extends StatelessWidget {
 
         dimension.xl.verticalGap,
 
+        // ── Progress ─────────────────────────────────────────────────────
+        Text('Progress', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
+        const SealProgress(value: 0.3),
+        dimension.xs.verticalGap,
+        const SealProgress(value: 0.65, useAccent: true),
+        dimension.xs.verticalGap,
+        const SealProgress(value: 1.0),
+        dimension.xs.verticalGap,
+        const SealProgress(),
+
+        dimension.xl.verticalGap,
+
         // ── Alerts ──────────────────────────────────────────────────────
         Text('Alert', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.sm.verticalGap,
