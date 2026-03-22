@@ -39,6 +39,7 @@ flutter:
     - assets/markdown/components/inputs/sealswitch/
     - assets/markdown/components/inputs/sealtextarea/
     - assets/markdown/components/inputs/sealtextfield/
+    - assets/markdown/components/overlay/sealcontextmenu/
     - assets/markdown/components/overlay/sealdialog/
     - assets/markdown/components/overlay/sealpopover/
     - assets/markdown/components/overlay/sealsheet/

@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
-/// Showcases overlay components: [SealDialog], [SealPopover], and [SealSheet].
+/// Showcases overlay components: [SealContextMenuRegion], [SealDialog],
+/// [SealPopover], and [SealSheet].
 class OverlaySection extends StatelessWidget {
   const OverlaySection({super.key});
 
@@ -16,6 +17,43 @@ class OverlaySection extends StatelessWidget {
       children: [
         Text('Overlay', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.md.verticalGap,
+
+        // ── Context Menu ──────────────────────────────────────────────────
+        Text(
+          'Context Menu',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealContextMenuRegion(
+          items: [
+            SealContextMenuItem(
+              leading: const Icon(LucideIcons.copy, size: 14),
+              child: const Text('Copy'),
+              onPressed: () {},
+            ),
+            SealContextMenuItem(
+              leading: const Icon(LucideIcons.clipboard, size: 14),
+              child: const Text('Paste'),
+              onPressed: () {},
+            ),
+            SealContextMenuItem(
+              leading: const Icon(LucideIcons.trash2, size: 14),
+              child: const Text('Delete'),
+              onPressed: () {},
+            ),
+          ],
+          child: SealContainer(
+            child: Padding(
+              padding: EdgeInsets.all(dimension.md),
+              child: Text(
+                'Right-click or long-press here',
+                style: typo.small.copyWith(color: colors.textSecondary),
+              ),
+            ),
+          ),
+        ),
+
+        dimension.xl.verticalGap,
 
         // ── Dialog ───────────────────────────────────────────────────────
         Text(

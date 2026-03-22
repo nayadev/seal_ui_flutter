@@ -126,6 +126,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 
 | Component | Description |
 |---|---|
+| `SealContextMenuRegion` | Right-click / long-press triggered menu; compose with `SealContextMenuItem` for items and nested submenus |
 | `SealDialog` | Modal dialog with title, description, and actions; `.alert` variant for destructive confirmations |
 | `SealPopover` | Token-styled floating panel anchored to any widget; controlled via `SealPopoverController` or `visible` |
 | `SealSheet` | Slide-in panel from any edge via `showSealSheet`; smart safe-area padding per side |
