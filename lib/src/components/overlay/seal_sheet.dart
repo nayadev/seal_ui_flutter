@@ -55,9 +55,7 @@ Future<T?> showSealSheet<T>({
       final viewPadding = MediaQuery.viewPaddingOf(ctx);
       final edgePadding = switch (side) {
         SealSheetSide.bottom => EdgeInsets.only(bottom: viewPadding.bottom),
-        SealSheetSide.top ||
-        SealSheetSide.right ||
-        SealSheetSide.left => EdgeInsets.only(top: viewPadding.top),
+        _ => EdgeInsets.only(top: viewPadding.top),
       };
       return _SealSheetEdgePadding(padding: edgePadding, child: builder(ctx));
     },
