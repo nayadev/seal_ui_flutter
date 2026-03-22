@@ -10,6 +10,7 @@ WidgetbookCategory buildComponentsCategory() {
     children: [
       _buildButtonsFolder(),
       _buildInputsFolder(),
+      _buildOverlayFolder(),
       _buildInteractionFolder(),
       _buildFeedbackFolder(),
     ],
@@ -1064,6 +1065,81 @@ WidgetbookFolder _buildInputsFolder() {
                 obscureText: true,
                 prefixIcon: LucideIcons.lock,
                 suffixIcon: LucideIcons.eyeOff,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+// ── Overlay ───────────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildOverlayFolder() {
+  return WidgetbookFolder(
+    name: 'Overlay',
+    children: [
+      WidgetbookComponent(
+        name: 'SealDialog',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) => SealFilledButton.primary(
+              label: const Text('Open Dialog'),
+              onPressed: () => showSealDialog<void>(
+                context: context,
+                builder: (_) => SealDialog(
+                  title: Text(context.knobs.string(
+                    label: 'Title',
+                    initialValue: 'Edit profile',
+                  )),
+                  description: Text(context.knobs.string(
+                    label: 'Description',
+                    initialValue: 'Make changes to your profile here.',
+                  )),
+                  actions: [
+                    SealOutlineButton.primary(
+                      label: const Text('Cancel'),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    SealFilledButton.primary(
+                      label: const Text('Save'),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Alert',
+            builder: (context) => SealFilledButton.custom(
+              label: const Text('Open Alert'),
+              color: ColorX.red,
+              onPressed: () => showSealDialog<void>(
+                context: context,
+                builder: (_) => SealDialog.alert(
+                  title: Text(context.knobs.string(
+                    label: 'Title',
+                    initialValue: 'Are you sure?',
+                  )),
+                  description: Text(context.knobs.string(
+                    label: 'Description',
+                    initialValue: 'This action cannot be undone.',
+                  )),
+                  actions: [
+                    SealOutlineButton.primary(
+                      label: const Text('Cancel'),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    SealFilledButton.custom(
+                      label: const Text('Delete'),
+                      color: ColorX.red,
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

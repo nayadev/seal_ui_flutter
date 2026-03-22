@@ -70,6 +70,64 @@ class FeedbackSection extends StatelessWidget {
 
         dimension.xl.verticalGap,
 
+        // ── Dialog ───────────────────────────────────────────────────────
+        Text('Dialog', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
+        Builder(
+          builder: (context) => Wrap(
+            spacing: dimension.sm,
+            runSpacing: dimension.sm,
+            children: [
+              SealFilledButton.primary(
+                label: const Text('Open Dialog'),
+                onPressed: () => showSealDialog<void>(
+                  context: context,
+                  builder: (_) => SealDialog(
+                    title: const Text('Edit profile'),
+                    description:
+                        const Text('Make changes to your profile here.'),
+                    actions: [
+                      SealOutlineButton.primary(
+                        label: const Text('Cancel'),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                      SealFilledButton.primary(
+                        label: const Text('Save'),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SealFilledButton.custom(
+                label: const Text('Open Alert'),
+                color: ColorX.red,
+                onPressed: () => showSealDialog<void>(
+                  context: context,
+                  builder: (_) => SealDialog.alert(
+                    title: const Text('Are you sure?'),
+                    description:
+                        const Text('This action cannot be undone.'),
+                    actions: [
+                      SealOutlineButton.primary(
+                        label: const Text('Cancel'),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                      SealFilledButton.custom(
+                        label: const Text('Delete'),
+                        color: ColorX.red,
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        dimension.xl.verticalGap,
+
         // ── Alerts ──────────────────────────────────────────────────────
         Text('Alert', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.sm.verticalGap,

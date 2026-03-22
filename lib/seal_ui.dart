@@ -107,6 +107,9 @@ export 'src/components/inputs/seal_text_field.dart';
 export 'src/components/interaction/seal_pressable.dart';
 export 'src/components/interaction/seal_tooltip.dart';
 
+// Overlay
+export 'src/components/overlay/seal_dialog.dart';
+
 // Layout
 export 'src/components/layout/seal_accordion.dart';
 export 'src/components/layout/seal_avatar.dart';
