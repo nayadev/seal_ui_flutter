@@ -30,17 +30,17 @@ enum _SealOutlineButtonVariant {
 ///
 /// ```dart
 /// SealOutlineButton.primary(
-///   label: 'Cancel',
+///   label: Text('Cancel'),
 ///   onPressed: () {},
 /// )
 ///
 /// SealOutlineButton.gradient(
-///   label: 'Explore',
+///   label: Text('Explore'),
 ///   onPressed: () {},
 /// )
 ///
 /// SealOutlineButton.custom(
-///   label: 'Retry',
+///   label: Text('Retry'),
 ///   color: Colors.red,
 ///   onPressed: () {},
 /// )
@@ -62,7 +62,7 @@ class SealOutlineButton extends StatelessWidget {
   /// Creates an outlined button with the **primary** brand color.
   const factory SealOutlineButton.primary({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -71,7 +71,7 @@ class SealOutlineButton extends StatelessWidget {
   /// Creates an outlined button with the **accent** color.
   const factory SealOutlineButton.accent({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -80,7 +80,7 @@ class SealOutlineButton extends StatelessWidget {
   /// Creates an outlined button with the **secondary accent** color.
   const factory SealOutlineButton.accentSecondary({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -89,7 +89,7 @@ class SealOutlineButton extends StatelessWidget {
   /// Creates an outlined button with the **primary gradient** border and text.
   const factory SealOutlineButton.gradient({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -98,7 +98,7 @@ class SealOutlineButton extends StatelessWidget {
   /// Creates an outlined button with the **accent gradient** border and text.
   const factory SealOutlineButton.accentGradient({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -109,7 +109,7 @@ class SealOutlineButton extends StatelessWidget {
   /// Exactly one of [color] or [gradient] must be provided.
   const factory SealOutlineButton.custom({
     Key? key,
-    required String label,
+    required Widget label,
     Color? color,
     LinearGradient? gradient,
     VoidCallback? onPressed,
@@ -117,8 +117,8 @@ class SealOutlineButton extends StatelessWidget {
     IconData? icon,
   }) = _CustomSealOutlineButton;
 
-  /// Button label text.
-  final String label;
+  /// Button label widget.
+  final Widget label;
 
   /// Callback when the button is tapped. If `null` the button is disabled.
   final VoidCallback? onPressed;
@@ -137,6 +137,9 @@ class SealOutlineButton extends StatelessWidget {
 
   /// Opacity applied to foreground when disabled.
   static const double _kDisabledOpacity = 0.4;
+
+  /// Opacity applied to the border color, matching shadcn's subtle border style.
+  static const double _kBorderOpacity = 0.5;
 
   @override
   Widget build(BuildContext context) {
@@ -168,6 +171,12 @@ class SealOutlineButton extends StatelessWidget {
         pressedForegroundColor: baseColor,
         backgroundColor: ColorX.transparent,
         hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
+        // ShaderMask applies the gradient over white, so the border must also
+        // be white so the gradient covers it uniformly.
+        decoration: ShadDecoration(
+          border: ShadBorder.all(color: baseColor.withValues(alpha: _kBorderOpacity)),
+          focusedBorder: ShadBorder.all(color: baseColor.withValues(alpha: _kBorderOpacity)),
+        ),
         leading: (!isLoading && icon != null)
             ? Icon(
                 icon,
@@ -215,6 +224,10 @@ class SealOutlineButton extends StatelessWidget {
       pressedForegroundColor: foregroundColor,
       backgroundColor: ColorX.transparent,
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
+      decoration: ShadDecoration(
+        border: ShadBorder.all(color: foregroundColor.withValues(alpha: _kBorderOpacity)),
+        focusedBorder: ShadBorder.all(color: foregroundColor.withValues(alpha: _kBorderOpacity)),
+      ),
       leading: (!isLoading && icon != null)
           ? Icon(
               icon,
@@ -232,9 +245,7 @@ class SealOutlineButton extends StatelessWidget {
     Color foreground,
     TypographyTokens typography,
   ) {
-    final content = Text(label);
-
-    if (!isLoading) return content;
+    if (!isLoading) return label;
 
     final style = typography.small;
     final lineHeight =
@@ -248,7 +259,7 @@ class SealOutlineButton extends StatelessWidget {
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
-          child: content,
+          child: label,
         ),
         SealBouncingDots(color: foreground, height: lineHeight),
       ],

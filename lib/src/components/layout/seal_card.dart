@@ -18,7 +18,7 @@ import '../../../seal_ui.dart';
 ///   footer: Row(
 ///     mainAxisAlignment: MainAxisAlignment.end,
 ///     children: [
-///       SealFilledButton.primary(label: 'OK', onPressed: () {}),
+///       SealFilledButton.primary(label: Text('OK'), onPressed: () {}),
 ///     ],
 ///   ),
 /// )

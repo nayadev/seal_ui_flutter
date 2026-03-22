@@ -104,7 +104,7 @@ void main() {
         ),
       );
 
-      SealToast.info(message: 'Info message').show(ctx);
+      SealToast.info(message: const Text('Info message')).show(ctx);
       await tester.pump();
 
       expect(find.text('Info message'), findsOneWidget);
@@ -121,7 +121,7 @@ void main() {
         ),
       );
 
-      SealToast.success(message: 'Saved!').show(ctx);
+      SealToast.success(message: const Text('Saved!')).show(ctx);
       await tester.pump();
 
       expect(find.text('Saved!'), findsOneWidget);
@@ -138,7 +138,7 @@ void main() {
         ),
       );
 
-      SealToast.warning(message: 'Be careful').show(ctx);
+      SealToast.warning(message: const Text('Be careful')).show(ctx);
       await tester.pump();
 
       expect(find.text('Be careful'), findsOneWidget);
@@ -155,7 +155,7 @@ void main() {
         ),
       );
 
-      SealToast.error(message: 'Something went wrong').show(ctx);
+      SealToast.error(message: const Text('Something went wrong')).show(ctx);
       await tester.pump();
 
       expect(find.text('Something went wrong'), findsOneWidget);
@@ -173,8 +173,8 @@ void main() {
       );
 
       SealToast.success(
-        message: 'Changes saved.',
-        title: 'Success',
+        message: const Text('Changes saved.'),
+        title: const Text('Success'),
       ).show(ctx);
       await tester.pump();
 
@@ -198,8 +198,8 @@ void main() {
       );
 
       SealToast.error(
-        message: 'Upload failed.',
-        actionLabel: 'Retry',
+        message: const Text('Upload failed.'),
+        actionLabel: const Text('Retry'),
         onAction: () => actionTapped = true,
       ).show(ctx);
       await tester.pump();
@@ -223,7 +223,7 @@ void main() {
         ),
       );
 
-      SealToast.info(message: 'No action', onAction: () {}).show(ctx);
+      SealToast.info(message: const Text('No action'), onAction: () {}).show(ctx);
       await tester.pump();
 
       expect(find.text('Retry'), findsNothing);
@@ -243,8 +243,8 @@ void main() {
       );
 
       SealToast.info(
-        message: 'No action',
-        actionLabel: 'Dismiss',
+        message: const Text('No action'),
+        actionLabel: const Text('Dismiss'),
       ).show(ctx);
       await tester.pump();
 
@@ -265,7 +265,7 @@ void main() {
         ),
       );
 
-      SealToast.info(message: 'Overlay toast').show(ctx);
+      SealToast.info(message: const Text('Overlay toast')).show(ctx);
       await tester.pump();
 
       expect(find.text('Overlay toast'), findsOneWidget);

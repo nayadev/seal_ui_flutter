@@ -57,12 +57,12 @@ WidgetbookFolder _buildCardsFolder() {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SealTextButton.primary(
-                        label: 'Cancel',
+                        label: const Text('Cancel'),
                         onPressed: () {},
                       ),
                       context.dimension.xs.horizontalGap,
                       SealFilledButton.primary(
-                        label: 'Confirm',
+                        label: const Text('Confirm'),
                         onPressed: () {},
                       ),
                     ],

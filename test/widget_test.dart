@@ -25,9 +25,9 @@ void main() {
     );
     await tester.pump();
 
-    expect(captured.colors, isA<DarkColorPalette>());
+    expect(captured.colors, isA<NebulaColorPalette>());
     expect(captured.typography, isA<DefaultTypography>());
-    expect(captured.gradients, isA<DarkGradients>());
+    expect(captured.gradients, isA<NebulaGradients>());
   });
 
   testWidgets('SealTheme falls back to dark tokens without ancestor', (
@@ -47,7 +47,7 @@ void main() {
     );
     await tester.pump();
 
-    expect(captured.colors, isA<DarkColorPalette>());
+    expect(captured.colors, isA<NebulaColorPalette>());
   });
 
   test('SealDimension scales values by factor', () {

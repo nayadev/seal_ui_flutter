@@ -27,10 +27,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealFilledButton.primary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Get Started',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -44,10 +44,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealFilledButton.accent(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Continue',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -61,10 +61,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealFilledButton.accentSecondary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Confirm',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -78,10 +78,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealFilledButton.gradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Launch',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -95,10 +95,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealFilledButton.accentGradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Boost',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -112,10 +112,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'With Icon',
             builder: (context) => SealFilledButton.gradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Explore',
-              ),
+              )),
               icon: LucideIcons.rocket,
               onPressed: () {},
             ),
@@ -123,10 +123,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealFilledButton.custom(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Delete',
-              ),
+              )),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
                 options: [
@@ -157,10 +157,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealOutlineButton.primary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Cancel',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -174,10 +174,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealOutlineButton.accent(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Details',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -191,10 +191,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealOutlineButton.accentSecondary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Info',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -208,10 +208,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealOutlineButton.gradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Explore',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -225,10 +225,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealOutlineButton.accentGradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Discover',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -242,10 +242,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'With Icon',
             builder: (context) => SealOutlineButton.primary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Favorite',
-              ),
+              )),
               icon: LucideIcons.star,
               onPressed: () {},
             ),
@@ -253,10 +253,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealOutlineButton.custom(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Retry',
-              ),
+              )),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
                 options: [
@@ -287,10 +287,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealTextButton.primary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Learn more',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -304,10 +304,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealTextButton.accent(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Details',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -321,10 +321,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealTextButton.accentSecondary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Info',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -338,10 +338,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealTextButton.gradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Discover',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -355,10 +355,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealTextButton.accentGradient(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Explore',
-              ),
+              )),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -372,10 +372,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'With Icon',
             builder: (context) => SealTextButton.primary(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Skip',
-              ),
+              )),
               icon: LucideIcons.arrowRight,
               onPressed: () {},
             ),
@@ -383,10 +383,10 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealTextButton.custom(
-              label: context.knobs.string(
+              label: Text(context.knobs.string(
                 label: 'Label',
                 initialValue: 'Retry',
-              ),
+              )),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
                 options: [
@@ -818,10 +818,10 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Info',
               );
               return SealFilledButton.primary(
-                label: 'Show Info Toast',
+                label: const Text('Show Info Toast'),
                 onPressed: () => SealToast.info(
-                  message: message,
-                  title: title.isEmpty ? null : title,
+                  message: Text(message),
+                  title: title.isEmpty ? null : Text(title),
                 ).show(context),
               );
             },
@@ -838,10 +838,10 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Success',
               );
               return SealFilledButton.accent(
-                label: 'Show Success Toast',
+                label: const Text('Show Success Toast'),
                 onPressed: () => SealToast.success(
-                  message: message,
-                  title: title.isEmpty ? null : title,
+                  message: Text(message),
+                  title: title.isEmpty ? null : Text(title),
                 ).show(context),
               );
             },
@@ -858,10 +858,10 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: 'Warning',
               );
               return SealFilledButton.primary(
-                label: 'Show Warning Toast',
+                label: const Text('Show Warning Toast'),
                 onPressed: () => SealToast.warning(
-                  message: message,
-                  title: title.isEmpty ? null : title,
+                  message: Text(message),
+                  title: title.isEmpty ? null : Text(title),
                 ).show(context),
               );
             },
@@ -882,11 +882,11 @@ WidgetbookFolder _buildFeedbackFolder() {
                 initialValue: false,
               );
               return SealFilledButton.primary(
-                label: 'Show Error Toast',
+                label: const Text('Show Error Toast'),
                 onPressed: () => SealToast.error(
-                  message: message,
-                  title: title.isEmpty ? null : title,
-                  actionLabel: showAction ? 'Retry' : null,
+                  message: Text(message),
+                  title: title.isEmpty ? null : Text(title),
+                  actionLabel: showAction ? const Text('Retry') : null,
                   onAction: showAction ? () {} : null,
                 ).show(context),
               );

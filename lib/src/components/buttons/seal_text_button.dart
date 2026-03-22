@@ -31,18 +31,18 @@ enum _SealTextButtonVariant {
 ///
 /// ```dart
 /// SealTextButton.primary(
-///   label: 'Learn more',
+///   label: Text('Learn more'),
 ///   onPressed: () {},
 /// )
 ///
 /// SealTextButton.gradient(
-///   label: 'Discover',
+///   label: Text('Discover'),
 ///   onPressed: () {},
 /// )
 ///
 /// SealTextButton.custom(
-///   label: 'Retry',
-///   color: Colors.red,
+///   label: Text('Retry'),
+///   color: ColorX.red,
 ///   onPressed: () {},
 /// )
 /// ```
@@ -64,7 +64,7 @@ class SealTextButton extends StatelessWidget {
   /// Creates a text button with the **primary** brand color.
   const factory SealTextButton.primary({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -74,7 +74,7 @@ class SealTextButton extends StatelessWidget {
   /// Creates a text button with the **accent** color.
   const factory SealTextButton.accent({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -84,7 +84,7 @@ class SealTextButton extends StatelessWidget {
   /// Creates a text button with the **secondary accent** color.
   const factory SealTextButton.accentSecondary({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -94,7 +94,7 @@ class SealTextButton extends StatelessWidget {
   /// Creates a text button with the **primary gradient** text and underline.
   const factory SealTextButton.gradient({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -104,7 +104,7 @@ class SealTextButton extends StatelessWidget {
   /// Creates a text button with the **accent gradient** text and underline.
   const factory SealTextButton.accentGradient({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -116,7 +116,7 @@ class SealTextButton extends StatelessWidget {
   /// Exactly one of [color] or [gradient] must be provided.
   const factory SealTextButton.custom({
     Key? key,
-    required String label,
+    required Widget label,
     Color? color,
     LinearGradient? gradient,
     VoidCallback? onPressed,
@@ -125,8 +125,8 @@ class SealTextButton extends StatelessWidget {
     double iconSize,
   }) = _CustomSealTextButton;
 
-  /// Button label text.
-  final String label;
+  /// Button label widget.
+  final Widget label;
 
   /// Callback when the button is tapped. If `null` the button is disabled.
   final VoidCallback? onPressed;
@@ -234,9 +234,7 @@ class SealTextButton extends StatelessWidget {
     Color foreground,
     TypographyTokens typography,
   ) {
-    // The underline is applied via ShadButton's textDecoration parameter,
-    // so _buildContent only needs to return the text or loading indicator.
-    if (!isLoading) return Text(label);
+    if (!isLoading) return label;
 
     final style = typography.small;
     final lineHeight =
@@ -250,7 +248,7 @@ class SealTextButton extends StatelessWidget {
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
-          child: Text(label),
+          child: label,
         ),
         SealBouncingDots(color: foreground, height: lineHeight),
       ],

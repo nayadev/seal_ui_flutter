@@ -17,7 +17,7 @@ void main() {
   group('SealTextButton.primary', () {
     testWidgets('renders label text', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.primary(label: 'Learn more', onPressed: () {})),
+        _wrap(SealTextButton.primary(label: Text('Learn more'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -29,7 +29,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.primary(
-            label: 'Tap Me',
+            label: Text('Tap Me'),
             onPressed: () => tapped = true,
           ),
         ),
@@ -44,7 +44,7 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
-          const SealTextButton.primary(label: 'Disabled', onPressed: null),
+          const SealTextButton.primary(label: Text('Disabled'), onPressed: null),
         ),
       );
       await tester.pump();
@@ -59,7 +59,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealTextButton.primary(
-            label: 'Loading',
+            label: Text('Loading'),
             isLoading: true,
             onPressed: null,
           ),
@@ -75,7 +75,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.primary(
-            label: 'Skip',
+            label: Text('Skip'),
             icon: LucideIcons.arrowRight,
             onPressed: () {},
           ),
@@ -89,7 +89,7 @@ void main() {
 
     testWidgets('uses TextButton internally', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.primary(label: 'Test', onPressed: () {})),
+        _wrap(SealTextButton.primary(label: Text('Test'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -100,7 +100,7 @@ void main() {
   group('SealTextButton.accent', () {
     testWidgets('renders label text', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.accent(label: 'Details', onPressed: () {})),
+        _wrap(SealTextButton.accent(label: Text('Details'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -111,7 +111,7 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
-          SealTextButton.accent(label: 'Go', onPressed: () => tapped = true),
+          SealTextButton.accent(label: Text('Go'), onPressed: () => tapped = true),
         ),
       );
       await tester.pump();
@@ -123,7 +123,7 @@ void main() {
     testWidgets('does not call onPressed when disabled', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
-        _wrap(const SealTextButton.accent(label: 'Off', onPressed: null)),
+        _wrap(const SealTextButton.accent(label: Text('Off'), onPressed: null)),
       );
       await tester.pump();
 
@@ -133,7 +133,7 @@ void main() {
 
     testWidgets('uses TextButton internally', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.accent(label: 'A', onPressed: () {})),
+        _wrap(SealTextButton.accent(label: Text('A'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -145,7 +145,7 @@ void main() {
     testWidgets('renders label text', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealTextButton.accentSecondary(label: 'Info', onPressed: () {}),
+          SealTextButton.accentSecondary(label: Text('Info'), onPressed: () {}),
         ),
       );
       await tester.pump();
@@ -158,7 +158,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.accentSecondary(
-            label: 'Go',
+            label: Text('Go'),
             onPressed: () => tapped = true,
           ),
         ),
@@ -173,7 +173,7 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
-          const SealTextButton.accentSecondary(label: 'Off', onPressed: null),
+          const SealTextButton.accentSecondary(label: Text('Off'), onPressed: null),
         ),
       );
       await tester.pump();
@@ -184,7 +184,7 @@ void main() {
 
     testWidgets('uses TextButton internally', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.accentSecondary(label: 'A', onPressed: () {})),
+        _wrap(SealTextButton.accentSecondary(label: Text('A'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -195,7 +195,7 @@ void main() {
   group('SealTextButton.gradient', () {
     testWidgets('renders label text', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.gradient(label: 'Discover', onPressed: () {})),
+        _wrap(SealTextButton.gradient(label: Text('Discover'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -207,7 +207,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.gradient(
-            label: 'Go',
+            label: Text('Go'),
             onPressed: () => tapped = true,
           ),
         ),
@@ -221,7 +221,7 @@ void main() {
     testWidgets('does not call onPressed when disabled', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
-        _wrap(const SealTextButton.gradient(label: 'Off', onPressed: null)),
+        _wrap(const SealTextButton.gradient(label: Text('Off'), onPressed: null)),
       );
       await tester.pump();
 
@@ -231,7 +231,7 @@ void main() {
 
     testWidgets('wraps with ShaderMask', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.gradient(label: 'G', onPressed: () {})),
+        _wrap(SealTextButton.gradient(label: Text('G'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -243,7 +243,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.gradient(
-            label: 'Nav',
+            label: Text('Nav'),
             icon: LucideIcons.compass,
             onPressed: () {},
           ),
@@ -261,7 +261,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealTextButton.gradient(
-            label: 'Wait',
+            label: Text('Wait'),
             isLoading: true,
             onPressed: null,
           ),
@@ -277,7 +277,7 @@ void main() {
   group('SealTextButton.accentGradient', () {
     testWidgets('renders label text', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.accentGradient(label: 'More', onPressed: () {})),
+        _wrap(SealTextButton.accentGradient(label: Text('More'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -289,7 +289,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.accentGradient(
-            label: 'Go',
+            label: Text('Go'),
             onPressed: () => tapped = true,
           ),
         ),
@@ -304,7 +304,7 @@ void main() {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
-          const SealTextButton.accentGradient(label: 'Off', onPressed: null),
+          const SealTextButton.accentGradient(label: Text('Off'), onPressed: null),
         ),
       );
       await tester.pump();
@@ -315,7 +315,7 @@ void main() {
 
     testWidgets('wraps with ShaderMask', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealTextButton.accentGradient(label: 'AG', onPressed: () {})),
+        _wrap(SealTextButton.accentGradient(label: Text('AG'), onPressed: () {})),
       );
       await tester.pump();
 
@@ -327,7 +327,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTextButton.accentGradient(
-            label: 'Nav',
+            label: Text('Nav'),
             icon: LucideIcons.star,
             onPressed: () {},
           ),
@@ -345,7 +345,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealTextButton.accentGradient(
-            label: 'Wait',
+            label: Text('Wait'),
             isLoading: true,
             onPressed: null,
           ),

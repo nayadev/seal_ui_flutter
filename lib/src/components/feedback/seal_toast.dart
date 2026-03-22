@@ -27,82 +27,118 @@ enum SealToastVariant {
 /// Call [show] with a [BuildContext] that has a [ShadToaster] ancestor —
 /// [SealThemeScope] injects one automatically.
 ///
-/// Use the named constructors to choose a semantic variant:
+/// Use the named constructors to choose a semantic variant or provide a fully
+/// custom appearance:
 ///
 /// - [SealToast.info] — informational message.
 /// - [SealToast.success] — success confirmation.
 /// - [SealToast.warning] — non-critical warning.
 /// - [SealToast.error] — error or failure.
+/// - [SealToast.custom] — arbitrary color and optional icon.
 ///
 /// ```dart
-/// SealToast.success(message: 'Profile saved!').show(context);
+/// SealToast.success(message: Text('Profile saved!')).show(context);
 ///
 /// SealToast.error(
-///   message: 'Upload failed.',
-///   title: 'Error',
-///   actionLabel: 'Retry',
+///   message: Text('Upload failed.'),
+///   title: Text('Error'),
+///   actionLabel: Text('Retry'),
 ///   onAction: _retryUpload,
+/// ).show(context);
+///
+/// SealToast.custom(
+///   message: Text('Synced 42 items.'),
+///   icon: LucideIcons.refreshCw,
+///   color: Color(0xFF00BCD4),
 /// ).show(context);
 /// ```
 class SealToast {
   const SealToast._({
-    required SealToastVariant variant,
+    SealToastVariant? variant,
     required this.message,
     this.title,
     this.duration = _kDefaultDuration,
     this.alignment = Alignment.topCenter,
     this.actionLabel,
     this.onAction,
-  }) : _variant = variant;
+    IconData? icon,
+    Color? color,
+  })  : _variant = variant,
+        _icon = icon,
+        _customColor = color;
 
   /// Default display duration when none is specified.
   static const Duration _kDefaultDuration = Duration(seconds: 5);
 
   /// Creates an **informational** toast.
   const factory SealToast.info({
-    required String message,
-    String? title,
+    required Widget message,
+    Widget? title,
     Duration duration,
     Alignment? alignment,
-    String? actionLabel,
+    Widget? actionLabel,
     VoidCallback? onAction,
   }) = _InfoSealToast;
 
   /// Creates a **success** toast.
   const factory SealToast.success({
-    required String message,
-    String? title,
+    required Widget message,
+    Widget? title,
     Duration duration,
     Alignment? alignment,
-    String? actionLabel,
+    Widget? actionLabel,
     VoidCallback? onAction,
   }) = _SuccessSealToast;
 
   /// Creates a **warning** toast.
   const factory SealToast.warning({
-    required String message,
-    String? title,
+    required Widget message,
+    Widget? title,
     Duration duration,
     Alignment? alignment,
-    String? actionLabel,
+    Widget? actionLabel,
     VoidCallback? onAction,
   }) = _WarningSealToast;
 
   /// Creates an **error** toast.
   const factory SealToast.error({
-    required String message,
-    String? title,
+    required Widget message,
+    Widget? title,
     Duration duration,
     Alignment? alignment,
-    String? actionLabel,
+    Widget? actionLabel,
     VoidCallback? onAction,
   }) = _ErrorSealToast;
 
-  /// The primary message displayed in the toast.
-  final String message;
+  /// Creates a **custom** toast with an arbitrary accent [color] and an
+  /// optional [icon].
+  ///
+  /// When [icon] is omitted, no icon is shown. When [color] is omitted, the
+  /// theme's primary color is used.
+  ///
+  /// ```dart
+  /// SealToast.custom(
+  ///   message: Text('All changes saved.'),
+  ///   icon: LucideIcons.save,
+  ///   color: Color(0xFF4CAF50),
+  /// ).show(context);
+  /// ```
+  const factory SealToast.custom({
+    required Widget message,
+    Widget? title,
+    IconData? icon,
+    Color? color,
+    Duration duration,
+    Alignment? alignment,
+    Widget? actionLabel,
+    VoidCallback? onAction,
+  }) = _CustomSealToast;
 
-  /// Optional bold title shown above [message].
-  final String? title;
+  /// The primary message widget displayed in the toast body.
+  final Widget message;
+
+  /// Optional title widget shown above [message].
+  final Widget? title;
 
   /// How long the toast remains visible. Defaults to 5 seconds.
   final Duration duration;
@@ -112,17 +148,19 @@ class SealToast {
   /// Defaults to [Alignment.topCenter].
   final Alignment? alignment;
 
-  /// Label for the optional action button.
+  /// Label widget for the optional action button.
   ///
   /// Requires [onAction] to be non-null for the button to appear.
-  final String? actionLabel;
+  final Widget? actionLabel;
 
   /// Callback invoked when the action button is tapped.
   ///
   /// Requires [actionLabel] to be non-null for the button to appear.
   final VoidCallback? onAction;
 
-  final SealToastVariant _variant;
+  final SealToastVariant? _variant;
+  final IconData? _icon;
+  final Color? _customColor;
 
   /// Displays this toast in the widget tree.
   ///
@@ -134,8 +172,11 @@ class SealToast {
     final typo = tokens.typography;
     final dimension = context.dimension;
 
-    final accentColor = _accentColorFor(_variant, colors);
-    final icon = _iconFor(_variant);
+    final variant = _variant;
+    final accentColor = _customColor ??
+        (variant != null ? _accentColorFor(variant, colors) : colors.primary);
+    final resolvedIcon =
+        _icon ?? (variant != null ? _iconFor(variant) : null);
 
     final hasAction = actionLabel != null && onAction != null;
 
@@ -150,19 +191,21 @@ class SealToast {
           fontWeight: FontWeight.w600,
         ),
         descriptionStyle: typo.small.copyWith(color: colors.textSecondary),
-        // The icon is embedded in the title row so it appears inline with text.
+        // Icon is embedded in the title row to appear inline with the text.
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: accentColor, size: dimension.scaled(14)),
-            SizedBox(width: dimension.xxs),
-            Text(title ?? message),
+            if (resolvedIcon != null) ...[
+              Icon(resolvedIcon, color: accentColor, size: dimension.scaled(16)),
+              SizedBox(width: dimension.xxs),
+            ],
+            title ?? message,
           ],
         ),
         description: title != null
             ? Padding(
                 padding: EdgeInsets.only(top: dimension.xxs),
-                child: Text(message),
+                child: message,
               )
             : null,
         action: hasAction
@@ -177,11 +220,11 @@ class SealToast {
   }
 
   static IconData _iconFor(SealToastVariant variant) => switch (variant) {
-    SealToastVariant.info => LucideIcons.info,
-    SealToastVariant.success => LucideIcons.circleCheck,
-    SealToastVariant.warning => LucideIcons.triangleAlert,
-    SealToastVariant.error => LucideIcons.circleX,
-  };
+        SealToastVariant.info => LucideIcons.info,
+        SealToastVariant.success => LucideIcons.circleCheck,
+        SealToastVariant.warning => LucideIcons.triangleAlert,
+        SealToastVariant.error => LucideIcons.circleX,
+      };
 
   static Color _accentColorFor(SealToastVariant variant, ColorPalette colors) =>
       switch (variant) {
@@ -236,4 +279,17 @@ class _ErrorSealToast extends SealToast {
     super.actionLabel,
     super.onAction,
   }) : super._(variant: SealToastVariant.error);
+}
+
+class _CustomSealToast extends SealToast {
+  const _CustomSealToast({
+    required super.message,
+    super.title,
+    super.icon,
+    super.color,
+    super.duration,
+    super.alignment,
+    super.actionLabel,
+    super.onAction,
+  }) : super._(variant: null);
 }

@@ -58,6 +58,9 @@ class SealOutlineIconButton extends StatelessWidget {
   /// Opacity applied to the button when disabled.
   static const double _kDisabledOpacity = 0.4;
 
+  /// Opacity applied to the border color, matching shadcn's subtle border style.
+  static const double _kBorderOpacity = 0.5;
+
   const SealOutlineIconButton._({
     super.key,
     required this.icon,
@@ -184,7 +187,7 @@ class SealOutlineIconButton extends StatelessWidget {
         decoration: ShadDecoration(
           border: ShadBorder.all(
             radius: SealRadius.borderRadiusSm,
-            color: baseColor,
+            color: baseColor.withValues(alpha: _kBorderOpacity),
             width: 1,
           ),
         ),
@@ -238,7 +241,7 @@ class SealOutlineIconButton extends StatelessWidget {
       decoration: ShadDecoration(
         border: ShadBorder.all(
           radius: SealRadius.borderRadiusSm,
-          color: foregroundColor,
+          color: foregroundColor.withValues(alpha: _kBorderOpacity),
           width: 1,
         ),
       ),

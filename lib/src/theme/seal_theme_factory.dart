@@ -2,19 +2,16 @@ import 'dart:ui' show Brightness;
 
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../themes/nebula/nebula_theme_factory.dart';
 import '../tokens/base/seal_radius.dart';
-import '../tokens/implementations/dark_color_palette.dart';
-import '../tokens/implementations/dark_gradients.dart';
-import '../tokens/implementations/default_typography.dart';
-import '../tokens/implementations/light_color_palette.dart';
-import '../tokens/implementations/light_gradients.dart';
 import 'seal_theme_tokens.dart';
 
 /// Factory for creating [SealThemeTokens] and [ShadThemeData] for the
-/// built-in Seal UI dark and light token sets.
+/// built-in Seal UI token sets.
 ///
-/// Pass an optional [scaleFactor] to scale typography proportionally —
-/// useful together with [SealResponsive.scaleOf]:
+/// The default theme is **Nebula** — dark, space-inspired surfaces with
+/// vibrant purple accents. Pass an optional [scaleFactor] to scale typography
+/// proportionally, useful together with [SealResponsive.scaleOf]:
 ///
 /// ```dart
 /// final scale = SealResponsive.scaleOf(context);
@@ -23,29 +20,20 @@ import 'seal_theme_tokens.dart';
 abstract final class SealThemeFactory {
   // ── Token sets ───────────────────────────────────────────────────────
 
-  /// Returns the dark Seal UI token set (primary experience).
+  /// Returns the default dark token set (Nebula theme).
   ///
   /// [scaleFactor] adjusts typography font sizes proportionally (default 1.0).
-  static SealThemeTokens darkTokens({double scaleFactor = 1.0}) {
-    return SealThemeTokens(
-      colors: const DarkColorPalette(),
-      typography: DefaultTypography(scaleFactor: scaleFactor),
-      gradients: const DarkGradients(),
-      brightness: Brightness.dark,
-    );
-  }
+  static SealThemeTokens darkTokens({double scaleFactor = 1.0}) =>
+      NebulaThemeFactory.tokens(scaleFactor: scaleFactor);
 
-  /// Returns the light Seal UI token set.
+  /// Returns the default light token set (Nebula light theme).
   ///
   /// [scaleFactor] adjusts typography font sizes proportionally (default 1.0).
-  static SealThemeTokens lightTokens({double scaleFactor = 1.0}) {
-    return SealThemeTokens(
-      colors: const LightColorPalette(),
-      typography: DefaultTypography(scaleFactor: scaleFactor),
-      gradients: const LightGradients(),
-      brightness: Brightness.light,
-    );
-  }
+  static SealThemeTokens lightTokens({double scaleFactor = 1.0}) =>
+      NebulaThemeFactory.tokens(
+        scaleFactor: scaleFactor,
+        brightness: Brightness.light,
+      );
 
   // ── Shad theme builder ────────────────────────────────────────────────
 

@@ -23,32 +23,32 @@ class FeedbackSection extends StatelessWidget {
           runSpacing: dimension.sm,
           children: [
             SealFilledButton.primary(
-              label: 'Info',
+              label: const Text('Info'),
               onPressed: () => SealToast.info(
-                message: 'This is an informational message.',
-                title: 'Info',
+                message: const Text('This is an informational message.'),
+                title: const Text('Info'),
               ).show(context),
             ),
             SealFilledButton.accent(
-              label: 'Success',
+              label: const Text('Success'),
               onPressed: () => SealToast.success(
-                message: 'Your changes have been saved.',
-                title: 'Success',
+                message: const Text('Your changes have been saved.'),
+                title: const Text('Success'),
               ).show(context),
             ),
             SealFilledButton.primary(
-              label: 'Warning',
+              label: const Text('Warning'),
               onPressed: () => SealToast.warning(
-                message: 'This action might have side effects.',
-                title: 'Warning',
+                message: const Text('This action might have side effects.'),
+                title: const Text('Warning'),
               ).show(context),
             ),
             SealFilledButton.primary(
-              label: 'Error + action',
+              label: const Text('Error + action'),
               onPressed: () => SealToast.error(
-                message: 'Something went wrong. Please try again.',
-                title: 'Error',
-                actionLabel: 'Retry',
+                message: const Text('Something went wrong. Please try again.'),
+                title: const Text('Error'),
+                actionLabel: const Text('Retry'),
                 onAction: () {},
               ).show(context),
             ),

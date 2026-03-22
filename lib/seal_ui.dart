@@ -41,11 +41,7 @@ export 'src/tokens/base/seal_dimension.dart';
 export 'src/tokens/base/seal_state_color.dart';
 
 // ── Tokens · Implementations ───────────────────────────────────────────────
-export 'src/tokens/implementations/dark_color_palette.dart';
-export 'src/tokens/implementations/dark_gradients.dart';
 export 'src/tokens/implementations/default_typography.dart';
-export 'src/tokens/implementations/light_color_palette.dart';
-export 'src/tokens/implementations/light_gradients.dart';
 
 // ── Theme ──────────────────────────────────────────────────────────────────
 export 'src/theme/seal_theme.dart';

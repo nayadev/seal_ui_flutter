@@ -29,9 +29,9 @@ class CardsSection extends StatelessWidget {
           footer: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SealOutlineButton.gradient(label: 'Cancel', onPressed: () {}),
+              SealOutlineButton.gradient(label: const Text('Cancel'), onPressed: () {}),
               dimension.sm.horizontalGap,
-              SealFilledButton.gradient(label: 'Confirm', onPressed: () {}),
+              SealFilledButton.gradient(label: const Text('Confirm'), onPressed: () {}),
             ],
           ),
         ),

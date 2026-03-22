@@ -183,6 +183,7 @@ class _ThemeSelector extends StatelessWidget {
     final colors = context.themeTokens.colors;
 
     return ShadSelect<SealThemeOption>(
+      key: ValueKey(activeTheme),
       initialValue: activeTheme,
       onChanged: (option) {
         if (option != null) onThemeChanged(option);
@@ -193,6 +194,10 @@ class _ThemeSelector extends StatelessWidget {
       ),
       options: SealThemeOption.values.map(
         (option) => ShadOption(value: option, child: Text(option.label)),
+      ),
+      decoration: ShadDecoration(
+        border: ShadBorder.all(color: colors.border),
+        focusedBorder: ShadBorder.all(color: colors.border),
       ),
     );
   }

@@ -41,7 +41,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w800,
     letterSpacing: -0.4,
     height: 1.0,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   @override
   TextStyle get headline => GoogleFonts.inter(
@@ -49,7 +49,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w800,
     letterSpacing: -0.4,
     height: 40 / 36,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   @override
   TextStyle get title => GoogleFonts.inter(
@@ -57,7 +57,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w600,
     letterSpacing: -0.4,
     height: 32 / 24,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   @override
   TextStyle get subtitle => GoogleFonts.inter(
@@ -65,7 +65,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w600,
     letterSpacing: -0.4,
     height: 28 / 20,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   @override
   TextStyle get body => GoogleFonts.inter(
@@ -73,7 +73,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
     height: 28 / 16,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   @override
   TextStyle get small => GoogleFonts.inter(
@@ -81,7 +81,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w500,
     letterSpacing: 0,
     height: 1.0,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   @override
   TextStyle get caption => GoogleFonts.inter(
@@ -89,7 +89,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
     height: 20 / 14,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   // ── shadcn-specific overrides ─────────────────────────────────────────────
   // h2 lives between headline (36) and title (24); it gets its own explicit
@@ -101,7 +101,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w600,
     letterSpacing: -0.4,
     height: 36 / 30,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   // large (18 px) sits between subtitle (20) and body (16); explicit override.
   @override
@@ -110,7 +110,7 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w600,
     letterSpacing: 0,
     height: 28 / 18,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 
   // lead (20 px, w400) differs from subtitle (20 px, w600) in weight.
   @override
@@ -119,5 +119,5 @@ class DefaultTypography extends TypographyTokens {
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
     height: 28 / 20,
-  );
+  ).copyWith(leadingDistribution: TextLeadingDistribution.even);
 }

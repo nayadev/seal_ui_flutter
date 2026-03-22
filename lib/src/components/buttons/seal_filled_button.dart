@@ -30,17 +30,17 @@ enum _SealFilledButtonVariant {
 ///
 /// ```dart
 /// SealFilledButton.primary(
-///   label: 'Get Started',
+///   label: Text('Get Started'),
 ///   onPressed: () {},
 /// )
 ///
 /// SealFilledButton.gradient(
-///   label: 'Launch',
+///   label: Text('Launch'),
 ///   onPressed: () {},
 /// )
 ///
 /// SealFilledButton.custom(
-///   label: 'Confirm',
+///   label: Text('Confirm'),
 ///   color: Colors.red,
 ///   onPressed: () {},
 /// )
@@ -65,7 +65,7 @@ class SealFilledButton extends StatelessWidget {
   /// Creates a filled button with the **primary** brand color.
   const factory SealFilledButton.primary({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -74,7 +74,7 @@ class SealFilledButton extends StatelessWidget {
   /// Creates a filled button with the **accent** color.
   const factory SealFilledButton.accent({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -83,7 +83,7 @@ class SealFilledButton extends StatelessWidget {
   /// Creates a filled button with the **secondary accent** color.
   const factory SealFilledButton.accentSecondary({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -92,7 +92,7 @@ class SealFilledButton extends StatelessWidget {
   /// Creates a filled button with the **primary gradient** background.
   const factory SealFilledButton.gradient({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -101,7 +101,7 @@ class SealFilledButton extends StatelessWidget {
   /// Creates a filled button with the **accent gradient** background.
   const factory SealFilledButton.accentGradient({
     Key? key,
-    required String label,
+    required Widget label,
     VoidCallback? onPressed,
     bool isLoading,
     IconData? icon,
@@ -112,7 +112,7 @@ class SealFilledButton extends StatelessWidget {
   /// Exactly one of [color] or [gradient] must be provided.
   const factory SealFilledButton.custom({
     Key? key,
-    required String label,
+    required Widget label,
     Color? color,
     LinearGradient? gradient,
     VoidCallback? onPressed,
@@ -120,8 +120,8 @@ class SealFilledButton extends StatelessWidget {
     IconData? icon,
   }) = _CustomSealFilledButton;
 
-  /// Button label text.
-  final String label;
+  /// Button label widget.
+  final Widget label;
 
   /// Callback when the button is tapped. If `null` the button is disabled.
   final VoidCallback? onPressed;
@@ -234,9 +234,7 @@ class SealFilledButton extends StatelessWidget {
     Color textColor,
     TypographyTokens typography,
   ) {
-    final content = Text(label);
-
-    if (!isLoading) return content;
+    if (!isLoading) return label;
 
     final style = typography.small;
     final lineHeight =
@@ -250,7 +248,7 @@ class SealFilledButton extends StatelessWidget {
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
-          child: content,
+          child: label,
         ),
         SealBouncingDots(color: textColor, height: lineHeight),
       ],
