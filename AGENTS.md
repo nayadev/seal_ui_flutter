@@ -123,6 +123,7 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 | `ShadContextMenuRegion` / `ShadContextMenuItem` | `SealContextMenuRegion` / `SealContextMenuItem` (`.inset`) — exports `SealContextMenuController` typedef |
 | `ShadMenubar` / `ShadMenubarItem` | `SealMenubar` / `SealMenubarItem` — exports `SealMenubarController` typedef |
 | `ShadResizablePanelGroup` / `ShadResizablePanel` | `SealResizablePanelGroup` / `SealResizablePanel` — exports `SealResizableController` typedef |
+| `ShadSonner` | `SealSonner` — show via `showSealSonner(context, title:, description:)` |
 | `ShadInputOTP` / `ShadInputOTPGroup` / `ShadInputOTPSlot` | `SealInputOTP` / `SealInputOTPGroup` / `SealInputOTPSlot` |
 | `ShadBreadcrumb` / `ShadBreadcrumbLink` / `ShadBreadcrumbSeparator` / `ShadBreadcrumbEllipsis` / `ShadBreadcrumbDropdown` / `ShadBreadcrumbDropMenuItem` | `SealBreadcrumb` / `SealBreadcrumbLink` / `SealBreadcrumbSeparator` / `SealBreadcrumbEllipsis` / `SealBreadcrumbDropdown` / `SealBreadcrumbDropMenuItem` |
 | `ShadPopover` / `ShadPopoverController` | `SealPopover` / `SealPopoverController` |

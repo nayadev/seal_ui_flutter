@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases feedback components: [SealAlert], [SealLoader], [SealProgress],
-/// and [SealToast].
+/// [SealSonner], and [SealToast].
 class FeedbackSection extends StatelessWidget {
   const FeedbackSection({super.key});
 
@@ -117,6 +117,38 @@ class FeedbackSection extends StatelessWidget {
               ).show(context),
             ),
           ],
+        ),
+
+        dimension.xl.verticalGap,
+
+        // ── Sonner ───────────────────────────────────────────────────────
+        Text('Sonner', style: typo.subtitle.copyWith(color: colors.textSecondary)),
+        dimension.xs.verticalGap,
+        SealSonner(
+          child: Builder(
+            builder: (ctx) => Wrap(
+              spacing: dimension.sm,
+              runSpacing: dimension.sm,
+              children: [
+                SealFilledButton.primary(
+                  label: const Text('Show Sonner'),
+                  onPressed: () => showSealSonner(
+                    ctx,
+                    title: const Text('File saved'),
+                    description: const Text('Your changes have been synced.'),
+                  ),
+                ),
+                SealOutlineButton.primary(
+                  label: const Text('With description'),
+                  onPressed: () => showSealSonner(
+                    ctx,
+                    title: const Text('Upload complete'),
+                    description: const Text('3 files uploaded successfully.'),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

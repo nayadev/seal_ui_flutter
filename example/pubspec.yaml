@@ -45,6 +45,7 @@ flutter:
     - assets/markdown/components/overlay/sealsheet/
     - assets/markdown/components/interaction/sealtooltip/
     - assets/markdown/components/feedback/sealprogress/
+    - assets/markdown/components/feedback/sealsonner/
     - assets/markdown/components/feedback/sealloader/
     - assets/markdown/components/feedback/sealsnackbar/
     - assets/markdown/layout/accordion/sealaccordion/

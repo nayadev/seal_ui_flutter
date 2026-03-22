@@ -89,6 +89,7 @@ export 'src/components/buttons/seal_text_button.dart';
 
 // Feedback
 export 'src/components/feedback/seal_alert.dart';
+export 'src/components/feedback/seal_sonner.dart';
 export 'src/components/feedback/seal_bouncing_dots.dart';
 export 'src/components/feedback/seal_loader.dart';
 export 'src/components/feedback/seal_progress.dart';

@@ -123,6 +123,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 | `SealLoader` | Animated spinner with size presets (`small`, `medium`, `large`) and optional label |
 | `SealProgress` | Determinate and indeterminate progress bar |
 | `SealToast` | Transient notification — `.info`, `.success`, `.warning`, `.error`; shown via `.show(context)` |
+| `SealSonner` | Stacked Sonner-style toasts; shown via `showSealSonner(context, title:, description:)` |
 
 ### Overlay
 
