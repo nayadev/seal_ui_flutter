@@ -36,6 +36,7 @@ flutter:
     - assets/markdown/components/inputs/sealtextarea/
     - assets/markdown/components/inputs/sealtextfield/
     - assets/markdown/components/overlay/sealdialog/
+    - assets/markdown/components/overlay/sealsheet/
     - assets/markdown/components/interaction/sealtooltip/
     - assets/markdown/components/feedback/sealprogress/
     - assets/markdown/components/feedback/sealloader/
