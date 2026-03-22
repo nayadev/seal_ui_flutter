@@ -29,9 +29,15 @@ class CardsSection extends StatelessWidget {
           footer: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SealOutlineButton.gradient(label: const Text('Cancel'), onPressed: () {}),
+              SealOutlineButton.gradient(
+                label: const Text('Cancel'),
+                onPressed: () {},
+              ),
               dimension.sm.horizontalGap,
-              SealFilledButton.gradient(label: const Text('Confirm'), onPressed: () {}),
+              SealFilledButton.gradient(
+                label: const Text('Confirm'),
+                onPressed: () {},
+              ),
             ],
           ),
         ),
@@ -57,9 +63,6 @@ class CardsSection extends StatelessWidget {
         dimension.sm.verticalGap,
         _TappableCardExample(),
         dimension.xl.verticalGap,
-
-        Text('Badge', style: typo.title.copyWith(color: colors.textPrimary)),
-        dimension.sm.verticalGap,
         Text('Avatar', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.sm.verticalGap,
         Wrap(
