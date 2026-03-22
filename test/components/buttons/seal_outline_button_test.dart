@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
-/// Helper that wraps a widget with the required SealTheme + MaterialApp.
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return ShadApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Center(child: child),
     ),
   );
 }
@@ -77,14 +76,14 @@ void main() {
         _wrap(
           SealOutlineButton.primary(
             label: 'Settings',
-            icon: Icons.settings,
+            icon: LucideIcons.settings,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.settings), findsOneWidget);
+      expect(find.byIcon(LucideIcons.settings), findsOneWidget);
       expect(find.text('Settings'), findsOneWidget);
     });
 
@@ -94,7 +93,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(OutlinedButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
   });
 
@@ -141,7 +140,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(OutlinedButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
   });
 
@@ -197,7 +196,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(OutlinedButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
   });
 
@@ -247,7 +246,7 @@ void main() {
       await tester.pump();
 
       expect(find.byType(ShaderMask), findsOneWidget);
-      expect(find.byType(OutlinedButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
 
     testWidgets('renders icon when provided', (tester) async {
@@ -255,14 +254,14 @@ void main() {
         _wrap(
           SealOutlineButton.gradient(
             label: 'Nav',
-            icon: Icons.explore,
+            icon: LucideIcons.compass,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.explore), findsOneWidget);
+      expect(find.byIcon(LucideIcons.compass), findsOneWidget);
       expect(find.text('Nav'), findsOneWidget);
     });
 
@@ -338,7 +337,7 @@ void main() {
       await tester.pump();
 
       expect(find.byType(ShaderMask), findsOneWidget);
-      expect(find.byType(OutlinedButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
 
     testWidgets('renders icon when provided', (tester) async {
@@ -346,14 +345,14 @@ void main() {
         _wrap(
           SealOutlineButton.accentGradient(
             label: 'Nav',
-            icon: Icons.star,
+            icon: LucideIcons.star,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.star), findsOneWidget);
+      expect(find.byIcon(LucideIcons.star), findsOneWidget);
       expect(find.text('Nav'), findsOneWidget);
     });
 

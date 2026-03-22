@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases card variants: default with footer, gradient, and tappable.
@@ -41,7 +41,7 @@ class CardsSection extends StatelessWidget {
           showBorder: false,
           header: Row(
             children: [
-              Icon(Icons.auto_awesome, color: colors.textPrimary),
+              Icon(LucideIcons.sparkles, color: colors.textPrimary),
               dimension.xs.horizontalGap,
               Text(
                 'Gradient Card',
@@ -80,7 +80,7 @@ class _TappableCardExampleState extends State<_TappableCardExample> {
       onTap: () => setState(() => _tapCount++),
       header: Row(
         children: [
-          Icon(Icons.touch_app_rounded, color: colors.accent),
+          Icon(LucideIcons.pointer, color: colors.accent),
           dimension.xs.horizontalGap,
           Text(
             'Tappable Card',

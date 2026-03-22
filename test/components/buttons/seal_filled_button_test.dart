@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return MaterialApp(
+  return ShadApp(
     home: SealThemeScope(
       tokens: SealThemeFactory.darkTokens(),
-      child: Scaffold(body: Center(child: child)),
+      child: Center(child: child),
     ),
   );
 }
@@ -75,14 +75,14 @@ void main() {
         _wrap(
           SealFilledButton.primary(
             label: 'Settings',
-            icon: Icons.settings,
+            icon: LucideIcons.settings,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.settings), findsOneWidget);
+      expect(find.byIcon(LucideIcons.settings), findsOneWidget);
       expect(find.text('Settings'), findsOneWidget);
     });
 
@@ -201,14 +201,14 @@ void main() {
         _wrap(
           SealFilledButton.gradient(
             label: 'Explore',
-            icon: Icons.rocket_launch,
+            icon: LucideIcons.rocket,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.rocket_launch), findsOneWidget);
+      expect(find.byIcon(LucideIcons.rocket), findsOneWidget);
       expect(find.text('Explore'), findsOneWidget);
     });
   });
@@ -335,14 +335,14 @@ void main() {
         _wrap(
           SealFilledButton.accentGradient(
             label: 'Spark',
-            icon: Icons.auto_awesome,
+            icon: LucideIcons.sparkles,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.auto_awesome), findsOneWidget);
+      expect(find.byIcon(LucideIcons.sparkles), findsOneWidget);
       expect(find.text('Spark'), findsOneWidget);
     });
   });

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import 'sections/buttons_section.dart';
 import 'sections/cards_section.dart';
@@ -45,22 +46,9 @@ class _SealExampleAppState extends State<SealExampleApp> {
       setState(() => _activeTheme = option);
 
   void _toggleBrightness() => setState(() {
-    _brightness = _brightness == Brightness.dark
-        ? Brightness.light
-        : Brightness.dark;
+    _brightness =
+        _brightness == Brightness.dark ? Brightness.light : Brightness.dark;
   });
-
-  ThemeData _buildMaterialTheme() => switch (_activeTheme) {
-    SealThemeOption.nebula => NebulaThemeFactory.themeData(
-      brightness: _brightness,
-    ),
-    SealThemeOption.arctic => ArcticThemeFactory.themeData(
-      brightness: _brightness,
-    ),
-    SealThemeOption.deepOcean => DeepOceanThemeFactory.themeData(
-      brightness: _brightness,
-    ),
-  };
 
   SealThemeTokens _buildSealTokens(double scaleFactor) =>
       switch (_activeTheme) {
@@ -80,10 +68,9 @@ class _SealExampleAppState extends State<SealExampleApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ShadApp(
       title: 'Seal UI — Example',
       debugShowCheckedModeBanner: false,
-      theme: _buildMaterialTheme(),
       builder: (context, child) {
         final scaleFactor = SealResponsive.scaleOf(context);
         return SealThemeScope(
@@ -120,8 +107,9 @@ class _ExampleHome extends StatelessWidget {
     final typo = context.themeTokens.typography;
     final dimension = context.dimension;
 
-    return Scaffold(
-      body: SafeArea(
+    return ColoredBox(
+      color: colors.background,
+      child: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(dimension.lg),
           child: Column(
@@ -142,8 +130,8 @@ class _ExampleHome extends StatelessWidget {
                       ),
                       SealIconButton.primary(
                         icon: brightness == Brightness.dark
-                            ? Icons.light_mode_rounded
-                            : Icons.dark_mode_rounded,
+                            ? LucideIcons.sun
+                            : LucideIcons.moon,
                         onPressed: onToggleBrightness,
                         tooltip: brightness == Brightness.dark
                             ? 'Switch to light mode'
@@ -191,44 +179,20 @@ class _ThemeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.themeTokens.colors;
     final typo = context.themeTokens.typography;
-    final dimension = context.dimension;
+    final colors = context.themeTokens.colors;
 
-    return SealContainer(
-      color: colors.surfaceAlt,
-      padding: EdgeInsets.symmetric(
-        horizontal: dimension.sm,
-        vertical: dimension.xs,
+    return ShadSelect<SealThemeOption>(
+      initialValue: activeTheme,
+      onChanged: (option) {
+        if (option != null) onThemeChanged(option);
+      },
+      selectedOptionBuilder: (context, value) => Text(
+        value.label,
+        style: typo.small.copyWith(color: colors.textPrimary),
       ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<SealThemeOption>(
-          value: activeTheme,
-          isDense: true,
-          dropdownColor: colors.surfaceAlt,
-          style: typo.small.copyWith(color: colors.textPrimary),
-          icon: Row(
-            children: [
-              dimension.sm.horizontalGap,
-              Icon(
-                Icons.palette_outlined,
-                size: context.dimension.scaled(
-                  TypographyTokens.kDefaultButtonIconSize,
-                ),
-                color: colors.primary,
-              ),
-            ],
-          ),
-          items: SealThemeOption.values
-              .map(
-                (option) =>
-                    DropdownMenuItem(value: option, child: Text(option.label)),
-              )
-              .toList(),
-          onChanged: (option) {
-            if (option != null) onThemeChanged(option);
-          },
-        ),
+      options: SealThemeOption.values.map(
+        (option) => ShadOption(value: option, child: Text(option.label)),
       ),
     );
   }

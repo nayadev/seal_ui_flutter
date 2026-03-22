@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases all button variants: Filled, Outline, and Text.
@@ -39,7 +39,7 @@ class ButtonsSection extends StatelessWidget {
             ),
             SealFilledButton.gradient(
               label: 'Explore',
-              icon: Icons.rocket_launch_rounded,
+              icon: LucideIcons.rocket,
               onPressed: () {},
             ),
             const SealFilledButton.primary(label: 'Disabled'),
@@ -73,7 +73,7 @@ class ButtonsSection extends StatelessWidget {
             ),
             SealOutlineButton.primary(
               label: 'With Icon',
-              icon: Icons.star_outline_rounded,
+              icon: LucideIcons.star,
               onPressed: () {},
             ),
             const SealOutlineButton.primary(label: 'Disabled'),
@@ -107,7 +107,7 @@ class ButtonsSection extends StatelessWidget {
             ),
             SealTextButton.primary(
               label: 'With Icon',
-              icon: Icons.arrow_forward_rounded,
+              icon: LucideIcons.arrowRight,
               onPressed: () {},
             ),
             const SealTextButton.primary(label: 'Disabled'),
@@ -129,32 +129,32 @@ class ButtonsSection extends StatelessWidget {
           runSpacing: dimension.sm,
           children: [
             SealIconButton.primary(
-              icon: Icons.close_rounded,
+              icon: LucideIcons.x,
               onPressed: () {},
               tooltip: 'Close',
             ),
             SealIconButton.accent(
-              icon: Icons.more_vert_rounded,
+              icon: LucideIcons.ellipsisVertical,
               onPressed: () {},
               tooltip: 'More',
             ),
             SealIconButton.accentSecondary(
-              icon: Icons.info_outline_rounded,
+              icon: LucideIcons.info,
               onPressed: () {},
               tooltip: 'Info',
             ),
             SealIconButton.gradient(
-              icon: Icons.tune_rounded,
+              icon: LucideIcons.slidersHorizontal,
               onPressed: () {},
               tooltip: 'Filter',
             ),
             SealIconButton.accentGradient(
-              icon: Icons.search_rounded,
+              icon: LucideIcons.search,
               onPressed: () {},
               tooltip: 'Search',
             ),
             const SealIconButton.primary(
-              icon: Icons.block_rounded,
+              icon: LucideIcons.ban,
               onPressed: null,
               tooltip: 'Disabled',
             ),
@@ -171,32 +171,32 @@ class ButtonsSection extends StatelessWidget {
           runSpacing: dimension.sm,
           children: [
             SealFilledIconButton.primary(
-              icon: Icons.add_rounded,
+              icon: LucideIcons.plus,
               onPressed: () {},
               tooltip: 'Add',
             ),
             SealFilledIconButton.accent(
-              icon: Icons.star_rounded,
+              icon: LucideIcons.star,
               onPressed: () {},
               tooltip: 'Favorite',
             ),
             SealFilledIconButton.accentSecondary(
-              icon: Icons.edit_rounded,
+              icon: LucideIcons.pencil,
               onPressed: () {},
               tooltip: 'Edit',
             ),
             SealFilledIconButton.gradient(
-              icon: Icons.rocket_launch_rounded,
+              icon: LucideIcons.rocket,
               onPressed: () {},
               tooltip: 'Launch',
             ),
             SealFilledIconButton.accentGradient(
-              icon: Icons.bolt_rounded,
+              icon: LucideIcons.zap,
               onPressed: () {},
               tooltip: 'Boost',
             ),
             const SealFilledIconButton.primary(
-              icon: Icons.block_rounded,
+              icon: LucideIcons.ban,
               onPressed: null,
               tooltip: 'Disabled',
             ),
@@ -213,32 +213,32 @@ class ButtonsSection extends StatelessWidget {
           runSpacing: dimension.sm,
           children: [
             SealOutlineIconButton.primary(
-              icon: Icons.share_rounded,
+              icon: LucideIcons.share,
               onPressed: () {},
               tooltip: 'Share',
             ),
             SealOutlineIconButton.accent(
-              icon: Icons.bookmark_outline_rounded,
+              icon: LucideIcons.bookmark,
               onPressed: () {},
               tooltip: 'Save',
             ),
             SealOutlineIconButton.accentSecondary(
-              icon: Icons.tune_rounded,
+              icon: LucideIcons.slidersHorizontal,
               onPressed: () {},
               tooltip: 'Filter',
             ),
             SealOutlineIconButton.gradient(
-              icon: Icons.auto_awesome_rounded,
+              icon: LucideIcons.sparkles,
               onPressed: () {},
               tooltip: 'Magic',
             ),
             SealOutlineIconButton.accentGradient(
-              icon: Icons.flash_on_rounded,
+              icon: LucideIcons.zap,
               onPressed: () {},
               tooltip: 'Boost',
             ),
             const SealOutlineIconButton.primary(
-              icon: Icons.block_rounded,
+              icon: LucideIcons.ban,
               onPressed: null,
               tooltip: 'Disabled',
             ),

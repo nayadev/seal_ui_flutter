@@ -1,6 +1,5 @@
-// ignore_for_file: depend_on_referenced_packages
 import 'package:flutter/foundation.dart' show kDebugMode;
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_documentation_addon/widgetbook_documentation_addon.dart';
 

@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return ShadApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Center(child: child),
     ),
   );
 }
@@ -17,12 +17,12 @@ void main() {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealOutlineIconButton.primary(icon: Icons.share, onPressed: () {}),
+          SealOutlineIconButton.primary(icon: LucideIcons.share, onPressed: () {}),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.share), findsOneWidget);
+      expect(find.byIcon(LucideIcons.share), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -30,14 +30,14 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.primary(
-            icon: Icons.share,
+            icon: LucideIcons.share,
             onPressed: () => tapped = true,
           ),
         ),
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
 
@@ -46,33 +46,33 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealOutlineIconButton.primary(
-            icon: Icons.share,
+            icon: LucideIcons.share,
             onPressed: null,
           ),
         ),
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isFalse);
     });
 
-    testWidgets('uses IconButton internally', (tester) async {
+    testWidgets('renders icon correctly', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealOutlineIconButton.primary(icon: Icons.share, onPressed: () {}),
+          SealOutlineIconButton.primary(icon: LucideIcons.share, onPressed: () {}),
         ),
       );
       await tester.pump();
 
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
 
     testWidgets('shows tooltip when provided', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.primary(
-            icon: Icons.share,
+            icon: LucideIcons.share,
             onPressed: () {},
             tooltip: 'Share',
           ),
@@ -80,7 +80,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byTooltip('Share'), findsOneWidget);
+      expect(find.byType(ShadTooltip), findsOneWidget);
     });
   });
 
@@ -89,14 +89,14 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accent(
-            icon: Icons.bookmark_outline,
+            icon: LucideIcons.bookmark,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.bookmark_outline), findsOneWidget);
+      expect(find.byIcon(LucideIcons.bookmark), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -104,29 +104,29 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accent(
-            icon: Icons.bookmark_outline,
+            icon: LucideIcons.bookmark,
             onPressed: () => tapped = true,
           ),
         ),
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
 
-    testWidgets('uses IconButton internally', (tester) async {
+    testWidgets('renders icon correctly', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accent(
-            icon: Icons.bookmark_outline,
+            icon: LucideIcons.bookmark,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
   });
 
@@ -135,28 +135,28 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accentSecondary(
-            icon: Icons.tune_rounded,
+            icon: LucideIcons.slidersHorizontal,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.tune_rounded), findsOneWidget);
+      expect(find.byIcon(LucideIcons.slidersHorizontal), findsOneWidget);
     });
 
-    testWidgets('uses IconButton internally', (tester) async {
+    testWidgets('renders icon correctly', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accentSecondary(
-            icon: Icons.tune_rounded,
+            icon: LucideIcons.slidersHorizontal,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
   });
 
@@ -165,21 +165,21 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.gradient(
-            icon: Icons.auto_awesome_rounded,
+            icon: LucideIcons.sparkles,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.auto_awesome_rounded), findsOneWidget);
+      expect(find.byIcon(LucideIcons.sparkles), findsOneWidget);
     });
 
     testWidgets('uses ShaderMask for gradient effect', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.gradient(
-            icon: Icons.auto_awesome_rounded,
+            icon: LucideIcons.sparkles,
             onPressed: () {},
           ),
         ),
@@ -194,14 +194,14 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.gradient(
-            icon: Icons.auto_awesome_rounded,
+            icon: LucideIcons.sparkles,
             onPressed: () => tapped = true,
           ),
         ),
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
 
@@ -210,14 +210,14 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealOutlineIconButton.gradient(
-            icon: Icons.auto_awesome_rounded,
+            icon: LucideIcons.sparkles,
             onPressed: null,
           ),
         ),
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isFalse);
     });
   });
@@ -227,21 +227,21 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accentGradient(
-            icon: Icons.flash_on_rounded,
+            icon: LucideIcons.zap,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.flash_on_rounded), findsOneWidget);
+      expect(find.byIcon(LucideIcons.zap), findsOneWidget);
     });
 
     testWidgets('uses ShaderMask for gradient effect', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accentGradient(
-            icon: Icons.flash_on_rounded,
+            icon: LucideIcons.zap,
             onPressed: () {},
           ),
         ),
@@ -256,14 +256,14 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealOutlineIconButton.accentGradient(
-            icon: Icons.flash_on_rounded,
+            icon: LucideIcons.zap,
             onPressed: () => tapped = true,
           ),
         ),
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
   });

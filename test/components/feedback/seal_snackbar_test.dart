@@ -1,24 +1,21 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import 'package:seal_ui/seal_ui.dart';
 
-/// Wraps [child] in a fully wired [SealThemeScope] + [MaterialApp] + [Scaffold].
+/// Wraps [child] in a fully wired [ShadApp] + [SealThemeScope].
 ///
 /// [SealThemeScope] injects [ShadTheme] and [ShadToaster] automatically,
 /// which are required for [SealToast.show] and [SealAlert] to render.
 Widget _wrap({required Widget Function(BuildContext) builder}) {
   final tokens = NebulaThemeFactory.tokens();
-  return MaterialApp(
-    theme: NebulaThemeFactory.themeData(),
+  return ShadApp(
     builder: (context, child) => SealThemeScope(
       tokens: tokens,
       child: child!,
     ),
-    home: Builder(
-      builder: (context) => Scaffold(body: builder(context)),
-    ),
+    home: Builder(builder: builder),
   );
 }
 
@@ -272,7 +269,6 @@ void main() {
       await tester.pump();
 
       expect(find.text('Overlay toast'), findsOneWidget);
-      expect(find.byType(SnackBar), findsNothing);
     });
   });
 }

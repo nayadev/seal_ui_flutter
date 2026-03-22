@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return MaterialApp(
+  return ShadApp(
     home: SealThemeScope(
       tokens: SealThemeFactory.darkTokens(),
-      child: Scaffold(body: Center(child: child)),
+      child: Center(child: child),
     ),
   );
 }
@@ -17,12 +17,12 @@ void main() {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealFilledIconButton.primary(icon: Icons.add, onPressed: () {}),
+          SealFilledIconButton.primary(icon: LucideIcons.plus, onPressed: () {}),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.add), findsOneWidget);
+      expect(find.byIcon(LucideIcons.plus), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -30,7 +30,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.primary(
-            icon: Icons.add,
+            icon: LucideIcons.plus,
             onPressed: () => tapped = true,
           ),
         ),
@@ -46,7 +46,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealFilledIconButton.primary(
-            icon: Icons.add,
+            icon: LucideIcons.plus,
             onPressed: null,
           ),
         ),
@@ -60,7 +60,7 @@ void main() {
     testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealFilledIconButton.primary(icon: Icons.add, onPressed: () {}),
+          SealFilledIconButton.primary(icon: LucideIcons.plus, onPressed: () {}),
         ),
       );
       await tester.pump();
@@ -72,7 +72,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.primary(
-            icon: Icons.add,
+            icon: LucideIcons.plus,
             onPressed: () {},
             tooltip: 'Add item',
           ),
@@ -88,12 +88,12 @@ void main() {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealFilledIconButton.accent(icon: Icons.star, onPressed: () {}),
+          SealFilledIconButton.accent(icon: LucideIcons.star, onPressed: () {}),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.star), findsOneWidget);
+      expect(find.byIcon(LucideIcons.star), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -101,7 +101,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accent(
-            icon: Icons.star,
+            icon: LucideIcons.star,
             onPressed: () => tapped = true,
           ),
         ),
@@ -115,7 +115,7 @@ void main() {
     testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealFilledIconButton.accent(icon: Icons.star, onPressed: () {}),
+          SealFilledIconButton.accent(icon: LucideIcons.star, onPressed: () {}),
         ),
       );
       await tester.pump();
@@ -129,21 +129,21 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentSecondary(
-            icon: Icons.edit,
+            icon: LucideIcons.pencil,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.edit), findsOneWidget);
+      expect(find.byIcon(LucideIcons.pencil), findsOneWidget);
     });
 
     testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentSecondary(
-            icon: Icons.edit,
+            icon: LucideIcons.pencil,
             onPressed: () {},
           ),
         ),
@@ -159,21 +159,21 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.gradient(
-            icon: Icons.rocket_launch_rounded,
+            icon: LucideIcons.rocket,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.rocket_launch_rounded), findsOneWidget);
+      expect(find.byIcon(LucideIcons.rocket), findsOneWidget);
     });
 
     testWidgets('renders ShadIconButton', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.gradient(
-            icon: Icons.rocket_launch_rounded,
+            icon: LucideIcons.rocket,
             onPressed: () {},
           ),
         ),
@@ -188,7 +188,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.gradient(
-            icon: Icons.rocket_launch_rounded,
+            icon: LucideIcons.rocket,
             onPressed: () => tapped = true,
           ),
         ),
@@ -204,7 +204,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealFilledIconButton.gradient(
-            icon: Icons.rocket_launch_rounded,
+            icon: LucideIcons.rocket,
             onPressed: null,
           ),
         ),
@@ -219,7 +219,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.gradient(
-            icon: Icons.rocket_launch_rounded,
+            icon: LucideIcons.rocket,
             onPressed: () {},
             tooltip: 'Launch',
           ),
@@ -236,21 +236,21 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentGradient(
-            icon: Icons.bolt_rounded,
+            icon: LucideIcons.zap,
             onPressed: () {},
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byIcon(Icons.bolt_rounded), findsOneWidget);
+      expect(find.byIcon(LucideIcons.zap), findsOneWidget);
     });
 
     testWidgets('renders ShadIconButton', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentGradient(
-            icon: Icons.bolt_rounded,
+            icon: LucideIcons.zap,
             onPressed: () {},
           ),
         ),
@@ -265,7 +265,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentGradient(
-            icon: Icons.bolt_rounded,
+            icon: LucideIcons.zap,
             onPressed: () => tapped = true,
           ),
         ),

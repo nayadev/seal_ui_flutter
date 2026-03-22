@@ -1,5 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'package:seal_ui/seal_ui.dart';

@@ -1,5 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'package:seal_ui/seal_ui.dart';
@@ -117,7 +116,7 @@ WidgetbookFolder _buildButtonsFolder() {
                 label: 'Label',
                 initialValue: 'Explore',
               ),
-              icon: Icons.rocket_launch_rounded,
+              icon: LucideIcons.rocket,
               onPressed: () {},
             ),
           ),
@@ -130,8 +129,14 @@ WidgetbookFolder _buildButtonsFolder() {
               ),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
-                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
-                initialOption: Colors.red,
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.red,
                 labelBuilder: (v) => v.toString(),
               ),
               isLoading: context.knobs.boolean(
@@ -241,7 +246,7 @@ WidgetbookFolder _buildButtonsFolder() {
                 label: 'Label',
                 initialValue: 'Favorite',
               ),
-              icon: Icons.star_outline_rounded,
+              icon: LucideIcons.star,
               onPressed: () {},
             ),
           ),
@@ -254,8 +259,14 @@ WidgetbookFolder _buildButtonsFolder() {
               ),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
-                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
-                initialOption: Colors.red,
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.red,
                 labelBuilder: (v) => v.toString(),
               ),
               isLoading: context.knobs.boolean(
@@ -365,7 +376,7 @@ WidgetbookFolder _buildButtonsFolder() {
                 label: 'Label',
                 initialValue: 'Skip',
               ),
-              icon: Icons.arrow_forward_rounded,
+              icon: LucideIcons.arrowRight,
               onPressed: () {},
             ),
           ),
@@ -378,8 +389,14 @@ WidgetbookFolder _buildButtonsFolder() {
               ),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
-                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
-                initialOption: Colors.red,
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.red,
                 labelBuilder: (v) => v.toString(),
               ),
               isLoading: context.knobs.boolean(
@@ -400,7 +417,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealFilledIconButton.primary(
-              icon: Icons.add_rounded,
+              icon: LucideIcons.plus,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Add item',
@@ -414,7 +431,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealFilledIconButton.accent(
-              icon: Icons.star_rounded,
+              icon: LucideIcons.star,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Favorite',
@@ -428,7 +445,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealFilledIconButton.accentSecondary(
-              icon: Icons.edit_rounded,
+              icon: LucideIcons.pencil,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Edit',
@@ -442,7 +459,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealFilledIconButton.gradient(
-              icon: Icons.rocket_launch_rounded,
+              icon: LucideIcons.rocket,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Launch',
@@ -456,7 +473,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealFilledIconButton.accentGradient(
-              icon: Icons.bolt_rounded,
+              icon: LucideIcons.zap,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Boost',
@@ -470,11 +487,17 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealFilledIconButton.custom(
-              icon: Icons.delete_rounded,
+              icon: LucideIcons.trash2,
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
-                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
-                initialOption: Colors.red,
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.red,
                 labelBuilder: (v) => v.toString(),
               ),
               tooltip: context.knobs.string(
@@ -495,7 +518,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealOutlineIconButton.primary(
-              icon: Icons.share_rounded,
+              icon: LucideIcons.share2,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Share',
@@ -509,7 +532,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealOutlineIconButton.accent(
-              icon: Icons.bookmark_outline_rounded,
+              icon: LucideIcons.bookmark,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Save',
@@ -523,7 +546,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealOutlineIconButton.accentSecondary(
-              icon: Icons.tune_rounded,
+              icon: LucideIcons.slidersHorizontal,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Filter',
@@ -537,7 +560,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealOutlineIconButton.gradient(
-              icon: Icons.auto_awesome_rounded,
+              icon: LucideIcons.sparkles,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Magic',
@@ -551,7 +574,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealOutlineIconButton.accentGradient(
-              icon: Icons.flash_on_rounded,
+              icon: LucideIcons.zap,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Boost',
@@ -565,11 +588,17 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealOutlineIconButton.custom(
-              icon: Icons.warning_rounded,
+              icon: LucideIcons.triangleAlert,
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
-                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
-                initialOption: Colors.orange,
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.orange,
                 labelBuilder: (v) => v.toString(),
               ),
               tooltip: context.knobs.string(
@@ -590,7 +619,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealIconButton.primary(
-              icon: Icons.close_rounded,
+              icon: LucideIcons.x,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Close',
@@ -604,7 +633,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealIconButton.accent(
-              icon: Icons.more_vert_rounded,
+              icon: LucideIcons.ellipsisVertical,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'More',
@@ -618,7 +647,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealIconButton.accentSecondary(
-              icon: Icons.info_outline_rounded,
+              icon: LucideIcons.info,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Info',
@@ -632,7 +661,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealIconButton.gradient(
-              icon: Icons.tune_rounded,
+              icon: LucideIcons.slidersHorizontal,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Filter',
@@ -646,7 +675,7 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealIconButton.accentGradient(
-              icon: Icons.search_rounded,
+              icon: LucideIcons.search,
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Search',
@@ -660,11 +689,17 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealIconButton.custom(
-              icon: Icons.star_rounded,
+              icon: LucideIcons.star,
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
-                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
-                initialOption: Colors.teal,
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.teal,
                 labelBuilder: (v) => v.toString(),
               ),
               tooltip: context.knobs.string(
@@ -714,7 +749,7 @@ WidgetbookFolder _buildInputsFolder() {
                       label: 'Show Prefix Icon',
                       initialValue: true,
                     )
-                    ? Icons.email_outlined
+                    ? LucideIcons.mail
                     : null,
               ),
             ),
@@ -727,8 +762,8 @@ WidgetbookFolder _buildInputsFolder() {
                 label: 'Password',
                 hint: '••••••••',
                 obscureText: true,
-                prefixIcon: Icons.lock_outline,
-                suffixIcon: Icons.visibility_off_outlined,
+                prefixIcon: LucideIcons.lock,
+                suffixIcon: LucideIcons.eyeOff,
               ),
             ),
           ),
@@ -905,8 +940,7 @@ WidgetbookFolder _buildFeedbackFolder() {
               );
               final description = context.knobs.string(
                 label: 'Description',
-                initialValue:
-                    'You have less than 1 GB remaining.',
+                initialValue: 'You have less than 1 GB remaining.',
               );
               return SealAlert.warning(
                 title: title.isEmpty ? null : title,

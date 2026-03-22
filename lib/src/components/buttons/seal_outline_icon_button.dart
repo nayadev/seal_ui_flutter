@@ -196,7 +196,7 @@ class SealOutlineIconButton extends StatelessWidget {
         padding: EdgeInsets.all(dimension.sm),
       );
 
-      return AnimatedOpacity(
+      Widget result = AnimatedOpacity(
         opacity: _isDisabled ? _kDisabledOpacity : 1.0,
         duration: const Duration(milliseconds: 200),
         child: ShaderMask(
@@ -205,6 +205,10 @@ class SealOutlineIconButton extends StatelessWidget {
           child: button,
         ),
       );
+      if (tooltip != null) {
+        result = ShadTooltip(builder: (_) => Text(tooltip!), child: result);
+      }
+      return result;
     }
 
     final Color foregroundColor;
@@ -224,7 +228,7 @@ class SealOutlineIconButton extends StatelessWidget {
     }
 
     final buttonSize = scaledIconSize + dimension.sm * 2;
-    return ShadIconButton.raw(
+    final button = ShadIconButton.raw(
       variant: ShadButtonVariant.outline,
       icon: Icon(icon, size: scaledIconSize),
       onPressed: _isDisabled ? null : onPressed,
@@ -245,6 +249,8 @@ class SealOutlineIconButton extends StatelessWidget {
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
       padding: EdgeInsets.all(dimension.sm),
     );
+    if (tooltip == null) return button;
+    return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
   }
 }
 

@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return MaterialApp(
+  return ShadApp(
     home: SealThemeScope(
       tokens: SealThemeFactory.darkTokens(),
-      child: Scaffold(body: Center(child: child)),
+      child: Center(child: child),
     ),
   );
 }
@@ -112,7 +113,7 @@ void main() {
     });
 
     testWidgets('applies gradient when provided', (tester) async {
-      const gradient = LinearGradient(colors: [Colors.purple, Colors.blue]);
+      const gradient = LinearGradient(colors: [Color(0xFF9C27B0), Color(0xFF2196F3)]);
       await tester.pumpWidget(
         _wrap(const SealCard(gradient: gradient, body: Text('Gradient'))),
       );

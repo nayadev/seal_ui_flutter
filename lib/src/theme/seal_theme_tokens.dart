@@ -10,8 +10,7 @@ import '../tokens/abstractions/typography_tokens.dart';
 /// colors, typography, and gradients.
 ///
 /// The [brightness] field indicates whether this token set is designed for
-/// a dark or light Material theme, allowing host apps to derive the correct
-/// [ThemeData] via [SealThemeFactory.buildMaterialTheme].
+/// a dark or light surface.
 class SealThemeTokens {
   const SealThemeTokens({
     required this.colors,
@@ -29,9 +28,6 @@ class SealThemeTokens {
   /// The active gradient tokens.
   final GradientTokens gradients;
 
-  /// Whether this token set targets a dark or light Material surface.
-  ///
-  /// Used to derive the correct [ThemeData] brightness when calling
-  /// [SealThemeFactory.buildMaterialTheme].
+  /// Whether this token set targets a dark or light surface.
   final Brightness brightness;
 }

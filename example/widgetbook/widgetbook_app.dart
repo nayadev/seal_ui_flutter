@@ -1,6 +1,7 @@
-// ignore_for_file: depend_on_referenced_packages
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show Theme, ThemeData;
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'package:seal_ui/seal_ui.dart';
@@ -26,13 +27,20 @@ class SealWidgetbook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Widgetbook.material(
-      appBuilder: (context, child) {
-        return SealThemeScope(
+    return Widgetbook(
+      appBuilder: (context, child) => ShadApp(
+        debugShowCheckedModeBanner: false,
+        home: SealThemeScope(
           tokens: NebulaThemeFactory.tokens(),
-          child: child,
-        );
-      },
+          // Theme wrapper satisfies `Theme.of(context)` calls inside
+          // widgetbook_documentation_addon, which reads brightness to decide
+          // its card background color. Without this it always returns light.
+          child: Theme(
+            data: ThemeData(brightness: Brightness.dark),
+            child: child,
+          ),
+        ),
+      ),
       addons: [
         SealDocumentationAddon(assetBundle: rootBundle),
         ThemeAddon<SealThemeTokens>(
@@ -65,13 +73,7 @@ class SealWidgetbook extends StatelessWidget {
           themeBuilder: (context, theme, child) {
             return SealThemeScope(
               tokens: theme,
-              child: Theme(
-                data: SealThemeFactory.buildMaterialTheme(
-                  theme,
-                  theme.brightness,
-                ),
-                child: ColoredBox(color: theme.colors.background, child: child),
-              ),
+              child: ColoredBox(color: theme.colors.background, child: child),
             );
           },
         ),

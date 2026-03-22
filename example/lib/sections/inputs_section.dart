@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases text field variants.
@@ -19,15 +19,15 @@ class InputsSection extends StatelessWidget {
         const SealTextField(
           label: 'Email',
           hint: 'you@example.com',
-          prefixIcon: Icons.email_outlined,
+          prefixIcon: LucideIcons.mail,
         ),
         dimension.sm.verticalGap,
         const SealTextField(
           label: 'Password',
           hint: '••••••••',
           obscureText: true,
-          prefixIcon: Icons.lock_outline,
-          suffixIcon: Icons.visibility_off_outlined,
+          prefixIcon: LucideIcons.lock,
+          suffixIcon: LucideIcons.eyeOff,
         ),
       ],
     );

@@ -523,7 +523,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.2.0"
   serial_csv:
     dependency: transitive
     description:
@@ -533,7 +533,7 @@ packages:
     source: hosted
     version: "0.5.2"
   shadcn_ui:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shadcn_ui
       sha256: "3a303139ed289f4e7d2bd6fc2bc19952033e4456b55dfbf8365461691cc19f48"

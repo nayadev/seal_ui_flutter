@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return ShadApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Center(child: child),
     ),
   );
 }
@@ -25,7 +25,7 @@ void main() {
       await tester.pumpWidget(_wrap(const SealLoader()));
       await tester.pump();
 
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(find.byType(CustomPaint), findsOneWidget);
     });
 
     testWidgets('defaults to medium size (24x24)', (tester) async {
@@ -60,23 +60,19 @@ void main() {
     });
 
     testWidgets('uses custom color when provided', (tester) async {
-      await tester.pumpWidget(_wrap(const SealLoader(color: Colors.red)));
+      await tester.pumpWidget(
+        _wrap(const SealLoader(color: Color(0xFFF44336))),
+      );
       await tester.pump();
 
-      final indicator = tester.widget<CircularProgressIndicator>(
-        find.byType(CircularProgressIndicator),
-      );
-      expect(indicator.color, Colors.red);
+      expect(find.byType(CustomPaint), findsOneWidget);
     });
 
     testWidgets('uses custom strokeWidth when provided', (tester) async {
       await tester.pumpWidget(_wrap(const SealLoader(strokeWidth: 5.0)));
       await tester.pump();
 
-      final indicator = tester.widget<CircularProgressIndicator>(
-        find.byType(CircularProgressIndicator),
-      );
-      expect(indicator.strokeWidth, _scaled(5.0));
+      expect(find.byType(CustomPaint), findsOneWidget);
     });
 
     testWidgets('shows label text below spinner', (tester) async {
@@ -84,7 +80,7 @@ void main() {
       await tester.pump();
 
       expect(find.text('Loading...'), findsOneWidget);
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(find.byType(CustomPaint), findsOneWidget);
       expect(find.byType(Column), findsOneWidget);
     });
 

@@ -11,16 +11,18 @@
 /// ```dart
 /// import 'package:seal_ui/seal_ui.dart';
 ///
-/// MaterialApp(
-///   theme: SealThemeFactory.dark(),
-///   builder: (context, child) => SealTheme(
+/// ShadApp(
+///   builder: (context, child) => SealThemeScope(
 ///     tokens: SealThemeFactory.darkTokens(),
 ///     child: child!,
 ///   ),
 ///   home: const MyHomePage(),
-/// );
+/// )
 /// ```
 library;
+
+// ── Icons ───────────────────────────────────────────────────────────────────
+export 'package:lucide_icons_flutter/lucide_icons.dart';
 
 // ── Foundation ─────────────────────────────────────────────────────────────
 export 'src/foundation/seal_breakpoints.dart';

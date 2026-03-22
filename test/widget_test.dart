@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 void main() {
   testWidgets('SealTheme provides tokens to descendants', (
@@ -12,7 +13,7 @@ void main() {
     await tester.pumpWidget(
       SealTheme(
         tokens: SealThemeFactory.darkTokens(),
-        child: MaterialApp(
+        child: ShadApp(
           home: Builder(
             builder: (context) {
               captured = context.themeTokens;
@@ -35,7 +36,7 @@ void main() {
     late SealThemeTokens captured;
 
     await tester.pumpWidget(
-      MaterialApp(
+      ShadApp(
         home: Builder(
           builder: (context) {
             captured = context.themeTokens;

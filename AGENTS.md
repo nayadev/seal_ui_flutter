@@ -53,7 +53,7 @@ Typography and spacing scale proportionally across breakpoints via a **scale fac
 ### Theme System
 
 - `SealThemeTokens` is the token container holding colors, typography, and gradients.
-- `SealThemeFactory` builds dark/light `SealThemeTokens`, Material `ThemeData`, and `ShadThemeData`.
+- `SealThemeFactory` builds dark/light `SealThemeTokens` and `ShadThemeData` — no Material dependency.
 - `SealThemeController` is a `ChangeNotifier` that allows runtime theme switching.
 - `SealThemeProvider` is an `InheritedNotifier` that exposes the controller to the tree.
 - `SealThemeScope` is the **recommended entry point** — it wires `ShadTheme`, `ShadToaster`, and `SealThemeProvider` together in a single widget.
@@ -63,9 +63,12 @@ Typography and spacing scale proportionally across breakpoints via a **scale fac
 Wrap your root widget with `SealThemeScope`. It automatically injects the shadcn theme, the toast system, and the Seal token provider:
 
 ```dart
-SealThemeScope(
-  tokens: NebulaThemeFactory.tokens(),
-  child: MaterialApp(home: MyHome()),
+ShadApp(
+  builder: (context, child) => SealThemeScope(
+    tokens: NebulaThemeFactory.tokens(),
+    child: child!,
+  ),
+  home: MyHome(),
 )
 ```
 
@@ -76,9 +79,12 @@ final controller = SealThemeController(
   initialTokens: NebulaThemeFactory.tokens(),
 );
 
-SealThemeProvider(
-  controller: controller,
-  child: MaterialApp(home: MyHome()),
+ShadApp(
+  builder: (context, child) => SealThemeProvider(
+    controller: controller,
+    child: child!,
+  ),
+  home: MyHome(),
 )
 
 // Switch theme at runtime:
@@ -135,6 +141,35 @@ Internal implementation details (`src/`) must remain private. Never import from 
 - Always respect the configured linter (`package:flutter_lints`). Run `flutter analyze` and resolve all warnings before considering work done.
 - Use `const` constructors wherever possible.
 - Prefer `final` variables over mutable ones.
+
+### Import Policy
+
+**Never import `package:flutter/material.dart` or `package:flutter/cupertino.dart`** in library code (`lib/`). Use the narrowest import that satisfies the need:
+
+| Need | Import |
+|---|---|
+| Widgets, layout, gestures | `package:flutter/widgets.dart` |
+| Colors, gradients, text styles | `package:flutter/painting.dart` |
+| `Brightness`, `Color` | `dart:ui` |
+| shadcn_ui primitives | `package:shadcn_ui/shadcn_ui.dart` |
+
+Material imports are only acceptable in `example/` code that interacts with third-party packages that themselves require Material (e.g., `widgetbook_documentation_addon`). Even then, use `show` to import the minimum: `import 'package:flutter/material.dart' show Theme, ThemeData;`.
+
+### Primitive Colors
+
+Use the `ColorX` extension (from `lib/src/tokens/base/seal_colors.dart`) for raw color constants instead of `Colors.*`:
+
+```dart
+// ❌ Bad — requires material.dart
+color: Colors.white,
+color: Colors.red,
+
+// ✅ Good
+color: ColorX.white,
+color: ColorX.red,
+```
+
+Available constants: `ColorX.white`, `ColorX.black`, `ColorX.transparent`, `ColorX.red`, `ColorX.teal`, `ColorX.orange`, `ColorX.indigo`, `ColorX.pink`. Add new primitives to `ColorX` when a raw color literal is needed more than once.
 
 ### Magic Numbers
 
@@ -314,7 +349,7 @@ When adding a new component to Seal UI, follow these steps in order:
 2. **Export in the barrel file** `lib/seal_ui.dart` under the `Components` section, keeping alphabetical order within each subfolder group.
 
 3. **Write tests** in `test/` mirroring the `lib/src/` path (e.g., `test/components/buttons/seal_outline_button_test.dart`).
-   - Wrap widgets with `SealThemeScope` + `MaterialApp` in test helpers.
+   - Wrap widgets with `ShadApp` + `SealThemeScope` in test helpers — no Material dependency needed.
    - Test: rendering, interaction (tap/enabled/disabled), loading state, and icon/slot variants.
    - Use `pump()` instead of `pumpAndSettle()` when indefinite animations are present.
 

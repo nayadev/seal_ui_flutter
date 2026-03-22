@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
+import 'package:flutter/widgets.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/base/seal_dimension.dart';
@@ -26,8 +28,8 @@ enum SealLoaderSize {
 
 /// A loading indicator styled with Seal UI tokens.
 ///
-/// Wraps [CircularProgressIndicator] with token-driven colors and
-/// consistent sizing.
+/// Renders a spinning arc drawn entirely with [CustomPaint] — no Material
+/// dependency required.
 ///
 /// ```dart
 /// const SealLoader()
@@ -73,13 +75,10 @@ class SealLoader extends StatelessWidget {
     final tokens = context.themeTokens;
     final effectiveColor = color ?? tokens.colors.primary;
 
-    final indicator = SizedBox(
-      width: size.dimension(context),
-      height: size.dimension(context),
-      child: CircularProgressIndicator(
-        strokeWidth: context.dimension.scaled(_strokeWidth),
-        color: effectiveColor,
-      ),
+    final indicator = _CircularLoader(
+      size: size.dimension(context),
+      strokeWidth: context.dimension.scaled(_strokeWidth),
+      color: effectiveColor,
     );
 
     if (label == null) return indicator;
@@ -98,4 +97,91 @@ class SealLoader extends StatelessWidget {
       ],
     );
   }
+}
+
+/// Spinning arc indicator implemented with [CustomPaint].
+class _CircularLoader extends StatefulWidget {
+  const _CircularLoader({
+    required this.size,
+    required this.strokeWidth,
+    required this.color,
+  });
+
+  final double size;
+  final double strokeWidth;
+  final Color color;
+
+  @override
+  State<_CircularLoader> createState() => _CircularLoaderState();
+}
+
+class _CircularLoaderState extends State<_CircularLoader>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1200),
+  )..repeat();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: widget.size,
+      height: widget.size,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (_, _) => CustomPaint(
+          painter: _ArcPainter(
+            progress: _controller.value,
+            strokeWidth: widget.strokeWidth,
+            color: widget.color,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ArcPainter extends CustomPainter {
+  const _ArcPainter({
+    required this.progress,
+    required this.strokeWidth,
+    required this.color,
+  });
+
+  final double progress;
+  final double strokeWidth;
+  final Color color;
+
+  /// Arc covers ¾ of the circle.
+  static const double _kSweep = math.pi * 1.5;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke;
+
+    final radius = size.width / 2 - strokeWidth / 2;
+    canvas.drawArc(
+      Rect.fromCircle(center: size.center(Offset.zero), radius: radius),
+      -math.pi / 2 + progress * math.pi * 2,
+      _kSweep,
+      false,
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_ArcPainter old) =>
+      old.progress != progress ||
+      old.color != color ||
+      old.strokeWidth != strokeWidth;
 }

@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' show Brightness;
 
-import '../../theme/seal_theme_factory.dart';
 import '../../theme/seal_theme_tokens.dart';
 import '../../tokens/implementations/default_typography.dart';
 import 'tokens/deep_ocean_color_palette.dart';
@@ -8,7 +7,7 @@ import 'tokens/deep_ocean_gradients.dart';
 import 'tokens/deep_ocean_light_color_palette.dart';
 import 'tokens/deep_ocean_light_gradients.dart';
 
-/// Factory for creating [SealThemeTokens] and Material [ThemeData] for the
+/// Factory for creating [SealThemeTokens] for the
 /// **Deep Ocean** theme.
 ///
 /// Deep Ocean is dark, deep, and luminous — midnight navy surfaces with
@@ -44,15 +43,4 @@ abstract final class DeepOceanThemeFactory {
     brightness: brightness,
   );
 
-  /// Builds a Material 3 [ThemeData] styled for the Deep Ocean theme.
-  ///
-  /// [scaleFactor] adjusts typography proportionally (default 1.0).
-  /// [brightness] selects dark (default) or light variant.
-  static ThemeData themeData({
-    double scaleFactor = 1.0,
-    Brightness brightness = Brightness.dark,
-  }) => SealThemeFactory.buildMaterialTheme(
-    tokens(scaleFactor: scaleFactor, brightness: brightness),
-    brightness,
-  );
 }

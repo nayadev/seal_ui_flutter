@@ -23,4 +23,21 @@ extension ColorX on Color {
 
   /// Fully transparent — `Color(0x00000000)`.
   static const Color transparent = Color(0x00000000);
+
+  // ── Semantic palette primitives ──────────────────────────────────────────
+
+  /// Red — `Color(0xFFF44336)`.
+  static const Color red = Color(0xFFF44336);
+
+  /// Teal — `Color(0xFF009688)`.
+  static const Color teal = Color(0xFF009688);
+
+  /// Orange — `Color(0xFFFF9800)`.
+  static const Color orange = Color(0xFFFF9800);
+
+  /// Indigo — `Color(0xFF3F51B5)`.
+  static const Color indigo = Color(0xFF3F51B5);
+
+  /// Pink — `Color(0xFFE91E63)`.
+  static const Color pink = Color(0xFFE91E63);
 }

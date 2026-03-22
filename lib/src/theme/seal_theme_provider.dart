@@ -18,7 +18,7 @@ import 'seal_theme_tokens.dart';
 ///
 /// SealThemeProvider(
 ///   controller: controller,
-///   child: MaterialApp(home: MyHome()),
+///   child: ShadApp(home: MyHome()),
 /// )
 /// ```
 class SealThemeProvider extends InheritedNotifier<SealThemeController> {

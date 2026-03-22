@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return ShadApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Center(child: child),
     ),
   );
 }
@@ -17,7 +17,7 @@ void main() {
   group('SealBouncingDots', () {
     testWidgets('renders three dots', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealBouncingDots(color: Colors.white)),
+        _wrap(const SealBouncingDots(color: Color(0xFFFFFFFF))),
       );
       await tester.pump();
 
@@ -28,18 +28,18 @@ void main() {
 
     testWidgets('uses provided color', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealBouncingDots(color: Colors.red)),
+        _wrap(const SealBouncingDots(color: Color(0xFFF44336))),
       );
       await tester.pump();
 
       final container = tester.widget<Container>(find.byType(Container).first);
       final decoration = container.decoration as BoxDecoration;
-      expect(decoration.color, Colors.red);
+      expect(decoration.color, const Color(0xFFF44336));
     });
 
     testWidgets('uses provided size', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealBouncingDots(color: Colors.white, size: 10)),
+        _wrap(const SealBouncingDots(color: Color(0xFFFFFFFF), size: 10)),
       );
       await tester.pump();
 
@@ -50,7 +50,7 @@ void main() {
 
     testWidgets('animates over time', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealBouncingDots(color: Colors.white)),
+        _wrap(const SealBouncingDots(color: Color(0xFFFFFFFF))),
       );
 
       // Capture initial transforms
@@ -66,7 +66,7 @@ void main() {
 
     testWidgets('defaults to size 6 and spacing 4', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealBouncingDots(color: Colors.white)),
+        _wrap(const SealBouncingDots(color: Color(0xFFFFFFFF))),
       );
       await tester.pump();
 

@@ -10,20 +10,22 @@ Purple-based palettes, subtle gradients, and a dark-first experience — designe
 - **Dark & Light Themes** — dark mode is the primary experience, with full light theme support
 - **Responsive Scaling** — typography and spacing scale proportionally across mobile, tablet, and desktop
 - **Layered Architecture** — strict `foundation → tokens → theme → components` dependency direction
-- **Material Integration** — extends and composes Material widgets with token-driven styling
+- **shadcn_ui Integration** — thin, token-driven wrappers over `shadcn_ui` primitives with no Material dependency
 - **Widgetbook Catalog** — visual component catalog for browsing and testing every component
 
 ## Quick Start
 
 ```dart
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
-MaterialApp(
-  theme: SealThemeFactory.dark(),
+ShadApp(
   builder: (context, child) {
     final scaleFactor = SealResponsive.scaleOf(context);
-    final tokens = SealThemeFactory.darkTokens(scaleFactor: scaleFactor);
-    return SealTheme(tokens: tokens, child: child!);
+    return SealThemeScope(
+      tokens: NebulaThemeFactory.tokens(scaleFactor: scaleFactor),
+      child: child!,
+    );
   },
   home: const MyHomePage(),
 );

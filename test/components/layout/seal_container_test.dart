@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return ShadApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Center(child: child),
     ),
   );
 }
@@ -90,7 +90,7 @@ void main() {
     });
 
     testWidgets('applies gradient when provided', (tester) async {
-      const gradient = LinearGradient(colors: [Colors.purple, Colors.blue]);
+      const gradient = LinearGradient(colors: [Color(0xFF9C27B0), Color(0xFF2196F3)]);
 
       await tester.pumpWidget(
         _wrap(
@@ -113,7 +113,7 @@ void main() {
 
     testWidgets('applies custom color when provided', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealContainer(color: Colors.red, child: Text('Colored'))),
+        _wrap(const SealContainer(color: Color(0xFFF44336), child: Text('Colored'))),
       );
       await tester.pump();
 
@@ -124,7 +124,7 @@ void main() {
         ),
       );
       final decoration = container.decoration as BoxDecoration?;
-      expect(decoration?.color, Colors.red);
+      expect(decoration?.color, const Color(0xFFF44336));
     });
 
     testWidgets('applies custom padding', (tester) async {

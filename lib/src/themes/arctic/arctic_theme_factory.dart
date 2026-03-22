@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' show Brightness;
 
-import '../../theme/seal_theme_factory.dart';
 import '../../theme/seal_theme_tokens.dart';
 import '../../tokens/implementations/default_typography.dart';
 import 'tokens/arctic_color_palette.dart';
@@ -8,7 +7,7 @@ import 'tokens/arctic_dark_color_palette.dart';
 import 'tokens/arctic_gradients.dart';
 import 'tokens/arctic_light_gradients.dart';
 
-/// Factory for creating [SealThemeTokens] and Material [ThemeData] for the
+/// Factory for creating [SealThemeTokens] for the
 /// **Arctic** theme.
 ///
 /// Arctic is bright, icy, and minimal — clean snow-white surfaces with
@@ -44,15 +43,4 @@ abstract final class ArcticThemeFactory {
     brightness: brightness,
   );
 
-  /// Builds a Material 3 [ThemeData] styled for the Arctic theme.
-  ///
-  /// [scaleFactor] adjusts typography proportionally (default 1.0).
-  /// [brightness] selects light (default) or dark variant.
-  static ThemeData themeData({
-    double scaleFactor = 1.0,
-    Brightness brightness = Brightness.light,
-  }) => SealThemeFactory.buildMaterialTheme(
-    tokens(scaleFactor: scaleFactor, brightness: brightness),
-    brightness,
-  );
 }
