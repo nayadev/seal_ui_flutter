@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
-/// Showcases card variants: default with footer, gradient, and tappable.
+/// Showcases card variants and badge components.
 class CardsSection extends StatelessWidget {
   const CardsSection({super.key});
 
@@ -56,6 +56,23 @@ class CardsSection extends StatelessWidget {
         ),
         dimension.sm.verticalGap,
         _TappableCardExample(),
+        dimension.xl.verticalGap,
+
+        Text('Badge', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: const [
+            SealBadge.primary(child: Text('Primary')),
+            SealBadge.accent(child: Text('Accent')),
+            SealBadge.secondary(child: Text('Secondary')),
+            SealBadge.outline(child: Text('Outline')),
+            SealBadge.success(child: Text('Active')),
+            SealBadge.warning(child: Text('Pending')),
+            SealBadge.error(child: Text('Expired')),
+          ],
+        ),
       ],
     );
   }

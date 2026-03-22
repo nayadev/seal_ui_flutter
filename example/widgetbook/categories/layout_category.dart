@@ -8,9 +8,56 @@ WidgetbookCategory buildLayoutCategory() {
   return WidgetbookCategory(
     name: 'Layout',
     children: [
+      _buildBadgesFolder(),
       _buildCardsFolder(),
       _buildContainersFolder(),
       _buildSpacingFolder(),
+    ],
+  );
+}
+
+// ── Badges ───────────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildBadgesFolder() {
+  return WidgetbookFolder(
+    name: 'Badges',
+    children: [
+      WidgetbookComponent(
+        name: 'SealBadge',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Variants',
+            builder: (context) => Wrap(
+              spacing: context.dimension.sm,
+              runSpacing: context.dimension.sm,
+              children: [
+                SealBadge.primary(
+                  child: Text(context.knobs.string(
+                    label: 'Label',
+                    initialValue: 'Primary',
+                  )),
+                ),
+                const SealBadge.accent(child: Text('Accent')),
+                const SealBadge.secondary(child: Text('Secondary')),
+                const SealBadge.outline(child: Text('Outline')),
+                const SealBadge.success(child: Text('Active')),
+                const SealBadge.warning(child: Text('Pending')),
+                const SealBadge.error(child: Text('Expired')),
+              ],
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Interactive',
+            builder: (context) => SealBadge.primary(
+              child: Text(context.knobs.string(
+                label: 'Label',
+                initialValue: 'Clickable',
+              )),
+              onPressed: () {},
+            ),
+          ),
+        ],
+      ),
     ],
   );
 }

@@ -39,6 +39,7 @@ flutter:
     - assets/markdown/components/feedback/sealprogress/
     - assets/markdown/components/feedback/sealloader/
     - assets/markdown/components/feedback/sealsnackbar/
+    - assets/markdown/layout/badges/sealbadge/
     - assets/markdown/layout/cards/sealcard/
     - assets/markdown/layout/containers/sealcontainer/
     - assets/markdown/layout/spacing/spacing-scale/
