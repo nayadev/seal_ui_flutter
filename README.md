@@ -101,6 +101,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 | Component | Description |
 |---|---|
 | `SealAccordion` / `SealAccordionItem` | Collapsible content sections |
+| `SealBreadcrumb` / `SealBreadcrumbLink` | Token-styled breadcrumb navigation with separator, ellipsis, and dropdown support |
 | `SealAvatar` | Circular avatar with image or placeholder fallback |
 | `SealBadge` | Semantic status pill — primary, accent, secondary, outline, success, warning, error |
 | `SealCard` | Themed surface card with header, body, footer, gradient, and tap support |

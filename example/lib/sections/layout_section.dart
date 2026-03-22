@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases layout and display components: [SealAccordion], [SealAvatar],
-/// [SealBadge], [SealCard], [SealContainer], and [SealTabs].
+/// [SealBadge], [SealBreadcrumb], [SealCard], [SealContainer], and [SealTabs].
 class LayoutSection extends StatelessWidget {
   const LayoutSection({super.key});
 
@@ -147,6 +147,45 @@ class LayoutSection extends StatelessWidget {
         ),
         dimension.sm.verticalGap,
         const _TappableCardExample(),
+
+        dimension.xl.verticalGap,
+
+        // ── Breadcrumb ───────────────────────────────────────────────────
+        Text(
+          'Breadcrumb',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealBreadcrumb(
+          children: [
+            SealBreadcrumbLink(onPressed: () {}, child: const Text('Home')),
+            SealBreadcrumbLink(
+              onPressed: () {},
+              child: const Text('Settings'),
+            ),
+            const Text('Profile'),
+          ],
+        ),
+        dimension.sm.verticalGap,
+        SealBreadcrumb(
+          children: [
+            SealBreadcrumbLink(onPressed: () {}, child: const Text('Home')),
+            SealBreadcrumbDropdown(
+              items: [
+                SealBreadcrumbDropMenuItem(
+                  onPressed: () {},
+                  child: const Text('Documentation'),
+                ),
+                SealBreadcrumbDropMenuItem(
+                  onPressed: () {},
+                  child: const Text('Themes'),
+                ),
+              ],
+              child: const SealBreadcrumbEllipsis(),
+            ),
+            const Text('Components'),
+          ],
+        ),
 
         dimension.xl.verticalGap,
 
