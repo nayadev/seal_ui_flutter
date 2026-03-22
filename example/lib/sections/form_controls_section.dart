@@ -14,6 +14,7 @@ class _FormControlsSectionState extends State<FormControlsSection> {
   bool _checkboxB = true;
   bool _switchA = false;
   bool _switchB = true;
+  String? _radioTheme = 'system';
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,32 @@ class _FormControlsSectionState extends State<FormControlsSection> {
           enabled: false,
           onChanged: null,
           label: const Text('Disabled switch'),
+        ),
+        dimension.lg.verticalGap,
+
+        Text(
+          'Radio Group',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealRadioGroup<String>(
+          value: _radioTheme,
+          onChanged: (v) => setState(() => _radioTheme = v),
+          items: const [
+            SealRadioItem(value: 'light', label: Text('Light')),
+            SealRadioItem(value: 'dark', label: Text('Dark')),
+            SealRadioItem(value: 'system', label: Text('System')),
+          ],
+        ),
+        dimension.xs.verticalGap,
+        SealRadioGroup<String>(
+          value: 'dark',
+          enabled: false,
+          onChanged: null,
+          items: const [
+            SealRadioItem(value: 'light', label: Text('Light')),
+            SealRadioItem(value: 'dark', label: Text('Dark')),
+          ],
         ),
       ],
     );
