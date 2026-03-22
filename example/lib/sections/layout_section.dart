@@ -221,6 +221,48 @@ class LayoutSection extends StatelessWidget {
 
         dimension.xl.verticalGap,
 
+        // ── Resizable ─────────────────────────────────────────────────────
+        Text(
+          'Resizable',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SizedBox(
+          height: 160,
+          child: SealResizablePanelGroup(
+            children: [
+              SealResizablePanel(
+                id: 'left',
+                defaultSize: 0.5,
+                minSize: 0.2,
+                child: SealContainer(
+                  child: Center(
+                    child: Text(
+                      'Left',
+                      style: typo.small.copyWith(color: colors.textSecondary),
+                    ),
+                  ),
+                ),
+              ),
+              SealResizablePanel(
+                id: 'right',
+                defaultSize: 0.5,
+                minSize: 0.2,
+                child: SealContainer(
+                  child: Center(
+                    child: Text(
+                      'Right',
+                      style: typo.small.copyWith(color: colors.textSecondary),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        dimension.xl.verticalGap,
+
         // ── Separator ─────────────────────────────────────────────────────
         Text(
           'Separator',
