@@ -246,15 +246,15 @@ ColorPalette get colors => _colors;
 setState(() => _isLoading = true);
 
 // ✅ Good — explains intent that isn't obvious
-// Fall back to dark tokens when no ancestor SealTheme is found,
+// Fall back to dark tokens when no SealThemeProvider ancestor is found,
 // since dark is the primary experience.
-return widget?.tokens ?? SealThemeFactory.darkTokens();
+return SealThemeProvider.maybeTokensOf(this) ?? SealThemeFactory.darkTokens();
 ```
 
 ### Context Extensions
 
 - **Always prefer `BuildContext` extensions** over static `of(context)` calls.
-- Use `context.themeTokens` instead of `SealTheme.of(context)` to access design tokens.
+- Use `context.themeTokens` to access design tokens.
 - Use `context.dimension` instead of `SealDimension.of(context)` to access scaled spacing.
 - Use the `SealDimensionDouble` extension for gaps: `dimension.md.verticalGap`, `dimension.sm.horizontalGap`, `dimension.lg.squareGap`.
 
@@ -269,7 +269,7 @@ context.dimension.md.verticalGap,
 context.dimension.sm.horizontalGap,
 
 // ❌ Bad
-final tokens = SealTheme.of(context);
+final tokens = SealThemeProvider.of(context).tokens;
 SizedBox(height: context.dimension.md),
 ```
 

@@ -5,16 +5,16 @@ import 'package:seal_ui/seal_ui.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 void main() {
-  testWidgets('SealTheme provides tokens to descendants', (
+  testWidgets('SealThemeScope provides tokens to descendants', (
     WidgetTester tester,
   ) async {
     late SealThemeTokens captured;
 
     await tester.pumpWidget(
-      SealTheme(
-        tokens: SealThemeFactory.darkTokens(),
-        child: ShadApp(
-          home: Builder(
+      ShadApp(
+        home: SealThemeScope(
+          tokens: SealThemeFactory.darkTokens(),
+          child: Builder(
             builder: (context) {
               captured = context.themeTokens;
               return const SizedBox.shrink();
@@ -30,7 +30,7 @@ void main() {
     expect(captured.gradients, isA<NebulaGradients>());
   });
 
-  testWidgets('SealTheme falls back to dark tokens without ancestor', (
+  testWidgets('themeTokens falls back to dark tokens without ancestor', (
     WidgetTester tester,
   ) async {
     late SealThemeTokens captured;

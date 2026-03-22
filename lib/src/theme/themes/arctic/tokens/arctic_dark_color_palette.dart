@@ -1,13 +1,14 @@
 import 'dart:ui';
 
-import '../../../tokens/abstractions/color_palette.dart';
-import '../../../tokens/base/seal_state_color.dart';
+import '../../../../tokens/abstractions/color_palette.dart';
+import '../../../../tokens/base/seal_state_color.dart';
 
-/// Color palette for the **Arctic** theme.
+/// Dark-mode color palette for the **Arctic** theme.
 ///
-/// Bright, icy, and minimal — clean snow-white surfaces with ice-blue accents.
-class ArcticColorPalette extends ColorPalette {
-  const ArcticColorPalette();
+/// Icy blue brand identity on deep, cool-toned dark surfaces.
+/// Use [ArcticColorPalette] for the canonical light variant.
+class ArcticDarkColorPalette extends ColorPalette {
+  const ArcticDarkColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────
 
@@ -29,45 +30,45 @@ class ArcticColorPalette extends ColorPalette {
   Color get accentSecondary => const Color(0xFF26C6DA);
 
   @override
-  Color get onAccent => const Color(0xFFFFFFFF);
+  Color get onAccent => const Color(0xFFE8F4FC);
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFFF8FBFF);
+  Color get background => const Color(0xFF071822);
 
   @override
-  Color get surface => const Color(0xFFFFFFFF);
+  Color get surface => const Color(0xFF0D2333);
 
   @override
-  Color get surfaceAlt => const Color(0xFFEAF4FD);
+  Color get surfaceAlt => const Color(0xFF112840);
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   @override
-  Color get textPrimary => const Color(0xFF0A1929);
+  Color get textPrimary => const Color(0xFFE8F4FC);
 
   @override
-  Color get textSecondary => const Color(0xFF546E7A);
+  Color get textSecondary => const Color(0xFF6EA8C4);
 
   @override
-  Color get onPrimary => const Color(0xFFFFFFFF);
+  Color get onPrimary => const Color(0xFFE8F4FC);
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFFB3D9F2);
+  Color get border => const Color(0xFF0D3050);
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   @override
-  Color get success => const Color(0xFF26A69A);
+  Color get success => const Color(0xFF1DE9B6);
 
   @override
-  Color get warning => const Color(0xFFFFA726);
+  Color get warning => const Color(0xFFFF9800);
 
   @override
-  Color get error => const Color(0xFFEF5350);
+  Color get error => const Color(0xFFFF5252);
 
   @override
   Color get info => const Color(0xFF29B6F6);

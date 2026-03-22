@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../theme/seal_theme.dart';
+import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_radius.dart';
 import '../../tokens/base/seal_dimension.dart';
 

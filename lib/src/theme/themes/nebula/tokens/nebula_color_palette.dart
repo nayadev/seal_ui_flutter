@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import '../../../tokens/abstractions/color_palette.dart';
-import '../../../tokens/base/seal_state_color.dart';
+import '../../../../tokens/abstractions/color_palette.dart';
+import '../../../../tokens/base/seal_state_color.dart';
 
 /// Color palette for the **Nebula** theme — the primary Seal UI experience.
 ///

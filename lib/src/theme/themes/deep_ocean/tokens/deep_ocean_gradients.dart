@@ -1,44 +1,44 @@
 import 'package:flutter/painting.dart';
 
-import '../../../tokens/abstractions/gradient_tokens.dart';
+import '../../../../tokens/abstractions/gradient_tokens.dart';
 
-/// Gradient tokens for the **Nebula** theme.
+/// Gradient tokens for the **Deep Ocean** theme.
 ///
-/// Purple → Blue gradient is the primary visual identity of the Nebula theme.
-class NebulaGradients extends GradientTokens {
-  const NebulaGradients();
+/// Deep navy → cyan glow gradients evoke the luminous depths of the ocean.
+class DeepOceanGradients extends GradientTokens {
+  const DeepOceanGradients();
 
   @override
   LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF8055E0), Color(0xFF4A96E8)],
+    colors: [Color(0xFF1976D2), Color(0xFF00E5FF)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF6340B8), Color(0xFF32B88C)],
+    colors: [Color(0xFF0D47A1), Color(0xFF40C4FF)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0x328055E0), Color(0x324A96E8)],
+    colors: [Color(0x281976D2), Color(0x2800E5FF)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0x338055E0), Color(0x336340B8)],
+    colors: [Color(0x301976D2), Color(0x300D47A1)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   @override
   LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0x334A96E8), Color(0x3332B88C)],
+    colors: [Color(0x3000E5FF), Color(0x3040C4FF)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

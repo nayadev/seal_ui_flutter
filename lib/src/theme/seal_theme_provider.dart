@@ -79,6 +79,21 @@ class SealThemeScope extends StatefulWidget {
   State<SealThemeScope> createState() => _SealThemeScopeState();
 }
 
+/// Convenience extension to access [SealThemeTokens] directly from a [BuildContext].
+///
+/// Falls back to dark defaults when no [SealThemeProvider] ancestor is found.
+///
+/// ```dart
+/// final colors = context.themeTokens.colors;
+/// final typography = context.themeTokens.typography;
+/// ```
+extension BuildContextSealTheme on BuildContext {
+  /// Returns the active [SealThemeTokens] from the nearest [SealThemeProvider],
+  /// or dark defaults when no provider is found in the ancestor chain.
+  SealThemeTokens get themeTokens =>
+      SealThemeProvider.maybeTokensOf(this) ?? SealThemeFactory.darkTokens();
+}
+
 class _SealThemeScopeState extends State<SealThemeScope> {
   late final SealThemeController _controller;
 

@@ -1,12 +1,14 @@
 import 'package:flutter/painting.dart';
 
-import '../../../tokens/abstractions/gradient_tokens.dart';
+import '../../../../tokens/abstractions/gradient_tokens.dart';
 
-/// Gradient tokens for the **Arctic** theme.
+/// Light-mode gradient tokens for the **Arctic** theme.
 ///
-/// Ice-blue → glacier cyan gradients evoke a crisp, frozen aesthetic.
-class ArcticGradients extends GradientTokens {
-  const ArcticGradients();
+/// Uses fully opaque ice-blue and glacier-cyan pastel tints so that surface
+/// gradient cards look rich and harmonious on the bright white surfaces of
+/// the Arctic light palette, matching the visual quality of dark mode.
+class ArcticLightGradients extends GradientTokens {
+  const ArcticLightGradients();
 
   @override
   LinearGradient get primaryGradient => const LinearGradient(
@@ -22,23 +24,26 @@ class ArcticGradients extends GradientTokens {
     end: Alignment.bottomRight,
   );
 
+  /// Ice blue → glacier cyan — opaque pastels visible on white surfaces.
   @override
   LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0x1429B6F6), Color(0x1426C6DA)],
+    colors: [Color(0xFFE1F5FE), Color(0xFFE0F7FA)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
+  /// Ice blue spectrum for primary-accented containers.
   @override
   LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0x1929B6F6), Color(0x190288D1)],
+    colors: [Color(0xFFE1F5FE), Color(0xFFB3E5FC)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
+  /// Cyan spectrum for accent-accented containers.
   @override
   LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0x1926C6DA), Color(0x1900BCD4)],
+    colors: [Color(0xFFE0F7FA), Color(0xFFB2EBF2)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

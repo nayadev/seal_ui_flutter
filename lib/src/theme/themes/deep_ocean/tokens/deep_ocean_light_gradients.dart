@@ -1,6 +1,6 @@
 import 'package:flutter/painting.dart';
 
-import '../../../tokens/abstractions/gradient_tokens.dart';
+import '../../../../tokens/abstractions/gradient_tokens.dart';
 
 /// Light-mode gradient tokens for the **Deep Ocean** theme.
 ///

@@ -1,76 +1,77 @@
 import 'dart:ui';
 
-import '../../../tokens/abstractions/color_palette.dart';
-import '../../../tokens/base/seal_state_color.dart';
+import '../../../../tokens/abstractions/color_palette.dart';
+import '../../../../tokens/base/seal_state_color.dart';
 
-/// Color palette for the **Deep Ocean** theme.
+/// Light-mode color palette for the **Nebula** theme.
 ///
-/// Dark, deep, and luminous — midnight navy surfaces with cyan glow accents.
-class DeepOceanColorPalette extends ColorPalette {
-  const DeepOceanColorPalette();
+/// Preserves the purple/teal brand identity of Nebula on bright,
+/// airy surfaces. Use [NebulaColorPalette] for the canonical dark variant.
+class NebulaLightColorPalette extends ColorPalette {
+  const NebulaLightColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF1976D2);
+  Color get primary => const Color(0xFF7B4FD4);
 
   @override
-  Color get primaryTint => const Color(0xFF42A5F5);
+  Color get primaryTint => const Color(0xFF9B6DFF);
 
   @override
-  Color get primaryShade => const Color(0xFF0D47A1);
+  Color get primaryShade => const Color(0xFF5B34A6);
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF00E5FF);
+  Color get accent => const Color(0xFF2DB88A);
 
   @override
-  Color get accentSecondary => const Color(0xFF40C4FF);
+  Color get accentSecondary => const Color(0xFF3D8BDF);
 
   @override
-  Color get onAccent => const Color(0xFFE8F4FC);
+  Color get onAccent => const Color(0xFFFFFFFF);
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFF020B18);
+  Color get background => const Color(0xFFF5F2FF);
 
   @override
-  Color get surface => const Color(0xFF071524);
+  Color get surface => const Color(0xFFFFFFFF);
 
   @override
-  Color get surfaceAlt => const Color(0xFF0D2137);
+  Color get surfaceAlt => const Color(0xFFEDE8F5);
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   @override
-  Color get textPrimary => const Color(0xFFE8F4FC);
+  Color get textPrimary => const Color(0xFF1A1A2E);
 
   @override
-  Color get textSecondary => const Color(0xFF6EA8C4);
+  Color get textSecondary => const Color(0xFF6B6880);
 
   @override
-  Color get onPrimary => const Color(0xFFE8F4FC);
+  Color get onPrimary => const Color(0xFFF0ECF9);
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFF0D2B45);
+  Color get border => const Color(0xFFD8D3E8);
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   @override
-  Color get success => const Color(0xFF1DE9B6);
+  Color get success => const Color(0xFF2DB88A);
 
   @override
-  Color get warning => const Color(0xFFFF9800);
+  Color get warning => const Color(0xFFE6A040);
 
   @override
-  Color get error => const Color(0xFFFF5252);
+  Color get error => const Color(0xFFE04564);
 
   @override
-  Color get info => const Color(0xFF40C4FF);
+  Color get info => const Color(0xFF3D8BDF);
 
   // ── State Colors ────────────────────────────────────────────────────────
 

@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
-import '../../theme/seal_theme.dart';
+import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
 
 /// The visual size of a [SealLoader].

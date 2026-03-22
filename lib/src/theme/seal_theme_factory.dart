@@ -2,7 +2,7 @@ import 'dart:ui' show Brightness;
 
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-import '../themes/nebula/nebula_theme_factory.dart';
+import 'themes/nebula/nebula_theme_factory.dart';
 import '../tokens/base/seal_radius.dart';
 import 'seal_theme_tokens.dart';
 

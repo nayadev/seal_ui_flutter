@@ -1,33 +1,32 @@
 import 'dart:ui';
 
-import '../../../tokens/abstractions/color_palette.dart';
-import '../../../tokens/base/seal_state_color.dart';
+import '../../../../tokens/abstractions/color_palette.dart';
+import '../../../../tokens/base/seal_state_color.dart';
 
-/// Dark-mode color palette for the **Arctic** theme.
+/// Color palette for the **Deep Ocean** theme.
 ///
-/// Icy blue brand identity on deep, cool-toned dark surfaces.
-/// Use [ArcticColorPalette] for the canonical light variant.
-class ArcticDarkColorPalette extends ColorPalette {
-  const ArcticDarkColorPalette();
+/// Dark, deep, and luminous — midnight navy surfaces with cyan glow accents.
+class DeepOceanColorPalette extends ColorPalette {
+  const DeepOceanColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF29B6F6);
+  Color get primary => const Color(0xFF1976D2);
 
   @override
-  Color get primaryTint => const Color(0xFF81D4FA);
+  Color get primaryTint => const Color(0xFF42A5F5);
 
   @override
-  Color get primaryShade => const Color(0xFF0288D1);
+  Color get primaryShade => const Color(0xFF0D47A1);
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF00BCD4);
+  Color get accent => const Color(0xFF00E5FF);
 
   @override
-  Color get accentSecondary => const Color(0xFF26C6DA);
+  Color get accentSecondary => const Color(0xFF40C4FF);
 
   @override
   Color get onAccent => const Color(0xFFE8F4FC);
@@ -35,13 +34,13 @@ class ArcticDarkColorPalette extends ColorPalette {
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFF071822);
+  Color get background => const Color(0xFF020B18);
 
   @override
-  Color get surface => const Color(0xFF0D2333);
+  Color get surface => const Color(0xFF071524);
 
   @override
-  Color get surfaceAlt => const Color(0xFF112840);
+  Color get surfaceAlt => const Color(0xFF0D2137);
 
   // ── Text ───────────────────────────────────────────────────────────────
 
@@ -57,7 +56,7 @@ class ArcticDarkColorPalette extends ColorPalette {
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFF0D3050);
+  Color get border => const Color(0xFF0D2B45);
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
@@ -71,7 +70,7 @@ class ArcticDarkColorPalette extends ColorPalette {
   Color get error => const Color(0xFFFF5252);
 
   @override
-  Color get info => const Color(0xFF29B6F6);
+  Color get info => const Color(0xFF40C4FF);
 
   // ── State Colors ────────────────────────────────────────────────────────
 

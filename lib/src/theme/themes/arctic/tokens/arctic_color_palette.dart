@@ -1,33 +1,32 @@
 import 'dart:ui';
 
-import '../../../tokens/abstractions/color_palette.dart';
-import '../../../tokens/base/seal_state_color.dart';
+import '../../../../tokens/abstractions/color_palette.dart';
+import '../../../../tokens/base/seal_state_color.dart';
 
-/// Light-mode color palette for the **Nebula** theme.
+/// Color palette for the **Arctic** theme.
 ///
-/// Preserves the purple/teal brand identity of Nebula on bright,
-/// airy surfaces. Use [NebulaColorPalette] for the canonical dark variant.
-class NebulaLightColorPalette extends ColorPalette {
-  const NebulaLightColorPalette();
+/// Bright, icy, and minimal — clean snow-white surfaces with ice-blue accents.
+class ArcticColorPalette extends ColorPalette {
+  const ArcticColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF7B4FD4);
+  Color get primary => const Color(0xFF29B6F6);
 
   @override
-  Color get primaryTint => const Color(0xFF9B6DFF);
+  Color get primaryTint => const Color(0xFF81D4FA);
 
   @override
-  Color get primaryShade => const Color(0xFF5B34A6);
+  Color get primaryShade => const Color(0xFF0288D1);
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF2DB88A);
+  Color get accent => const Color(0xFF00BCD4);
 
   @override
-  Color get accentSecondary => const Color(0xFF3D8BDF);
+  Color get accentSecondary => const Color(0xFF26C6DA);
 
   @override
   Color get onAccent => const Color(0xFFFFFFFF);
@@ -35,43 +34,43 @@ class NebulaLightColorPalette extends ColorPalette {
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFFF5F2FF);
+  Color get background => const Color(0xFFF8FBFF);
 
   @override
   Color get surface => const Color(0xFFFFFFFF);
 
   @override
-  Color get surfaceAlt => const Color(0xFFEDE8F5);
+  Color get surfaceAlt => const Color(0xFFEAF4FD);
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   @override
-  Color get textPrimary => const Color(0xFF1A1A2E);
+  Color get textPrimary => const Color(0xFF0A1929);
 
   @override
-  Color get textSecondary => const Color(0xFF6B6880);
+  Color get textSecondary => const Color(0xFF546E7A);
 
   @override
-  Color get onPrimary => const Color(0xFFF0ECF9);
+  Color get onPrimary => const Color(0xFFFFFFFF);
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFFD8D3E8);
+  Color get border => const Color(0xFFB3D9F2);
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   @override
-  Color get success => const Color(0xFF2DB88A);
+  Color get success => const Color(0xFF26A69A);
 
   @override
-  Color get warning => const Color(0xFFE6A040);
+  Color get warning => const Color(0xFFFFA726);
 
   @override
-  Color get error => const Color(0xFFE04564);
+  Color get error => const Color(0xFFEF5350);
 
   @override
-  Color get info => const Color(0xFF3D8BDF);
+  Color get info => const Color(0xFF29B6F6);
 
   // ── State Colors ────────────────────────────────────────────────────────
 

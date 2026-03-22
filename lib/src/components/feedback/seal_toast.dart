@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-import '../../theme/seal_theme.dart';
+import '../../theme/seal_theme_provider.dart';
 import '../../tokens/abstractions/color_palette.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../buttons/seal_text_button.dart';

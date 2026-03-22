@@ -1,15 +1,12 @@
 import 'package:flutter/painting.dart';
 
-import '../../../tokens/abstractions/gradient_tokens.dart';
+import '../../../../tokens/abstractions/gradient_tokens.dart';
 
-/// Light-mode gradient tokens for the **Nebula** theme.
+/// Gradient tokens for the **Nebula** theme.
 ///
-/// Uses fully opaque pastel tints derived from the Nebula brand colors —
-/// soft lavender, periwinkle, and mint — so that surface gradient cards
-/// look rich and harmonious on the bright white and off-white surfaces
-/// of the Nebula light palette, matching the visual quality of dark mode.
-class NebulaLightGradients extends GradientTokens {
-  const NebulaLightGradients();
+/// Purple → Blue gradient is the primary visual identity of the Nebula theme.
+class NebulaGradients extends GradientTokens {
+  const NebulaGradients();
 
   @override
   LinearGradient get primaryGradient => const LinearGradient(
@@ -25,26 +22,23 @@ class NebulaLightGradients extends GradientTokens {
     end: Alignment.bottomRight,
   );
 
-  /// Soft lavender → periwinkle — visible and harmonious on white surfaces.
   @override
   LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0xFFEDE8FF), Color(0xFFE3EFFF)],
+    colors: [Color(0x328055E0), Color(0x324A96E8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
-  /// Deeper lavender tint range for primary-accented containers.
   @override
   LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0xFFEAE3FF), Color(0xFFE5DCFF)],
+    colors: [Color(0x338055E0), Color(0x336340B8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
-  /// Mint → sky tint for accent-accented containers.
   @override
   LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0xFFDAF5EE), Color(0xFFE0EFFF)],
+    colors: [Color(0x334A96E8), Color(0x3332B88C)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

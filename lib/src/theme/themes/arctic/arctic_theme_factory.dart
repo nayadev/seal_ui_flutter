@@ -1,7 +1,7 @@
 import 'dart:ui' show Brightness;
 
-import '../../theme/seal_theme_tokens.dart';
-import '../../tokens/implementations/default_typography.dart';
+import '../../seal_theme_tokens.dart';
+import '../../../tokens/implementations/default_typography.dart';
 import 'tokens/arctic_color_palette.dart';
 import 'tokens/arctic_dark_color_palette.dart';
 import 'tokens/arctic_gradients.dart';
