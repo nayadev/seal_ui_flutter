@@ -108,6 +108,7 @@ export 'src/components/interaction/seal_pressable.dart';
 export 'src/components/interaction/seal_tooltip.dart';
 
 // Layout
+export 'src/components/layout/seal_avatar.dart';
 export 'src/components/layout/seal_badge.dart';
 export 'src/components/layout/seal_card.dart';
 export 'src/components/layout/seal_container.dart';

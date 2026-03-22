@@ -60,6 +60,21 @@ class CardsSection extends StatelessWidget {
 
         Text('Badge', style: typo.title.copyWith(color: colors.textPrimary)),
         dimension.sm.verticalGap,
+        Text('Avatar', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.md,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: const [
+            SealAvatar.small(src: '', placeholder: Text('S')),
+            SealAvatar(src: '', placeholder: Text('M')),
+            SealAvatar.large(src: '', placeholder: Text('L')),
+          ],
+        ),
+        dimension.xl.verticalGap,
+
+        Text('Badge', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
         Wrap(
           spacing: dimension.sm,
           runSpacing: dimension.sm,

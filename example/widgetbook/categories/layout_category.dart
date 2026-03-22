@@ -8,10 +8,48 @@ WidgetbookCategory buildLayoutCategory() {
   return WidgetbookCategory(
     name: 'Layout',
     children: [
+      _buildAvatarsFolder(),
       _buildBadgesFolder(),
       _buildCardsFolder(),
       _buildContainersFolder(),
       _buildSpacingFolder(),
+    ],
+  );
+}
+
+// ── Avatars ──────────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildAvatarsFolder() {
+  return WidgetbookFolder(
+    name: 'Avatars',
+    children: [
+      WidgetbookComponent(
+        name: 'SealAvatar',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) => SealAvatar(
+              src: context.knobs.string(
+                label: 'Image URL',
+                initialValue: 'https://i.pravatar.cc/150',
+              ),
+              placeholder: const Text('JD'),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Sizes',
+            builder: (context) => Wrap(
+              spacing: context.dimension.md,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: const [
+                SealAvatar.small(src: '', placeholder: Text('S')),
+                SealAvatar(src: '', placeholder: Text('M')),
+                SealAvatar.large(src: '', placeholder: Text('L')),
+              ],
+            ),
+          ),
+        ],
+      ),
     ],
   );
 }
