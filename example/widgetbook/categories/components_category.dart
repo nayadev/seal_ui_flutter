@@ -10,10 +10,10 @@ WidgetbookCategory buildComponentsCategory() {
     name: 'Components',
     children: [
       _buildButtonsFolder(),
-      _buildInputsFolder(),
-      _buildOverlayFolder(),
-      _buildInteractionFolder(),
       _buildFeedbackFolder(),
+      _buildInputsFolder(),
+      _buildInteractionFolder(),
+      _buildOverlayFolder(),
     ],
   );
 }
@@ -155,6 +155,208 @@ WidgetbookFolder _buildButtonsFolder() {
         ],
       ),
       WidgetbookComponent(
+        name: 'SealFilledIconButton',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Primary',
+            builder: (context) => SealFilledIconButton.primary(
+              icon: LucideIcons.plus,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Add item',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent',
+            builder: (context) => SealFilledIconButton.accent(
+              icon: LucideIcons.star,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Favorite',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent Secondary',
+            builder: (context) => SealFilledIconButton.accentSecondary(
+              icon: LucideIcons.pencil,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Edit',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Gradient',
+            builder: (context) => SealFilledIconButton.gradient(
+              icon: LucideIcons.rocket,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Launch',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent Gradient',
+            builder: (context) => SealFilledIconButton.accentGradient(
+              icon: LucideIcons.zap,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Boost',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealFilledIconButton.custom(
+              icon: LucideIcons.trash2,
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.red,
+                labelBuilder: (v) => v.toString(),
+              ),
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Delete',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+        ],
+      ),
+      WidgetbookComponent(
+        name: 'SealIconButton',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Primary',
+            builder: (context) => SealIconButton.primary(
+              icon: LucideIcons.x,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Close',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent',
+            builder: (context) => SealIconButton.accent(
+              icon: LucideIcons.ellipsisVertical,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'More',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent Secondary',
+            builder: (context) => SealIconButton.accentSecondary(
+              icon: LucideIcons.info,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Info',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Gradient',
+            builder: (context) => SealIconButton.gradient(
+              icon: LucideIcons.slidersHorizontal,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Filter',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent Gradient',
+            builder: (context) => SealIconButton.accentGradient(
+              icon: LucideIcons.search,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Search',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealIconButton.custom(
+              icon: LucideIcons.star,
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.teal,
+                labelBuilder: (v) => v.toString(),
+              ),
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Favorite',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+        ],
+      ),
+      WidgetbookComponent(
         name: 'SealOutlineButton',
         useCases: [
           WidgetbookUseCase(
@@ -275,6 +477,107 @@ WidgetbookFolder _buildButtonsFolder() {
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+        ],
+      ),
+      WidgetbookComponent(
+        name: 'SealOutlineIconButton',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Primary',
+            builder: (context) => SealOutlineIconButton.primary(
+              icon: LucideIcons.share2,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Share',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent',
+            builder: (context) => SealOutlineIconButton.accent(
+              icon: LucideIcons.bookmark,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Save',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent Secondary',
+            builder: (context) => SealOutlineIconButton.accentSecondary(
+              icon: LucideIcons.slidersHorizontal,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Filter',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Gradient',
+            builder: (context) => SealOutlineIconButton.gradient(
+              icon: LucideIcons.sparkles,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Magic',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Accent Gradient',
+            builder: (context) => SealOutlineIconButton.accentGradient(
+              icon: LucideIcons.zap,
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Boost',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealOutlineIconButton.custom(
+              icon: LucideIcons.triangleAlert,
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [
+                  ColorX.red,
+                  ColorX.teal,
+                  ColorX.orange,
+                  ColorX.indigo,
+                  ColorX.pink,
+                ],
+                initialOption: ColorX.orange,
+                labelBuilder: (v) => v.toString(),
+              ),
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Warning',
               ),
               onPressed:
                   context.knobs.boolean(label: 'Enabled', initialValue: true)
@@ -414,309 +717,6 @@ WidgetbookFolder _buildButtonsFolder() {
           ),
         ],
       ),
-      WidgetbookComponent(
-        name: 'SealFilledIconButton',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Primary',
-            builder: (context) => SealFilledIconButton.primary(
-              icon: LucideIcons.plus,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Add item',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent',
-            builder: (context) => SealFilledIconButton.accent(
-              icon: LucideIcons.star,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Favorite',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent Secondary',
-            builder: (context) => SealFilledIconButton.accentSecondary(
-              icon: LucideIcons.pencil,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Edit',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Gradient',
-            builder: (context) => SealFilledIconButton.gradient(
-              icon: LucideIcons.rocket,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Launch',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent Gradient',
-            builder: (context) => SealFilledIconButton.accentGradient(
-              icon: LucideIcons.zap,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Boost',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Custom',
-            builder: (context) => SealFilledIconButton.custom(
-              icon: LucideIcons.trash2,
-              color: context.knobs.object.dropdown<Color>(
-                label: 'Color',
-                options: [
-                  ColorX.red,
-                  ColorX.teal,
-                  ColorX.orange,
-                  ColorX.indigo,
-                  ColorX.pink,
-                ],
-                initialOption: ColorX.red,
-                labelBuilder: (v) => v.toString(),
-              ),
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Delete',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-        ],
-      ),
-      WidgetbookComponent(
-        name: 'SealOutlineIconButton',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Primary',
-            builder: (context) => SealOutlineIconButton.primary(
-              icon: LucideIcons.share2,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Share',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent',
-            builder: (context) => SealOutlineIconButton.accent(
-              icon: LucideIcons.bookmark,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Save',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent Secondary',
-            builder: (context) => SealOutlineIconButton.accentSecondary(
-              icon: LucideIcons.slidersHorizontal,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Filter',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Gradient',
-            builder: (context) => SealOutlineIconButton.gradient(
-              icon: LucideIcons.sparkles,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Magic',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent Gradient',
-            builder: (context) => SealOutlineIconButton.accentGradient(
-              icon: LucideIcons.zap,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Boost',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Custom',
-            builder: (context) => SealOutlineIconButton.custom(
-              icon: LucideIcons.triangleAlert,
-              color: context.knobs.object.dropdown<Color>(
-                label: 'Color',
-                options: [
-                  ColorX.red,
-                  ColorX.teal,
-                  ColorX.orange,
-                  ColorX.indigo,
-                  ColorX.pink,
-                ],
-                initialOption: ColorX.orange,
-                labelBuilder: (v) => v.toString(),
-              ),
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Warning',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-        ],
-      ),
-      WidgetbookComponent(
-        name: 'SealIconButton',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Primary',
-            builder: (context) => SealIconButton.primary(
-              icon: LucideIcons.x,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Close',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent',
-            builder: (context) => SealIconButton.accent(
-              icon: LucideIcons.ellipsisVertical,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'More',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent Secondary',
-            builder: (context) => SealIconButton.accentSecondary(
-              icon: LucideIcons.info,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Info',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Gradient',
-            builder: (context) => SealIconButton.gradient(
-              icon: LucideIcons.slidersHorizontal,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Filter',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Accent Gradient',
-            builder: (context) => SealIconButton.accentGradient(
-              icon: LucideIcons.search,
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Search',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Custom',
-            builder: (context) => SealIconButton.custom(
-              icon: LucideIcons.star,
-              color: context.knobs.object.dropdown<Color>(
-                label: 'Color',
-                options: [
-                  ColorX.red,
-                  ColorX.teal,
-                  ColorX.orange,
-                  ColorX.indigo,
-                  ColorX.pink,
-                ],
-                initialOption: ColorX.teal,
-                labelBuilder: (v) => v.toString(),
-              ),
-              tooltip: context.knobs.string(
-                label: 'Tooltip',
-                initialValue: 'Favorite',
-              ),
-              onPressed:
-                  context.knobs.boolean(label: 'Enabled', initialValue: true)
-                  ? () {}
-                  : null,
-            ),
-          ),
-        ],
-      ),
     ],
   );
 }
@@ -781,107 +781,6 @@ WidgetbookFolder _buildInputsFolder() {
                     : null,
               );
             },
-          ),
-        ],
-      ),
-      WidgetbookComponent(
-        name: 'SealSwitch',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Default',
-            builder: (context) {
-              final enabled = context.knobs.boolean(
-                label: 'Enabled',
-                initialValue: true,
-              );
-              return SealSwitch(
-                value: context.knobs.boolean(
-                  label: 'On',
-                  initialValue: false,
-                ),
-                enabled: enabled,
-                onChanged: enabled ? (_) {} : null,
-              );
-            },
-          ),
-          WidgetbookUseCase(
-            name: 'With Label',
-            builder: (context) {
-              final enabled = context.knobs.boolean(
-                label: 'Enabled',
-                initialValue: true,
-              );
-              final showSublabel = context.knobs.boolean(
-                label: 'Show Sublabel',
-                initialValue: true,
-              );
-              return SealSwitch(
-                value: context.knobs.boolean(
-                  label: 'On',
-                  initialValue: false,
-                ),
-                enabled: enabled,
-                onChanged: enabled ? (_) {} : null,
-                label: Text(
-                  context.knobs.string(
-                    label: 'Label',
-                    initialValue: 'Enable notifications',
-                  ),
-                ),
-                sublabel: showSublabel
-                    ? Text(
-                        context.knobs.string(
-                          label: 'Sublabel',
-                          initialValue: 'Receive push notifications.',
-                        ),
-                      )
-                    : null,
-              );
-            },
-          ),
-        ],
-      ),
-      WidgetbookComponent(
-        name: 'SealSlider',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Default',
-            builder: (context) => Padding(
-              padding: EdgeInsets.all(context.dimension.lg),
-              child: SealSlider(
-                value: context.knobs.double.slider(
-                  label: 'Value',
-                  initialValue: 0.5,
-                  min: 0,
-                  max: 1,
-                ),
-                enabled: context.knobs.boolean(
-                  label: 'Enabled',
-                  initialValue: true,
-                ),
-                onChanged: (_) {},
-              ),
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Stepped',
-            builder: (context) => Padding(
-              padding: EdgeInsets.all(context.dimension.lg),
-              child: SealSlider(
-                value: 50,
-                min: 0,
-                max: 100,
-                divisions: context.knobs.double
-                    .slider(
-                      label: 'Divisions',
-                      initialValue: 10,
-                      min: 2,
-                      max: 20,
-                    )
-                    .toInt(),
-                onChanged: (_) {},
-              ),
-            ),
           ),
         ],
       ),
@@ -978,6 +877,107 @@ WidgetbookFolder _buildInputsFolder() {
                 onChanged: (_) {},
               ),
             ),
+          ),
+        ],
+      ),
+      WidgetbookComponent(
+        name: 'SealSlider',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSlider(
+                value: context.knobs.double.slider(
+                  label: 'Value',
+                  initialValue: 0.5,
+                  min: 0,
+                  max: 1,
+                ),
+                enabled: context.knobs.boolean(
+                  label: 'Enabled',
+                  initialValue: true,
+                ),
+                onChanged: (_) {},
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Stepped',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSlider(
+                value: 50,
+                min: 0,
+                max: 100,
+                divisions: context.knobs.double
+                    .slider(
+                      label: 'Divisions',
+                      initialValue: 10,
+                      min: 2,
+                      max: 20,
+                    )
+                    .toInt(),
+                onChanged: (_) {},
+              ),
+            ),
+          ),
+        ],
+      ),
+      WidgetbookComponent(
+        name: 'SealSwitch',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) {
+              final enabled = context.knobs.boolean(
+                label: 'Enabled',
+                initialValue: true,
+              );
+              return SealSwitch(
+                value: context.knobs.boolean(
+                  label: 'On',
+                  initialValue: false,
+                ),
+                enabled: enabled,
+                onChanged: enabled ? (_) {} : null,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'With Label',
+            builder: (context) {
+              final enabled = context.knobs.boolean(
+                label: 'Enabled',
+                initialValue: true,
+              );
+              final showSublabel = context.knobs.boolean(
+                label: 'Show Sublabel',
+                initialValue: true,
+              );
+              return SealSwitch(
+                value: context.knobs.boolean(
+                  label: 'On',
+                  initialValue: false,
+                ),
+                enabled: enabled,
+                onChanged: enabled ? (_) {} : null,
+                label: Text(
+                  context.knobs.string(
+                    label: 'Label',
+                    initialValue: 'Enable notifications',
+                  ),
+                ),
+                sublabel: showSublabel
+                    ? Text(
+                        context.knobs.string(
+                          label: 'Sublabel',
+                          initialValue: 'Receive push notifications.',
+                        ),
+                      )
+                    : null,
+              );
+            },
           ),
         ],
       ),
@@ -1082,60 +1082,6 @@ WidgetbookFolder _buildOverlayFolder() {
     name: 'Overlay',
     children: [
       WidgetbookComponent(
-        name: 'SealSheet',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Bottom',
-            builder: (context) => SealFilledButton.primary(
-              label: const Text('Open Sheet'),
-              onPressed: () => showSealSheet<void>(
-                context: context,
-                builder: (ctx) => SealSheet(
-                  title: Text(context.knobs.string(
-                    label: 'Title',
-                    initialValue: 'Filter',
-                  )),
-                  description: Text(context.knobs.string(
-                    label: 'Description',
-                    initialValue: 'Narrow down your results.',
-                  )),
-                  actions: [
-                    SealOutlineButton.primary(
-                      label: const Text('Reset'),
-                      onPressed: () => Navigator.of(ctx).pop(),
-                    ),
-                    SealFilledButton.primary(
-                      label: const Text('Apply'),
-                      onPressed: () => Navigator.of(ctx).pop(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          WidgetbookUseCase(
-            name: 'Right',
-            builder: (context) => SealFilledButton.primary(
-              label: const Text('Open Right Sheet'),
-              onPressed: () => showSealSheet<void>(
-                context: context,
-                side: ShadSheetSide.right,
-                builder: (ctx) => SealSheet(
-                  title: const Text('Settings'),
-                  description: const Text('Configure your preferences.'),
-                  actions: [
-                    SealFilledButton.primary(
-                      label: const Text('Done'),
-                      onPressed: () => Navigator.of(ctx).pop(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      WidgetbookComponent(
         name: 'SealDialog',
         useCases: [
           WidgetbookUseCase(
@@ -1200,6 +1146,60 @@ WidgetbookFolder _buildOverlayFolder() {
           ),
         ],
       ),
+      WidgetbookComponent(
+        name: 'SealSheet',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Bottom',
+            builder: (context) => SealFilledButton.primary(
+              label: const Text('Open Sheet'),
+              onPressed: () => showSealSheet<void>(
+                context: context,
+                builder: (ctx) => SealSheet(
+                  title: Text(context.knobs.string(
+                    label: 'Title',
+                    initialValue: 'Filter',
+                  )),
+                  description: Text(context.knobs.string(
+                    label: 'Description',
+                    initialValue: 'Narrow down your results.',
+                  )),
+                  actions: [
+                    SealOutlineButton.primary(
+                      label: const Text('Reset'),
+                      onPressed: () => Navigator.of(ctx).pop(),
+                    ),
+                    SealFilledButton.primary(
+                      label: const Text('Apply'),
+                      onPressed: () => Navigator.of(ctx).pop(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Right',
+            builder: (context) => SealFilledButton.primary(
+              label: const Text('Open Right Sheet'),
+              onPressed: () => showSealSheet<void>(
+                context: context,
+                side: ShadSheetSide.right,
+                builder: (ctx) => SealSheet(
+                  title: const Text('Settings'),
+                  description: const Text('Configure your preferences.'),
+                  actions: [
+                    SealFilledButton.primary(
+                      label: const Text('Done'),
+                      onPressed: () => Navigator.of(ctx).pop(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     ],
   );
 }
@@ -1249,6 +1249,104 @@ WidgetbookFolder _buildFeedbackFolder() {
     name: 'Feedback',
     children: [
       WidgetbookComponent(
+        name: 'SealAlert',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Info',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Heads up!',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue: 'You can add components using the CLI.',
+              );
+              return SealAlert.info(
+                title: title.isEmpty ? null : title,
+                description: description,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Success',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Profile updated',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue: 'Your changes have been saved successfully.',
+              );
+              return SealAlert.success(
+                title: title.isEmpty ? null : title,
+                description: description,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Warning',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Low storage',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue: 'You have less than 1 GB remaining.',
+              );
+              return SealAlert.warning(
+                title: title.isEmpty ? null : title,
+                description: description,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Error',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Upload failed',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue:
+                    'The file could not be uploaded. Please try again.',
+              );
+              return SealAlert.error(
+                title: title.isEmpty ? null : title,
+                description: description,
+              );
+            },
+          ),
+        ],
+      ),
+      WidgetbookComponent(
+        name: 'SealLoader',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) {
+              final size = context.knobs.object.dropdown<SealLoaderSize>(
+                label: 'Size',
+                options: SealLoaderSize.values,
+                initialOption: SealLoaderSize.medium,
+                labelBuilder: (s) => s.name,
+              );
+              final showLabel = context.knobs.boolean(
+                label: 'Show Label',
+                initialValue: false,
+              );
+              return SealLoader(
+                size: size,
+                label: showLabel ? 'Loading…' : null,
+              );
+            },
+          ),
+        ],
+      ),
+      WidgetbookComponent(
         name: 'SealProgress',
         useCases: [
           WidgetbookUseCase(
@@ -1280,30 +1378,6 @@ WidgetbookFolder _buildFeedbackFolder() {
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-      WidgetbookComponent(
-        name: 'SealLoader',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Default',
-            builder: (context) {
-              final size = context.knobs.object.dropdown<SealLoaderSize>(
-                label: 'Size',
-                options: SealLoaderSize.values,
-                initialOption: SealLoaderSize.medium,
-                labelBuilder: (s) => s.name,
-              );
-              final showLabel = context.knobs.boolean(
-                label: 'Show Label',
-                initialValue: false,
-              );
-              return SealLoader(
-                size: size,
-                label: showLabel ? 'Loading…' : null,
-              );
-            },
           ),
         ],
       ),
@@ -1393,80 +1467,6 @@ WidgetbookFolder _buildFeedbackFolder() {
                   actionLabel: showAction ? const Text('Retry') : null,
                   onAction: showAction ? () {} : null,
                 ).show(context),
-              );
-            },
-          ),
-        ],
-      ),
-      WidgetbookComponent(
-        name: 'SealAlert',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'Info',
-            builder: (context) {
-              final title = context.knobs.string(
-                label: 'Title',
-                initialValue: 'Heads up!',
-              );
-              final description = context.knobs.string(
-                label: 'Description',
-                initialValue: 'You can add components using the CLI.',
-              );
-              return SealAlert.info(
-                title: title.isEmpty ? null : title,
-                description: description,
-              );
-            },
-          ),
-          WidgetbookUseCase(
-            name: 'Success',
-            builder: (context) {
-              final title = context.knobs.string(
-                label: 'Title',
-                initialValue: 'Profile updated',
-              );
-              final description = context.knobs.string(
-                label: 'Description',
-                initialValue: 'Your changes have been saved successfully.',
-              );
-              return SealAlert.success(
-                title: title.isEmpty ? null : title,
-                description: description,
-              );
-            },
-          ),
-          WidgetbookUseCase(
-            name: 'Warning',
-            builder: (context) {
-              final title = context.knobs.string(
-                label: 'Title',
-                initialValue: 'Low storage',
-              );
-              final description = context.knobs.string(
-                label: 'Description',
-                initialValue: 'You have less than 1 GB remaining.',
-              );
-              return SealAlert.warning(
-                title: title.isEmpty ? null : title,
-                description: description,
-              );
-            },
-          ),
-          WidgetbookUseCase(
-            name: 'Error',
-            builder: (context) {
-              final title = context.knobs.string(
-                label: 'Title',
-                initialValue: 'Upload failed',
-              );
-              final description = context.knobs.string(
-                label: 'Description',
-                initialValue:
-                    'The file could not be uploaded. Please try again.',
-              );
-              return SealAlert.error(
-                title: title.isEmpty ? null : title,
-                description: description,
               );
             },
           ),

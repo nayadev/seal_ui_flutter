@@ -113,8 +113,8 @@ class SealWidgetbook extends StatelessWidget {
       ],
       directories: [
         buildComponentsCategory(),
-        buildTokensCategory(),
         buildLayoutCategory(),
+        buildTokensCategory(),
       ],
     );
   }

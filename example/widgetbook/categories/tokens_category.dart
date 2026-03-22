@@ -9,8 +9,8 @@ WidgetbookCategory buildTokensCategory() {
     name: 'Tokens',
     children: [
       _buildColorsFolder(),
-      _buildTypographyFolder(),
       _buildGradientsFolder(),
+      _buildTypographyFolder(),
     ],
   );
 }

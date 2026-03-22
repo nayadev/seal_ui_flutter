@@ -3,12 +3,10 @@ import 'package:seal_ui/seal_ui.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import 'sections/buttons_section.dart';
-import 'sections/cards_section.dart';
-import 'sections/containers_section.dart';
 import 'sections/feedback_section.dart';
-import 'sections/form_controls_section.dart';
 import 'sections/inputs_section.dart';
-import 'sections/loader_section.dart';
+import 'sections/layout_section.dart';
+import 'sections/overlay_section.dart';
 
 /// Example app demonstrating the Seal UI Design System.
 ///
@@ -155,17 +153,13 @@ class _ExampleHome extends StatelessWidget {
               dimension.xl.verticalGap,
               const ButtonsSection(),
               dimension.xl.verticalGap,
-              const InputsSection(),
-              dimension.xl.verticalGap,
-              const ContainersSection(),
-              dimension.xl.verticalGap,
-              const CardsSection(),
-              dimension.xl.verticalGap,
-              const LoaderSection(),
-              dimension.xl.verticalGap,
               const FeedbackSection(),
               dimension.xl.verticalGap,
-              const FormControlsSection(),
+              const InputsSection(),
+              dimension.xl.verticalGap,
+              const LayoutSection(),
+              dimension.xl.verticalGap,
+              const OverlaySection(),
               dimension.xxxl.verticalGap,
             ],
           ),
