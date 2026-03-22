@@ -5,6 +5,29 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 
+/// The edge from which a [SealSheet] slides in.
+enum SealSheetSide {
+  /// Sheet slides in from the top.
+  top,
+
+  /// Sheet slides in from the right.
+  right,
+
+  /// Sheet slides in from the bottom.
+  bottom,
+
+  /// Sheet slides in from the left.
+  left
+  ;
+
+  ShadSheetSide toShadSide() => switch (this) {
+    SealSheetSide.top => ShadSheetSide.top,
+    SealSheetSide.right => ShadSheetSide.right,
+    SealSheetSide.bottom => ShadSheetSide.bottom,
+    SealSheetSide.left => ShadSheetSide.left,
+  };
+}
+
 /// Shows a Seal-themed sheet sliding in from an edge.
 ///
 /// [side] controls which edge the sheet slides from (defaults to bottom).
@@ -13,7 +36,7 @@ import '../../tokens/base/seal_radius.dart';
 /// ```dart
 /// await showSealSheet(
 ///   context: context,
-///   side: ShadSheetSide.right,
+///   side: SealSheetSide.right,
 ///   builder: (context) => SealSheet(
 ///     title: const Text('Settings'),
 ///     child: const _SettingsContent(),
@@ -23,15 +46,45 @@ import '../../tokens/base/seal_radius.dart';
 Future<T?> showSealSheet<T>({
   required BuildContext context,
   required WidgetBuilder builder,
-  ShadSheetSide side = ShadSheetSide.bottom,
+  SealSheetSide side = SealSheetSide.bottom,
   bool isDismissible = true,
 }) {
   return showShadSheet<T>(
     context: context,
-    builder: builder,
-    side: side,
+    builder: (ctx) {
+      final viewPadding = MediaQuery.viewPaddingOf(ctx);
+      final edgePadding = switch (side) {
+        SealSheetSide.bottom => EdgeInsets.only(bottom: viewPadding.bottom),
+        SealSheetSide.top ||
+        SealSheetSide.right ||
+        SealSheetSide.left => EdgeInsets.only(top: viewPadding.top),
+      };
+      return _SealSheetEdgePadding(padding: edgePadding, child: builder(ctx));
+    },
+    side: side.toShadSide(),
     isDismissible: isDismissible,
   );
+}
+
+/// Injects safe-area edge padding into the nearest [SealSheet] descendant so
+/// that the sheet background fills the screen edge while content stays clear
+/// of system UI.
+class _SealSheetEdgePadding extends InheritedWidget {
+  const _SealSheetEdgePadding({
+    required this.padding,
+    required super.child,
+  });
+
+  final EdgeInsets padding;
+
+  static EdgeInsets of(BuildContext context) =>
+      context
+          .dependOnInheritedWidgetOfExactType<_SealSheetEdgePadding>()
+          ?.padding ??
+      EdgeInsets.zero;
+
+  @override
+  bool updateShouldNotify(_SealSheetEdgePadding old) => padding != old.padding;
 }
 
 /// A styled slide-in panel for the Seal UI design system, built on [ShadSheet].
@@ -107,13 +160,15 @@ class SealSheet extends StatelessWidget {
           )
         : null;
 
+    final edgePadding = _SealSheetEdgePadding.of(context);
+
     return ShadSheet(
       title: titleWidget,
       description: descriptionWidget,
       actions: actions,
       backgroundColor: colors.surface,
       radius: SealRadius.borderRadiusLg,
-      padding: EdgeInsets.all(dimension.lg),
+      padding: EdgeInsets.all(dimension.lg) + edgePadding,
       border: Border.all(color: colors.border),
       useSafeArea: false,
       scrollable: scrollable,

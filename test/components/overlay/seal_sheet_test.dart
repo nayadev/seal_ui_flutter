@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart' show ShadApp;
 
 Widget _wrap(Widget child) {
   return ShadApp(
@@ -103,7 +103,7 @@ void main() {
               label: const Text('Open Right'),
               onPressed: () => showSealSheet<void>(
                 context: context,
-                side: ShadSheetSide.right,
+                side: SealSheetSide.right,
                 builder: (_) => const SealSheet(
                   title: Text('Right sheet'),
                 ),
@@ -128,7 +128,7 @@ void main() {
               label: const Text('Open Top'),
               onPressed: () => showSealSheet<void>(
                 context: context,
-                side: ShadSheetSide.top,
+                side: SealSheetSide.top,
                 builder: (_) => const SealSheet(
                   title: Text('Top sheet'),
                 ),

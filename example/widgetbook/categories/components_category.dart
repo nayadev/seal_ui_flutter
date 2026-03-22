@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:shadcn_ui/shadcn_ui.dart' show ShadSheetSide;
 import 'package:widgetbook/widgetbook.dart';
 
 import 'package:seal_ui/seal_ui.dart';
@@ -1184,7 +1183,7 @@ WidgetbookFolder _buildOverlayFolder() {
               label: const Text('Open Right Sheet'),
               onPressed: () => showSealSheet<void>(
                 context: context,
-                side: ShadSheetSide.right,
+                side: SealSheetSide.right,
                 builder: (ctx) => SealSheet(
                   title: const Text('Settings'),
                   description: const Text('Configure your preferences.'),

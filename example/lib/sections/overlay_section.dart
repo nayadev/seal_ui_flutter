@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:shadcn_ui/shadcn_ui.dart' show ShadSheetSide;
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases overlay components: [SealDialog] and [SealSheet].
@@ -112,7 +111,7 @@ class OverlaySection extends StatelessWidget {
                 label: const Text('Right Sheet'),
                 onPressed: () => showSealSheet<void>(
                   context: context,
-                  side: ShadSheetSide.right,
+                  side: SealSheetSide.right,
                   builder: (ctx) => SealSheet(
                     title: const Text('Settings'),
                     description: const Text('Configure your preferences.'),
