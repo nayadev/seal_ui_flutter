@@ -105,6 +105,7 @@ export 'src/components/inputs/seal_text_field.dart';
 
 // Interaction
 export 'src/components/interaction/seal_pressable.dart';
+export 'src/components/interaction/seal_tooltip.dart';
 
 // Layout
 export 'src/components/layout/seal_card.dart';

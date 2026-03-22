@@ -10,6 +10,7 @@ WidgetbookCategory buildComponentsCategory() {
     children: [
       _buildButtonsFolder(),
       _buildInputsFolder(),
+      _buildInteractionFolder(),
       _buildFeedbackFolder(),
     ],
   );
@@ -1063,6 +1064,44 @@ WidgetbookFolder _buildInputsFolder() {
                 obscureText: true,
                 prefixIcon: LucideIcons.lock,
                 suffixIcon: LucideIcons.eyeOff,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}
+
+// ── Interaction ──────────────────────────────────────────────────────────────
+
+WidgetbookFolder _buildInteractionFolder() {
+  return WidgetbookFolder(
+    name: 'Interaction',
+    children: [
+      WidgetbookComponent(
+        name: 'SealTooltip',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) => SealTooltip(
+              message: context.knobs.string(
+                label: 'Message',
+                initialValue: 'Delete item',
+              ),
+              child: SealFilledButton.primary(
+                label: const Text('Hover me'),
+                onPressed: () {},
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealTooltip.custom(
+              builder: (ctx) => const Text('Custom tooltip content'),
+              child: SealOutlineButton.primary(
+                label: const Text('Hover me'),
+                onPressed: () {},
               ),
             ),
           ),

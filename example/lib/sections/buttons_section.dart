@@ -244,6 +244,35 @@ class ButtonsSection extends StatelessWidget {
             ),
           ],
         ),
+        dimension.lg.verticalGap,
+
+        Text(
+          'Tooltip',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: [
+            SealTooltip(
+              message: 'Save your work',
+              child: SealFilledButton.primary(
+                label: const Text('Save'),
+                icon: LucideIcons.save,
+                onPressed: () {},
+              ),
+            ),
+            SealTooltip(
+              message: 'Delete permanently',
+              child: SealFilledButton.custom(
+                label: const Text('Delete'),
+                color: ColorX.red,
+                onPressed: () {},
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }

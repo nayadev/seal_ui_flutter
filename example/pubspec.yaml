@@ -35,6 +35,7 @@ flutter:
     - assets/markdown/components/inputs/sealswitch/
     - assets/markdown/components/inputs/sealtextarea/
     - assets/markdown/components/inputs/sealtextfield/
+    - assets/markdown/components/interaction/sealtooltip/
     - assets/markdown/components/feedback/sealprogress/
     - assets/markdown/components/feedback/sealloader/
     - assets/markdown/components/feedback/sealsnackbar/
