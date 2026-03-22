@@ -12,6 +12,8 @@ class FormControlsSection extends StatefulWidget {
 class _FormControlsSectionState extends State<FormControlsSection> {
   bool _checkboxA = false;
   bool _checkboxB = true;
+  bool _switchA = false;
+  bool _switchB = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,32 @@ class _FormControlsSectionState extends State<FormControlsSection> {
           enabled: false,
           onChanged: null,
           label: const Text('Disabled option'),
+        ),
+        dimension.lg.verticalGap,
+
+        Text(
+          'Switch',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealSwitch(
+          value: _switchA,
+          onChanged: (v) => setState(() => _switchA = v),
+          label: const Text('Enable notifications'),
+        ),
+        dimension.xs.verticalGap,
+        SealSwitch(
+          value: _switchB,
+          onChanged: (v) => setState(() => _switchB = v),
+          label: const Text('Dark mode'),
+          sublabel: const Text('Switch between dark and light themes.'),
+        ),
+        dimension.xs.verticalGap,
+        SealSwitch(
+          value: false,
+          enabled: false,
+          onChanged: null,
+          label: const Text('Disabled switch'),
         ),
       ],
     );

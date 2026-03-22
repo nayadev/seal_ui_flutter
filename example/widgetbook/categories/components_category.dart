@@ -782,6 +782,63 @@ WidgetbookFolder _buildInputsFolder() {
         ],
       ),
       WidgetbookComponent(
+        name: 'SealSwitch',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) {
+              final enabled = context.knobs.boolean(
+                label: 'Enabled',
+                initialValue: true,
+              );
+              return SealSwitch(
+                value: context.knobs.boolean(
+                  label: 'On',
+                  initialValue: false,
+                ),
+                enabled: enabled,
+                onChanged: enabled ? (_) {} : null,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'With Label',
+            builder: (context) {
+              final enabled = context.knobs.boolean(
+                label: 'Enabled',
+                initialValue: true,
+              );
+              final showSublabel = context.knobs.boolean(
+                label: 'Show Sublabel',
+                initialValue: true,
+              );
+              return SealSwitch(
+                value: context.knobs.boolean(
+                  label: 'On',
+                  initialValue: false,
+                ),
+                enabled: enabled,
+                onChanged: enabled ? (_) {} : null,
+                label: Text(
+                  context.knobs.string(
+                    label: 'Label',
+                    initialValue: 'Enable notifications',
+                  ),
+                ),
+                sublabel: showSublabel
+                    ? Text(
+                        context.knobs.string(
+                          label: 'Sublabel',
+                          initialValue: 'Receive push notifications.',
+                        ),
+                      )
+                    : null,
+              );
+            },
+          ),
+        ],
+      ),
+      WidgetbookComponent(
         name: 'SealTextField',
         useCases: [
           WidgetbookUseCase(
