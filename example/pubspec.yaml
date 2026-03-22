@@ -42,5 +42,6 @@ flutter:
     - assets/markdown/layout/avatars/sealavatar/
     - assets/markdown/layout/badges/sealbadge/
     - assets/markdown/layout/cards/sealcard/
+    - assets/markdown/layout/tabs/sealtabs/
     - assets/markdown/layout/containers/sealcontainer/
     - assets/markdown/layout/spacing/spacing-scale/
