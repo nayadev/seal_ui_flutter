@@ -3,7 +3,8 @@ import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases all input and form control components: [SealCheckbox],
 /// [SealRadioGroup], [SealSelect], [SealSlider], [SealSwitch],
-/// [SealTextarea], [SealTextField], [SealInputOTP], and [SealCalendar].
+/// [SealTextarea], [SealTextField], [SealInputOTP], [SealCalendar],
+/// [SealDatePicker], and [SealTimePicker].
 class InputsSection extends StatefulWidget {
   const InputsSection({super.key});
 
@@ -247,6 +248,21 @@ class _InputsSectionState extends State<InputsSection> {
         dimension.xs.verticalGap,
         SealDatePicker.range(
           placeholder: const Text('Pick a date range'),
+          onChanged: (_) {},
+        ),
+
+        dimension.xl.verticalGap,
+
+        // ── Time Picker ───────────────────────────────────────────────────
+        Text(
+          'Time Picker',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealTimePicker(onChanged: (_) {}),
+        dimension.xs.verticalGap,
+        SealTimePicker.period(
+          initialDayPeriod: SealDayPeriod.am,
           onChanged: (_) {},
         ),
       ],

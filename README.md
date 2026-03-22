@@ -90,6 +90,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 |---|---|
 | `SealCalendar` | Token-styled date picker; `.multiple` for multi-select, `.range` for date ranges |
 | `SealDatePicker` | Button-triggered popover date picker; `.range` for date-range selection |
+| `SealTimePicker` | Hour/minute/second input fields; `.period` for 12-hour AM/PM format |
 | `SealInputOTP` / `SealInputOTPGroup` / `SealInputOTPSlot` | Token-styled OTP input; compose groups and slots for any digit layout |
 | `SealCheckbox` | Token-styled checkbox with optional label and sublabel |
 | `SealRadioGroup` / `SealRadioItem` | Radio button group, horizontal or vertical |
