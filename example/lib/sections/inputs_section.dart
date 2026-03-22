@@ -29,6 +29,21 @@ class InputsSection extends StatelessWidget {
           prefixIcon: LucideIcons.lock,
           suffixIcon: LucideIcons.eyeOff,
         ),
+        dimension.lg.verticalGap,
+        Text(
+          'Textarea',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        const SealTextarea(
+          label: 'Description',
+          hint: 'Enter a description…',
+        ),
+        dimension.xs.verticalGap,
+        const SealTextarea(
+          hint: 'Disabled',
+          enabled: false,
+        ),
       ],
     );
   }
