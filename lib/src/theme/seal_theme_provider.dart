@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import 'seal_theme_controller.dart';
+import 'seal_theme_factory.dart';
 import 'seal_theme_tokens.dart';
 
 /// An [InheritedNotifier] that makes [SealThemeController] available to the
@@ -102,6 +104,11 @@ class _SealThemeScopeState extends State<SealThemeScope> {
 
   @override
   Widget build(BuildContext context) {
-    return SealThemeProvider(controller: _controller, child: widget.child);
+    return ShadTheme(
+      data: SealThemeFactory.buildShadTheme(widget.tokens),
+      child: ShadToaster(
+        child: SealThemeProvider(controller: _controller, child: widget.child),
+      ),
+    );
   }
 }

@@ -61,6 +61,7 @@ WidgetbookFolder _buildCardsFolder() {
                         label: 'Cancel',
                         onPressed: () {},
                       ),
+                      context.dimension.xs.horizontalGap,
                       SealFilledButton.primary(
                         label: 'Confirm',
                         onPressed: () {},

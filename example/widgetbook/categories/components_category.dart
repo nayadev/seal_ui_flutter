@@ -121,6 +121,29 @@ WidgetbookFolder _buildButtonsFolder() {
               onPressed: () {},
             ),
           ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealFilledButton.custom(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Delete',
+              ),
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
+                initialOption: Colors.red,
+                labelBuilder: (v) => v.toString(),
+              ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
         ],
       ),
       WidgetbookComponent(
@@ -220,6 +243,29 @@ WidgetbookFolder _buildButtonsFolder() {
               ),
               icon: Icons.star_outline_rounded,
               onPressed: () {},
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealOutlineButton.custom(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Retry',
+              ),
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
+                initialOption: Colors.red,
+                labelBuilder: (v) => v.toString(),
+              ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
             ),
           ),
         ],
@@ -323,6 +369,29 @@ WidgetbookFolder _buildButtonsFolder() {
               onPressed: () {},
             ),
           ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealTextButton.custom(
+              label: context.knobs.string(
+                label: 'Label',
+                initialValue: 'Retry',
+              ),
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
+                initialOption: Colors.red,
+                labelBuilder: (v) => v.toString(),
+              ),
+              isLoading: context.knobs.boolean(
+                label: 'Loading',
+                initialValue: false,
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
         ],
       ),
       WidgetbookComponent(
@@ -391,6 +460,26 @@ WidgetbookFolder _buildButtonsFolder() {
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Boost',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealFilledIconButton.custom(
+              icon: Icons.delete_rounded,
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
+                initialOption: Colors.red,
+                labelBuilder: (v) => v.toString(),
+              ),
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Delete',
               ),
               onPressed:
                   context.knobs.boolean(label: 'Enabled', initialValue: true)
@@ -473,6 +562,26 @@ WidgetbookFolder _buildButtonsFolder() {
                   : null,
             ),
           ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealOutlineIconButton.custom(
+              icon: Icons.warning_rounded,
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
+                initialOption: Colors.orange,
+                labelBuilder: (v) => v.toString(),
+              ),
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Warning',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
         ],
       ),
       WidgetbookComponent(
@@ -541,6 +650,26 @@ WidgetbookFolder _buildButtonsFolder() {
               tooltip: context.knobs.string(
                 label: 'Tooltip',
                 initialValue: 'Search',
+              ),
+              onPressed:
+                  context.knobs.boolean(label: 'Enabled', initialValue: true)
+                  ? () {}
+                  : null,
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Custom',
+            builder: (context) => SealIconButton.custom(
+              icon: Icons.star_rounded,
+              color: context.knobs.object.dropdown<Color>(
+                label: 'Color',
+                options: [Colors.red, Colors.teal, Colors.orange, Colors.indigo, Colors.pink],
+                initialOption: Colors.teal,
+                labelBuilder: (v) => v.toString(),
+              ),
+              tooltip: context.knobs.string(
+                label: 'Tooltip',
+                initialValue: 'Favorite',
               ),
               onPressed:
                   context.knobs.boolean(label: 'Enabled', initialValue: true)
@@ -640,7 +769,7 @@ WidgetbookFolder _buildFeedbackFolder() {
         ],
       ),
       WidgetbookComponent(
-        name: 'SealSnackbar',
+        name: 'SealToast',
         useCases: [
           WidgetbookUseCase(
             name: 'Info',
@@ -651,21 +780,13 @@ WidgetbookFolder _buildFeedbackFolder() {
               );
               final title = context.knobs.string(
                 label: 'Title',
-                initialValue: '',
+                initialValue: 'Info',
               );
-              final alignment = context.knobs.object
-                  .dropdown<SealSnackbarAlignment>(
-                    label: 'Alignment',
-                    options: SealSnackbarAlignment.values,
-                    initialOption: SealSnackbarAlignment.top,
-                    labelBuilder: (a) => a.name,
-                  );
               return SealFilledButton.primary(
-                label: 'Show Info Snackbar',
-                onPressed: () => SealSnackbar.info(
+                label: 'Show Info Toast',
+                onPressed: () => SealToast.info(
                   message: message,
                   title: title.isEmpty ? null : title,
-                  alignment: alignment,
                 ).show(context),
               );
             },
@@ -681,19 +802,11 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Title',
                 initialValue: 'Success',
               );
-              final alignment = context.knobs.object
-                  .dropdown<SealSnackbarAlignment>(
-                    label: 'Alignment',
-                    options: SealSnackbarAlignment.values,
-                    initialOption: SealSnackbarAlignment.top,
-                    labelBuilder: (a) => a.name,
-                  );
               return SealFilledButton.accent(
-                label: 'Show Success Snackbar',
-                onPressed: () => SealSnackbar.success(
+                label: 'Show Success Toast',
+                onPressed: () => SealToast.success(
                   message: message,
                   title: title.isEmpty ? null : title,
-                  alignment: alignment,
                 ).show(context),
               );
             },
@@ -709,19 +822,11 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Title',
                 initialValue: 'Warning',
               );
-              final alignment = context.knobs.object
-                  .dropdown<SealSnackbarAlignment>(
-                    label: 'Alignment',
-                    options: SealSnackbarAlignment.values,
-                    initialOption: SealSnackbarAlignment.top,
-                    labelBuilder: (a) => a.name,
-                  );
               return SealFilledButton.primary(
-                label: 'Show Warning Snackbar',
-                onPressed: () => SealSnackbar.warning(
+                label: 'Show Warning Toast',
+                onPressed: () => SealToast.warning(
                   message: message,
                   title: title.isEmpty ? null : title,
-                  alignment: alignment,
                 ).show(context),
               );
             },
@@ -737,71 +842,93 @@ WidgetbookFolder _buildFeedbackFolder() {
                 label: 'Title',
                 initialValue: 'Error',
               );
-              final alignment = context.knobs.object
-                  .dropdown<SealSnackbarAlignment>(
-                    label: 'Alignment',
-                    options: SealSnackbarAlignment.values,
-                    initialOption: SealSnackbarAlignment.top,
-                    labelBuilder: (a) => a.name,
-                  );
               final showAction = context.knobs.boolean(
                 label: 'Show Action',
                 initialValue: false,
               );
               return SealFilledButton.primary(
-                label: 'Show Error Snackbar',
-                onPressed: () => SealSnackbar.error(
+                label: 'Show Error Toast',
+                onPressed: () => SealToast.error(
                   message: message,
                   title: title.isEmpty ? null : title,
-                  alignment: alignment,
                   actionLabel: showAction ? 'Retry' : null,
                   onAction: showAction ? () {} : null,
                 ).show(context),
               );
             },
           ),
+        ],
+      ),
+      WidgetbookComponent(
+        name: 'SealAlert',
+        useCases: [
           WidgetbookUseCase(
-            name: 'Custom',
+            name: 'Info',
             builder: (context) {
-              final message = context.knobs.string(
-                label: 'Message',
-                initialValue: 'Achievement unlocked!',
-              );
               final title = context.knobs.string(
                 label: 'Title',
-                initialValue: 'Congrats',
+                initialValue: 'Heads up!',
               );
-              final alignment = context.knobs.object
-                  .dropdown<SealSnackbarAlignment>(
-                    label: 'Alignment',
-                    options: SealSnackbarAlignment.values,
-                    initialOption: SealSnackbarAlignment.top,
-                    labelBuilder: (a) => a.name,
-                  );
-              final useGradient = context.knobs.boolean(
-                label: 'Use Gradient',
-                initialValue: true,
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue: 'You can add components using the CLI.',
               );
-              final showAction = context.knobs.boolean(
-                label: 'Show Action',
-                initialValue: false,
+              return SealAlert.info(
+                title: title.isEmpty ? null : title,
+                description: description,
               );
-              return SealFilledButton.gradient(
-                label: 'Show Custom Snackbar',
-                onPressed: () => SealSnackbar.custom(
-                  message: message,
-                  title: title.isEmpty ? null : title,
-                  icon: Icons.emoji_events_rounded,
-                  color: useGradient
-                      ? null
-                      : context.themeTokens.colors.primary,
-                  gradient: useGradient
-                      ? context.themeTokens.gradients.primaryGradient
-                      : null,
-                  alignment: alignment,
-                  actionLabel: showAction ? 'View' : null,
-                  onAction: showAction ? () {} : null,
-                ).show(context),
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Success',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Profile updated',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue: 'Your changes have been saved successfully.',
+              );
+              return SealAlert.success(
+                title: title.isEmpty ? null : title,
+                description: description,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Warning',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Low storage',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue:
+                    'You have less than 1 GB remaining.',
+              );
+              return SealAlert.warning(
+                title: title.isEmpty ? null : title,
+                description: description,
+              );
+            },
+          ),
+          WidgetbookUseCase(
+            name: 'Error',
+            builder: (context) {
+              final title = context.knobs.string(
+                label: 'Title',
+                initialValue: 'Upload failed',
+              );
+              final description = context.knobs.string(
+                label: 'Description',
+                initialValue:
+                    'The file could not be uploaded. Please try again.',
+              );
+              return SealAlert.error(
+                title: title.isEmpty ? null : title,
+                description: description,
               );
             },
           ),

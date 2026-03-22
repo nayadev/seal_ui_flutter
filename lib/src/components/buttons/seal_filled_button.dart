@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
-import '../../theme/seal_theme_tokens.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../../tokens/base/seal_radius.dart';
 import '../feedback/seal_bouncing_dots.dart';
 
 /// The visual variant of a [SealFilledButton].
@@ -14,9 +13,10 @@ enum _SealFilledButtonVariant {
   accentSecondary,
   gradient,
   accentGradient,
+  custom,
 }
 
-/// A filled action button styled with Seal UI tokens.
+/// A filled action button styled with Seal UI tokens, built on [ShadButton].
 ///
 /// Use the named constructors to choose a variant:
 ///
@@ -25,20 +25,11 @@ enum _SealFilledButtonVariant {
 /// - [SealFilledButton.accentSecondary] — secondary accent color fill.
 /// - [SealFilledButton.gradient] — primary gradient background.
 /// - [SealFilledButton.accentGradient] — accent gradient background.
+/// - [SealFilledButton.custom] — arbitrary color or gradient background.
 ///
 /// ```dart
 /// SealFilledButton.primary(
 ///   label: 'Get Started',
-///   onPressed: () {},
-/// )
-///
-/// SealFilledButton.accent(
-///   label: 'Continue',
-///   onPressed: () {},
-/// )
-///
-/// SealFilledButton.accentSecondary(
-///   label: 'Confirm',
 ///   onPressed: () {},
 /// )
 ///
@@ -47,16 +38,14 @@ enum _SealFilledButtonVariant {
 ///   onPressed: () {},
 /// )
 ///
-/// SealFilledButton.accentGradient(
-///   label: 'Explore',
+/// SealFilledButton.custom(
+///   label: 'Confirm',
+///   color: Colors.red,
 ///   onPressed: () {},
 /// )
 /// ```
 class SealFilledButton extends StatelessWidget {
-  /// Opacity applied to foreground text when the button is disabled.
-  static const double _kDisabledTextOpacity = 0.4;
-
-  /// Opacity applied to the gradient button shell when disabled.
+  /// Opacity applied to gradient variants when disabled.
   static const double _kDisabledButtonOpacity = 0.45;
 
   const SealFilledButton._({
@@ -66,7 +55,11 @@ class SealFilledButton extends StatelessWidget {
     this.onPressed,
     this.isLoading = false,
     this.icon,
-  }) : _variant = variant;
+    Color? color,
+    LinearGradient? gradient,
+  }) : _variant = variant,
+       _color = color,
+       _gradient = gradient;
 
   /// Creates a filled button with the **primary** brand color.
   const factory SealFilledButton.primary({
@@ -113,6 +106,19 @@ class SealFilledButton extends StatelessWidget {
     IconData? icon,
   }) = _AccentGradientSealFilledButton;
 
+  /// Creates a filled button with an arbitrary [color] or [gradient].
+  ///
+  /// Exactly one of [color] or [gradient] must be provided.
+  const factory SealFilledButton.custom({
+    Key? key,
+    required String label,
+    Color? color,
+    LinearGradient? gradient,
+    VoidCallback? onPressed,
+    bool isLoading,
+    IconData? icon,
+  }) = _CustomSealFilledButton;
+
   /// Button label text.
   final String label;
 
@@ -126,6 +132,8 @@ class SealFilledButton extends StatelessWidget {
   final IconData? icon;
 
   final _SealFilledButtonVariant _variant;
+  final Color? _color;
+  final LinearGradient? _gradient;
 
   bool get _isDisabled => onPressed == null || isLoading;
 
@@ -134,27 +142,44 @@ class SealFilledButton extends StatelessWidget {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
     final typo = tokens.typography;
-    final dimension = context.dimension;
 
-    if (_variant == _SealFilledButtonVariant.gradient) {
-      return _GradientButtonShell(
-        tokens: tokens,
-        gradient: tokens.gradients.primaryGradient,
-        foregroundColor: colors.onPrimary,
-        isDisabled: _isDisabled,
-        onPressed: onPressed,
-        child: _buildContent(context, colors.onPrimary, typo),
-      );
-    }
+    final bool isGradient =
+        _variant == _SealFilledButtonVariant.gradient ||
+        _variant == _SealFilledButtonVariant.accentGradient ||
+        (_variant == _SealFilledButtonVariant.custom && _gradient != null);
 
-    if (_variant == _SealFilledButtonVariant.accentGradient) {
-      return _GradientButtonShell(
-        tokens: tokens,
-        gradient: tokens.gradients.accentGradient,
-        foregroundColor: colors.onAccent,
-        isDisabled: _isDisabled,
-        onPressed: onPressed,
-        child: _buildContent(context, colors.onAccent, typo),
+    if (isGradient) {
+      final gradient = _variant == _SealFilledButtonVariant.gradient
+          ? tokens.gradients.primaryGradient
+          : _variant == _SealFilledButtonVariant.accentGradient
+          ? tokens.gradients.accentGradient
+          : _gradient!;
+      final foregroundColor =
+          _variant == _SealFilledButtonVariant.accentGradient
+          ? colors.onAccent
+          : colors.onPrimary;
+
+      return AnimatedOpacity(
+        opacity: _isDisabled ? _kDisabledButtonOpacity : 1.0,
+        duration: const Duration(milliseconds: 200),
+        child: ShadButton.raw(
+          variant: ShadButtonVariant.primary,
+          onPressed: _isDisabled ? null : onPressed,
+          enabled: !_isDisabled,
+          gradient: gradient,
+          foregroundColor: foregroundColor,
+          hoverForegroundColor: foregroundColor,
+          pressedForegroundColor: foregroundColor,
+          leading: (!isLoading && icon != null)
+              ? Icon(
+                  icon,
+                  size: context.dimension.scaled(
+                    TypographyTokens.kDefaultButtonIconSize,
+                  ),
+                )
+              : null,
+          child: _buildContent(context, foregroundColor, typo),
+        ),
       );
     }
 
@@ -175,28 +200,30 @@ class SealFilledButton extends StatelessWidget {
       case _SealFilledButtonVariant.accentGradient:
         backgroundColor = colors.fill.active;
         foregroundColor = colors.onPrimary;
+      case _SealFilledButtonVariant.custom:
+        backgroundColor = _color!;
+        foregroundColor = Colors.white;
     }
 
-    return FilledButton(
+    return ShadButton.raw(
+      variant: ShadButtonVariant.primary,
       onPressed: _isDisabled ? null : onPressed,
-      style: FilledButton.styleFrom(
-        backgroundColor: backgroundColor,
-        foregroundColor: foregroundColor,
-        disabledBackgroundColor: backgroundColor.withValues(
-          alpha: _kDisabledButtonOpacity,
-        ),
-        disabledForegroundColor: foregroundColor.withValues(
-          alpha: _kDisabledTextOpacity,
-        ),
-        padding: EdgeInsets.symmetric(
-          horizontal: dimension.lg,
-          vertical: dimension.md,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-        ),
-        textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
-      ),
+      enabled: !_isDisabled,
+      backgroundColor: backgroundColor,
+      hoverBackgroundColor: backgroundColor.withValues(alpha: 0.85),
+      pressedBackgroundColor: backgroundColor.withValues(alpha: 0.75),
+      foregroundColor: foregroundColor,
+      hoverForegroundColor: foregroundColor,
+      pressedForegroundColor: foregroundColor,
+      // Hide the leading icon while loading so the bouncing dots fill the slot.
+      leading: (!isLoading && icon != null)
+          ? Icon(
+              icon,
+              size: context.dimension.scaled(
+                TypographyTokens.kDefaultButtonIconSize,
+              ),
+            )
+          : null,
       child: _buildContent(context, foregroundColor, typo),
     );
   }
@@ -206,28 +233,13 @@ class SealFilledButton extends StatelessWidget {
     Color textColor,
     TypographyTokens typography,
   ) {
-    final content = icon != null
-        ? Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: context.dimension.scaled(
-                  TypographyTokens.kDefaultButtonIconSize,
-                ),
-              ),
-              context.dimension.xxs.horizontalGap,
-              Text(label),
-            ],
-          )
-        : Text(label);
+    final content = Text(label);
 
     if (!isLoading) return content;
 
-    final style = typography.body;
+    final style = typography.small;
     final lineHeight =
-        (style.fontSize ??
-            context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
+        (style.fontSize ?? 14) *
         (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
     return Stack(
       alignment: Alignment.center,
@@ -300,58 +312,19 @@ class _AccentGradientSealFilledButton extends SealFilledButton {
   }) : super._(variant: _SealFilledButtonVariant.accentGradient);
 }
 
-/// Internal widget that renders the gradient button shell.
-class _GradientButtonShell extends StatelessWidget {
-  const _GradientButtonShell({
-    required this.tokens,
-    required this.gradient,
-    required this.foregroundColor,
-    required this.isDisabled,
-    required this.onPressed,
-    required this.child,
-  });
-
-  final SealThemeTokens tokens;
-  final LinearGradient gradient;
-  final Color foregroundColor;
-  final bool isDisabled;
-  final VoidCallback? onPressed;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: isDisabled ? SealFilledButton._kDisabledButtonOpacity : 1.0,
-      duration: const Duration(milliseconds: 200),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: SealRadius.borderRadiusSm,
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            borderRadius: SealRadius.borderRadiusSm,
-            onTap: isDisabled ? null : onPressed,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: context.dimension.lg,
-                vertical: context.dimension.md,
-              ),
-              child: DefaultTextStyle.merge(
-                style: tokens.typography.body.copyWith(
-                  color: foregroundColor,
-                  fontWeight: FontWeight.w600,
-                ),
-                child: IconTheme.merge(
-                  data: IconThemeData(color: foregroundColor),
-                  child: child,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+/// Redirecting factory for [SealFilledButton.custom].
+class _CustomSealFilledButton extends SealFilledButton {
+  const _CustomSealFilledButton({
+    super.key,
+    required super.label,
+    super.color,
+    super.gradient,
+    super.onPressed,
+    super.isLoading,
+    super.icon,
+  }) : assert(
+         color != null || gradient != null,
+         'SealFilledButton.custom requires either color or gradient.',
+       ),
+       super._(variant: _SealFilledButtonVariant.custom);
 }

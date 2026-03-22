@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/base/seal_dimension.dart';
@@ -11,10 +12,11 @@ enum _SealIconButtonVariant {
   accentSecondary,
   gradient,
   accentGradient,
+  custom,
 }
 
 /// A compact ghost icon-only button — no background, no border — styled with
-/// Seal UI tokens.
+/// Seal UI tokens and built on [ShadIconButton].
 ///
 /// The icon-button equivalent of [SealTextButton]: use for low-emphasis
 /// actions in toolbars, app bars, and inline contexts. Use [tooltip] to
@@ -27,6 +29,7 @@ enum _SealIconButtonVariant {
 /// - [SealIconButton.accentSecondary] — secondary accent color icon.
 /// - [SealIconButton.gradient] — primary gradient icon.
 /// - [SealIconButton.accentGradient] — accent gradient icon.
+/// - [SealIconButton.custom] — arbitrary color or gradient.
 ///
 /// ```dart
 /// SealIconButton.primary(
@@ -40,6 +43,13 @@ enum _SealIconButtonVariant {
 ///   onPressed: () {},
 ///   tooltip: 'Filter',
 /// )
+///
+/// SealIconButton.custom(
+///   icon: Icons.star,
+///   color: Colors.amber,
+///   onPressed: () {},
+///   tooltip: 'Favorite',
+/// )
 /// ```
 class SealIconButton extends StatelessWidget {
   /// Default icon size for ghost icon buttons.
@@ -48,9 +58,6 @@ class SealIconButton extends StatelessWidget {
   /// Opacity applied to the button when disabled.
   static const double _kDisabledOpacity = 0.4;
 
-  /// Border radius applied to all icon button variants.
-  static const BorderRadius _kBorderRadius = SealRadius.borderRadiusFull;
-
   const SealIconButton._({
     super.key,
     required this.icon,
@@ -58,7 +65,11 @@ class SealIconButton extends StatelessWidget {
     this.onPressed,
     this.tooltip,
     this.iconSize = _kIconSize,
-  }) : _variant = variant;
+    Color? color,
+    LinearGradient? gradient,
+  })  : _variant = variant,
+        _color = color,
+        _gradient = gradient;
 
   /// Creates a ghost icon button with the **primary** brand color.
   const factory SealIconButton.primary({
@@ -105,6 +116,19 @@ class SealIconButton extends StatelessWidget {
     double iconSize,
   }) = _AccentGradientSealIconButton;
 
+  /// Creates a ghost icon button with an arbitrary [color] or [gradient].
+  ///
+  /// Exactly one of [color] or [gradient] must be provided.
+  const factory SealIconButton.custom({
+    Key? key,
+    required IconData icon,
+    Color? color,
+    LinearGradient? gradient,
+    VoidCallback? onPressed,
+    String? tooltip,
+    double iconSize,
+  }) = _CustomSealIconButton;
+
   /// The icon to display inside the button.
   final IconData icon;
 
@@ -118,11 +142,13 @@ class SealIconButton extends StatelessWidget {
 
   /// The size of the icon in logical pixels before responsive scaling.
   ///
-  /// Defaults to [_kIconSize] (20.0). The value is scaled proportionally
+  /// Defaults to [_kIconSize] (24.0). The value is scaled proportionally
   /// via [SealDimension.scaled] to match the active breakpoint.
   final double iconSize;
 
   final _SealIconButtonVariant _variant;
+  final Color? _color;
+  final LinearGradient? _gradient;
 
   bool get _isDisabled => onPressed == null;
 
@@ -131,30 +157,39 @@ class SealIconButton extends StatelessWidget {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
     final dimension = context.dimension;
-    final iconSize = dimension.scaled(this.iconSize);
+    final scaledIconSize = dimension.scaled(iconSize);
 
     final bool isGradient =
         _variant == _SealIconButtonVariant.gradient ||
-        _variant == _SealIconButtonVariant.accentGradient;
+        _variant == _SealIconButtonVariant.accentGradient ||
+        (_variant == _SealIconButtonVariant.custom && _gradient != null);
 
     if (isGradient) {
       final gradient = _variant == _SealIconButtonVariant.gradient
           ? tokens.gradients.primaryGradient
-          : tokens.gradients.accentGradient;
+          : _variant == _SealIconButtonVariant.accentGradient
+              ? tokens.gradients.accentGradient
+              : _gradient!;
 
-      final baseColor = Colors.white;
-      final disabledColor = baseColor.withValues(alpha: _kDisabledOpacity);
+      const baseColor = Colors.white;
 
-      final button = IconButton(
-        icon: Icon(icon, size: iconSize),
+      final buttonSize = scaledIconSize + dimension.sm * 2;
+      Widget button = ShadIconButton.raw(
+        variant: ShadButtonVariant.ghost,
+        icon: Icon(icon, size: scaledIconSize),
         onPressed: _isDisabled ? null : onPressed,
-        tooltip: tooltip,
-        style: IconButton.styleFrom(
-          foregroundColor: baseColor,
-          disabledForegroundColor: disabledColor,
-          padding: EdgeInsets.all(dimension.sm),
-          shape: RoundedRectangleBorder(borderRadius: _kBorderRadius),
+        enabled: !_isDisabled,
+        width: buttonSize,
+        height: buttonSize,
+        decoration: ShadDecoration(
+          border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
         ),
+        foregroundColor: baseColor,
+        hoverForegroundColor: baseColor,
+        pressedForegroundColor: baseColor,
+        backgroundColor: Colors.transparent,
+        hoverBackgroundColor: Colors.white.withValues(alpha: 0.08),
+        padding: EdgeInsets.all(dimension.sm),
       );
 
       return AnimatedOpacity(
@@ -180,20 +215,27 @@ class SealIconButton extends StatelessWidget {
       case _SealIconButtonVariant.gradient:
       case _SealIconButtonVariant.accentGradient:
         foregroundColor = colors.foreground.active;
+      case _SealIconButtonVariant.custom:
+        foregroundColor = _color!;
     }
 
-    final disabledColor = foregroundColor.withValues(alpha: _kDisabledOpacity);
-
-    return IconButton(
-      icon: Icon(icon, size: iconSize),
+    final buttonSize = scaledIconSize + dimension.sm * 2;
+    return ShadIconButton.raw(
+      variant: ShadButtonVariant.ghost,
+      icon: Icon(icon, size: scaledIconSize),
       onPressed: _isDisabled ? null : onPressed,
-      tooltip: tooltip,
-      style: IconButton.styleFrom(
-        foregroundColor: foregroundColor,
-        disabledForegroundColor: disabledColor,
-        padding: EdgeInsets.all(dimension.sm),
-        shape: RoundedRectangleBorder(borderRadius: _kBorderRadius),
+      enabled: !_isDisabled,
+      width: buttonSize,
+      height: buttonSize,
+      decoration: ShadDecoration(
+        border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
       ),
+      foregroundColor: foregroundColor,
+      hoverForegroundColor: foregroundColor,
+      pressedForegroundColor: foregroundColor,
+      backgroundColor: Colors.transparent,
+      hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
+      padding: EdgeInsets.all(dimension.sm),
     );
   }
 }
@@ -251,4 +293,21 @@ class _AccentGradientSealIconButton extends SealIconButton {
     super.tooltip,
     super.iconSize,
   }) : super._(variant: _SealIconButtonVariant.accentGradient);
+}
+
+/// Redirecting factory for [SealIconButton.custom].
+class _CustomSealIconButton extends SealIconButton {
+  const _CustomSealIconButton({
+    super.key,
+    required super.icon,
+    super.color,
+    super.gradient,
+    super.onPressed,
+    super.tooltip,
+    super.iconSize,
+  }) : assert(
+         color != null || gradient != null,
+         'SealIconButton.custom requires either color or gradient.',
+       ),
+       super._(variant: _SealIconButtonVariant.custom);
 }

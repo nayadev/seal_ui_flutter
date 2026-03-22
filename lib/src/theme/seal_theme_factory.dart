@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../tokens/base/seal_dimension.dart';
 import '../tokens/base/seal_radius.dart';
@@ -73,8 +74,62 @@ abstract final class SealThemeFactory {
     Brightness brightness,
   ) => _buildTheme(tokens, brightness);
 
+  // ── Shad theme builder ────────────────────────────────────────────────
+
+  /// Builds a [ShadThemeData] from the given [SealThemeTokens].
+  ///
+  /// Maps Seal UI's color palette and radius tokens to shadcn_ui's
+  /// [ShadColorScheme] so that all shadcn_ui components adopt Seal's visual
+  /// identity automatically.
+  static ShadThemeData buildShadTheme(SealThemeTokens tokens) {
+    final colors = tokens.colors;
+    final typo = tokens.typography;
+    return ShadThemeData(
+      textTheme: ShadTextTheme(
+        h1Large: typo.h1Large,
+        h1: typo.h1,
+        h2: typo.h2,
+        h3: typo.h3,
+        h4: typo.h4,
+        p: typo.p,
+        blockquote: typo.blockquote,
+        table: typo.table,
+        list: typo.list,
+        lead: typo.lead,
+        large: typo.large,
+        small: typo.small,
+        muted: typo.muted,
+      ),
+      colorScheme: ShadColorScheme(
+        background: colors.background,
+        foreground: colors.textPrimary,
+        card: colors.surface,
+        cardForeground: colors.textPrimary,
+        popover: colors.surface,
+        popoverForeground: colors.textPrimary,
+        primary: colors.fill.active,
+        primaryForeground: colors.onPrimary,
+        secondary: colors.surfaceAlt,
+        secondaryForeground: colors.textPrimary,
+        muted: colors.surfaceAlt,
+        mutedForeground: colors.textSecondary,
+        accent: colors.accent,
+        accentForeground: colors.onAccent,
+        destructive: colors.error,
+        destructiveForeground: colors.onPrimary,
+        border: colors.border,
+        input: colors.border,
+        ring: colors.primary,
+        selection: colors.primary.withValues(alpha: _kSelectionOpacity),
+      ),
+      brightness: tokens.brightness,
+      radius: SealRadius.borderRadiusSm,
+    );
+  }
+
   // ── Internal ─────────────────────────────────────────────────────────
 
+  static const double _kSelectionOpacity = 0.3;
   static const double _kSecondaryContainerOpacity = 0.15;
   static const double _kOutlineVariantOpacity = 0.5;
   static const double _kDividerThickness = 1;

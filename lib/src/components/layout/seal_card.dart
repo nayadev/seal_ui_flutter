@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../../seal_ui.dart';
 
-/// A themed, elevated card with optional header, body, and footer sections.
+/// A themed, elevated card with optional header, body, and footer sections,
+/// built on [ShadCard].
 ///
 /// Uses Seal design tokens for colors, spacing, border radius, and
-/// typography. Supports optional gradient backgrounds.
+/// typography. Supports optional gradient backgrounds — in that case the
+/// card is rendered as a [ShadCard] wrapped inside a gradient [DecoratedBox]
+/// so the Seal visual identity is preserved.
 ///
 /// ```dart
 /// SealCard(
@@ -63,7 +67,7 @@ class SealCard extends StatelessWidget {
   /// Border radius of the card.
   ///
   /// Defaults to [SealRadius.borderRadiusLg].
-  final BorderRadiusGeometry? borderRadius;
+  final BorderRadius? borderRadius;
 
   /// Background color of the card.
   ///
@@ -73,7 +77,8 @@ class SealCard extends StatelessWidget {
 
   /// Optional gradient background for the card.
   ///
-  /// When provided, [color] is ignored.
+  /// When provided, [color] is ignored and the gradient is applied via a
+  /// wrapping [DecoratedBox].
   final Gradient? gradient;
 
   /// Whether to show a border around the card.
@@ -107,11 +112,10 @@ class SealCard extends StatelessWidget {
     final effectiveShadowColor =
         shadowColor ?? Colors.black.withValues(alpha: _kShadowOpacity);
 
+    // Build the section content that ShadCard expects as child.
     final sections = <Widget>[];
 
-    if (header != null) {
-      sections.add(header!);
-    }
+    if (header != null) sections.add(header!);
 
     if (body != null) {
       if (sections.isNotEmpty) {
@@ -126,58 +130,86 @@ class SealCard extends StatelessWidget {
       sections.add(body!);
     }
 
-    if (footer != null) {
-      if (sections.isNotEmpty) {
-        sections.add(
-          Divider(
-            height: dimension.lg,
-            thickness: dimension.scaled(1),
-            color: colors.border.withValues(alpha: _kDividerOpacity),
-          ),
-        );
-      }
-      sections.add(footer!);
-    }
+    // Build the ShadCard shadows list from the elevation token.
+    final shadows = elevation > 0
+        ? [
+            BoxShadow(
+              color: effectiveShadowColor,
+              blurRadius: dimension.scaled(elevation * 2),
+              offset: Offset(0, dimension.scaled(elevation)),
+            ),
+          ]
+        : <BoxShadow>[];
 
-    final content = Padding(
+    // Wrap the footer with top spacing so it doesn't crowd the body content.
+    // ShadCard places child and footer consecutively in a Column with no gap.
+    final wrappedFooter = footer != null
+        ? Padding(
+            padding: EdgeInsets.only(top: dimension.md),
+            child: footer,
+          )
+        : null;
+
+    Widget card = ShadCard(
+      width: width,
       padding: effectivePadding,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: sections,
-      ),
+      radius: effectiveRadius,
+      backgroundColor: gradient == null ? (color ?? colors.surface) : null,
+      border: showBorder ? ShadBorder.all(color: colors.border) : ShadBorder.none,
+      shadows: shadows,
+      footer: wrappedFooter,
+      child: sections.isEmpty
+          ? null
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: sections,
+            ),
     );
 
-    return Container(
-      width: width,
-      margin: margin,
-      decoration: BoxDecoration(
-        color: gradient == null ? (color ?? colors.surface) : null,
-        gradient: gradient,
+    // Wrap with a gradient container when a gradient is requested.
+    if (gradient != null) {
+      card = DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: gradient,
+          borderRadius: effectiveRadius,
+          border: showBorder ? Border.all(color: colors.border) : null,
+          boxShadow: shadows,
+        ),
+        child: ClipRRect(
+          borderRadius: effectiveRadius,
+          child: ShadCard(
+            padding: effectivePadding,
+            radius: effectiveRadius,
+            backgroundColor: Colors.transparent,
+            border: ShadBorder.none,
+            shadows: const [],
+            footer: wrappedFooter,
+            child: sections.isEmpty
+                ? null
+                : Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: sections,
+                  ),
+          ),
+        ),
+      );
+    }
+
+    if (margin != null || width != null) {
+      card = Container(width: width, margin: margin, child: card);
+    }
+
+    if (onTap == null) return card;
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
         borderRadius: effectiveRadius,
-        border: showBorder ? Border.all(color: colors.border) : null,
-        boxShadow: elevation > 0
-            ? [
-                BoxShadow(
-                  color: effectiveShadowColor,
-                  blurRadius: dimension.scaled(elevation * 2),
-                  offset: Offset(0, dimension.scaled(elevation)),
-                ),
-              ]
-            : null,
+        onTap: onTap,
+        child: card,
       ),
-      child: onTap != null
-          ? Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: effectiveRadius is BorderRadius
-                    ? effectiveRadius
-                    : null,
-                onTap: onTap,
-                child: content,
-              ),
-            )
-          : content,
     );
   }
 }

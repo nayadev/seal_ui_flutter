@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
-import '../../tokens/base/seal_radius.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../../foundation/seal_underline_extension.dart';
 import '../feedback/seal_bouncing_dots.dart';
 
 /// The visual variant of a [SealTextButton].
@@ -14,9 +13,11 @@ enum _SealTextButtonVariant {
   accentSecondary,
   gradient,
   accentGradient,
+  custom,
 }
 
-/// A borderless, background-less button styled with Seal UI tokens.
+/// A borderless, background-less button styled with Seal UI tokens, built on
+/// [ShadButton] with the ghost variant.
 ///
 /// Use the named constructors to choose a variant:
 ///
@@ -25,6 +26,7 @@ enum _SealTextButtonVariant {
 /// - [SealTextButton.accentSecondary] — secondary accent color text.
 /// - [SealTextButton.gradient] — primary gradient text and underline.
 /// - [SealTextButton.accentGradient] — accent gradient text and underline.
+/// - [SealTextButton.custom] — arbitrary color or gradient.
 ///
 /// ```dart
 /// SealTextButton.primary(
@@ -34,6 +36,12 @@ enum _SealTextButtonVariant {
 ///
 /// SealTextButton.gradient(
 ///   label: 'Discover',
+///   onPressed: () {},
+/// )
+///
+/// SealTextButton.custom(
+///   label: 'Retry',
+///   color: Colors.red,
 ///   onPressed: () {},
 /// )
 /// ```
@@ -46,7 +54,11 @@ class SealTextButton extends StatelessWidget {
     this.isLoading = false,
     this.icon,
     this.iconSize = TypographyTokens.kDefaultButtonIconSize,
-  }) : _variant = variant;
+    Color? color,
+    LinearGradient? gradient,
+  })  : _variant = variant,
+        _color = color,
+        _gradient = gradient;
 
   /// Creates a text button with the **primary** brand color.
   const factory SealTextButton.primary({
@@ -98,6 +110,20 @@ class SealTextButton extends StatelessWidget {
     double iconSize,
   }) = _AccentGradientSealTextButton;
 
+  /// Creates a text button with an arbitrary [color] or [gradient].
+  ///
+  /// Exactly one of [color] or [gradient] must be provided.
+  const factory SealTextButton.custom({
+    Key? key,
+    required String label,
+    Color? color,
+    LinearGradient? gradient,
+    VoidCallback? onPressed,
+    bool isLoading,
+    IconData? icon,
+    double iconSize,
+  }) = _CustomSealTextButton;
+
   /// Button label text.
   final String label;
 
@@ -114,6 +140,8 @@ class SealTextButton extends StatelessWidget {
   final double iconSize;
 
   final _SealTextButtonVariant _variant;
+  final Color? _color;
+  final LinearGradient? _gradient;
 
   bool get _isDisabled => onPressed == null || isLoading;
 
@@ -125,34 +153,34 @@ class SealTextButton extends StatelessWidget {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
     final typo = tokens.typography;
-    final dimension = context.dimension;
 
     final bool isGradient =
         _variant == _SealTextButtonVariant.gradient ||
-        _variant == _SealTextButtonVariant.accentGradient;
+        _variant == _SealTextButtonVariant.accentGradient ||
+        (_variant == _SealTextButtonVariant.custom && _gradient != null);
 
     if (isGradient) {
       final gradient = _variant == _SealTextButtonVariant.gradient
           ? tokens.gradients.primaryGradient
-          : tokens.gradients.accentGradient;
+          : _variant == _SealTextButtonVariant.accentGradient
+              ? tokens.gradients.accentGradient
+              : _gradient!;
 
-      final baseColor = Colors.white;
-      final disabledColor = baseColor.withValues(alpha: _kDisabledOpacity);
+      const baseColor = Colors.white;
 
-      Widget button = TextButton(
+      Widget button = ShadButton.raw(
+        variant: ShadButtonVariant.ghost,
         onPressed: _isDisabled ? null : onPressed,
-        style: TextButton.styleFrom(
-          foregroundColor: baseColor,
-          disabledForegroundColor: disabledColor,
-          padding: EdgeInsets.symmetric(
-            horizontal: dimension.md,
-            vertical: dimension.sm,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: SealRadius.borderRadiusSm,
-          ),
-          textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
-        ),
+        enabled: !_isDisabled,
+        foregroundColor: baseColor,
+        hoverForegroundColor: baseColor,
+        pressedForegroundColor: baseColor,
+        backgroundColor: Colors.transparent,
+        hoverBackgroundColor: Colors.white.withValues(alpha: 0.08),
+        textDecoration: isLoading ? null : TextDecoration.underline,
+        leading: (!isLoading && icon != null)
+            ? Icon(icon, size: context.dimension.scaled(iconSize))
+            : null,
         child: _buildContent(context, baseColor, typo),
       );
 
@@ -179,55 +207,39 @@ class SealTextButton extends StatelessWidget {
       case _SealTextButtonVariant.gradient:
       case _SealTextButtonVariant.accentGradient:
         foregroundColor = colors.foreground.active;
+      case _SealTextButtonVariant.custom:
+        foregroundColor = _color!;
     }
 
-    final disabledColor = foregroundColor.withValues(alpha: _kDisabledOpacity);
-
-    return TextButton(
+    return ShadButton.raw(
+      variant: ShadButtonVariant.ghost,
       onPressed: _isDisabled ? null : onPressed,
-      style: TextButton.styleFrom(
-        foregroundColor: foregroundColor,
-        disabledForegroundColor: disabledColor,
-        padding: EdgeInsets.symmetric(
-          horizontal: dimension.md,
-          vertical: dimension.sm,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-        ),
-        textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
-      ),
+      enabled: !_isDisabled,
+      foregroundColor: foregroundColor,
+      hoverForegroundColor: foregroundColor,
+      pressedForegroundColor: foregroundColor,
+      backgroundColor: Colors.transparent,
+      hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
+      textDecoration: isLoading ? null : TextDecoration.underline,
+      leading: (!isLoading && icon != null)
+          ? Icon(icon, size: context.dimension.scaled(iconSize))
+          : null,
       child: _buildContent(context, foregroundColor, typo),
     );
   }
 
-  Widget _buildContent(BuildContext context, Color foreground, typography) {
-    final underlineColor = _isDisabled
-        ? context.themeTokens.colors.foreground.disabled
-        : foreground;
+  Widget _buildContent(
+    BuildContext context,
+    Color foreground,
+    TypographyTokens typography,
+  ) {
+    // The underline is applied via ShadButton's textDecoration parameter,
+    // so _buildContent only needs to return the text or loading indicator.
+    if (!isLoading) return Text(label);
 
-    final content = icon != null
-        ? Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: context.dimension.scaled(
-                  TypographyTokens.kDefaultButtonIconSize,
-                ),
-              ),
-              context.dimension.xxs.horizontalGap,
-              Text(label),
-            ],
-          ).withUnderline(context: context, color: underlineColor)
-        : Text(label).withUnderline(context: context, color: underlineColor);
-
-    if (!isLoading) return content;
-
-    final style = typography.body;
+    final style = typography.small;
     final lineHeight =
-        (style.fontSize ??
-            context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
+        (style.fontSize ?? 14) *
         (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
     return Stack(
       alignment: Alignment.center,
@@ -237,12 +249,9 @@ class SealTextButton extends StatelessWidget {
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
-          child: content,
+          child: Text(label),
         ),
-        SealBouncingDots(
-          color: foreground,
-          height: lineHeight,
-        ).withUnderline(context: context, color: foreground),
+        SealBouncingDots(color: foreground, height: lineHeight),
       ],
     );
   }
@@ -306,4 +315,24 @@ class _AccentGradientSealTextButton extends SealTextButton {
     super.icon,
     super.iconSize,
   }) : super._(variant: _SealTextButtonVariant.accentGradient);
+}
+
+/// Redirecting factory for [SealTextButton.custom].
+class _CustomSealTextButton extends SealTextButton {
+  const _CustomSealTextButton({
+    super.key,
+    required super.label,
+    super.color,
+    super.gradient,
+    super.onPressed,
+    super.isLoading,
+    super.icon,
+    super.iconSize,
+  }) : assert(
+         color != null || gradient != null,
+         'SealTextButton.custom requires either color or gradient.',
+       ),
+       super._(
+         variant: _SealTextButtonVariant.custom,
+       );
 }

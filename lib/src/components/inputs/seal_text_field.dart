@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
-import '../../tokens/base/seal_radius.dart';
 import '../../tokens/base/seal_dimension.dart';
 
-/// A styled text field for the Seal UI design system.
+/// A styled text field for the Seal UI design system, built on [ShadInput].
 ///
-/// Wraps Material's [TextField] with design-token-driven styling.
+/// Wraps shadcn_ui's [ShadInput] with Seal design-token-driven styling.
+///
+/// When [obscureText] is `true` a visibility-toggle icon is automatically
+/// added to the trailing slot so the user can reveal or hide the value.
 ///
 /// ```dart
 /// SealTextField(
 ///   label: 'Email',
 ///   hint: 'you@example.com',
+///   prefixIcon: Icons.mail_outline_rounded,
+/// )
+///
+/// SealTextField(
+///   label: 'Password',
+///   hint: '••••••••',
+///   obscureText: true,
+///   prefixIcon: Icons.lock_outline_rounded,
 /// )
 /// ```
-class SealTextField extends StatelessWidget {
-  /// Opacity applied to hint text.
-  static const double _kHintTextOpacity = 0.6;
-
-  /// Opacity applied to the border when the field is disabled.
-  static const double _kDisabledBorderOpacity = 0.4;
-
+class SealTextField extends StatefulWidget {
   /// Default icon size for prefix/suffix icons.
   static const double _kIconSize = 20;
-
-  /// Border width for the focused input border.
-  static const double _kFocusedBorderWidth = 2;
 
   const SealTextField({
     super.key,
@@ -51,6 +53,9 @@ class SealTextField extends StatelessWidget {
   final String? hint;
 
   /// Whether the text is obscured (e.g. passwords).
+  ///
+  /// When `true`, a visibility-toggle button is automatically placed in the
+  /// trailing slot. Any [suffixIcon] is ignored for obscured fields.
   final bool obscureText;
 
   /// Whether the field is interactive.
@@ -63,6 +68,8 @@ class SealTextField extends StatelessWidget {
   final IconData? prefixIcon;
 
   /// Icon at the end of the field.
+  ///
+  /// Ignored when [obscureText] is `true`; the toggle icon takes precedence.
   final IconData? suffixIcon;
 
   /// Keyboard type hint.
@@ -72,69 +79,84 @@ class SealTextField extends StatelessWidget {
   final int maxLines;
 
   @override
+  State<SealTextField> createState() => _SealTextFieldState();
+}
+
+class _SealTextFieldState extends State<SealTextField> {
+  late bool _isObscured = widget.obscureText;
+
+  @override
+  void didUpdateWidget(SealTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.obscureText != widget.obscureText) {
+      _isObscured = widget.obscureText;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
     final typo = tokens.typography;
+    final iconSize = context.dimension.scaled(SealTextField._kIconSize);
 
-    return TextField(
-      controller: controller,
-      obscureText: obscureText,
-      enabled: enabled,
-      onChanged: onChanged,
-      keyboardType: keyboardType,
-      maxLines: maxLines,
-      style: typo.body.copyWith(color: colors.textPrimary),
-      cursorColor: colors.primary,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        labelStyle: typo.small.copyWith(color: colors.textSecondary),
-        hintStyle: typo.body.copyWith(
-          color: colors.textSecondary.withValues(alpha: _kHintTextOpacity),
+    Widget? trailing;
+    if (widget.obscureText) {
+      trailing = GestureDetector(
+        onTap: () => setState(() => _isObscured = !_isObscured),
+        child: Icon(
+          _isObscured ? LucideIcons.eyeOff : LucideIcons.eye,
+          color: colors.textSecondary,
+          size: iconSize,
         ),
-        filled: true,
-        fillColor: colors.surfaceAlt,
-        prefixIcon: prefixIcon != null
-            ? Icon(
-                prefixIcon,
-                color: colors.textSecondary,
-                size: context.dimension.scaled(_kIconSize),
-              )
-            : null,
-        suffixIcon: suffixIcon != null
-            ? Icon(
-                suffixIcon,
-                color: colors.textSecondary,
-                size: context.dimension.scaled(_kIconSize),
-              )
-            : null,
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: context.dimension.md,
-          vertical: context.dimension.sm,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-          borderSide: BorderSide(color: colors.border),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-          borderSide: BorderSide(color: colors.border),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-          borderSide: BorderSide(
-            color: colors.primary,
-            width: _kFocusedBorderWidth,
+      );
+    } else if (widget.suffixIcon != null) {
+      trailing = Icon(
+        widget.suffixIcon,
+        color: colors.textSecondary,
+        size: iconSize,
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (widget.label != null)
+          Padding(
+            padding: EdgeInsets.only(bottom: context.dimension.xs),
+            child: Text(
+              widget.label!,
+              style: typo.small.copyWith(color: colors.textSecondary),
+            ),
           ),
+        ShadInput(
+          controller: widget.controller,
+          placeholder: widget.hint != null ? Text(widget.hint!) : null,
+          obscureText: _isObscured,
+          enabled: widget.enabled,
+          onChanged: widget.onChanged,
+          keyboardType: widget.keyboardType,
+          maxLines: widget.maxLines,
+          // Center text/placeholder vertically for single-line inputs.
+          // ShadInput resolves `alignment` and `placeholderAlignment`
+          // independently; both default to Alignment.topLeft which misaligns
+          // them against leading/trailing icons in single-line mode.
+          alignment: widget.maxLines == 1 ? Alignment.centerLeft : Alignment.topLeft,
+          placeholderAlignment:
+              widget.maxLines == 1 ? Alignment.centerLeft : Alignment.topLeft,
+          style: typo.body.copyWith(color: colors.textPrimary),
+          cursorColor: colors.primary,
+          leading: widget.prefixIcon != null
+              ? Icon(
+                  widget.prefixIcon,
+                  color: colors.textSecondary,
+                  size: iconSize,
+                )
+              : null,
+          trailing: trailing,
         ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-          borderSide: BorderSide(
-            color: colors.border.withValues(alpha: _kDisabledBorderOpacity),
-          ),
-        ),
-      ),
+      ],
     );
   }
 }

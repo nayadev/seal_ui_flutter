@@ -6,7 +6,7 @@ import 'sections/cards_section.dart';
 import 'sections/containers_section.dart';
 import 'sections/inputs_section.dart';
 import 'sections/loader_section.dart';
-import 'sections/snackbar_section.dart';
+import 'sections/feedback_section.dart';
 
 /// Example app demonstrating the Seal UI Design System.
 ///
@@ -169,7 +169,7 @@ class _ExampleHome extends StatelessWidget {
               dimension.xl.verticalGap,
               const LoaderSection(),
               dimension.xl.verticalGap,
-              const SnackbarSection(),
+              const FeedbackSection(),
               dimension.xxxl.verticalGap,
             ],
           ),

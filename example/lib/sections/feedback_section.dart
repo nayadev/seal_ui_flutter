@@ -1,0 +1,91 @@
+import 'package:seal_ui/seal_ui.dart';
+import 'package:flutter/widgets.dart';
+
+/// Showcases [SealToast] (transient notifications) and [SealAlert] (inline
+/// banners) for all four semantic variants.
+class FeedbackSection extends StatelessWidget {
+  const FeedbackSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.themeTokens.colors;
+    final typo = context.themeTokens.typography;
+    final dimension = context.dimension;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // ── Toasts ──────────────────────────────────────────────────────
+        Text('Toast', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
+        Wrap(
+          spacing: dimension.sm,
+          runSpacing: dimension.sm,
+          children: [
+            SealFilledButton.primary(
+              label: 'Info',
+              onPressed: () => SealToast.info(
+                message: 'This is an informational message.',
+                title: 'Info',
+              ).show(context),
+            ),
+            SealFilledButton.accent(
+              label: 'Success',
+              onPressed: () => SealToast.success(
+                message: 'Your changes have been saved.',
+                title: 'Success',
+              ).show(context),
+            ),
+            SealFilledButton.primary(
+              label: 'Warning',
+              onPressed: () => SealToast.warning(
+                message: 'This action might have side effects.',
+                title: 'Warning',
+              ).show(context),
+            ),
+            SealFilledButton.primary(
+              label: 'Error + action',
+              onPressed: () => SealToast.error(
+                message: 'Something went wrong. Please try again.',
+                title: 'Error',
+                actionLabel: 'Retry',
+                onAction: () {},
+              ).show(context),
+            ),
+          ],
+        ),
+
+        dimension.xl.verticalGap,
+
+        // ── Alerts ──────────────────────────────────────────────────────
+        Text('Alert', style: typo.title.copyWith(color: colors.textPrimary)),
+        dimension.sm.verticalGap,
+        Column(
+          children: [
+            SealAlert.info(
+              title: 'Heads up!',
+              description: 'You can add components to your app using the CLI.',
+            ),
+            dimension.sm.verticalGap,
+            SealAlert.success(
+              title: 'Profile updated',
+              description: 'Your changes have been saved successfully.',
+            ),
+            dimension.sm.verticalGap,
+            SealAlert.warning(
+              title: 'Low storage',
+              description:
+                  'You have less than 1 GB remaining. Consider clearing cache.',
+            ),
+            dimension.sm.verticalGap,
+            SealAlert.error(
+              title: 'Upload failed',
+              description:
+                  'The file could not be uploaded. Please try again.',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}

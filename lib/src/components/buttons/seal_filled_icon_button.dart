@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
-import '../../theme/seal_theme_tokens.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 
@@ -12,9 +12,11 @@ enum _SealFilledIconButtonVariant {
   accentSecondary,
   gradient,
   accentGradient,
+  custom,
 }
 
-/// A compact icon-only button with a filled background, styled with Seal UI tokens.
+/// A compact icon-only button with a filled background, styled with Seal UI
+/// tokens and built on [ShadIconButton].
 ///
 /// Designed for prominent actions in toolbars, app bars, and FAB-like contexts.
 /// Use [tooltip] to maintain accessibility for icon-only controls.
@@ -26,6 +28,7 @@ enum _SealFilledIconButtonVariant {
 /// - [SealFilledIconButton.accentSecondary] — secondary accent color fill.
 /// - [SealFilledIconButton.gradient] — primary gradient background.
 /// - [SealFilledIconButton.accentGradient] — accent gradient background.
+/// - [SealFilledIconButton.custom] — arbitrary color or gradient background.
 ///
 /// ```dart
 /// SealFilledIconButton.primary(
@@ -39,16 +42,20 @@ enum _SealFilledIconButtonVariant {
 ///   onPressed: () {},
 ///   tooltip: 'Launch',
 /// )
+///
+/// SealFilledIconButton.custom(
+///   icon: Icons.delete_rounded,
+///   color: Colors.red,
+///   onPressed: () {},
+///   tooltip: 'Delete',
+/// )
 /// ```
 class SealFilledIconButton extends StatelessWidget {
   /// Default icon size for filled icon buttons.
   static const double _kIconSize = 20.0;
 
-  /// Opacity applied to the button when disabled.
+  /// Opacity applied to gradient variants when disabled.
   static const double _kDisabledOpacity = 0.4;
-
-  /// Border radius applied to all filled icon button variants.
-  static const BorderRadius _kBorderRadius = SealRadius.borderRadiusFull;
 
   const SealFilledIconButton._({
     super.key,
@@ -57,7 +64,11 @@ class SealFilledIconButton extends StatelessWidget {
     this.onPressed,
     this.tooltip,
     this.iconSize = _kIconSize,
-  }) : _variant = variant;
+    Color? color,
+    LinearGradient? gradient,
+  })  : _variant = variant,
+        _color = color,
+        _gradient = gradient;
 
   /// Creates a filled icon button with the **primary** brand color.
   const factory SealFilledIconButton.primary({
@@ -104,6 +115,19 @@ class SealFilledIconButton extends StatelessWidget {
     double iconSize,
   }) = _AccentGradientSealFilledIconButton;
 
+  /// Creates a filled icon button with an arbitrary [color] or [gradient].
+  ///
+  /// Exactly one of [color] or [gradient] must be provided.
+  const factory SealFilledIconButton.custom({
+    Key? key,
+    required IconData icon,
+    Color? color,
+    LinearGradient? gradient,
+    VoidCallback? onPressed,
+    String? tooltip,
+    double iconSize,
+  }) = _CustomSealFilledIconButton;
+
   /// The icon to display inside the button.
   final IconData icon;
 
@@ -122,6 +146,8 @@ class SealFilledIconButton extends StatelessWidget {
   final double iconSize;
 
   final _SealFilledIconButtonVariant _variant;
+  final Color? _color;
+  final LinearGradient? _gradient;
 
   bool get _isDisabled => onPressed == null;
 
@@ -130,32 +156,48 @@ class SealFilledIconButton extends StatelessWidget {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
     final dimension = context.dimension;
-    final iconSize = dimension.scaled(this.iconSize);
+    final scaledIconSize = dimension.scaled(iconSize);
+    final buttonSize = scaledIconSize + dimension.sm * 2;
 
-    if (_variant == _SealFilledIconButtonVariant.gradient) {
-      return _GradientFilledIconButtonShell(
-        tokens: tokens,
-        gradient: tokens.gradients.primaryGradient,
-        foregroundColor: colors.onPrimary,
-        isDisabled: _isDisabled,
-        onPressed: onPressed,
-        icon: icon,
-        iconSize: iconSize,
-        tooltip: tooltip,
-      );
-    }
+    final bool isGradient =
+        _variant == _SealFilledIconButtonVariant.gradient ||
+        _variant == _SealFilledIconButtonVariant.accentGradient ||
+        (_variant == _SealFilledIconButtonVariant.custom && _gradient != null);
 
-    if (_variant == _SealFilledIconButtonVariant.accentGradient) {
-      return _GradientFilledIconButtonShell(
-        tokens: tokens,
-        gradient: tokens.gradients.accentGradient,
-        foregroundColor: colors.onAccent,
-        isDisabled: _isDisabled,
-        onPressed: onPressed,
-        icon: icon,
-        iconSize: iconSize,
-        tooltip: tooltip,
+    if (isGradient) {
+      final gradient = _variant == _SealFilledIconButtonVariant.gradient
+          ? tokens.gradients.primaryGradient
+          : _variant == _SealFilledIconButtonVariant.accentGradient
+              ? tokens.gradients.accentGradient
+              : _gradient!;
+      final foregroundColor =
+          _variant == _SealFilledIconButtonVariant.accentGradient
+              ? colors.onAccent
+              : colors.onPrimary;
+
+      Widget button = AnimatedOpacity(
+        opacity: _isDisabled ? _kDisabledOpacity : 1.0,
+        duration: const Duration(milliseconds: 200),
+        child: ShadIconButton.raw(
+          variant: ShadButtonVariant.primary,
+          icon: Icon(icon, size: scaledIconSize),
+          onPressed: _isDisabled ? null : onPressed,
+          enabled: !_isDisabled,
+          width: buttonSize,
+          height: buttonSize,
+          gradient: gradient,
+          decoration: ShadDecoration(
+            border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
+          ),
+          foregroundColor: foregroundColor,
+          hoverForegroundColor: foregroundColor,
+          pressedForegroundColor: foregroundColor,
+          padding: EdgeInsets.all(dimension.sm),
+        ),
       );
+
+      if (tooltip == null) return button;
+      return Tooltip(message: tooltip!, child: button);
     }
 
     final Color backgroundColor;
@@ -175,79 +217,29 @@ class SealFilledIconButton extends StatelessWidget {
       case _SealFilledIconButtonVariant.accentGradient:
         backgroundColor = colors.fill.active;
         foregroundColor = colors.onPrimary;
+      case _SealFilledIconButtonVariant.custom:
+        backgroundColor = _color!;
+        foregroundColor = Colors.white;
     }
 
-    return IconButton(
-      icon: Icon(icon, size: iconSize),
+    return ShadIconButton.raw(
+      variant: ShadButtonVariant.primary,
+      icon: Icon(icon, size: scaledIconSize),
       onPressed: _isDisabled ? null : onPressed,
-      tooltip: tooltip,
-      style: IconButton.styleFrom(
-        foregroundColor: foregroundColor,
-        backgroundColor: backgroundColor,
-        disabledBackgroundColor: backgroundColor.withValues(
-          alpha: _kDisabledOpacity,
-        ),
-        disabledForegroundColor: foregroundColor.withValues(
-          alpha: _kDisabledOpacity,
-        ),
-        padding: EdgeInsets.all(dimension.sm),
-        shape: RoundedRectangleBorder(borderRadius: _kBorderRadius),
+      enabled: !_isDisabled,
+      width: buttonSize,
+      height: buttonSize,
+      decoration: ShadDecoration(
+        border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
       ),
+      backgroundColor: backgroundColor,
+      hoverBackgroundColor: backgroundColor.withValues(alpha: 0.85),
+      pressedBackgroundColor: backgroundColor.withValues(alpha: 0.75),
+      foregroundColor: foregroundColor,
+      hoverForegroundColor: foregroundColor,
+      pressedForegroundColor: foregroundColor,
+      padding: EdgeInsets.all(dimension.sm),
     );
-  }
-}
-
-/// Internal widget that renders the gradient filled icon button shell.
-class _GradientFilledIconButtonShell extends StatelessWidget {
-  const _GradientFilledIconButtonShell({
-    required this.tokens,
-    required this.gradient,
-    required this.foregroundColor,
-    required this.isDisabled,
-    required this.onPressed,
-    required this.icon,
-    required this.iconSize,
-    this.tooltip,
-  });
-
-  final SealThemeTokens tokens;
-  final LinearGradient gradient;
-  final Color foregroundColor;
-  final bool isDisabled;
-  final VoidCallback? onPressed;
-  final IconData icon;
-  final double iconSize;
-  final String? tooltip;
-
-  @override
-  Widget build(BuildContext context) {
-    final dimension = context.dimension;
-
-    Widget shell = AnimatedOpacity(
-      opacity: isDisabled ? SealFilledIconButton._kDisabledOpacity : 1.0,
-      duration: const Duration(milliseconds: 200),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: SealFilledIconButton._kBorderRadius,
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            borderRadius: SealFilledIconButton._kBorderRadius,
-            onTap: isDisabled ? null : onPressed,
-            child: Padding(
-              padding: EdgeInsets.all(dimension.sm),
-              child: Icon(icon, size: iconSize, color: foregroundColor),
-            ),
-          ),
-        ),
-      ),
-    );
-
-    if (tooltip == null) return shell;
-
-    return Tooltip(message: tooltip!, child: shell);
   }
 }
 
@@ -304,4 +296,21 @@ class _AccentGradientSealFilledIconButton extends SealFilledIconButton {
     super.tooltip,
     super.iconSize,
   }) : super._(variant: _SealFilledIconButtonVariant.accentGradient);
+}
+
+/// Redirecting factory for [SealFilledIconButton.custom].
+class _CustomSealFilledIconButton extends SealFilledIconButton {
+  const _CustomSealFilledIconButton({
+    super.key,
+    required super.icon,
+    super.color,
+    super.gradient,
+    super.onPressed,
+    super.tooltip,
+    super.iconSize,
+  }) : assert(
+         color != null || gradient != null,
+         'SealFilledIconButton.custom requires either color or gradient.',
+       ),
+       super._(variant: _SealFilledIconButtonVariant.custom);
 }

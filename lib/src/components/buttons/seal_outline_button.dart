@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
-import '../../tokens/base/seal_radius.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../feedback/seal_bouncing_dots.dart';
 
@@ -13,9 +13,10 @@ enum _SealOutlineButtonVariant {
   accentSecondary,
   gradient,
   accentGradient,
+  custom,
 }
 
-/// An outlined action button styled with Seal UI tokens.
+/// An outlined action button styled with Seal UI tokens, built on [ShadButton].
 ///
 /// Use the named constructors to choose a variant:
 ///
@@ -24,6 +25,7 @@ enum _SealOutlineButtonVariant {
 /// - [SealOutlineButton.accentSecondary] — secondary accent color border.
 /// - [SealOutlineButton.gradient] — primary gradient border and text.
 /// - [SealOutlineButton.accentGradient] — accent gradient border and text.
+/// - [SealOutlineButton.custom] — arbitrary color or gradient.
 ///
 /// ```dart
 /// SealOutlineButton.primary(
@@ -35,6 +37,12 @@ enum _SealOutlineButtonVariant {
 ///   label: 'Explore',
 ///   onPressed: () {},
 /// )
+///
+/// SealOutlineButton.custom(
+///   label: 'Retry',
+///   color: Colors.red,
+///   onPressed: () {},
+/// )
 /// ```
 class SealOutlineButton extends StatelessWidget {
   const SealOutlineButton._({
@@ -44,7 +52,11 @@ class SealOutlineButton extends StatelessWidget {
     this.onPressed,
     this.isLoading = false,
     this.icon,
-  }) : _variant = variant;
+    Color? color,
+    LinearGradient? gradient,
+  })  : _variant = variant,
+        _color = color,
+        _gradient = gradient;
 
   /// Creates an outlined button with the **primary** brand color.
   const factory SealOutlineButton.primary({
@@ -91,6 +103,19 @@ class SealOutlineButton extends StatelessWidget {
     IconData? icon,
   }) = _AccentGradientSealOutlineButton;
 
+  /// Creates an outlined button with an arbitrary [color] or [gradient].
+  ///
+  /// Exactly one of [color] or [gradient] must be provided.
+  const factory SealOutlineButton.custom({
+    Key? key,
+    required String label,
+    Color? color,
+    LinearGradient? gradient,
+    VoidCallback? onPressed,
+    bool isLoading,
+    IconData? icon,
+  }) = _CustomSealOutlineButton;
+
   /// Button label text.
   final String label;
 
@@ -104,6 +129,8 @@ class SealOutlineButton extends StatelessWidget {
   final IconData? icon;
 
   final _SealOutlineButtonVariant _variant;
+  final Color? _color;
+  final LinearGradient? _gradient;
 
   bool get _isDisabled => onPressed == null || isLoading;
 
@@ -115,36 +142,39 @@ class SealOutlineButton extends StatelessWidget {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
     final typo = tokens.typography;
-    final dimension = context.dimension;
 
     final bool isGradient =
         _variant == _SealOutlineButtonVariant.gradient ||
-        _variant == _SealOutlineButtonVariant.accentGradient;
+        _variant == _SealOutlineButtonVariant.accentGradient ||
+        (_variant == _SealOutlineButtonVariant.custom && _gradient != null);
 
     if (isGradient) {
       final gradient = _variant == _SealOutlineButtonVariant.gradient
           ? tokens.gradients.primaryGradient
-          : tokens.gradients.accentGradient;
+          : _variant == _SealOutlineButtonVariant.accentGradient
+              ? tokens.gradients.accentGradient
+              : _gradient!;
 
       // Use white as the base color; ShaderMask replaces it with the gradient.
-      final baseColor = Colors.white;
-      final disabledColor = baseColor.withValues(alpha: _kDisabledOpacity);
+      const baseColor = Colors.white;
 
-      Widget button = OutlinedButton(
+      Widget button = ShadButton.raw(
+        variant: ShadButtonVariant.outline,
         onPressed: _isDisabled ? null : onPressed,
-        style: OutlinedButton.styleFrom(
-          foregroundColor: baseColor,
-          disabledForegroundColor: disabledColor,
-          side: BorderSide(color: _isDisabled ? disabledColor : baseColor),
-          padding: EdgeInsets.symmetric(
-            horizontal: dimension.lg,
-            vertical: dimension.md,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: SealRadius.borderRadiusSm,
-          ),
-          textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
-        ),
+        enabled: !_isDisabled,
+        foregroundColor: baseColor,
+        hoverForegroundColor: baseColor,
+        pressedForegroundColor: baseColor,
+        backgroundColor: Colors.transparent,
+        hoverBackgroundColor: Colors.white.withValues(alpha: 0.08),
+        leading: (!isLoading && icon != null)
+            ? Icon(
+                icon,
+                size: context.dimension.scaled(
+                  TypographyTokens.kDefaultButtonIconSize,
+                ),
+              )
+            : null,
         child: _buildContent(context, baseColor, typo),
       );
 
@@ -171,52 +201,43 @@ class SealOutlineButton extends StatelessWidget {
       case _SealOutlineButtonVariant.gradient:
       case _SealOutlineButtonVariant.accentGradient:
         foregroundColor = colors.foreground.active;
+      case _SealOutlineButtonVariant.custom:
+        foregroundColor = _color!;
     }
 
-    final disabledColor = foregroundColor.withValues(alpha: _kDisabledOpacity);
-
-    return OutlinedButton(
+    return ShadButton.raw(
+      variant: ShadButtonVariant.outline,
       onPressed: _isDisabled ? null : onPressed,
-      style: OutlinedButton.styleFrom(
-        foregroundColor: foregroundColor,
-        disabledForegroundColor: disabledColor,
-        side: BorderSide(color: _isDisabled ? disabledColor : foregroundColor),
-        padding: EdgeInsets.symmetric(
-          horizontal: dimension.lg,
-          vertical: dimension.md,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: SealRadius.borderRadiusSm,
-        ),
-        textStyle: typo.body.copyWith(fontWeight: FontWeight.w600),
-      ),
+      enabled: !_isDisabled,
+      foregroundColor: foregroundColor,
+      hoverForegroundColor: foregroundColor,
+      pressedForegroundColor: foregroundColor,
+      backgroundColor: Colors.transparent,
+      hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
+      leading: (!isLoading && icon != null)
+          ? Icon(
+              icon,
+              size: context.dimension.scaled(
+                TypographyTokens.kDefaultButtonIconSize,
+              ),
+            )
+          : null,
       child: _buildContent(context, foregroundColor, typo),
     );
   }
 
-  Widget _buildContent(BuildContext context, Color foreground, typography) {
-    final content = icon != null
-        ? Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: context.dimension.scaled(
-                  TypographyTokens.kDefaultButtonIconSize,
-                ),
-              ),
-              context.dimension.xxs.horizontalGap,
-              Text(label),
-            ],
-          )
-        : Text(label);
+  Widget _buildContent(
+    BuildContext context,
+    Color foreground,
+    TypographyTokens typography,
+  ) {
+    final content = Text(label);
 
     if (!isLoading) return content;
 
-    final style = typography.body;
+    final style = typography.small;
     final lineHeight =
-        (style.fontSize ??
-            context.dimension.scaled(TypographyTokens.kBodyFontSize)) *
+        (style.fontSize ?? 14) *
         (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
     return Stack(
       alignment: Alignment.center,
@@ -287,4 +308,21 @@ class _AccentGradientSealOutlineButton extends SealOutlineButton {
     super.isLoading,
     super.icon,
   }) : super._(variant: _SealOutlineButtonVariant.accentGradient);
+}
+
+/// Redirecting factory for [SealOutlineButton.custom].
+class _CustomSealOutlineButton extends SealOutlineButton {
+  const _CustomSealOutlineButton({
+    super.key,
+    required super.label,
+    super.color,
+    super.gradient,
+    super.onPressed,
+    super.isLoading,
+    super.icon,
+  }) : assert(
+         color != null || gradient != null,
+         'SealOutlineButton.custom requires either color or gradient.',
+       ),
+       super._(variant: _SealOutlineButtonVariant.custom);
 }

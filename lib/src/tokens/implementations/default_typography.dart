@@ -7,17 +7,23 @@ import '../abstractions/typography_tokens.dart';
 ///
 /// Uses [GoogleFonts] to load Inter at runtime.
 ///
-/// An optional [scaleFactor] proportionally adjusts every font size while
-/// preserving the typographic hierarchy. The default (`1.0`) matches the
-/// base design scale (mobile).
+/// Values are aligned with the shadcn_ui type scale so that shadcn components
+/// receive visually consistent styles when wired via [SealThemeFactory.buildShadTheme].
 ///
-/// ```dart
-/// // Desktop — larger text
-/// const DefaultTypography(scaleFactor: 1.5);
+/// Scale reference (shadcn → SealUI name):
+/// | shadcn     | SealUI     | size | weight |
+/// |------------|------------|------|--------|
+/// | h1Large    | display    |  48  |  w800  |
+/// | h1         | headline   |  36  |  w800  |
+/// | h2         | —          |  30  |  w600  |
+/// | h3         | title      |  24  |  w600  |
+/// | h4         | subtitle   |  20  |  w600  |
+/// | p          | body       |  16  |  w400  |
+/// | large      | —          |  18  |  w600  |
+/// | small      | small      |  14  |  w500  |
+/// | muted      | caption    |  14  |  w400  |
 ///
-/// // Tablet — slightly larger text
-/// const DefaultTypography(scaleFactor: 1.125);
-/// ```
+/// An optional [scaleFactor] proportionally adjusts every font size.
 class DefaultTypography extends TypographyTokens {
   /// Creates typography tokens with an optional [scaleFactor].
   const DefaultTypography({this.scaleFactor = 1.0});
@@ -25,87 +31,93 @@ class DefaultTypography extends TypographyTokens {
   /// Multiplier applied to every font size.
   final double scaleFactor;
 
-  double _scaled(double base) => (base * scaleFactor).roundToDouble();
+  double _s(double base) => (base * scaleFactor).roundToDouble();
 
-  // ── Font sizes ────────────────────────────────────────────────────
-  static const double _kDisplayFontSize = 48;
-  static const double _kHeadlineFontSize = 32;
-  static const double _kTitleFontSize = 22;
-  static const double _kSubtitleFontSize = 18;
-  static const double _kBodyFontSize = 16;
-  static const double _kSmallFontSize = 14;
-  static const double _kCaptionFontSize = 12;
-
-  // ── Line heights ──────────────────────────────────────────────────
-  static const double _kDisplayLineHeight = 1.15;
-  static const double _kHeadlineLineHeight = 1.25;
-  static const double _kTitleLineHeight = 1.3;
-  static const double _kSubtitleLineHeight = 1.4;
-  static const double _kBodyLineHeight = 1.5;
-  static const double _kSmallLineHeight = 1.45;
-  static const double _kCaptionLineHeight = 1.4;
-
-  // ── Letter spacings ───────────────────────────────────────────────
-  static const double _kDisplayLetterSpacing = -1.2;
-  static const double _kHeadlineLetterSpacing = -0.8;
-  static const double _kTitleLetterSpacing = -0.3;
-  static const double _kSubtitleLetterSpacing = -0.1;
-  static const double _kSmallLetterSpacing = 0.1;
-  static const double _kCaptionLetterSpacing = 0.3;
+  // ── SealUI scale ──────────────────────────────────────────────────────────
 
   @override
   TextStyle get display => GoogleFonts.inter(
-    fontSize: _scaled(_kDisplayFontSize),
-    fontWeight: FontWeight.w700,
-    letterSpacing: _kDisplayLetterSpacing,
-    height: _kDisplayLineHeight,
+    fontSize: _s(48),
+    fontWeight: FontWeight.w800,
+    letterSpacing: -0.4,
+    height: 1.0,
   );
 
   @override
   TextStyle get headline => GoogleFonts.inter(
-    fontSize: _scaled(_kHeadlineFontSize),
-    fontWeight: FontWeight.w600,
-    letterSpacing: _kHeadlineLetterSpacing,
-    height: _kHeadlineLineHeight,
+    fontSize: _s(36),
+    fontWeight: FontWeight.w800,
+    letterSpacing: -0.4,
+    height: 40 / 36,
   );
 
   @override
   TextStyle get title => GoogleFonts.inter(
-    fontSize: _scaled(_kTitleFontSize),
+    fontSize: _s(24),
     fontWeight: FontWeight.w600,
-    letterSpacing: _kTitleLetterSpacing,
-    height: _kTitleLineHeight,
+    letterSpacing: -0.4,
+    height: 32 / 24,
   );
 
   @override
   TextStyle get subtitle => GoogleFonts.inter(
-    fontSize: _scaled(_kSubtitleFontSize),
-    fontWeight: FontWeight.w500,
-    letterSpacing: _kSubtitleLetterSpacing,
-    height: _kSubtitleLineHeight,
+    fontSize: _s(20),
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.4,
+    height: 28 / 20,
   );
 
   @override
   TextStyle get body => GoogleFonts.inter(
-    fontSize: _scaled(_kBodyFontSize),
+    fontSize: _s(16),
     fontWeight: FontWeight.w400,
     letterSpacing: 0,
-    height: _kBodyLineHeight,
+    height: 28 / 16,
   );
 
   @override
   TextStyle get small => GoogleFonts.inter(
-    fontSize: _scaled(_kSmallFontSize),
-    fontWeight: FontWeight.w400,
-    letterSpacing: _kSmallLetterSpacing,
-    height: _kSmallLineHeight,
+    fontSize: _s(14),
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0,
+    height: 1.0,
   );
 
   @override
   TextStyle get caption => GoogleFonts.inter(
-    fontSize: _scaled(_kCaptionFontSize),
-    fontWeight: FontWeight.w500,
-    letterSpacing: _kCaptionLetterSpacing,
-    height: _kCaptionLineHeight,
+    fontSize: _s(14),
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0,
+    height: 20 / 14,
+  );
+
+  // ── shadcn-specific overrides ─────────────────────────────────────────────
+  // h2 lives between headline (36) and title (24); it gets its own explicit
+  // value so that the shadcn ShadTextTheme receives the correct 30 px style.
+
+  @override
+  TextStyle get h2 => GoogleFonts.inter(
+    fontSize: _s(30),
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.4,
+    height: 36 / 30,
+  );
+
+  // large (18 px) sits between subtitle (20) and body (16); explicit override.
+  @override
+  TextStyle get large => GoogleFonts.inter(
+    fontSize: _s(18),
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0,
+    height: 28 / 18,
+  );
+
+  // lead (20 px, w400) differs from subtitle (20 px, w600) in weight.
+  @override
+  TextStyle get lead => GoogleFonts.inter(
+    fontSize: _s(20),
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0,
+    height: 28 / 20,
   );
 }
