@@ -30,6 +30,9 @@ class SealAvatar extends StatelessWidget {
   /// Large avatar size in logical pixels.
   static const double _kLargeSize = 56;
 
+  /// Ratio of placeholder font size to avatar diameter.
+  static const double _kFontSizeRatio = 0.375;
+
   /// Creates a Seal-styled avatar with an explicit [size].
   const SealAvatar({
     super.key,
@@ -89,14 +92,38 @@ class SealAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
+    final typo = tokens.typography;
     final scaledSize = context.dimension.scaled(size);
+
+    final styledPlaceholder = placeholder != null
+        ? DefaultTextStyle.merge(
+            style: typo.small.copyWith(
+              color: colors.textPrimary,
+              fontSize: scaledSize * _kFontSizeRatio,
+            ),
+            child: placeholder!,
+          )
+        : null;
+
+    // When src is absent render the placeholder directly — ShadAvatar only
+    // surfaces its placeholder widget after an image load error, so passing
+    // null/empty would leave the placeholder hidden behind a blank image.
+    final hasSource = src != null && src != '';
+    if (!hasSource) {
+      return Container(
+        width: scaledSize,
+        height: scaledSize,
+        decoration: ShapeDecoration(color: colors.surfaceAlt, shape: shape),
+        child: Center(child: styledPlaceholder),
+      );
+    }
 
     return ShadAvatar(
       src,
       size: Size.square(scaledSize),
       shape: shape,
       backgroundColor: colors.surfaceAlt,
-      placeholder: placeholder,
+      placeholder: styledPlaceholder,
       fit: fit,
     );
   }
