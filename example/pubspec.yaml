@@ -48,6 +48,7 @@ flutter:
     - assets/markdown/components/feedback/sealloader/
     - assets/markdown/components/feedback/sealsnackbar/
     - assets/markdown/layout/accordion/sealaccordion/
+    - assets/markdown/layout/menubar/sealmenubar/
     - assets/markdown/layout/breadcrumb/sealbreadcrumb/
     - assets/markdown/layout/avatars/sealavatar/
     - assets/markdown/layout/badges/sealbadge/

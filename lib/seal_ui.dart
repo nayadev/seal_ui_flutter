@@ -119,6 +119,7 @@ export 'src/components/overlay/seal_sheet.dart';
 
 // Layout
 export 'src/components/layout/seal_accordion.dart';
+export 'src/components/layout/seal_menubar.dart';
 export 'src/components/layout/seal_avatar.dart';
 export 'src/components/layout/seal_breadcrumb.dart';
 export 'src/components/layout/seal_badge.dart';

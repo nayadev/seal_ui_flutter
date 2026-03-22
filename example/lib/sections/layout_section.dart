@@ -2,7 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases layout and display components: [SealAccordion], [SealAvatar],
-/// [SealBadge], [SealBreadcrumb], [SealCard], [SealContainer], and [SealTabs].
+/// [SealBadge], [SealBreadcrumb], [SealCard], [SealContainer], [SealMenubar],
+/// and [SealTabs].
 class LayoutSection extends StatelessWidget {
   const LayoutSection({super.key});
 
@@ -216,6 +217,52 @@ class LayoutSection extends StatelessWidget {
             'Gradient surface container.',
             style: typo.body.copyWith(color: colors.textPrimary),
           ),
+        ),
+
+        dimension.xl.verticalGap,
+
+        // ── Menubar ───────────────────────────────────────────────────────
+        Text(
+          'Menubar',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealMenubar(
+          items: [
+            SealMenubarItem(
+              items: [
+                SealContextMenuItem(
+                  leading: const Icon(LucideIcons.filePlus, size: 14),
+                  child: const Text('New'),
+                  onPressed: () {},
+                ),
+                SealContextMenuItem(
+                  leading: const Icon(LucideIcons.folderOpen, size: 14),
+                  child: const Text('Open'),
+                  onPressed: () {},
+                ),
+                SealContextMenuItem(
+                  leading: const Icon(LucideIcons.save, size: 14),
+                  child: const Text('Save'),
+                  onPressed: () {},
+                ),
+              ],
+              child: const Text('File'),
+            ),
+            SealMenubarItem(
+              items: [
+                SealContextMenuItem(
+                  child: const Text('Undo'),
+                  onPressed: () {},
+                ),
+                SealContextMenuItem(
+                  child: const Text('Redo'),
+                  onPressed: () {},
+                ),
+              ],
+              child: const Text('Edit'),
+            ),
+          ],
         ),
 
         dimension.xl.verticalGap,
