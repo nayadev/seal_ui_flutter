@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
+import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../feedback/seal_bouncing_dots.dart';
 
@@ -54,9 +55,9 @@ class SealOutlineButton extends StatelessWidget {
     this.icon,
     Color? color,
     LinearGradient? gradient,
-  })  : _variant = variant,
-        _color = color,
-        _gradient = gradient;
+  }) : _variant = variant,
+       _color = color,
+       _gradient = gradient;
 
   /// Creates an outlined button with the **primary** brand color.
   const factory SealOutlineButton.primary({
@@ -152,11 +153,11 @@ class SealOutlineButton extends StatelessWidget {
       final gradient = _variant == _SealOutlineButtonVariant.gradient
           ? tokens.gradients.primaryGradient
           : _variant == _SealOutlineButtonVariant.accentGradient
-              ? tokens.gradients.accentGradient
-              : _gradient!;
+          ? tokens.gradients.accentGradient
+          : _gradient!;
 
       // Use white as the base color; ShaderMask replaces it with the gradient.
-      const baseColor = Colors.white;
+      const baseColor = ColorX.white;
 
       Widget button = ShadButton.raw(
         variant: ShadButtonVariant.outline,
@@ -165,8 +166,8 @@ class SealOutlineButton extends StatelessWidget {
         foregroundColor: baseColor,
         hoverForegroundColor: baseColor,
         pressedForegroundColor: baseColor,
-        backgroundColor: Colors.transparent,
-        hoverBackgroundColor: Colors.white.withValues(alpha: 0.08),
+        backgroundColor: ColorX.transparent,
+        hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
         leading: (!isLoading && icon != null)
             ? Icon(
                 icon,
@@ -212,7 +213,7 @@ class SealOutlineButton extends StatelessWidget {
       foregroundColor: foregroundColor,
       hoverForegroundColor: foregroundColor,
       pressedForegroundColor: foregroundColor,
-      backgroundColor: Colors.transparent,
+      backgroundColor: ColorX.transparent,
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
       leading: (!isLoading && icon != null)
           ? Icon(

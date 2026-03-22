@@ -3,11 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return MaterialApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Scaffold(body: Center(child: child)),
     ),
   );
 }
@@ -66,14 +65,16 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(Divider), findsNWidgets(2));
+      // Footer goes into ShadCard.footer (separate slot), so only one divider
+      // is added — between header and body.
+      expect(find.byType(SealDivider), findsOneWidget);
     });
 
     testWidgets('shows no divider with single section', (tester) async {
       await tester.pumpWidget(_wrap(const SealCard(body: Text('Only body'))));
       await tester.pump();
 
-      expect(find.byType(Divider), findsNothing);
+      expect(find.byType(SealDivider), findsNothing);
     });
 
     testWidgets('renders border when showBorder is true', (tester) async {
@@ -105,7 +106,9 @@ void main() {
         ),
       );
       final decoration = container.decoration as BoxDecoration?;
-      expect(decoration?.border, isNull);
+      // ShadBorder.none renders as Border with style:none, not null.
+      final border = decoration?.border as Border?;
+      expect(border?.top.style, isNot(BorderStyle.solid));
     });
 
     testWidgets('applies gradient when provided', (tester) async {
@@ -115,15 +118,17 @@ void main() {
       );
       await tester.pump();
 
-      final container = tester.widget<Container>(
-        find.descendant(
-          of: find.byType(SealCard),
-          matching: find.byType(Container),
-        ),
+      // Gradient cards use a DecoratedBox as the outer wrapper.
+      final decoratedBox = tester.widget<DecoratedBox>(
+        find
+            .descendant(
+              of: find.byType(SealCard),
+              matching: find.byType(DecoratedBox),
+            )
+            .first,
       );
-      final decoration = container.decoration as BoxDecoration?;
-      expect(decoration?.gradient, gradient);
-      expect(decoration?.color, isNull);
+      final decoration = decoratedBox.decoration as BoxDecoration;
+      expect(decoration.gradient, gradient);
     });
 
     testWidgets('applies custom width', (tester) async {
@@ -132,13 +137,18 @@ void main() {
       );
       await tester.pump();
 
-      final container = tester.widget<Container>(
+      // Multiple Containers may exist inside ShadCard; find the one with the
+      // explicit width constraint that SealCard adds.
+      final containers = tester.widgetList<Container>(
         find.descendant(
           of: find.byType(SealCard),
           matching: find.byType(Container),
         ),
       );
-      expect(container.constraints?.maxWidth, 300);
+      expect(
+        containers.any((c) => c.constraints?.maxWidth == 300.0),
+        isTrue,
+      );
     });
 
     testWidgets('has shadow when elevation is positive', (tester) async {
@@ -169,7 +179,7 @@ void main() {
         ),
       );
       final decoration = container.decoration as BoxDecoration?;
-      expect(decoration?.boxShadow, isNull);
+      expect(decoration?.boxShadow, isEmpty);
     });
 
     testWidgets('calls onTap when tapped', (tester) async {
@@ -185,7 +195,9 @@ void main() {
       expect(tapped, isTrue);
     });
 
-    testWidgets('renders InkWell when onTap is provided', (tester) async {
+    testWidgets('renders GestureDetector when onTap is provided', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(SealCard(body: const Text('Ink'), onTap: () {})),
       );
@@ -194,20 +206,22 @@ void main() {
       expect(
         find.descendant(
           of: find.byType(SealCard),
-          matching: find.byType(InkWell),
+          matching: find.byType(GestureDetector),
         ),
         findsOneWidget,
       );
     });
 
-    testWidgets('does not render InkWell when onTap is null', (tester) async {
+    testWidgets('does not render GestureDetector when onTap is null', (
+      tester,
+    ) async {
       await tester.pumpWidget(_wrap(const SealCard(body: Text('No ink'))));
       await tester.pump();
 
       expect(
         find.descendant(
           of: find.byType(SealCard),
-          matching: find.byType(InkWell),
+          matching: find.byType(GestureDetector),
         ),
         findsNothing,
       );

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
@@ -142,9 +142,12 @@ class _SealTextFieldState extends State<SealTextField> {
           // ShadInput resolves `alignment` and `placeholderAlignment`
           // independently; both default to Alignment.topLeft which misaligns
           // them against leading/trailing icons in single-line mode.
-          alignment: widget.maxLines == 1 ? Alignment.centerLeft : Alignment.topLeft,
-          placeholderAlignment:
-              widget.maxLines == 1 ? Alignment.centerLeft : Alignment.topLeft,
+          alignment: widget.maxLines == 1
+              ? Alignment.centerLeft
+              : Alignment.topLeft,
+          placeholderAlignment: widget.maxLines == 1
+              ? Alignment.centerLeft
+              : Alignment.topLeft,
           style: typo.body.copyWith(color: colors.textPrimary),
           cursorColor: colors.primary,
           leading: widget.prefixIcon != null

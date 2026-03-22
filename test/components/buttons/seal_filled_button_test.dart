@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return MaterialApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Scaffold(body: Center(child: child)),
     ),
   );
 }
@@ -86,13 +86,13 @@ void main() {
       expect(find.text('Settings'), findsOneWidget);
     });
 
-    testWidgets('uses FilledButton internally', (tester) async {
+    testWidgets('renders ShadButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(SealFilledButton.primary(label: 'Test', onPressed: () {})),
       );
       await tester.pump();
 
-      expect(find.byType(FilledButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
   });
 
@@ -133,13 +133,13 @@ void main() {
       expect(tapped, isFalse);
     });
 
-    testWidgets('uses FilledButton internally', (tester) async {
+    testWidgets('renders ShadButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(SealFilledButton.accent(label: 'A', onPressed: () {})),
       );
       await tester.pump();
 
-      expect(find.byType(FilledButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
   });
 
@@ -153,13 +153,13 @@ void main() {
       expect(find.text('Launch'), findsOneWidget);
     });
 
-    testWidgets('renders with InkWell', (tester) async {
+    testWidgets('renders ShadButton', (tester) async {
       await tester.pumpWidget(
         _wrap(SealFilledButton.gradient(label: 'Gradient', onPressed: () {})),
       );
       await tester.pump();
 
-      expect(find.byType(InkWell), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -191,7 +191,7 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(InkWell));
+      await tester.tap(find.byType(ShadButton));
       expect(tapped, isFalse);
       expect(find.byType(SealBouncingDots), findsOneWidget);
     });
@@ -260,13 +260,13 @@ void main() {
       expect(tapped, isFalse);
     });
 
-    testWidgets('uses FilledButton internally', (tester) async {
+    testWidgets('renders ShadButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(SealFilledButton.accentSecondary(label: 'A', onPressed: () {})),
       );
       await tester.pump();
 
-      expect(find.byType(FilledButton), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
   });
 
@@ -282,7 +282,7 @@ void main() {
       expect(find.text('Boost'), findsOneWidget);
     });
 
-    testWidgets('renders with InkWell', (tester) async {
+    testWidgets('renders ShadButton', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledButton.accentGradient(
@@ -293,7 +293,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(InkWell), findsOneWidget);
+      expect(find.byType(ShadButton), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -325,7 +325,7 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(InkWell));
+      await tester.tap(find.byType(ShadButton));
       expect(tapped, isFalse);
       expect(find.byType(SealBouncingDots), findsOneWidget);
     });

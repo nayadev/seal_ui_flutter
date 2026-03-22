@@ -33,6 +33,7 @@ export 'src/tokens/abstractions/gradient_tokens.dart';
 export 'src/tokens/abstractions/typography_tokens.dart';
 
 // ── Tokens · Base ──────────────────────────────────────────────────────────
+export 'src/tokens/base/seal_colors.dart';
 export 'src/tokens/base/seal_radius.dart';
 export 'src/tokens/base/seal_dimension.dart';
 export 'src/tokens/base/seal_state_color.dart';
@@ -84,5 +85,7 @@ export 'src/components/feedback/seal_bouncing_dots.dart';
 export 'src/components/feedback/seal_loader.dart';
 export 'src/components/feedback/seal_toast.dart';
 export 'src/components/inputs/seal_text_field.dart';
+export 'src/components/interaction/seal_pressable.dart';
 export 'src/components/layout/seal_card.dart';
 export 'src/components/layout/seal_container.dart';
+export 'src/components/layout/seal_divider.dart';

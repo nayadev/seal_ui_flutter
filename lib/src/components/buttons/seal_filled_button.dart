@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
+import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../feedback/seal_bouncing_dots.dart';
 
@@ -202,7 +203,7 @@ class SealFilledButton extends StatelessWidget {
         foregroundColor = colors.onPrimary;
       case _SealFilledButtonVariant.custom:
         backgroundColor = _color!;
-        foregroundColor = Colors.white;
+        foregroundColor = ColorX.white;
     }
 
     return ShadButton.raw(

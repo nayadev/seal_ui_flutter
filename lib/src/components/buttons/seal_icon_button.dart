@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
+import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 
@@ -67,9 +68,9 @@ class SealIconButton extends StatelessWidget {
     this.iconSize = _kIconSize,
     Color? color,
     LinearGradient? gradient,
-  })  : _variant = variant,
-        _color = color,
-        _gradient = gradient;
+  }) : _variant = variant,
+       _color = color,
+       _gradient = gradient;
 
   /// Creates a ghost icon button with the **primary** brand color.
   const factory SealIconButton.primary({
@@ -168,10 +169,10 @@ class SealIconButton extends StatelessWidget {
       final gradient = _variant == _SealIconButtonVariant.gradient
           ? tokens.gradients.primaryGradient
           : _variant == _SealIconButtonVariant.accentGradient
-              ? tokens.gradients.accentGradient
-              : _gradient!;
+          ? tokens.gradients.accentGradient
+          : _gradient!;
 
-      const baseColor = Colors.white;
+      const baseColor = ColorX.white;
 
       final buttonSize = scaledIconSize + dimension.sm * 2;
       Widget button = ShadIconButton.raw(
@@ -187,8 +188,8 @@ class SealIconButton extends StatelessWidget {
         foregroundColor: baseColor,
         hoverForegroundColor: baseColor,
         pressedForegroundColor: baseColor,
-        backgroundColor: Colors.transparent,
-        hoverBackgroundColor: Colors.white.withValues(alpha: 0.08),
+        backgroundColor: ColorX.transparent,
+        hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
         padding: EdgeInsets.all(dimension.sm),
       );
 
@@ -233,7 +234,7 @@ class SealIconButton extends StatelessWidget {
       foregroundColor: foregroundColor,
       hoverForegroundColor: foregroundColor,
       pressedForegroundColor: foregroundColor,
-      backgroundColor: Colors.transparent,
+      backgroundColor: ColorX.transparent,
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
       padding: EdgeInsets.all(dimension.sm),
     );

@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
+import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 
@@ -66,9 +67,9 @@ class SealFilledIconButton extends StatelessWidget {
     this.iconSize = _kIconSize,
     Color? color,
     LinearGradient? gradient,
-  })  : _variant = variant,
-        _color = color,
-        _gradient = gradient;
+  }) : _variant = variant,
+       _color = color,
+       _gradient = gradient;
 
   /// Creates a filled icon button with the **primary** brand color.
   const factory SealFilledIconButton.primary({
@@ -168,12 +169,12 @@ class SealFilledIconButton extends StatelessWidget {
       final gradient = _variant == _SealFilledIconButtonVariant.gradient
           ? tokens.gradients.primaryGradient
           : _variant == _SealFilledIconButtonVariant.accentGradient
-              ? tokens.gradients.accentGradient
-              : _gradient!;
+          ? tokens.gradients.accentGradient
+          : _gradient!;
       final foregroundColor =
           _variant == _SealFilledIconButtonVariant.accentGradient
-              ? colors.onAccent
-              : colors.onPrimary;
+          ? colors.onAccent
+          : colors.onPrimary;
 
       Widget button = AnimatedOpacity(
         opacity: _isDisabled ? _kDisabledOpacity : 1.0,
@@ -197,7 +198,7 @@ class SealFilledIconButton extends StatelessWidget {
       );
 
       if (tooltip == null) return button;
-      return Tooltip(message: tooltip!, child: button);
+      return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
     }
 
     final Color backgroundColor;
@@ -219,10 +220,10 @@ class SealFilledIconButton extends StatelessWidget {
         foregroundColor = colors.onPrimary;
       case _SealFilledIconButtonVariant.custom:
         backgroundColor = _color!;
-        foregroundColor = Colors.white;
+        foregroundColor = ColorX.white;
     }
 
-    return ShadIconButton.raw(
+    final Widget button = ShadIconButton.raw(
       variant: ShadButtonVariant.primary,
       icon: Icon(icon, size: scaledIconSize),
       onPressed: _isDisabled ? null : onPressed,
@@ -240,6 +241,9 @@ class SealFilledIconButton extends StatelessWidget {
       pressedForegroundColor: foregroundColor,
       padding: EdgeInsets.all(dimension.sm),
     );
+
+    if (tooltip == null) return button;
+    return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
   }
 }
 

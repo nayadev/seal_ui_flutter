@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
+import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../feedback/seal_bouncing_dots.dart';
 
@@ -56,9 +57,9 @@ class SealTextButton extends StatelessWidget {
     this.iconSize = TypographyTokens.kDefaultButtonIconSize,
     Color? color,
     LinearGradient? gradient,
-  })  : _variant = variant,
-        _color = color,
-        _gradient = gradient;
+  }) : _variant = variant,
+       _color = color,
+       _gradient = gradient;
 
   /// Creates a text button with the **primary** brand color.
   const factory SealTextButton.primary({
@@ -163,10 +164,10 @@ class SealTextButton extends StatelessWidget {
       final gradient = _variant == _SealTextButtonVariant.gradient
           ? tokens.gradients.primaryGradient
           : _variant == _SealTextButtonVariant.accentGradient
-              ? tokens.gradients.accentGradient
-              : _gradient!;
+          ? tokens.gradients.accentGradient
+          : _gradient!;
 
-      const baseColor = Colors.white;
+      const baseColor = ColorX.white;
 
       Widget button = ShadButton.raw(
         variant: ShadButtonVariant.ghost,
@@ -175,8 +176,8 @@ class SealTextButton extends StatelessWidget {
         foregroundColor: baseColor,
         hoverForegroundColor: baseColor,
         pressedForegroundColor: baseColor,
-        backgroundColor: Colors.transparent,
-        hoverBackgroundColor: Colors.white.withValues(alpha: 0.08),
+        backgroundColor: ColorX.transparent,
+        hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
         textDecoration: isLoading ? null : TextDecoration.underline,
         leading: (!isLoading && icon != null)
             ? Icon(icon, size: context.dimension.scaled(iconSize))
@@ -218,7 +219,7 @@ class SealTextButton extends StatelessWidget {
       foregroundColor: foregroundColor,
       hoverForegroundColor: foregroundColor,
       pressedForegroundColor: foregroundColor,
-      backgroundColor: Colors.transparent,
+      backgroundColor: ColorX.transparent,
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
       textDecoration: isLoading ? null : TextDecoration.underline,
       leading: (!isLoading && icon != null)

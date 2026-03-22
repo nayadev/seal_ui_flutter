@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 Widget _wrap(Widget child) {
-  return SealTheme(
-    tokens: SealThemeFactory.darkTokens(),
-    child: MaterialApp(
-      theme: SealThemeFactory.dark(),
-      home: Scaffold(body: Center(child: child)),
+  return MaterialApp(
+    home: SealThemeScope(
+      tokens: SealThemeFactory.darkTokens(),
+      child: Scaffold(body: Center(child: child)),
     ),
   );
 }
@@ -37,7 +37,7 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
 
@@ -53,11 +53,11 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isFalse);
     });
 
-    testWidgets('uses IconButton internally', (tester) async {
+    testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.primary(icon: Icons.add, onPressed: () {}),
@@ -65,7 +65,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
 
     testWidgets('shows tooltip when provided', (tester) async {
@@ -80,7 +80,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byTooltip('Add item'), findsOneWidget);
+      expect(find.byType(ShadTooltip), findsOneWidget);
     });
   });
 
@@ -108,11 +108,11 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(IconButton));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
 
-    testWidgets('uses IconButton internally', (tester) async {
+    testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accent(icon: Icons.star, onPressed: () {}),
@@ -120,7 +120,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
   });
 
@@ -139,7 +139,7 @@ void main() {
       expect(find.byIcon(Icons.edit), findsOneWidget);
     });
 
-    testWidgets('uses IconButton internally', (tester) async {
+    testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentSecondary(
@@ -150,7 +150,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
   });
 
@@ -169,7 +169,7 @@ void main() {
       expect(find.byIcon(Icons.rocket_launch_rounded), findsOneWidget);
     });
 
-    testWidgets('uses InkWell for interaction', (tester) async {
+    testWidgets('renders ShadIconButton', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.gradient(
@@ -180,7 +180,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(InkWell), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -195,7 +195,7 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(InkWell));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
 
@@ -211,7 +211,7 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(InkWell));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isFalse);
     });
 
@@ -227,7 +227,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(Tooltip), findsOneWidget);
+      expect(find.byType(ShadTooltip), findsOneWidget);
     });
   });
 
@@ -246,7 +246,7 @@ void main() {
       expect(find.byIcon(Icons.bolt_rounded), findsOneWidget);
     });
 
-    testWidgets('uses InkWell for interaction', (tester) async {
+    testWidgets('renders ShadIconButton', (tester) async {
       await tester.pumpWidget(
         _wrap(
           SealFilledIconButton.accentGradient(
@@ -257,7 +257,7 @@ void main() {
       );
       await tester.pump();
 
-      expect(find.byType(InkWell), findsOneWidget);
+      expect(find.byType(ShadIconButton), findsOneWidget);
     });
 
     testWidgets('calls onPressed when tapped', (tester) async {
@@ -272,7 +272,7 @@ void main() {
       );
       await tester.pump();
 
-      await tester.tap(find.byType(InkWell));
+      await tester.tap(find.byType(ShadIconButton));
       expect(tapped, isTrue);
     });
   });

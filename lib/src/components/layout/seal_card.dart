@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../../seal_ui.dart';
@@ -100,7 +100,6 @@ class SealCard extends StatelessWidget {
 
   static const double _kDefaultElevation = 2;
   static const double _kShadowOpacity = 0.25;
-  static const double _kDividerOpacity = 0.5;
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +109,7 @@ class SealCard extends StatelessWidget {
     final effectiveRadius = borderRadius ?? SealRadius.borderRadiusLg;
     final effectivePadding = padding ?? EdgeInsets.all(dimension.lg);
     final effectiveShadowColor =
-        shadowColor ?? Colors.black.withValues(alpha: _kShadowOpacity);
+        shadowColor ?? ColorX.black.withValues(alpha: SealCard._kShadowOpacity);
 
     // Build the section content that ShadCard expects as child.
     final sections = <Widget>[];
@@ -119,13 +118,7 @@ class SealCard extends StatelessWidget {
 
     if (body != null) {
       if (sections.isNotEmpty) {
-        sections.add(
-          Divider(
-            height: dimension.lg,
-            thickness: dimension.scaled(1),
-            color: colors.border.withValues(alpha: _kDividerOpacity),
-          ),
-        );
+        sections.add(SealDivider(height: dimension.lg));
       }
       sections.add(body!);
     }
@@ -155,7 +148,9 @@ class SealCard extends StatelessWidget {
       padding: effectivePadding,
       radius: effectiveRadius,
       backgroundColor: gradient == null ? (color ?? colors.surface) : null,
-      border: showBorder ? ShadBorder.all(color: colors.border) : ShadBorder.none,
+      border: showBorder
+          ? ShadBorder.all(color: colors.border)
+          : ShadBorder.none,
       shadows: shadows,
       footer: wrappedFooter,
       child: sections.isEmpty
@@ -181,7 +176,7 @@ class SealCard extends StatelessWidget {
           child: ShadCard(
             padding: effectivePadding,
             radius: effectiveRadius,
-            backgroundColor: Colors.transparent,
+            backgroundColor: ColorX.transparent,
             border: ShadBorder.none,
             shadows: const [],
             footer: wrappedFooter,
@@ -203,13 +198,6 @@ class SealCard extends StatelessWidget {
 
     if (onTap == null) return card;
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: effectiveRadius,
-        onTap: onTap,
-        child: card,
-      ),
-    );
+    return SealPressable(onTap: onTap, child: card);
   }
 }

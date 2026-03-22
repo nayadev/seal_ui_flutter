@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show Brightness;
+import 'dart:ui' show Brightness;
 
 import '../tokens/abstractions/color_palette.dart';
 import '../tokens/abstractions/gradient_tokens.dart';

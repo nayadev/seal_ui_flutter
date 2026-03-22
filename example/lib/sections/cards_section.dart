@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seal_ui/seal_ui.dart';
 
-/// Showcases card variants: default with footer and gradient.
+/// Showcases card variants: default with footer, gradient, and tappable.
 class CardsSection extends StatelessWidget {
   const CardsSection({super.key});
 
@@ -54,7 +54,46 @@ class CardsSection extends StatelessWidget {
             style: typo.body.copyWith(color: colors.textPrimary),
           ),
         ),
+        dimension.sm.verticalGap,
+        _TappableCardExample(),
       ],
+    );
+  }
+}
+
+class _TappableCardExample extends StatefulWidget {
+  @override
+  State<_TappableCardExample> createState() => _TappableCardExampleState();
+}
+
+class _TappableCardExampleState extends State<_TappableCardExample> {
+  int _tapCount = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.themeTokens;
+    final colors = tokens.colors;
+    final typo = tokens.typography;
+    final dimension = context.dimension;
+
+    return SealCard(
+      onTap: () => setState(() => _tapCount++),
+      header: Row(
+        children: [
+          Icon(Icons.touch_app_rounded, color: colors.accent),
+          dimension.xs.horizontalGap,
+          Text(
+            'Tappable Card',
+            style: typo.title.copyWith(color: colors.textPrimary),
+          ),
+        ],
+      ),
+      body: Text(
+        _tapCount == 0
+            ? 'Tap this card to see the press feedback.'
+            : 'Tapped $_tapCount time${_tapCount == 1 ? '' : 's'}.',
+        style: typo.body.copyWith(color: colors.textSecondary),
+      ),
     );
   }
 }

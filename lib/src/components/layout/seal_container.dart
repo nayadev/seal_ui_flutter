@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../theme/seal_theme.dart';
 import '../../tokens/base/seal_radius.dart';
