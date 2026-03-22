@@ -229,6 +229,26 @@ class _InputsSectionState extends State<InputsSection> {
           allowDeselection: true,
           onChanged: (date) => setState(() => _selectedDate = date),
         ),
+
+        dimension.xl.verticalGap,
+
+        // ── Date Picker ───────────────────────────────────────────────────
+        Text(
+          'Date Picker',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealDatePicker(
+          selected: _selectedDate,
+          onChanged: (date) => setState(() => _selectedDate = date),
+          placeholder: const Text('Pick a date'),
+          allowDeselection: true,
+        ),
+        dimension.xs.verticalGap,
+        SealDatePicker.range(
+          placeholder: const Text('Pick a date range'),
+          onChanged: (_) {},
+        ),
       ],
     );
   }

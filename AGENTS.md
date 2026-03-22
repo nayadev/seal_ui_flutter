@@ -118,6 +118,7 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 | `ShadCard` | `SealCard` |
 | `ShadDialog.raw(...)` | `SealDialog` |
 | `ShadCalendar` | `SealCalendar` (`.multiple`, `.range`) — exports `SealDateTimeRange` typedef |
+| `ShadDatePicker` | `SealDatePicker` (`.range`) — button-triggered popover calendar |
 | `ShadInputOTP` / `ShadInputOTPGroup` / `ShadInputOTPSlot` | `SealInputOTP` / `SealInputOTPGroup` / `SealInputOTPSlot` |
 | `ShadBreadcrumb` / `ShadBreadcrumbLink` / `ShadBreadcrumbSeparator` / `ShadBreadcrumbEllipsis` / `ShadBreadcrumbDropdown` / `ShadBreadcrumbDropMenuItem` | `SealBreadcrumb` / `SealBreadcrumbLink` / `SealBreadcrumbSeparator` / `SealBreadcrumbEllipsis` / `SealBreadcrumbDropdown` / `SealBreadcrumbDropMenuItem` |
 | `ShadPopover` / `ShadPopoverController` | `SealPopover` / `SealPopoverController` |

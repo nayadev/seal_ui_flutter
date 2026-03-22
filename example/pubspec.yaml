@@ -29,6 +29,7 @@ flutter:
     - assets/markdown/components/buttons/sealoutlineiconbutton/
     - assets/markdown/components/buttons/sealiconbutton/
     - assets/markdown/components/inputs/sealcalendar/
+    - assets/markdown/components/inputs/sealdatepicker/
     - assets/markdown/components/inputs/sealcheckbox/
     - assets/markdown/components/inputs/sealinputotp/
     - assets/markdown/components/inputs/sealradiogroup/
