@@ -97,6 +97,7 @@ export 'src/components/feedback/seal_toast.dart';
 // Inputs
 export 'src/components/inputs/seal_checkbox.dart';
 export 'src/components/inputs/seal_radio_group.dart';
+export 'src/components/inputs/seal_select.dart';
 export 'src/components/inputs/seal_switch.dart';
 export 'src/components/inputs/seal_text_field.dart';
 

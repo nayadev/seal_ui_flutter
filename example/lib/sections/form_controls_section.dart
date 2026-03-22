@@ -15,6 +15,7 @@ class _FormControlsSectionState extends State<FormControlsSection> {
   bool _switchA = false;
   bool _switchB = true;
   String? _radioTheme = 'system';
+  String? _selectTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +106,34 @@ class _FormControlsSectionState extends State<FormControlsSection> {
           items: const [
             SealRadioItem(value: 'light', label: Text('Light')),
             SealRadioItem(value: 'dark', label: Text('Dark')),
+          ],
+        ),
+        dimension.lg.verticalGap,
+
+        Text(
+          'Select',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SealSelect<String>(
+          label: 'Theme',
+          placeholder: 'Choose a theme',
+          value: _selectTheme,
+          onChanged: (v) => setState(() => _selectTheme = v),
+          options: const [
+            SealSelectOption(value: 'nebula', label: 'Nebula'),
+            SealSelectOption(value: 'arctic', label: 'Arctic'),
+            SealSelectOption(value: 'ocean', label: 'Deep Ocean'),
+            SealSelectOption(value: 'terminal', label: 'Terminal'),
+          ],
+        ),
+        dimension.xs.verticalGap,
+        SealSelect<String>(
+          placeholder: 'Disabled',
+          enabled: false,
+          onChanged: null,
+          options: const [
+            SealSelectOption(value: 'nebula', label: 'Nebula'),
           ],
         ),
       ],

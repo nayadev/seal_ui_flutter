@@ -882,6 +882,59 @@ WidgetbookFolder _buildInputsFolder() {
         ],
       ),
       WidgetbookComponent(
+        name: 'SealSelect',
+        useCases: [
+          WidgetbookUseCase(
+            name: 'Default',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSelect<String>(
+                placeholder: context.knobs.string(
+                  label: 'Placeholder',
+                  initialValue: 'Choose a theme',
+                ),
+                enabled: context.knobs.boolean(
+                  label: 'Enabled',
+                  initialValue: true,
+                ),
+                options: const [
+                  SealSelectOption(value: 'nebula', label: 'Nebula'),
+                  SealSelectOption(value: 'arctic', label: 'Arctic'),
+                  SealSelectOption(value: 'ocean', label: 'Deep Ocean'),
+                  SealSelectOption(value: 'terminal', label: 'Terminal'),
+                ],
+                onChanged: (_) {},
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'With Label',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSelect<String>(
+                label: context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Theme',
+                ),
+                placeholder: 'Choose a theme',
+                value: 'nebula',
+                enabled: context.knobs.boolean(
+                  label: 'Enabled',
+                  initialValue: true,
+                ),
+                options: const [
+                  SealSelectOption(value: 'nebula', label: 'Nebula'),
+                  SealSelectOption(value: 'arctic', label: 'Arctic'),
+                  SealSelectOption(value: 'ocean', label: 'Deep Ocean'),
+                  SealSelectOption(value: 'terminal', label: 'Terminal'),
+                ],
+                onChanged: (_) {},
+              ),
+            ),
+          ),
+        ],
+      ),
+      WidgetbookComponent(
         name: 'SealTextField',
         useCases: [
           WidgetbookUseCase(
