@@ -104,6 +104,7 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 
 | `Shad*` primitive | Seal wrapper |
 |---|---|
+| `ShadForm` | `SealForm` — re-exports `SealFormState`, `SealFormFields`, `SealAutovalidateMode` |
 | `ShadButton.raw(...)` | `SealFilledButton`, `SealOutlineButton`, `SealTextButton` |
 | `ShadIconButton.raw(...)` | `SealFilledIconButton`, `SealOutlineIconButton`, `SealIconButton` |
 | `ShadInput` | `SealTextField` |

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
+import 'package:shadcn_ui/shadcn_ui.dart' show ShadInputFormField;
 
 /// Showcases all input and form control components: [SealCheckbox],
 /// [SealRadioGroup], [SealSelect], [SealSlider], [SealSwitch],
@@ -265,7 +266,77 @@ class _InputsSectionState extends State<InputsSection> {
           initialDayPeriod: SealDayPeriod.am,
           onChanged: (_) {},
         ),
+
+        dimension.xl.verticalGap,
+
+        // ── Form ──────────────────────────────────────────────────────────
+        Text(
+          'Form',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        const _FormExample(),
       ],
+    );
+  }
+}
+
+class _FormExample extends StatefulWidget {
+  const _FormExample();
+
+  @override
+  State<_FormExample> createState() => _FormExampleState();
+}
+
+class _FormExampleState extends State<_FormExample> {
+  final _formKey = GlobalKey<SealFormState>();
+  String? _result;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.themeTokens;
+    final colors = tokens.colors;
+    final typo = tokens.typography;
+    final dimension = context.dimension;
+
+    return SealForm(
+      formKey: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ShadInputFormField(
+            id: 'username',
+            label: const Text('Username'),
+            placeholder: const Text('Enter username'),
+            validator: (v) => v.isEmpty ? 'Username is required' : null,
+          ),
+          dimension.sm.verticalGap,
+          ShadInputFormField(
+            id: 'email',
+            label: const Text('Email'),
+            placeholder: const Text('Enter email'),
+            validator: (v) => !v.contains('@') ? 'Enter a valid email' : null,
+          ),
+          dimension.md.verticalGap,
+          SealFilledButton.primary(
+            label: const Text('Submit'),
+            onPressed: () {
+              if (_formKey.currentState!.saveAndValidate()) {
+                setState(
+                  () => _result = _formKey.currentState!.value.toString(),
+                );
+              }
+            },
+          ),
+          if (_result != null) ...[
+            dimension.sm.verticalGap,
+            Text(
+              _result!,
+              style: typo.small.copyWith(color: colors.textSecondary),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }

@@ -88,6 +88,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 
 | Component | Description |
 |---|---|
+| `SealForm` | Form state manager; integrates with any `ShadFormField` for coordinated validation and value collection |
 | `SealCalendar` | Token-styled date picker; `.multiple` for multi-select, `.range` for date ranges |
 | `SealDatePicker` | Button-triggered popover date picker; `.range` for date-range selection |
 | `SealTimePicker` | Hour/minute/second input fields; `.period` for 12-hour AM/PM format |

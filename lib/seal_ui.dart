@@ -97,6 +97,7 @@ export 'src/components/feedback/seal_toast.dart';
 
 // Inputs
 export 'src/components/inputs/seal_calendar.dart';
+export 'src/components/inputs/seal_form.dart';
 export 'src/components/inputs/seal_date_picker.dart';
 export 'src/components/inputs/seal_time_picker.dart';
 export 'src/components/inputs/seal_checkbox.dart';

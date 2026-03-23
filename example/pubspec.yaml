@@ -31,6 +31,7 @@ flutter:
     - assets/markdown/components/inputs/sealcalendar/
     - assets/markdown/components/inputs/sealdatepicker/
     - assets/markdown/components/inputs/sealtimepicker/
+    - assets/markdown/components/inputs/sealform/
     - assets/markdown/components/inputs/sealcheckbox/
     - assets/markdown/components/inputs/sealinputotp/
     - assets/markdown/components/inputs/sealradiogroup/
