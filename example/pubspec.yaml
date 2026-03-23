@@ -59,3 +59,4 @@ flutter:
     - assets/markdown/layout/tabs/sealtabs/
     - assets/markdown/layout/containers/sealcontainer/
     - assets/markdown/layout/spacing/spacing-scale/
+    - assets/markdown/layout/table/sealtable/

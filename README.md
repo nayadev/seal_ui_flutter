@@ -113,6 +113,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 | `SealCard` | Themed surface card with header, body, footer, gradient, and tap support |
 | `SealContainer` | Surface box with optional gradient and border |
 | `SealSeparator` | Token-styled horizontal divider |
+| `SealTable` / `SealTableCell` | Token-styled data table; `.list` for static data, builder constructor for large datasets |
 | `SealTabs` / `SealTab` | Tabbed content switcher |
 
 ### Feedback

@@ -382,6 +382,42 @@ class LayoutSection extends StatelessWidget {
             ),
           ],
         ),
+
+        dimension.xl.verticalGap,
+
+        // ── Table ────────────────────────────────────────────────────────
+        Text(
+          'Table',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
+        dimension.xs.verticalGap,
+        SizedBox(
+          height: 200,
+          child: SealTable.list(
+            header: [
+              SealTableCell.header(child: const Text('Name')),
+              SealTableCell.header(child: const Text('Role')),
+              SealTableCell.header(child: const Text('Status')),
+            ],
+            children: [
+              [
+                SealTableCell(child: const Text('Alice')),
+                SealTableCell(child: const Text('Admin')),
+                SealTableCell(child: const Text('Active')),
+              ],
+              [
+                SealTableCell(child: const Text('Bob')),
+                SealTableCell(child: const Text('Editor')),
+                SealTableCell(child: const Text('Inactive')),
+              ],
+              [
+                SealTableCell(child: const Text('Carol')),
+                SealTableCell(child: const Text('Viewer')),
+                SealTableCell(child: const Text('Active')),
+              ],
+            ],
+          ),
+        ),
       ],
     );
   }

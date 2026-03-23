@@ -128,4 +128,5 @@ export 'src/components/layout/seal_badge.dart';
 export 'src/components/layout/seal_card.dart';
 export 'src/components/layout/seal_container.dart';
 export 'src/components/layout/seal_separator.dart';
+export 'src/components/layout/seal_table.dart';
 export 'src/components/layout/seal_tabs.dart';
