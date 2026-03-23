@@ -30,10 +30,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealFilledButton.primary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Get Started',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Get Started',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -47,10 +49,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealFilledButton.accent(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Continue',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Continue',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -64,10 +68,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealFilledButton.accentSecondary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Confirm',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Confirm',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -81,10 +87,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealFilledButton.gradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Launch',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Launch',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -98,10 +106,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealFilledButton.accentGradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Boost',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Boost',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -115,10 +125,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'With Icon',
             builder: (context) => SealFilledButton.gradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Explore',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Explore',
+                ),
+              ),
               icon: LucideIcons.rocket,
               onPressed: () {},
             ),
@@ -126,10 +138,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealFilledButton.custom(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Delete',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Delete',
+                ),
+              ),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
                 options: [
@@ -362,10 +376,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealOutlineButton.primary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Cancel',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Cancel',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -379,10 +395,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealOutlineButton.accent(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Details',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Details',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -396,10 +414,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealOutlineButton.accentSecondary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Info',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Info',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -413,10 +433,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealOutlineButton.gradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Explore',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Explore',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -430,10 +452,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealOutlineButton.accentGradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Discover',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Discover',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -447,10 +471,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'With Icon',
             builder: (context) => SealOutlineButton.primary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Favorite',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Favorite',
+                ),
+              ),
               icon: LucideIcons.star,
               onPressed: () {},
             ),
@@ -458,10 +484,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealOutlineButton.custom(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Retry',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Retry',
+                ),
+              ),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
                 options: [
@@ -593,10 +621,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Primary',
             builder: (context) => SealTextButton.primary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Learn more',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Learn more',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -610,10 +640,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent',
             builder: (context) => SealTextButton.accent(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Details',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Details',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -627,10 +659,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Secondary',
             builder: (context) => SealTextButton.accentSecondary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Info',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Info',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -644,10 +678,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Gradient',
             builder: (context) => SealTextButton.gradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Discover',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Discover',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -661,10 +697,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Accent Gradient',
             builder: (context) => SealTextButton.accentGradient(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Explore',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Explore',
+                ),
+              ),
               isLoading: context.knobs.boolean(
                 label: 'Loading',
                 initialValue: false,
@@ -678,10 +716,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'With Icon',
             builder: (context) => SealTextButton.primary(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Skip',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Skip',
+                ),
+              ),
               icon: LucideIcons.arrowRight,
               onPressed: () {},
             ),
@@ -689,10 +729,12 @@ WidgetbookFolder _buildButtonsFolder() {
           WidgetbookUseCase(
             name: 'Custom',
             builder: (context) => SealTextButton.custom(
-              label: Text(context.knobs.string(
-                label: 'Label',
-                initialValue: 'Retry',
-              )),
+              label: Text(
+                context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Retry',
+                ),
+              ),
               color: context.knobs.object.dropdown<Color>(
                 label: 'Color',
                 options: [
@@ -743,14 +785,16 @@ WidgetbookFolder _buildButtonsFolder() {
                             initialValue: 'File saved',
                           ),
                         ),
-                        description: context.knobs.boolean(
-                          label: 'Show description',
-                          initialValue: true,
-                        )
+                        description:
+                            context.knobs.boolean(
+                              label: 'Show description',
+                              initialValue: true,
+                            )
                             ? Text(
                                 context.knobs.string(
                                   label: 'Description',
-                                  initialValue: 'Your changes have been synced.',
+                                  initialValue:
+                                      'Your changes have been synced.',
                                 ),
                               )
                             : null,
@@ -1017,6 +1061,128 @@ WidgetbookFolder _buildInputsFolder() {
                   SealSelectOption(value: 'terminal', label: 'Terminal'),
                 ],
                 onChanged: (_) {},
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Pre-selected',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSelect<String>(
+                label: context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Status',
+                ),
+                value: 'in_progress',
+                enabled: context.knobs.boolean(
+                  label: 'Enabled',
+                  initialValue: true,
+                ),
+                onChanged: (_) {},
+                options: const [
+                  SealSelectOption(value: 'todo', label: 'To Do'),
+                  SealSelectOption(value: 'in_progress', label: 'In Progress'),
+                  SealSelectOption(value: 'in_review', label: 'In Review'),
+                  SealSelectOption(value: 'done', label: 'Done'),
+                  SealSelectOption(value: 'cancelled', label: 'Cancelled'),
+                ],
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Long List',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSelect<String>(
+                label: 'Timezone',
+                placeholder: context.knobs.string(
+                  label: 'Placeholder',
+                  initialValue: 'Select timezone',
+                ),
+                enabled: context.knobs.boolean(
+                  label: 'Enabled',
+                  initialValue: true,
+                ),
+                onChanged: (_) {},
+                options: const [
+                  SealSelectOption(value: 'utc', label: 'UTC — Universal Time'),
+                  SealSelectOption(
+                    value: 'us_et',
+                    label: 'America/New_York (ET)',
+                  ),
+                  SealSelectOption(
+                    value: 'us_ct',
+                    label: 'America/Chicago (CT)',
+                  ),
+                  SealSelectOption(
+                    value: 'us_mt',
+                    label: 'America/Denver (MT)',
+                  ),
+                  SealSelectOption(
+                    value: 'us_pt',
+                    label: 'America/Los_Angeles (PT)',
+                  ),
+                  SealSelectOption(
+                    value: 'eu_london',
+                    label: 'Europe/London (GMT)',
+                  ),
+                  SealSelectOption(
+                    value: 'eu_paris',
+                    label: 'Europe/Paris (CET)',
+                  ),
+                  SealSelectOption(
+                    value: 'eu_athens',
+                    label: 'Europe/Athens (EET)',
+                  ),
+                  SealSelectOption(
+                    value: 'eu_moscow',
+                    label: 'Europe/Moscow (MSK)',
+                  ),
+                  SealSelectOption(
+                    value: 'asia_dubai',
+                    label: 'Asia/Dubai (GST)',
+                  ),
+                  SealSelectOption(
+                    value: 'asia_kolkata',
+                    label: 'Asia/Kolkata (IST)',
+                  ),
+                  SealSelectOption(
+                    value: 'asia_singapore',
+                    label: 'Asia/Singapore (SGT)',
+                  ),
+                  SealSelectOption(
+                    value: 'asia_tokyo',
+                    label: 'Asia/Tokyo (JST)',
+                  ),
+                  SealSelectOption(
+                    value: 'aus_sydney',
+                    label: 'Australia/Sydney (AEDT)',
+                  ),
+                  SealSelectOption(
+                    value: 'pac_auckland',
+                    label: 'Pacific/Auckland (NZST)',
+                  ),
+                ],
+              ),
+            ),
+          ),
+          WidgetbookUseCase(
+            name: 'Disabled',
+            builder: (context) => Padding(
+              padding: EdgeInsets.all(context.dimension.lg),
+              child: SealSelect<String>(
+                label: context.knobs.string(
+                  label: 'Label',
+                  initialValue: 'Plan',
+                ),
+                placeholder: 'Upgrade to access',
+                enabled: false,
+                onChanged: null,
+                options: const [
+                  SealSelectOption(value: 'starter', label: 'Starter'),
+                  SealSelectOption(value: 'pro', label: 'Pro'),
+                  SealSelectOption(value: 'enterprise', label: 'Enterprise'),
+                ],
               ),
             ),
           ),
@@ -1330,9 +1496,8 @@ WidgetbookFolder _buildInputsFolder() {
                           id: 'email',
                           label: const Text('Email'),
                           placeholder: const Text('Enter email'),
-                          validator: (v) => !v.contains('@')
-                              ? 'Enter a valid email'
-                              : null,
+                          validator: (v) =>
+                              !v.contains('@') ? 'Enter a valid email' : null,
                         ),
                         ctx.dimension.md.verticalGap,
                         SealFilledButton.primary(
@@ -1340,8 +1505,7 @@ WidgetbookFolder _buildInputsFolder() {
                           onPressed: () {
                             if (formKey.currentState!.saveAndValidate()) {
                               setState(() {
-                                result =
-                                    formKey.currentState!.value.toString();
+                                result = formKey.currentState!.value.toString();
                               });
                             }
                           },
@@ -1521,14 +1685,18 @@ WidgetbookFolder _buildOverlayFolder() {
               onPressed: () => showSealDialog<void>(
                 context: context,
                 builder: (_) => SealDialog(
-                  title: Text(context.knobs.string(
-                    label: 'Title',
-                    initialValue: 'Edit profile',
-                  )),
-                  description: Text(context.knobs.string(
-                    label: 'Description',
-                    initialValue: 'Make changes to your profile here.',
-                  )),
+                  title: Text(
+                    context.knobs.string(
+                      label: 'Title',
+                      initialValue: 'Edit profile',
+                    ),
+                  ),
+                  description: Text(
+                    context.knobs.string(
+                      label: 'Description',
+                      initialValue: 'Make changes to your profile here.',
+                    ),
+                  ),
                   actions: [
                     SealOutlineButton.primary(
                       label: const Text('Cancel'),
@@ -1551,14 +1719,18 @@ WidgetbookFolder _buildOverlayFolder() {
               onPressed: () => showSealDialog<void>(
                 context: context,
                 builder: (_) => SealDialog.alert(
-                  title: Text(context.knobs.string(
-                    label: 'Title',
-                    initialValue: 'Are you sure?',
-                  )),
-                  description: Text(context.knobs.string(
-                    label: 'Description',
-                    initialValue: 'This action cannot be undone.',
-                  )),
+                  title: Text(
+                    context.knobs.string(
+                      label: 'Title',
+                      initialValue: 'Are you sure?',
+                    ),
+                  ),
+                  description: Text(
+                    context.knobs.string(
+                      label: 'Description',
+                      initialValue: 'This action cannot be undone.',
+                    ),
+                  ),
                   actions: [
                     SealOutlineButton.primary(
                       label: const Text('Cancel'),
@@ -1586,14 +1758,18 @@ WidgetbookFolder _buildOverlayFolder() {
               onPressed: () => showSealSheet<void>(
                 context: context,
                 builder: (ctx) => SealSheet(
-                  title: Text(context.knobs.string(
-                    label: 'Title',
-                    initialValue: 'Filter',
-                  )),
-                  description: Text(context.knobs.string(
-                    label: 'Description',
-                    initialValue: 'Narrow down your results.',
-                  )),
+                  title: Text(
+                    context.knobs.string(
+                      label: 'Title',
+                      initialValue: 'Filter',
+                    ),
+                  ),
+                  description: Text(
+                    context.knobs.string(
+                      label: 'Description',
+                      initialValue: 'Narrow down your results.',
+                    ),
+                  ),
                   actions: [
                     SealOutlineButton.primary(
                       label: const Text('Reset'),

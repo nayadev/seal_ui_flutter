@@ -18,6 +18,8 @@ class _InputsSectionState extends State<InputsSection> {
   bool _checkboxB = true;
   String? _radioTheme = 'system';
   String? _selectTheme;
+  String? _selectStatus = 'in_progress';
+  String? _selectTimezone;
   bool _switchA = false;
   bool _switchB = true;
   DateTime? _selectedDate;
@@ -110,11 +112,73 @@ class _InputsSectionState extends State<InputsSection> {
         ),
         dimension.xs.verticalGap,
         SealSelect<String>(
-          placeholder: 'Disabled',
+          label: 'Status',
+          value: _selectStatus,
+          onChanged: (v) => setState(() => _selectStatus = v),
+          options: const [
+            SealSelectOption(value: 'todo', label: 'To Do'),
+            SealSelectOption(value: 'in_progress', label: 'In Progress'),
+            SealSelectOption(value: 'in_review', label: 'In Review'),
+            SealSelectOption(value: 'done', label: 'Done'),
+            SealSelectOption(value: 'cancelled', label: 'Cancelled'),
+          ],
+        ),
+        dimension.xs.verticalGap,
+        SealSelect<String>(
+          label: 'Timezone',
+          placeholder: 'Select timezone',
+          value: _selectTimezone,
+          onChanged: (v) => setState(() => _selectTimezone = v),
+          options: const [
+            SealSelectOption(value: 'utc', label: 'UTC — Universal Time'),
+            SealSelectOption(value: 'us_et', label: 'America/New_York (ET)'),
+            SealSelectOption(value: 'us_ct', label: 'America/Chicago (CT)'),
+            SealSelectOption(value: 'us_mt', label: 'America/Denver (MT)'),
+            SealSelectOption(value: 'us_pt', label: 'America/Los_Angeles (PT)'),
+            SealSelectOption(
+              value: 'eu_london',
+              label: 'Europe/London (GMT)',
+            ),
+            SealSelectOption(
+              value: 'eu_paris',
+              label: 'Europe/Paris (CET)',
+            ),
+            SealSelectOption(
+              value: 'eu_moscow',
+              label: 'Europe/Moscow (MSK)',
+            ),
+            SealSelectOption(
+              value: 'asia_dubai',
+              label: 'Asia/Dubai (GST)',
+            ),
+            SealSelectOption(
+              value: 'asia_kolkata',
+              label: 'Asia/Kolkata (IST)',
+            ),
+            SealSelectOption(
+              value: 'asia_singapore',
+              label: 'Asia/Singapore (SGT)',
+            ),
+            SealSelectOption(
+              value: 'asia_tokyo',
+              label: 'Asia/Tokyo (JST)',
+            ),
+            SealSelectOption(
+              value: 'aus_sydney',
+              label: 'Australia/Sydney (AEDT)',
+            ),
+          ],
+        ),
+        dimension.xs.verticalGap,
+        SealSelect<String>(
+          label: 'Plan',
+          placeholder: 'Upgrade to access',
           enabled: false,
           onChanged: null,
           options: const [
-            SealSelectOption(value: 'nebula', label: 'Nebula'),
+            SealSelectOption(value: 'starter', label: 'Starter'),
+            SealSelectOption(value: 'pro', label: 'Pro'),
+            SealSelectOption(value: 'enterprise', label: 'Enterprise'),
           ],
         ),
 
@@ -128,7 +192,13 @@ class _InputsSectionState extends State<InputsSection> {
         dimension.xs.verticalGap,
         SealSlider(value: 0.4, onChanged: (_) {}),
         dimension.xs.verticalGap,
-        SealSlider(value: 60, min: 0, max: 100, divisions: 10, onChanged: (_) {}),
+        SealSlider(
+          value: 60,
+          min: 0,
+          max: 100,
+          divisions: 10,
+          onChanged: (_) {},
+        ),
         dimension.xs.verticalGap,
         const SealSlider(value: 0.5, enabled: false),
 
