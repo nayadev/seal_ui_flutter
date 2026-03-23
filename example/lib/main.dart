@@ -181,26 +181,15 @@ class _ThemeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typo = context.themeTokens.typography;
-    final colors = context.themeTokens.colors;
-
-    return ShadSelect<SealThemeOption>(
+    return SealSelect<SealThemeOption>(
       key: ValueKey(activeTheme),
-      initialValue: activeTheme,
+      value: activeTheme,
       onChanged: (option) {
         if (option != null) onThemeChanged(option);
       },
-      selectedOptionBuilder: (context, value) => Text(
-        value.label,
-        style: typo.small.copyWith(color: colors.textPrimary),
-      ),
-      options: SealThemeOption.values.map(
-        (option) => ShadOption(value: option, child: Text(option.label)),
-      ),
-      decoration: ShadDecoration(
-        border: ShadBorder.all(color: colors.border),
-        focusedBorder: ShadBorder.all(color: colors.border),
-      ),
+      options: SealThemeOption.values
+          .map((option) => SealSelectOption(value: option, label: option.label))
+          .toList(),
     );
   }
 }
