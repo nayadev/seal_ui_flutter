@@ -5,6 +5,7 @@ import 'package:seal_ui/seal_ui.dart';
 /// [SealBadge], [SealBreadcrumb], [SealCard], [SealContainer], [SealMenubar],
 /// and [SealTabs].
 class LayoutSection extends StatelessWidget {
+  /// Creates a [LayoutSection].
   const LayoutSection({super.key});
 
   @override

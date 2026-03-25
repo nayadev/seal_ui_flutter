@@ -5,6 +5,7 @@ import 'package:flutter/painting.dart';
 /// Gradients are a core part of the visual identity and should be
 /// used tastefully on buttons, highlights, and accent elements.
 abstract class GradientTokens {
+  /// Creates a [GradientTokens] instance.
   const GradientTokens();
 
   /// Primary gradient — used on primary buttons and hero elements.

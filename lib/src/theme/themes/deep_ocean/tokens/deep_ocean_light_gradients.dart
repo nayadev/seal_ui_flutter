@@ -8,6 +8,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 /// cards look rich and harmonious on the pale blue-white Deep Ocean light
 /// surfaces, matching the visual quality of dark mode.
 class DeepOceanLightGradients extends GradientTokens {
+  /// Creates [DeepOceanLightGradients] tokens.
   const DeepOceanLightGradients();
 
   @override

@@ -8,6 +8,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 /// gradient cards look rich and harmonious on the bright white surfaces of
 /// the Arctic light palette, matching the visual quality of dark mode.
 class ArcticLightGradients extends GradientTokens {
+  /// Creates [ArcticLightGradients] tokens.
   const ArcticLightGradients();
 
   @override

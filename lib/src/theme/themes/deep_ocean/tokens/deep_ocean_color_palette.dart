@@ -7,6 +7,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 ///
 /// Dark, deep, and luminous — midnight navy surfaces with cyan glow accents.
 class DeepOceanColorPalette extends ColorPalette {
+  /// Creates [DeepOceanColorPalette] tokens.
   const DeepOceanColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

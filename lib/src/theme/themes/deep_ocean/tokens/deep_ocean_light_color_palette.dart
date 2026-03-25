@@ -8,6 +8,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 /// Navy and cyan brand identity on clean, bright surfaces.
 /// Use [DeepOceanColorPalette] for the canonical dark variant.
 class DeepOceanLightColorPalette extends ColorPalette {
+  /// Creates [DeepOceanLightColorPalette] tokens.
   const DeepOceanLightColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

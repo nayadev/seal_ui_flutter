@@ -20,9 +20,16 @@ void main() {
 
 /// The available Seal UI themes for runtime switching.
 enum SealThemeOption {
+  /// The Arctic theme — bright, icy blue surfaces.
   arctic('Arctic'),
+
+  /// The Deep Ocean theme — dark navy surfaces with cyan accents.
   deepOcean('Deep Ocean'),
+
+  /// The Nebula theme — space-inspired dark surfaces with purple accents.
   nebula('Nebula'),
+
+  /// The Terminal theme — CRT-inspired near-black surfaces with phosphor tones.
   terminal('Terminal');
 
   const SealThemeOption(this.label);
@@ -31,7 +38,9 @@ enum SealThemeOption {
   final String label;
 }
 
+/// Root widget for the Seal UI example application.
 class SealExampleApp extends StatefulWidget {
+  /// Creates the [SealExampleApp].
   const SealExampleApp({super.key});
 
   @override

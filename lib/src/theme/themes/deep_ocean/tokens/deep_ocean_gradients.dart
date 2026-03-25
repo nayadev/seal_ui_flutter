@@ -6,6 +6,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 ///
 /// Deep navy → cyan glow gradients evoke the luminous depths of the ocean.
 class DeepOceanGradients extends GradientTokens {
+  /// Creates [DeepOceanGradients] tokens.
   const DeepOceanGradients();
 
   @override

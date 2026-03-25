@@ -10,6 +10,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 /// phosphor green as the accent. Text is bright cyan-white for that
 /// authentic glow-on-screen feel.
 class TerminalColorPalette extends ColorPalette {
+  /// Creates [TerminalColorPalette] tokens.
   const TerminalColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

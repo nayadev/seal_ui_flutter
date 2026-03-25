@@ -12,6 +12,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 /// - Surface gradients use low-opacity phosphor tints to add depth to dark
 ///   containers without overpowering the near-black backgrounds.
 class TerminalGradients extends GradientTokens {
+  /// Creates [TerminalGradients] tokens.
   const TerminalGradients();
 
   /// Cyan → deep teal-blue — like a beam sweeping across a phosphor screen.

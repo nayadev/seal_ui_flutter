@@ -28,6 +28,7 @@ import 'package:flutter/painting.dart';
 /// | small      | small      |  14  |  w500  |
 /// | muted      | caption    |  14  |  w400  |
 abstract class TypographyTokens {
+  /// Creates a [TypographyTokens] instance.
   const TypographyTokens();
 
   /// Flutter's default line height multiplier when [TextStyle.height] is null.

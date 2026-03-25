@@ -9,6 +9,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 /// look rich and harmonious on the bright white and off-white surfaces
 /// of the Nebula light palette, matching the visual quality of dark mode.
 class NebulaLightGradients extends GradientTokens {
+  /// Creates [NebulaLightGradients] tokens.
   const NebulaLightGradients();
 
   @override

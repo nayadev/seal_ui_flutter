@@ -4,6 +4,7 @@ import 'package:seal_ui/seal_ui.dart';
 /// Showcases overlay components: [SealContextMenuRegion], [SealDialog],
 /// [SealPopover], and [SealSheet].
 class OverlaySection extends StatelessWidget {
+  /// Creates an [OverlaySection].
   const OverlaySection({super.key});
 
   @override

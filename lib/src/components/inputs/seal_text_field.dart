@@ -29,6 +29,7 @@ class SealTextField extends StatefulWidget {
   /// Default icon size for prefix/suffix icons.
   static const double _kIconSize = 20;
 
+  /// Creates a [SealTextField] with optional label, hint, and icon slots.
   const SealTextField({
     super.key,
     this.controller,

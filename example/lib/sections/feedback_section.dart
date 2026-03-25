@@ -4,6 +4,7 @@ import 'package:seal_ui/seal_ui.dart';
 /// Showcases feedback components: [SealAlert], [SealLoader], [SealProgress],
 /// [SealSonner], and [SealToast].
 class FeedbackSection extends StatelessWidget {
+  /// Creates a [FeedbackSection].
   const FeedbackSection({super.key});
 
   @override

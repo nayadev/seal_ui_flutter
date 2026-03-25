@@ -8,6 +8,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 /// Preserves the purple/teal brand identity of Nebula on bright,
 /// airy surfaces. Use [NebulaColorPalette] for the canonical dark variant.
 class NebulaLightColorPalette extends ColorPalette {
+  /// Creates [NebulaLightColorPalette] tokens.
   const NebulaLightColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

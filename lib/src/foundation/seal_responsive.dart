@@ -3,7 +3,16 @@ import 'package:flutter/widgets.dart';
 import '../../seal_ui.dart';
 
 /// The current device category inferred from screen width.
-enum DeviceType { mobile, tablet, desktop }
+enum DeviceType {
+  /// Screens narrower than the mobile breakpoint.
+  mobile,
+
+  /// Screens between the mobile and tablet breakpoints.
+  tablet,
+
+  /// Screens wider than the tablet breakpoint.
+  desktop,
+}
 
 /// Responsive utilities for adapting UI to different screen sizes.
 ///

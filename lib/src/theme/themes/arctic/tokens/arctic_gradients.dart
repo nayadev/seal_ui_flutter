@@ -6,6 +6,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 ///
 /// Ice-blue → glacier cyan gradients evoke a crisp, frozen aesthetic.
 class ArcticGradients extends GradientTokens {
+  /// Creates [ArcticGradients] tokens.
   const ArcticGradients();
 
   @override

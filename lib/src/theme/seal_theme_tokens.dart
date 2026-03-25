@@ -12,6 +12,7 @@ import '../tokens/abstractions/typography_tokens.dart';
 /// The [brightness] field indicates whether this token set is designed for
 /// a dark or light surface.
 class SealThemeTokens {
+  /// Creates a [SealThemeTokens] container with the given design tokens.
   const SealThemeTokens({
     required this.colors,
     required this.typography,

@@ -7,6 +7,7 @@ import '../base/seal_state_color.dart';
 /// Implementations provide concrete color values for dark and light themes.
 /// The palette is purple-centered with blue and green accents.
 abstract class ColorPalette {
+  /// Creates a [ColorPalette] instance.
   const ColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

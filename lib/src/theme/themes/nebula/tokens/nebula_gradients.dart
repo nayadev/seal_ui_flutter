@@ -6,6 +6,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 ///
 /// Purple → Blue gradient is the primary visual identity of the Nebula theme.
 class NebulaGradients extends GradientTokens {
+  /// Creates [NebulaGradients] tokens.
   const NebulaGradients();
 
   @override

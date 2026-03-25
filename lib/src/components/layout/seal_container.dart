@@ -15,6 +15,7 @@ import '../../tokens/base/seal_dimension.dart';
 /// )
 /// ```
 class SealContainer extends StatelessWidget {
+  /// Creates a [SealContainer] with token-driven surface styling.
   const SealContainer({
     super.key,
     required this.child,

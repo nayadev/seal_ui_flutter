@@ -36,6 +36,7 @@ enum SealLoaderSize {
 /// const SealLoader(size: SealLoaderSize.large)
 /// ```
 class SealLoader extends StatelessWidget {
+  /// Creates a [SealLoader] spinning indicator.
   const SealLoader({
     super.key,
     this.size = SealLoaderSize.medium,

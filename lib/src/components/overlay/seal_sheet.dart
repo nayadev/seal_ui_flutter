@@ -20,6 +20,7 @@ enum SealSheetSide {
   left
   ;
 
+  /// Converts this [SealSheetSide] to the equivalent [ShadSheetSide].
   ShadSheetSide toShadSide() => switch (this) {
     SealSheetSide.top => ShadSheetSide.top,
     SealSheetSide.right => ShadSheetSide.right,

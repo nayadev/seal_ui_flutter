@@ -7,6 +7,7 @@ import 'package:shadcn_ui/shadcn_ui.dart' show ShadInputFormField;
 /// [SealTextarea], [SealTextField], [SealInputOTP], [SealCalendar],
 /// [SealDatePicker], and [SealTimePicker].
 class InputsSection extends StatefulWidget {
+  /// Creates an [InputsSection].
   const InputsSection({super.key});
 
   @override

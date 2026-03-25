@@ -8,6 +8,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 /// Icy blue brand identity on deep, cool-toned dark surfaces.
 /// Use [ArcticColorPalette] for the canonical light variant.
 class ArcticDarkColorPalette extends ColorPalette {
+  /// Creates [ArcticDarkColorPalette] tokens.
   const ArcticDarkColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

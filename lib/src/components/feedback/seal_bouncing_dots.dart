@@ -25,6 +25,7 @@ class SealBouncingDots extends StatefulWidget {
   /// Fraction of the cycle during which a dot actively bounces.
   static const double kActiveCycleFraction = 0.4;
 
+  /// Creates a [SealBouncingDots] loading indicator with the given [color].
   const SealBouncingDots({
     super.key,
     required this.color,

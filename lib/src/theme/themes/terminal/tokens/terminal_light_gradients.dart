@@ -8,6 +8,7 @@ import '../../../../tokens/abstractions/gradient_tokens.dart';
 /// bright surfaces — soft cyan and mint washes that evoke the tinted paper
 /// of terminal printouts without the glow of dark mode.
 class TerminalLightGradients extends GradientTokens {
+  /// Creates [TerminalLightGradients] tokens.
   const TerminalLightGradients();
 
   /// Dark cyan → deep teal — the primary identity on bright surfaces.

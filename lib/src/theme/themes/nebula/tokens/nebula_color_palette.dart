@@ -7,6 +7,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 ///
 /// Deep, space-inspired backgrounds with vibrant purple accents.
 class NebulaColorPalette extends ColorPalette {
+  /// Creates [NebulaColorPalette] tokens.
   const NebulaColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

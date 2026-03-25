@@ -9,6 +9,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 /// a faint cyan cast, dark cyan as the primary, and dark gray as the accent.
 /// Text on filled elements stays light for contrast even in light mode.
 class TerminalLightColorPalette extends ColorPalette {
+  /// Creates [TerminalLightColorPalette] tokens.
   const TerminalLightColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────

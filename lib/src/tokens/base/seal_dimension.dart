@@ -106,10 +106,14 @@ extension SealDimensionContext on BuildContext {
 /// ...
 /// ```
 extension SealDimensionDouble on double {
+  /// Returns a [SizedBox] with [height] set to this value, creating a vertical gap.
   SizedBox get verticalGap => SizedBox(height: this);
-  SizedBox get horizontalGap => SizedBox(width: this);
-  SizedBox get squareGap => SizedBox.square(dimension: this);
 
+  /// Returns a [SizedBox] with [width] set to this value, creating a horizontal gap.
+  SizedBox get horizontalGap => SizedBox(width: this);
+
+  /// Returns a square [SizedBox] with both dimensions set to this value.
+  SizedBox get squareGap => SizedBox.square(dimension: this);
 }
 
 /// Seal UI dimension scale.

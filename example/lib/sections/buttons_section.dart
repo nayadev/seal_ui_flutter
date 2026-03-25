@@ -3,6 +3,7 @@ import 'package:seal_ui/seal_ui.dart';
 
 /// Showcases all button variants: Filled, Outline, and Text.
 class ButtonsSection extends StatelessWidget {
+  /// Creates a [ButtonsSection].
   const ButtonsSection({super.key});
 
   @override

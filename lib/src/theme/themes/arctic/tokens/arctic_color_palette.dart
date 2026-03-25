@@ -7,6 +7,7 @@ import '../../../../tokens/base/seal_state_color.dart';
 ///
 /// Bright, icy, and minimal — clean snow-white surfaces with ice-blue accents.
 class ArcticColorPalette extends ColorPalette {
+  /// Creates [ArcticColorPalette] tokens.
   const ArcticColorPalette();
 
   // ── Brand ──────────────────────────────────────────────────────────────
