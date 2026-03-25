@@ -345,6 +345,28 @@ Icon(icon, size: context.dimension.scaled(TypographyTokens.kDefaultButtonIconSiz
 padding: EdgeInsets.all(context.dimension.md),
 ```
 
+### Font Sizes
+
+- **Never write a raw `fontSize:` number in component code.** All font sizes must either come from a typography token or use `context.fontSize()` so they scale with the current breakpoint.
+- Use typography tokens (`context.themeTokens.typography.body`, `.small`, etc.) as the primary source of truth — they are already breakpoint-scaled.
+- For ad-hoc sizes that aren't in the token scale, use `context.fontSize(base)` — never a bare literal.
+- Magic-number fallbacks (e.g., `?? 14`) must reference a named constant from `TypographyTokens` (e.g., `TypographyTokens.kSmallFontSize`).
+- Token definitions inside `DefaultTypography` are exempt — they use the internal `_s()` helper which applies the scale factor at theme-build time.
+
+```dart
+// ❌ Bad — raw literal, doesn't scale with breakpoint
+Text('Hello', style: TextStyle(fontSize: 48)),
+
+// ✅ Good — scales proportionally across breakpoints
+Text('Hello', style: TextStyle(fontSize: context.fontSize(48))),
+
+// ✅ Good — token-driven (already scaled inside DefaultTypography)
+Text('Hello', style: context.themeTokens.typography.display),
+
+// ✅ Good — fallback uses a named constant, not a literal
+final lineHeight = (style.fontSize ?? TypographyTokens.kSmallFontSize) * ...;
+```
+
 ### Testing
 
 - Avoid `pumpAndSettle()` when the widget tree contains indefinite animations (e.g., `SealLoader`). Use `pump()` instead.

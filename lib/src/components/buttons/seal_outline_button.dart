@@ -249,7 +249,7 @@ class SealOutlineButton extends StatelessWidget {
 
     final style = typography.small;
     final lineHeight =
-        (style.fontSize ?? 14) *
+        (style.fontSize ?? TypographyTokens.kSmallFontSize) *
         (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
     return Stack(
       alignment: Alignment.center,

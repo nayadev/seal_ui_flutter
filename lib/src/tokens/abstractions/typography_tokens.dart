@@ -36,6 +36,9 @@ abstract class TypographyTokens {
   /// Default font size for body text, used as a fallback.
   static const double kBodyFontSize = 16;
 
+  /// Default font size for small / caption text, used as a fallback.
+  static const double kSmallFontSize = 14;
+
   /// Default button icon size shared across all Seal button components.
   static const double kDefaultButtonIconSize = 18;
 

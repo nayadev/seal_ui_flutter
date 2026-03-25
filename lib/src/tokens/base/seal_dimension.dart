@@ -76,6 +76,23 @@ class SealDimension {
 extension SealDimensionContext on BuildContext {
   /// Returns a [SealDimension] scaled to the current breakpoint.
   SealDimension get dimension => SealDimension.of(this);
+
+  /// Scales [base] by the current breakpoint's font-size factor.
+  ///
+  /// Applies the same multiplier used by [DefaultTypography], so ad-hoc sizes
+  /// stay in sync with the token-based type scale.
+  ///
+  /// | Device  | Factor |
+  /// |---------|--------|
+  /// | mobile  | 1.0    |
+  /// | tablet  | 1.125  |
+  /// | desktop | 1.5    |
+  ///
+  /// ```dart
+  /// Text('Hello', style: TextStyle(fontSize: context.fontSize(48)))
+  /// ```
+  double fontSize(double base) =>
+      (base * SealResponsive.scaleOf(this)).roundToDouble();
 }
 
 /// Convenience extension to create [SizedBox] gaps directly from dimension values.
@@ -92,6 +109,7 @@ extension SealDimensionDouble on double {
   SizedBox get verticalGap => SizedBox(height: this);
   SizedBox get horizontalGap => SizedBox(width: this);
   SizedBox get squareGap => SizedBox.square(dimension: this);
+
 }
 
 /// Seal UI dimension scale.
