@@ -44,7 +44,7 @@ Typography and spacing scale proportionally across breakpoints via a **scale fac
 |---------|---------|
 | mobile  | `1.0`   |
 | tablet  | `1.125` |
-| desktop | `1.5`   |
+| desktop | `1.333` |
 - `DefaultTypography(scaleFactor:)` produces proportionally scaled font sizes.
 - `SealDimension(factor)` provides pre-scaled spacing values.
 - `context.dimension` is the preferred way to access scaled spacing.

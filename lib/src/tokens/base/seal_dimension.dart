@@ -86,7 +86,7 @@ extension SealDimensionContext on BuildContext {
   /// |---------|--------|
   /// | mobile  | 1.0    |
   /// | tablet  | 1.125  |
-  /// | desktop | 1.5    |
+  /// | desktop | 1.333  |
   ///
   /// ```dart
   /// Text('Hello', style: TextStyle(fontSize: context.fontSize(48)))

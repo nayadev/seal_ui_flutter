@@ -52,15 +52,18 @@ class SealResponsive {
 
   /// A balanced multiplier that scales spacing and typography per breakpoint.
   ///
+  /// Desktop uses a perfect-fourth ratio (4:3 ≈ 1.333), a harmonic interval
+  /// borrowed from musical theory and common in modular type scales.
+  ///
   /// | Device  | Factor |
   /// |---------|--------|
   /// | mobile  | 1.0    |
   /// | tablet  | 1.125  |
-  /// | desktop | 1.5    |
+  /// | desktop | 1.333  |
   double get scaleFactor => switch (deviceType) {
     DeviceType.mobile => 1.0,
     DeviceType.tablet => 1.125,
-    DeviceType.desktop => 1.5,
+    DeviceType.desktop => 1.333,
   };
 
   /// Convenience shortcut for `SealResponsive.of(context).scaleFactor`.
