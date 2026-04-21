@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/gradient_tokens.dart';
 
@@ -12,40 +13,24 @@ class DeepOceanLightGradients extends GradientTokens {
   const DeepOceanLightGradients();
 
   @override
-  LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF1976D2), Color(0xFF00E5FF)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get primaryGradient =>
+      SealDeepOceanLightTokens.gradientPrimary;
 
   @override
-  LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF0D47A1), Color(0xFF40C4FF)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get accentGradient => SealDeepOceanLightTokens.gradientAccent;
 
   /// Light navy → light teal — opaque pastels visible on white surfaces.
   @override
-  LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0xFFE3F2FD), Color(0xFFE0F5FA)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceGradient =>
+      SealDeepOceanLightTokens.gradientSurface;
 
   /// Blue spectrum light tints for primary-accented containers.
   @override
-  LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0xFFE3F2FD), Color(0xFFBBDEFB)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfacePrimaryGradient =>
+      SealDeepOceanLightTokens.gradientSurfacePrimary;
 
   /// Teal spectrum light tints for accent-accented containers.
   @override
-  LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0xFFE0F5FA), Color(0xFFB2EBF2)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceAccentGradient =>
+      SealDeepOceanLightTokens.gradientSurfaceAccent;
 }

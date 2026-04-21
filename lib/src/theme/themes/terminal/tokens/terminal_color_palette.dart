@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/color_palette.dart';
 import '../../../../tokens/base/seal_state_color.dart';
@@ -16,78 +17,80 @@ class TerminalColorPalette extends ColorPalette {
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF00CC99);
+  Color get primary => SealTerminalDarkTokens.brandPrimary;
 
   @override
-  Color get primaryTint => const Color(0xFF33D9AA);
+  Color get primaryTint => SealTerminalDarkTokens.brandPrimaryTint;
 
   @override
-  Color get primaryShade => const Color(0xFF009970);
+  Color get primaryShade => SealTerminalDarkTokens.brandPrimaryShade;
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   /// Medium gray with a teal cast — visible against the near-black background.
   @override
-  Color get accent => const Color(0xFF7A9A9A);
+  Color get accent => SealTerminalDarkTokens.accentAccent;
 
   @override
-  Color get accentSecondary => const Color(0xFF556B6B);
+  Color get accentSecondary => SealTerminalDarkTokens.accentAccentSecondary;
 
   /// Light cyan-white on dark gray — ensures readability on accent-filled surfaces.
   @override
-  Color get onAccent => const Color(0xFFD4FFF8);
+  Color get onAccent => SealTerminalDarkTokens.accentOnAccent;
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   /// Near-black with a faint teal phosphor cast — like a powered-on CRT.
   @override
-  Color get background => const Color(0xFF060C0C);
+  Color get background => SealTerminalDarkTokens.surfaceBackground;
 
   @override
-  Color get surface => const Color(0xFF0C1A1A);
+  Color get surface => SealTerminalDarkTokens.surfaceSurface;
 
   @override
-  Color get surfaceAlt => const Color(0xFF122222);
+  Color get surfaceAlt => SealTerminalDarkTokens.surfaceSurfaceAlt;
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   /// Bright cyan-white — the classic glowing terminal text.
   @override
-  Color get textPrimary => const Color(0xFFD4FFF8);
+  Color get textPrimary => SealTerminalDarkTokens.textPrimary;
 
   @override
-  Color get textSecondary => const Color(0xFF6B7E7E);
+  Color get textSecondary => SealTerminalDarkTokens.textSecondary;
 
   /// Light cyan-white on cyan fill — fulfills the light-on-button requirement.
   @override
-  Color get onPrimary => const Color(0xFFD4FFF8);
+  Color get onPrimary => SealTerminalDarkTokens.textOnPrimary;
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFF143030);
+  Color get border => SealTerminalDarkTokens.borderDefault;
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   /// Phosphor green doubles as success — consistent with the terminal aesthetic.
   @override
-  Color get success => const Color(0xFF39FF14);
+  Color get success => SealTerminalDarkTokens.semanticSuccess;
 
   /// Amber — the classic terminal warning color.
   @override
-  Color get warning => const Color(0xFFFFB627);
+  Color get warning => SealTerminalDarkTokens.semanticWarning;
 
   @override
-  Color get error => const Color(0xFFFF3355);
+  Color get error => SealTerminalDarkTokens.semanticError;
 
   @override
-  Color get info => const Color(0xFF00B8D9);
+  Color get info => SealTerminalDarkTokens.semanticInfo;
 
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override
-  SealStateColor get foreground => SealStateColor(primary);
+  SealStateColor get foreground =>
+      SealStateColor(SealTerminalDarkTokens.stateForegroundActive);
 
   @override
-  SealStateColor get fill => SealStateColor(primary);
+  SealStateColor get fill =>
+      SealStateColor(SealTerminalDarkTokens.stateFillActive);
 }

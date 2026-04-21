@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/gradient_tokens.dart';
 
@@ -17,41 +18,24 @@ class TerminalGradients extends GradientTokens {
 
   /// Cyan → deep teal-blue — like a beam sweeping across a phosphor screen.
   @override
-  LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF00CC99), Color(0xFF005F6A)],
-    begin: Alignment.centerLeft,
-    end: Alignment.centerRight,
-  );
+  LinearGradient get primaryGradient =>
+      SealTerminalDarkTokens.gradientPrimary;
 
   /// Dark gray → deep teal — the accent identity sweeping into the terminal backdrop.
   @override
-  LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF7A9A9A), Color(0xFF3D5F5F)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get accentGradient => SealTerminalDarkTokens.gradientAccent;
 
   /// Subtle dark phosphor sheen for surface backgrounds.
   @override
-  LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0x2800CC99), Color(0x28005F6A)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceGradient => SealTerminalDarkTokens.gradientSurface;
 
   /// Cyan phosphor tint — for primary-accented containers.
   @override
-  LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0x3300CC99), Color(0x33009970)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfacePrimaryGradient =>
+      SealTerminalDarkTokens.gradientSurfacePrimary;
 
   /// Dark gray tint — for accent-accented containers.
   @override
-  LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0x287A9A9A), Color(0x283D5F5F)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceAccentGradient =>
+      SealTerminalDarkTokens.gradientSurfaceAccent;
 }

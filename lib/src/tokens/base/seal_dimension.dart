@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../foundation/seal_responsive.dart';
 
@@ -119,32 +120,32 @@ extension SealDimensionDouble on double {
 /// Seal UI dimension scale.
 ///
 /// A consistent set of dimension values used for paddings, margins, and gaps.
-/// Based on a 4-px base unit.
+/// Based on a 4-px base unit. Values are sourced from [SealBaseTokens].
 abstract final class _Dimension {
   /// 2 px
-  static const double xxxs = 2;
+  static const double xxxs = SealBaseTokens.dimensionXxxs;
 
   /// 4 px
-  static const double xxs = 4;
+  static const double xxs = SealBaseTokens.dimensionXxs;
 
   /// 8 px
-  static const double xs = 8;
+  static const double xs = SealBaseTokens.dimensionXs;
 
   /// 12 px
-  static const double sm = 12;
+  static const double sm = SealBaseTokens.dimensionSm;
 
   /// 16 px
-  static const double md = 16;
+  static const double md = SealBaseTokens.dimensionMd;
 
   /// 24 px
-  static const double lg = 24;
+  static const double lg = SealBaseTokens.dimensionLg;
 
   /// 32 px
-  static const double xl = 32;
+  static const double xl = SealBaseTokens.dimensionXl;
 
   /// 48 px
-  static const double xxl = 48;
+  static const double xxl = SealBaseTokens.dimensionXxl;
 
   /// 64 px
-  static const double xxxl = 64;
+  static const double xxxl = SealBaseTokens.dimensionXxxl;
 }

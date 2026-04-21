@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 /// Holds [active] and [disabled] variants of a semantic color.
 ///
@@ -12,7 +13,8 @@ import 'dart:ui';
 /// ```
 class SealStateColor {
   /// Default opacity applied to the disabled color variant.
-  static const double kDefaultDisabledOpacity = 0.4;
+  static const double kDefaultDisabledOpacity =
+      SealBaseTokens.stateDisabledOpacity;
 
   /// Creates a state color pair from a [base] color.
   ///

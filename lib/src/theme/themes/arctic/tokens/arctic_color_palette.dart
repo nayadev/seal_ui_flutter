@@ -1,9 +1,10 @@
 import 'dart:ui';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/color_palette.dart';
 import '../../../../tokens/base/seal_state_color.dart';
 
-/// Color palette for the **Arctic** theme.
+/// Color palette for the **Arctic** theme (light variant).
 ///
 /// Bright, icy, and minimal — clean snow-white surfaces with ice-blue accents.
 class ArcticColorPalette extends ColorPalette {
@@ -13,71 +14,73 @@ class ArcticColorPalette extends ColorPalette {
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF29B6F6);
+  Color get primary => SealArcticLightTokens.brandPrimary;
 
   @override
-  Color get primaryTint => const Color(0xFF81D4FA);
+  Color get primaryTint => SealArcticLightTokens.brandPrimaryTint;
 
   @override
-  Color get primaryShade => const Color(0xFF0288D1);
+  Color get primaryShade => SealArcticLightTokens.brandPrimaryShade;
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF00BCD4);
+  Color get accent => SealArcticLightTokens.accentAccent;
 
   @override
-  Color get accentSecondary => const Color(0xFF26C6DA);
+  Color get accentSecondary => SealArcticLightTokens.accentAccentSecondary;
 
   @override
-  Color get onAccent => const Color(0xFFFFFFFF);
+  Color get onAccent => SealArcticLightTokens.accentOnAccent;
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFFF8FBFF);
+  Color get background => SealArcticLightTokens.surfaceBackground;
 
   @override
-  Color get surface => const Color(0xFFFFFFFF);
+  Color get surface => SealArcticLightTokens.surfaceSurface;
 
   @override
-  Color get surfaceAlt => const Color(0xFFEAF4FD);
+  Color get surfaceAlt => SealArcticLightTokens.surfaceSurfaceAlt;
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   @override
-  Color get textPrimary => const Color(0xFF0A1929);
+  Color get textPrimary => SealArcticLightTokens.textPrimary;
 
   @override
-  Color get textSecondary => const Color(0xFF546E7A);
+  Color get textSecondary => SealArcticLightTokens.textSecondary;
 
   @override
-  Color get onPrimary => const Color(0xFFFFFFFF);
+  Color get onPrimary => SealArcticLightTokens.textOnPrimary;
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFFB3D9F2);
+  Color get border => SealArcticLightTokens.borderDefault;
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   @override
-  Color get success => const Color(0xFF26A69A);
+  Color get success => SealArcticLightTokens.semanticSuccess;
 
   @override
-  Color get warning => const Color(0xFFFFA726);
+  Color get warning => SealArcticLightTokens.semanticWarning;
 
   @override
-  Color get error => const Color(0xFFEF5350);
+  Color get error => SealArcticLightTokens.semanticError;
 
   @override
-  Color get info => const Color(0xFF29B6F6);
+  Color get info => SealArcticLightTokens.semanticInfo;
 
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override
-  SealStateColor get foreground => SealStateColor(primary);
+  SealStateColor get foreground =>
+      SealStateColor(SealArcticLightTokens.stateForegroundActive);
 
   @override
-  SealStateColor get fill => SealStateColor(primary);
+  SealStateColor get fill =>
+      SealStateColor(SealArcticLightTokens.stateFillActive);
 }

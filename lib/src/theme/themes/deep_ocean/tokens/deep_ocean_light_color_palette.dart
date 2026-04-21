@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/color_palette.dart';
 import '../../../../tokens/base/seal_state_color.dart';
@@ -14,71 +15,73 @@ class DeepOceanLightColorPalette extends ColorPalette {
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF1565C0);
+  Color get primary => SealDeepOceanLightTokens.brandPrimary;
 
   @override
-  Color get primaryTint => const Color(0xFF1976D2);
+  Color get primaryTint => SealDeepOceanLightTokens.brandPrimaryTint;
 
   @override
-  Color get primaryShade => const Color(0xFF0D47A1);
+  Color get primaryShade => SealDeepOceanLightTokens.brandPrimaryShade;
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF00ACC1);
+  Color get accent => SealDeepOceanLightTokens.accentAccent;
 
   @override
-  Color get accentSecondary => const Color(0xFF0097A7);
+  Color get accentSecondary => SealDeepOceanLightTokens.accentAccentSecondary;
 
   @override
-  Color get onAccent => const Color(0xFFFFFFFF);
+  Color get onAccent => SealDeepOceanLightTokens.accentOnAccent;
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFFF0F7FF);
+  Color get background => SealDeepOceanLightTokens.surfaceBackground;
 
   @override
-  Color get surface => const Color(0xFFFFFFFF);
+  Color get surface => SealDeepOceanLightTokens.surfaceSurface;
 
   @override
-  Color get surfaceAlt => const Color(0xFFE3F2FD);
+  Color get surfaceAlt => SealDeepOceanLightTokens.surfaceSurfaceAlt;
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   @override
-  Color get textPrimary => const Color(0xFF0A1929);
+  Color get textPrimary => SealDeepOceanLightTokens.textPrimary;
 
   @override
-  Color get textSecondary => const Color(0xFF37474F);
+  Color get textSecondary => SealDeepOceanLightTokens.textSecondary;
 
   @override
-  Color get onPrimary => const Color(0xFFFFFFFF);
+  Color get onPrimary => SealDeepOceanLightTokens.textOnPrimary;
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFFB0C4D8);
+  Color get border => SealDeepOceanLightTokens.borderDefault;
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   @override
-  Color get success => const Color(0xFF00897B);
+  Color get success => SealDeepOceanLightTokens.semanticSuccess;
 
   @override
-  Color get warning => const Color(0xFFF57C00);
+  Color get warning => SealDeepOceanLightTokens.semanticWarning;
 
   @override
-  Color get error => const Color(0xFFC62828);
+  Color get error => SealDeepOceanLightTokens.semanticError;
 
   @override
-  Color get info => const Color(0xFF0288D1);
+  Color get info => SealDeepOceanLightTokens.semanticInfo;
 
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override
-  SealStateColor get foreground => SealStateColor(primary);
+  SealStateColor get foreground =>
+      SealStateColor(SealDeepOceanLightTokens.stateForegroundActive);
 
   @override
-  SealStateColor get fill => SealStateColor(primary);
+  SealStateColor get fill =>
+      SealStateColor(SealDeepOceanLightTokens.stateFillActive);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/gradient_tokens.dart';
 
@@ -12,40 +13,22 @@ class ArcticLightGradients extends GradientTokens {
   const ArcticLightGradients();
 
   @override
-  LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF29B6F6), Color(0xFF26C6DA)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get primaryGradient => SealArcticLightTokens.gradientPrimary;
 
   @override
-  LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF00BCD4), Color(0xFF26A69A)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get accentGradient => SealArcticLightTokens.gradientAccent;
 
   /// Ice blue → glacier cyan — opaque pastels visible on white surfaces.
   @override
-  LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0xFFE1F5FE), Color(0xFFE0F7FA)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceGradient => SealArcticLightTokens.gradientSurface;
 
   /// Ice blue spectrum for primary-accented containers.
   @override
-  LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0xFFE1F5FE), Color(0xFFB3E5FC)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfacePrimaryGradient =>
+      SealArcticLightTokens.gradientSurfacePrimary;
 
   /// Cyan spectrum for accent-accented containers.
   @override
-  LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0xFFE0F7FA), Color(0xFFB2EBF2)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceAccentGradient =>
+      SealArcticLightTokens.gradientSurfaceAccent;
 }

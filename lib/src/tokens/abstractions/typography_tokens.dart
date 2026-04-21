@@ -32,15 +32,23 @@ abstract class TypographyTokens {
   const TypographyTokens();
 
   /// Flutter's default line height multiplier when [TextStyle.height] is null.
+  ///
+  /// Matches `SealBaseTokens.constantLineHeightMultiplier` from `seal_ui_tokens`.
   static const double kDefaultLineHeightMultiplier = 1.2;
 
   /// Default font size for body text, used as a fallback.
+  ///
+  /// Matches `SealBaseTokens.constantBodyFontSize` from `seal_ui_tokens`.
   static const double kBodyFontSize = 16;
 
   /// Default font size for small / caption text, used as a fallback.
+  ///
+  /// Matches `SealBaseTokens.constantSmallFontSize` from `seal_ui_tokens`.
   static const double kSmallFontSize = 14;
 
   /// Default button icon size shared across all Seal button components.
+  ///
+  /// Matches `SealBaseTokens.constantButtonIconSize` from `seal_ui_tokens`.
   static const double kDefaultButtonIconSize = 18;
 
   // ── SealUI scale (abstract — must implement) ──────────────────────────────

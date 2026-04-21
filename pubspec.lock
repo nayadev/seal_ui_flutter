@@ -408,6 +408,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  seal_ui_tokens:
+    dependency: "direct main"
+    description:
+      path: "build/flutter"
+      ref: main
+      resolved-ref: "2f56f160905d69e84fb7bb898adcc8ac3a24c3fb"
+      url: "https://github.com/nayadev/seal_ui_tokens.git"
+    source: git
+    version: "0.0.1"
   serial_csv:
     dependency: transitive
     description:

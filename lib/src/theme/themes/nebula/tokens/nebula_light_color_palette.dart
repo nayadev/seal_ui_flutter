@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/color_palette.dart';
 import '../../../../tokens/base/seal_state_color.dart';
@@ -14,71 +15,73 @@ class NebulaLightColorPalette extends ColorPalette {
   // ── Brand ──────────────────────────────────────────────────────────────
 
   @override
-  Color get primary => const Color(0xFF7B4FD4);
+  Color get primary => SealNebulaLightTokens.brandPrimary;
 
   @override
-  Color get primaryTint => const Color(0xFF9B6DFF);
+  Color get primaryTint => SealNebulaLightTokens.brandPrimaryTint;
 
   @override
-  Color get primaryShade => const Color(0xFF5B34A6);
+  Color get primaryShade => SealNebulaLightTokens.brandPrimaryShade;
 
   // ── Accent ─────────────────────────────────────────────────────────────
 
   @override
-  Color get accent => const Color(0xFF2DB88A);
+  Color get accent => SealNebulaLightTokens.accentAccent;
 
   @override
-  Color get accentSecondary => const Color(0xFF3D8BDF);
+  Color get accentSecondary => SealNebulaLightTokens.accentAccentSecondary;
 
   @override
-  Color get onAccent => const Color(0xFFFFFFFF);
+  Color get onAccent => SealNebulaLightTokens.accentOnAccent;
 
   // ── Surfaces ───────────────────────────────────────────────────────────
 
   @override
-  Color get background => const Color(0xFFF5F2FF);
+  Color get background => SealNebulaLightTokens.surfaceBackground;
 
   @override
-  Color get surface => const Color(0xFFFFFFFF);
+  Color get surface => SealNebulaLightTokens.surfaceSurface;
 
   @override
-  Color get surfaceAlt => const Color(0xFFEDE8F5);
+  Color get surfaceAlt => SealNebulaLightTokens.surfaceSurfaceAlt;
 
   // ── Text ───────────────────────────────────────────────────────────────
 
   @override
-  Color get textPrimary => const Color(0xFF1A1A2E);
+  Color get textPrimary => SealNebulaLightTokens.textPrimary;
 
   @override
-  Color get textSecondary => const Color(0xFF6B6880);
+  Color get textSecondary => SealNebulaLightTokens.textSecondary;
 
   @override
-  Color get onPrimary => const Color(0xFFF0ECF9);
+  Color get onPrimary => SealNebulaLightTokens.textOnPrimary;
 
   // ── Border ─────────────────────────────────────────────────────────────
 
   @override
-  Color get border => const Color(0xFFD8D3E8);
+  Color get border => SealNebulaLightTokens.borderDefault;
 
   // ── Semantic ───────────────────────────────────────────────────────────
 
   @override
-  Color get success => const Color(0xFF2DB88A);
+  Color get success => SealNebulaLightTokens.semanticSuccess;
 
   @override
-  Color get warning => const Color(0xFFE6A040);
+  Color get warning => SealNebulaLightTokens.semanticWarning;
 
   @override
-  Color get error => const Color(0xFFE04564);
+  Color get error => SealNebulaLightTokens.semanticError;
 
   @override
-  Color get info => const Color(0xFF3D8BDF);
+  Color get info => SealNebulaLightTokens.semanticInfo;
 
   // ── State Colors ────────────────────────────────────────────────────────
 
   @override
-  SealStateColor get foreground => SealStateColor(primary);
+  SealStateColor get foreground =>
+      SealStateColor(SealNebulaLightTokens.stateForegroundActive);
 
   @override
-  SealStateColor get fill => SealStateColor(primary);
+  SealStateColor get fill =>
+      SealStateColor(SealNebulaLightTokens.stateFillActive);
 }

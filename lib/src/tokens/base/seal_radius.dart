@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 /// Seal UI border-radius scale.
 ///
@@ -8,22 +9,22 @@ abstract final class SealRadius {
   static const Radius none = Radius.zero;
 
   /// 4 px — subtle rounding.
-  static const Radius xs = Radius.circular(4);
+  static const Radius xs = Radius.circular(SealBaseTokens.radiusXs);
 
   /// 8 px — default rounding.
-  static const Radius sm = Radius.circular(8);
+  static const Radius sm = Radius.circular(SealBaseTokens.radiusSm);
 
   /// 12 px — medium rounding.
-  static const Radius md = Radius.circular(12);
+  static const Radius md = Radius.circular(SealBaseTokens.radiusMd);
 
   /// 16 px — large rounding (cards, dialogs).
-  static const Radius lg = Radius.circular(16);
+  static const Radius lg = Radius.circular(SealBaseTokens.radiusLg);
 
   /// 24 px — extra-large rounding.
-  static const Radius xl = Radius.circular(24);
+  static const Radius xl = Radius.circular(SealBaseTokens.radiusXl);
 
   /// Fully circular (pill shape).
-  static const Radius full = Radius.circular(999);
+  static const Radius full = Radius.circular(SealBaseTokens.radiusFull);
 
   // ── BorderRadius helpers ─────────────────────────────────────────────
 

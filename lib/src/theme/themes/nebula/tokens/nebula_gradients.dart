@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/gradient_tokens.dart';
 
@@ -10,37 +11,19 @@ class NebulaGradients extends GradientTokens {
   const NebulaGradients();
 
   @override
-  LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF8055E0), Color(0xFF4A96E8)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get primaryGradient => SealNebulaDarkTokens.gradientPrimary;
 
   @override
-  LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF6340B8), Color(0xFF32B88C)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get accentGradient => SealNebulaDarkTokens.gradientAccent;
 
   @override
-  LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0x328055E0), Color(0x324A96E8)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceGradient => SealNebulaDarkTokens.gradientSurface;
 
   @override
-  LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0x338055E0), Color(0x336340B8)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfacePrimaryGradient =>
+      SealNebulaDarkTokens.gradientSurfacePrimary;
 
   @override
-  LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0x334A96E8), Color(0x3332B88C)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceAccentGradient =>
+      SealNebulaDarkTokens.gradientSurfaceAccent;
 }

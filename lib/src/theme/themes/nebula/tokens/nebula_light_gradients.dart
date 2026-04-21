@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:seal_ui_tokens/seal_ui_tokens.dart';
 
 import '../../../../tokens/abstractions/gradient_tokens.dart';
 
@@ -13,40 +14,22 @@ class NebulaLightGradients extends GradientTokens {
   const NebulaLightGradients();
 
   @override
-  LinearGradient get primaryGradient => const LinearGradient(
-    colors: [Color(0xFF8055E0), Color(0xFF4A96E8)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get primaryGradient => SealNebulaLightTokens.gradientPrimary;
 
   @override
-  LinearGradient get accentGradient => const LinearGradient(
-    colors: [Color(0xFF6340B8), Color(0xFF32B88C)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get accentGradient => SealNebulaLightTokens.gradientAccent;
 
   /// Soft lavender → periwinkle — visible and harmonious on white surfaces.
   @override
-  LinearGradient get surfaceGradient => const LinearGradient(
-    colors: [Color(0xFFEDE8FF), Color(0xFFE3EFFF)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceGradient => SealNebulaLightTokens.gradientSurface;
 
   /// Deeper lavender tint range for primary-accented containers.
   @override
-  LinearGradient get surfacePrimaryGradient => const LinearGradient(
-    colors: [Color(0xFFEAE3FF), Color(0xFFE5DCFF)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfacePrimaryGradient =>
+      SealNebulaLightTokens.gradientSurfacePrimary;
 
   /// Mint → sky tint for accent-accented containers.
   @override
-  LinearGradient get surfaceAccentGradient => const LinearGradient(
-    colors: [Color(0xFFDAF5EE), Color(0xFFE0EFFF)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  LinearGradient get surfaceAccentGradient =>
+      SealNebulaLightTokens.gradientSurfaceAccent;
 }
