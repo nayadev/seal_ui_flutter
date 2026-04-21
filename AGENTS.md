@@ -23,7 +23,7 @@ foundation → tokens → theme → components
 
 | Layer | Purpose | Path |
 |---|---|---|
-| **foundation** | Breakpoints, responsive utilities | `lib/src/foundation/` |
+| **foundation** | Breakpoints, responsive utilities, `SealUnderlineExtension` | `lib/src/foundation/` |
 | **tokens** | Color palettes, typography, gradients, spacing, radius | `lib/src/tokens/` |
 | **theme** | Token container, theme factory, InheritedWidget | `lib/src/theme/` |
 | **components** | Reusable UI widgets (buttons, inputs, layout, feedback, overlay, interaction) | `lib/src/components/` |
@@ -141,6 +141,8 @@ Seal UI components are **thin, token-driven wrappers** over `shadcn_ui` primitiv
 | `ShadSeparator` | `SealSeparator` (`.vertical`) |
 | `ShadTable` / `ShadTableCell` | `SealTable` (`.list`) / `SealTableCell` (`.header`, `.footer`) |
 | `ShadTooltip` | `SealTooltip` |
+| *(native Flutter)* | `SealPressable` — press-feedback animation wrapper; no `Shad*` equivalent |
+| *(native Flutter)* | `SealBouncingDots` — animated bouncing-dot loading indicator; used internally by button loading states |
 
 **Using a component inside another component:**
 When a Seal component needs to render another interactive element (e.g., an action button inside a toast), always use the corresponding `Seal*` wrapper — never the underlying `Shad*` widget directly. If no existing `Seal*` variant supports the required styling, add a `custom` factory to the wrapper first.

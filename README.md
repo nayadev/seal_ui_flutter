@@ -122,6 +122,7 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 | Component | Description |
 |---|---|
 | `SealAlert` | Inline semantic banner — `.info`, `.success`, `.warning`, `.error` |
+| `SealBouncingDots` | Animated three-dot bouncing indicator; used internally by button loading states |
 | `SealLoader` | Animated spinner with size presets (`small`, `medium`, `large`) and optional label |
 | `SealProgress` | Determinate and indeterminate progress bar |
 | `SealToast` | Transient notification — `.info`, `.success`, `.warning`, `.error`; shown via `.show(context)` |
@@ -142,7 +143,16 @@ All six button types share the same variant factories: `.primary`, `.accent`, `.
 
 | Component | Description |
 |---|---|
+| `SealPressable` | Press-feedback wrapper — scales and fades on tap-down, springs back on release; no Material ripple |
 | `SealTooltip` | Token-styled tooltip wrapping any widget |
+
+## Key Dependencies
+
+| Package | Purpose |
+|---|---|
+| `seal_ui_tokens` | External token package — single source of truth for all raw values (colors, gradients, typography, spacing, radius) |
+| `shadcn_ui` | Component primitives and base theme system |
+| `google_fonts` | Inter font family |
 
 ## Commands
 
