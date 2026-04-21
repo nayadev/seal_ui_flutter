@@ -33,8 +33,13 @@ foundation → tokens → theme → components
 Tokens follow an **abstraction + implementation** pattern:
 
 - Abstract classes define the contract (e.g., `ColorPalette`, `TypographyTokens`, `GradientTokens`)
-- Concrete classes provide the values (e.g., `DarkColorPalette`, `LightColorPalette`)
+- Concrete classes bridge the external token package to Flutter (e.g., `NebulaColorPalette`, `NebulaLightColorPalette`, `DefaultTypography`)
 - Spacing and radius are static base-token classes (`SealDimension`, `SealRadius`)
+
+**`seal_ui_tokens` is the single source of truth for all token values.**
+All raw values — colors, gradients, typography properties, spacing, radius, and constants — come exclusively from the `seal_ui_tokens` package (`SealBaseTokens`, `SealNebulaDarkTokens`, etc.).
+The Flutter abstraction layer (`ColorPalette`, `TypographyTokens`, etc.) is a thin interface that components depend on; concrete implementations simply map `seal_ui_tokens` values into Flutter types.
+Never hardcode hex colors, font sizes, or spacing literals in implementations — always reference a named token from `seal_ui_tokens`.
 
 ### Responsive Scaling
 
@@ -147,7 +152,7 @@ When a Seal component needs to render another interactive element (e.g., an acti
 - All public classes use the `Seal` prefix: `SealTheme`, `SealFilledButton`, `SealTextField`, `SealContainer`, `SealLoader`, `SealDimension`, `SealRadius`, `SealBreakpoints`, `SealResponsive`.
 - File names mirror class names in snake_case with the `seal_` prefix: `seal_theme.dart`, `seal_filled_button.dart`, etc.
 - Token abstractions keep their descriptive names without prefix: `ColorPalette`, `TypographyTokens`, `GradientTokens`.
-- Implementations use descriptive names: `DarkColorPalette`, `LightColorPalette`, `DefaultTypography`, `DefaultGradients`.
+- Implementations use theme-specific and descriptive names: `NebulaColorPalette`, `NebulaLightColorPalette`, `DefaultTypography`, `NebulaGradients`.
 
 ---
 
@@ -437,6 +442,7 @@ When adding a new component to Seal UI, follow these steps in order:
 
 | Package | Purpose |
 |---|---|
+| `seal_ui_tokens` | External token package — single source of truth for all raw values (colors, gradients, typography, spacing, radius) |
 | `shadcn_ui` | Component primitives and base theme system |
 | `google_fonts` | Inter font family for typography tokens |
 | `widgetbook` | Component catalog and visual testing |
