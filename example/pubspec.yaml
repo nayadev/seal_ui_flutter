@@ -20,6 +20,9 @@ dev_dependencies:
   widgetbook: ^3.10.0
   widgetbook_documentation_addon: ^1.0.1+2
 
+dependency_overrides:
+  google_fonts: ^8.0.0
+
 flutter:
   uses-material-design: true
   assets:
