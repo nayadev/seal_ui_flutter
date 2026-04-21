@@ -111,9 +111,9 @@ class ButtonsSection extends StatelessWidget {
               icon: LucideIcons.arrowRight,
               onPressed: () {},
             ),
-            const SealTextButton.primary(label: Text('Disabled')),
-            const SealTextButton.primary(
-              label: Text('Loading'),
+            SealTextButton.primary(label: const Text('Disabled')),
+            SealTextButton.primary(
+              label: const Text('Loading'),
               isLoading: true,
               onPressed: null,
             ),
