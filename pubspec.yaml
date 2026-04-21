@@ -1,6 +1,7 @@
 name: seal_ui
 description: "Seal UI — A token-driven Flutter Design System with bold, curated themes, layered architecture, and responsive scaling."
-version: 0.2.0
+version: 0.3.0
+publish_to: none
 repository: https://github.com/nayadev/seal_ui_flutter
 issue_tracker: https://github.com/nayadev/seal_ui_flutter/issues
 
