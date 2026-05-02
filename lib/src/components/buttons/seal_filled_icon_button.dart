@@ -5,16 +5,8 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
-
-/// The visual variant of a [SealFilledIconButton].
-enum _SealFilledIconButtonVariant {
-  primary,
-  accent,
-  accentSecondary,
-  gradient,
-  accentGradient,
-  custom,
-}
+import 'gradient_shader_mask_mixin.dart';
+import 'seal_button_variant_enum.dart';
 
 /// A compact icon-only button with a filled background, styled with Seal UI
 /// tokens and built on [ShadIconButton].
@@ -51,7 +43,8 @@ enum _SealFilledIconButtonVariant {
 ///   tooltip: 'Delete',
 /// )
 /// ```
-class SealFilledIconButton extends StatelessWidget {
+class SealFilledIconButton extends StatelessWidget
+    with GradientShaderMaskMixin {
   /// Default icon size for filled icon buttons.
   static const double _kIconSize = 20.0;
 
@@ -61,7 +54,7 @@ class SealFilledIconButton extends StatelessWidget {
   const SealFilledIconButton._({
     super.key,
     required this.icon,
-    required _SealFilledIconButtonVariant variant,
+    required SealButtonVariant variant,
     this.onPressed,
     this.tooltip,
     this.iconSize = _kIconSize,
@@ -146,7 +139,7 @@ class SealFilledIconButton extends StatelessWidget {
   /// via [SealDimension.scaled] to match the active breakpoint.
   final double iconSize;
 
-  final _SealFilledIconButtonVariant _variant;
+  final SealButtonVariant _variant;
   final Color? _color;
   final LinearGradient? _gradient;
 
@@ -160,31 +153,27 @@ class SealFilledIconButton extends StatelessWidget {
     final scaledIconSize = dimension.scaled(iconSize);
     final buttonSize = scaledIconSize + dimension.sm * 2;
 
-    final bool isGradient =
-        _variant == _SealFilledIconButtonVariant.gradient ||
-        _variant == _SealFilledIconButtonVariant.accentGradient ||
-        (_variant == _SealFilledIconButtonVariant.custom && _gradient != null);
-
-    if (isGradient) return _buildGradientButton(context);
+    if (_variant.isGradientVariant(_gradient))
+      return _buildGradientButton(context);
 
     final Color backgroundColor;
     final Color foregroundColor;
 
     switch (_variant) {
-      case _SealFilledIconButtonVariant.primary:
+      case SealButtonVariant.primary:
         backgroundColor = colors.fill.active;
         foregroundColor = colors.onPrimary;
-      case _SealFilledIconButtonVariant.accent:
+      case SealButtonVariant.accent:
         backgroundColor = colors.accent;
         foregroundColor = colors.onAccent;
-      case _SealFilledIconButtonVariant.accentSecondary:
+      case SealButtonVariant.accentSecondary:
         backgroundColor = colors.accentSecondary;
         foregroundColor = colors.onAccent;
-      case _SealFilledIconButtonVariant.gradient:
-      case _SealFilledIconButtonVariant.accentGradient:
+      case SealButtonVariant.gradient:
+      case SealButtonVariant.accentGradient:
         backgroundColor = colors.fill.active;
         foregroundColor = colors.onPrimary;
-      case _SealFilledIconButtonVariant.custom:
+      case SealButtonVariant.custom:
         backgroundColor = _color!;
         foregroundColor = ColorX.white;
     }
@@ -208,8 +197,7 @@ class SealFilledIconButton extends StatelessWidget {
       padding: EdgeInsets.all(dimension.sm),
     );
 
-    if (tooltip == null) return button;
-    return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
+    return wrapWithTooltip(button, tooltip);
   }
 
   Widget _buildGradientButton(BuildContext context) {
@@ -219,15 +207,9 @@ class SealFilledIconButton extends StatelessWidget {
     final scaledIconSize = dimension.scaled(iconSize);
     final buttonSize = scaledIconSize + dimension.sm * 2;
 
-    final gradient = switch (_variant) {
-      _SealFilledIconButtonVariant.gradient => tokens.gradients.primaryGradient,
-      _SealFilledIconButtonVariant.accentGradient =>
-        tokens.gradients.accentGradient,
-      _ => _gradient!,
-    };
+    final gradient = _variant.resolveGradient(tokens.gradients, _gradient);
 
-    final foregroundColor =
-        _variant == _SealFilledIconButtonVariant.accentGradient
+    final foregroundColor = _variant == SealButtonVariant.accentGradient
         ? colors.onAccent
         : colors.onPrimary;
 
@@ -252,8 +234,7 @@ class SealFilledIconButton extends StatelessWidget {
       ),
     );
 
-    if (tooltip == null) return button;
-    return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
+    return wrapWithTooltip(button, tooltip);
   }
 }
 
@@ -265,7 +246,7 @@ class _PrimarySealFilledIconButton extends SealFilledIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealFilledIconButtonVariant.primary);
+  }) : super._(variant: SealButtonVariant.primary);
 }
 
 /// Redirecting factory for [SealFilledIconButton.accent].
@@ -276,7 +257,7 @@ class _AccentSealFilledIconButton extends SealFilledIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealFilledIconButtonVariant.accent);
+  }) : super._(variant: SealButtonVariant.accent);
 }
 
 /// Redirecting factory for [SealFilledIconButton.accentSecondary].
@@ -287,7 +268,7 @@ class _AccentSecondarySealFilledIconButton extends SealFilledIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealFilledIconButtonVariant.accentSecondary);
+  }) : super._(variant: SealButtonVariant.accentSecondary);
 }
 
 /// Redirecting factory for [SealFilledIconButton.gradient].
@@ -298,7 +279,7 @@ class _GradientSealFilledIconButton extends SealFilledIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealFilledIconButtonVariant.gradient);
+  }) : super._(variant: SealButtonVariant.gradient);
 }
 
 /// Redirecting factory for [SealFilledIconButton.accentGradient].
@@ -309,7 +290,7 @@ class _AccentGradientSealFilledIconButton extends SealFilledIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealFilledIconButtonVariant.accentGradient);
+  }) : super._(variant: SealButtonVariant.accentGradient);
 }
 
 /// Redirecting factory for [SealFilledIconButton.custom].
@@ -326,5 +307,5 @@ class _CustomSealFilledIconButton extends SealFilledIconButton {
          color != null || gradient != null,
          'SealFilledIconButton.custom requires either color or gradient.',
        ),
-       super._(variant: _SealFilledIconButtonVariant.custom);
+       super._(variant: SealButtonVariant.custom);
 }

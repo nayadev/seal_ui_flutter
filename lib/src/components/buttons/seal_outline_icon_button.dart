@@ -6,16 +6,7 @@ import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 import 'gradient_shader_mask_mixin.dart';
-
-/// The visual variant of a [SealOutlineIconButton].
-enum _SealOutlineIconButtonVariant {
-  primary,
-  accent,
-  accentSecondary,
-  gradient,
-  accentGradient,
-  custom,
-}
+import 'seal_button_variant_enum.dart';
 
 /// A compact icon-only button with a colored border and transparent background,
 /// styled with Seal UI tokens and built on [ShadIconButton].
@@ -66,7 +57,7 @@ class SealOutlineIconButton extends StatelessWidget
   const SealOutlineIconButton._({
     super.key,
     required this.icon,
-    required _SealOutlineIconButtonVariant variant,
+    required SealButtonVariant variant,
     this.onPressed,
     this.tooltip,
     this.iconSize = _kIconSize,
@@ -151,7 +142,7 @@ class SealOutlineIconButton extends StatelessWidget
   /// via [SealDimension.scaled] to match the active breakpoint.
   final double iconSize;
 
-  final _SealOutlineIconButtonVariant _variant;
+  final SealButtonVariant _variant;
   final Color? _color;
   final LinearGradient? _gradient;
 
@@ -164,26 +155,22 @@ class SealOutlineIconButton extends StatelessWidget
     final dimension = context.dimension;
     final scaledIconSize = dimension.scaled(iconSize);
 
-    final bool isGradient =
-        _variant == _SealOutlineIconButtonVariant.gradient ||
-        _variant == _SealOutlineIconButtonVariant.accentGradient ||
-        (_variant == _SealOutlineIconButtonVariant.custom && _gradient != null);
-
-    if (isGradient) return _buildGradientButton(context);
+    if (_variant.isGradientVariant(_gradient))
+      return _buildGradientButton(context);
 
     final Color foregroundColor;
 
     switch (_variant) {
-      case _SealOutlineIconButtonVariant.primary:
+      case SealButtonVariant.primary:
         foregroundColor = colors.foreground.active;
-      case _SealOutlineIconButtonVariant.accent:
+      case SealButtonVariant.accent:
         foregroundColor = colors.accent;
-      case _SealOutlineIconButtonVariant.accentSecondary:
+      case SealButtonVariant.accentSecondary:
         foregroundColor = colors.accentSecondary;
-      case _SealOutlineIconButtonVariant.gradient:
-      case _SealOutlineIconButtonVariant.accentGradient:
+      case SealButtonVariant.gradient:
+      case SealButtonVariant.accentGradient:
         foregroundColor = colors.foreground.active;
-      case _SealOutlineIconButtonVariant.custom:
+      case SealButtonVariant.custom:
         foregroundColor = _color!;
     }
 
@@ -209,8 +196,7 @@ class SealOutlineIconButton extends StatelessWidget
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
       padding: EdgeInsets.all(dimension.sm),
     );
-    if (tooltip == null) return button;
-    return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
+    return wrapWithTooltip(button, tooltip);
   }
 
   Widget _buildGradientButton(BuildContext context) {
@@ -219,13 +205,7 @@ class SealOutlineIconButton extends StatelessWidget
     final scaledIconSize = dimension.scaled(iconSize);
     final buttonSize = scaledIconSize + dimension.sm * 2;
 
-    final gradient = switch (_variant) {
-      _SealOutlineIconButtonVariant.gradient =>
-        tokens.gradients.primaryGradient,
-      _SealOutlineIconButtonVariant.accentGradient =>
-        tokens.gradients.accentGradient,
-      _ => _gradient!,
-    };
+    final gradient = _variant.resolveGradient(tokens.gradients, _gradient);
 
     const baseColor = ColorX.white;
     final button = ShadIconButton.raw(
@@ -268,7 +248,7 @@ class _PrimarySealOutlineIconButton extends SealOutlineIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealOutlineIconButtonVariant.primary);
+  }) : super._(variant: SealButtonVariant.primary);
 }
 
 /// Redirecting factory for [SealOutlineIconButton.accent].
@@ -279,7 +259,7 @@ class _AccentSealOutlineIconButton extends SealOutlineIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealOutlineIconButtonVariant.accent);
+  }) : super._(variant: SealButtonVariant.accent);
 }
 
 /// Redirecting factory for [SealOutlineIconButton.accentSecondary].
@@ -290,7 +270,7 @@ class _AccentSecondarySealOutlineIconButton extends SealOutlineIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealOutlineIconButtonVariant.accentSecondary);
+  }) : super._(variant: SealButtonVariant.accentSecondary);
 }
 
 /// Redirecting factory for [SealOutlineIconButton.gradient].
@@ -301,7 +281,7 @@ class _GradientSealOutlineIconButton extends SealOutlineIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealOutlineIconButtonVariant.gradient);
+  }) : super._(variant: SealButtonVariant.gradient);
 }
 
 /// Redirecting factory for [SealOutlineIconButton.accentGradient].
@@ -312,7 +292,7 @@ class _AccentGradientSealOutlineIconButton extends SealOutlineIconButton {
     super.onPressed,
     super.tooltip,
     super.iconSize,
-  }) : super._(variant: _SealOutlineIconButtonVariant.accentGradient);
+  }) : super._(variant: SealButtonVariant.accentGradient);
 }
 
 /// Redirecting factory for [SealOutlineIconButton.custom].
@@ -329,5 +309,5 @@ class _CustomSealOutlineIconButton extends SealOutlineIconButton {
          color != null || gradient != null,
          'SealOutlineIconButton.custom requires either color or gradient.',
        ),
-       super._(variant: _SealOutlineIconButtonVariant.custom);
+       super._(variant: SealButtonVariant.custom);
 }

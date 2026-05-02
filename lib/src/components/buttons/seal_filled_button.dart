@@ -6,16 +6,7 @@ import '../../tokens/abstractions/typography_tokens.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import 'button_loading_content_mixin.dart';
-
-/// The visual variant of a [SealFilledButton].
-enum _SealFilledButtonVariant {
-  primary,
-  accent,
-  accentSecondary,
-  gradient,
-  accentGradient,
-  custom,
-}
+import 'seal_button_variant_enum.dart';
 
 /// A filled action button styled with Seal UI tokens, built on [ShadButton].
 ///
@@ -52,7 +43,7 @@ class SealFilledButton extends StatelessWidget with ButtonLoadingContentMixin {
   const SealFilledButton._({
     super.key,
     required this.label,
-    required _SealFilledButtonVariant variant,
+    required SealButtonVariant variant,
     this.onPressed,
     this.isLoading = false,
     this.icon,
@@ -134,7 +125,7 @@ class SealFilledButton extends StatelessWidget with ButtonLoadingContentMixin {
   /// Optional leading icon.
   final IconData? icon;
 
-  final _SealFilledButtonVariant _variant;
+  final SealButtonVariant _variant;
   final Color? _color;
   final LinearGradient? _gradient;
 
@@ -146,31 +137,27 @@ class SealFilledButton extends StatelessWidget with ButtonLoadingContentMixin {
     final colors = tokens.colors;
     final typo = tokens.typography;
 
-    final bool isGradient =
-        _variant == _SealFilledButtonVariant.gradient ||
-        _variant == _SealFilledButtonVariant.accentGradient ||
-        (_variant == _SealFilledButtonVariant.custom && _gradient != null);
-
-    if (isGradient) return _buildGradientButton(context);
+    if (_variant.isGradientVariant(_gradient))
+      return _buildGradientButton(context);
 
     final Color backgroundColor;
     final Color foregroundColor;
 
     switch (_variant) {
-      case _SealFilledButtonVariant.primary:
+      case SealButtonVariant.primary:
         backgroundColor = colors.fill.active;
         foregroundColor = colors.onPrimary;
-      case _SealFilledButtonVariant.accent:
+      case SealButtonVariant.accent:
         backgroundColor = colors.accent;
         foregroundColor = colors.onAccent;
-      case _SealFilledButtonVariant.accentSecondary:
+      case SealButtonVariant.accentSecondary:
         backgroundColor = colors.accentSecondary;
         foregroundColor = colors.onAccent;
-      case _SealFilledButtonVariant.gradient:
-      case _SealFilledButtonVariant.accentGradient:
+      case SealButtonVariant.gradient:
+      case SealButtonVariant.accentGradient:
         backgroundColor = colors.fill.active;
         foregroundColor = colors.onPrimary;
-      case _SealFilledButtonVariant.custom:
+      case SealButtonVariant.custom:
         backgroundColor = _color!;
         foregroundColor = ColorX.white;
     }
@@ -202,14 +189,9 @@ class SealFilledButton extends StatelessWidget with ButtonLoadingContentMixin {
     final tokens = context.themeTokens;
     final colors = tokens.colors;
 
-    final gradient = switch (_variant) {
-      _SealFilledButtonVariant.gradient => tokens.gradients.primaryGradient,
-      _SealFilledButtonVariant.accentGradient =>
-        tokens.gradients.accentGradient,
-      _ => _gradient!,
-    };
+    final gradient = _variant.resolveGradient(tokens.gradients, _gradient);
 
-    final foregroundColor = _variant == _SealFilledButtonVariant.accentGradient
+    final foregroundColor = _variant == SealButtonVariant.accentGradient
         ? colors.onAccent
         : colors.onPrimary;
 
@@ -246,7 +228,7 @@ class _PrimarySealFilledButton extends SealFilledButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealFilledButtonVariant.primary);
+  }) : super._(variant: SealButtonVariant.primary);
 }
 
 /// Redirecting factory for [SealFilledButton.accent].
@@ -257,7 +239,7 @@ class _AccentSealFilledButton extends SealFilledButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealFilledButtonVariant.accent);
+  }) : super._(variant: SealButtonVariant.accent);
 }
 
 /// Redirecting factory for [SealFilledButton.accentSecondary].
@@ -268,7 +250,7 @@ class _AccentSecondarySealFilledButton extends SealFilledButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealFilledButtonVariant.accentSecondary);
+  }) : super._(variant: SealButtonVariant.accentSecondary);
 }
 
 /// Redirecting factory for [SealFilledButton.gradient].
@@ -279,7 +261,7 @@ class _GradientSealFilledButton extends SealFilledButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealFilledButtonVariant.gradient);
+  }) : super._(variant: SealButtonVariant.gradient);
 }
 
 /// Redirecting factory for [SealFilledButton.accentGradient].
@@ -290,7 +272,7 @@ class _AccentGradientSealFilledButton extends SealFilledButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealFilledButtonVariant.accentGradient);
+  }) : super._(variant: SealButtonVariant.accentGradient);
 }
 
 /// Redirecting factory for [SealFilledButton.custom].
@@ -307,5 +289,5 @@ class _CustomSealFilledButton extends SealFilledButton {
          color != null || gradient != null,
          'SealFilledButton.custom requires either color or gradient.',
        ),
-       super._(variant: _SealFilledButtonVariant.custom);
+       super._(variant: SealButtonVariant.custom);
 }
