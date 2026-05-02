@@ -2,24 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme_provider.dart';
-import '../../tokens/abstractions/color_palette.dart';
 import '../../tokens/base/seal_dimension.dart';
+import 'seal_semantic_variant_enum.dart';
 import '../buttons/seal_text_button.dart';
 
 /// The semantic variant of a [SealToast].
-enum SealToastVariant {
-  /// Informational message.
-  info,
-
-  /// Success confirmation.
-  success,
-
-  /// Non-critical warning.
-  warning,
-
-  /// Error or failure.
-  error,
-}
+typedef SealToastVariant = SealSemanticVariant;
 
 /// A transient floating notification styled with Seal UI tokens, built on
 /// [ShadToast] / [ShadToaster].
@@ -63,9 +51,9 @@ class SealToast {
     this.onAction,
     IconData? icon,
     Color? color,
-  })  : _variant = variant,
-        _icon = icon,
-        _customColor = color;
+  }) : _variant = variant,
+       _icon = icon,
+       _customColor = color;
 
   /// Default display duration when none is specified.
   static const Duration _kDefaultDuration = Duration(seconds: 5);
@@ -173,10 +161,10 @@ class SealToast {
     final dimension = context.dimension;
 
     final variant = _variant;
-    final accentColor = _customColor ??
-        (variant != null ? _accentColorFor(variant, colors) : colors.primary);
-    final resolvedIcon =
-        _icon ?? (variant != null ? _iconFor(variant) : null);
+    final accentColor =
+        _customColor ??
+        (variant != null ? variant.accentColor(colors) : colors.primary);
+    final resolvedIcon = _icon ?? variant?.icon;
 
     final hasAction = actionLabel != null && onAction != null;
 
@@ -196,7 +184,11 @@ class SealToast {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (resolvedIcon != null) ...[
-              Icon(resolvedIcon, color: accentColor, size: dimension.scaled(16)),
+              Icon(
+                resolvedIcon,
+                color: accentColor,
+                size: dimension.scaled(16),
+              ),
               SizedBox(width: dimension.xxs),
             ],
             title ?? message,
@@ -218,21 +210,6 @@ class SealToast {
       ),
     );
   }
-
-  static IconData _iconFor(SealToastVariant variant) => switch (variant) {
-        SealToastVariant.info => LucideIcons.info,
-        SealToastVariant.success => LucideIcons.circleCheck,
-        SealToastVariant.warning => LucideIcons.triangleAlert,
-        SealToastVariant.error => LucideIcons.circleX,
-      };
-
-  static Color _accentColorFor(SealToastVariant variant, ColorPalette colors) =>
-      switch (variant) {
-        SealToastVariant.info => colors.info,
-        SealToastVariant.success => colors.success,
-        SealToastVariant.warning => colors.warning,
-        SealToastVariant.error => colors.error,
-      };
 }
 
 // ── Redirecting factories ────────────────────────────────────────────────────

@@ -137,8 +137,9 @@ class SealFilledButton extends StatelessWidget with ButtonLoadingContentMixin {
     final colors = tokens.colors;
     final typo = tokens.typography;
 
-    if (_variant.isGradientVariant(_gradient))
+    if (_variant.isGradientVariant(_gradient)) {
       return _buildGradientButton(context);
+    }
 
     final Color backgroundColor;
     final Color foregroundColor;

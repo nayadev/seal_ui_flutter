@@ -1,5 +1,6 @@
 import 'package:flutter/painting.dart';
 
+import '../../tokens/abstractions/color_palette.dart';
 import '../../tokens/abstractions/gradient_tokens.dart';
 
 /// Internal variant shared by all Seal button implementations.
@@ -43,4 +44,16 @@ extension SealButtonVariantX on SealButtonVariant {
     SealButtonVariant.accentGradient => gradients.accentGradient,
     _ => customGradient!,
   };
+
+  /// Resolves the foreground color for outline/ghost variants.
+  ///
+  /// Used by [SealOutlineButton], [SealTextButton], [SealOutlineIconButton],
+  /// and [SealIconButton] to avoid duplicating the same switch logic.
+  Color resolveForegroundColor(ColorPalette colors, Color? customColor) =>
+      switch (this) {
+        SealButtonVariant.accent => colors.accent,
+        SealButtonVariant.accentSecondary => colors.accentSecondary,
+        SealButtonVariant.custom => customColor!,
+        _ => colors.foreground.active,
+      };
 }

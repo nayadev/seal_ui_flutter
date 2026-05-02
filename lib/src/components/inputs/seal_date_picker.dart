@@ -3,7 +3,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../../tokens/base/seal_radius.dart';
+import 'calendar_styles_mixin.dart';
 import 'seal_calendar.dart' show SealDateTimeRange;
 
 // Default day-button size matching SealCalendar.
@@ -34,7 +34,7 @@ const double _kDatePickerDayButtonSize = 36.0;
 ///   onChanged: (range) => setState(() => _range = range),
 /// )
 /// ```
-class SealDatePicker extends StatelessWidget {
+class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
   /// Creates a single-date date picker.
   const SealDatePicker({
     super.key,
@@ -129,24 +129,9 @@ class SealDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.themeTokens.colors;
-    final typo = context.themeTokens.typography;
     final dimension = context.dimension;
     final daySize = dimension.scaled(_kDatePickerDayButtonSize);
-
-    final headerTextStyle = typo.small.copyWith(
-      color: colors.textPrimary,
-      fontWeight: FontWeight.w600,
-    );
-    final weekdaysTextStyle = typo.small.copyWith(color: colors.textSecondary);
-    final dayTextStyle = typo.small.copyWith(color: colors.textPrimary);
-    final selectedDayTextStyle = typo.small.copyWith(color: colors.surface);
-
-    final calendarDecoration = ShadDecoration(
-      border: ShadBorder.all(
-        color: colors.border,
-        radius: SealRadius.borderRadiusMd,
-      ),
-    );
+    final styles = resolveCalendarStyles(context);
 
     if (_variant == ShadDatePickerVariant.range) {
       return ShadDatePicker.range(
@@ -161,21 +146,16 @@ class SealDatePicker extends StatelessWidget {
         toMonth: toMonth,
         selectableDayPredicate: selectableDayPredicate,
         enabled: enabled,
-        calendarHeaderTextStyle: headerTextStyle,
-        weekdaysTextStyle: weekdaysTextStyle,
-        dayButtonTextStyle: dayTextStyle,
-        selectedDayButtonTextStyle: selectedDayTextStyle,
+        calendarHeaderTextStyle: styles.header,
+        weekdaysTextStyle: styles.weekdays,
+        dayButtonTextStyle: styles.day,
+        selectedDayButtonTextStyle: styles.selectedDay,
         dayButtonSize: daySize,
-        calendarDecoration: calendarDecoration,
+        calendarDecoration: styles.decoration,
         backgroundColor: colors.surface,
         foregroundColor: colors.textPrimary,
         hoverBackgroundColor: colors.surfaceAlt,
-        buttonDecoration: ShadDecoration(
-          border: ShadBorder.all(
-            color: colors.border,
-            radius: SealRadius.borderRadiusMd,
-          ),
-        ),
+        buttonDecoration: styles.decoration,
       );
     }
 
@@ -192,21 +172,16 @@ class SealDatePicker extends StatelessWidget {
       toMonth: toMonth,
       selectableDayPredicate: selectableDayPredicate,
       enabled: enabled,
-      calendarHeaderTextStyle: headerTextStyle,
-      weekdaysTextStyle: weekdaysTextStyle,
-      dayButtonTextStyle: dayTextStyle,
-      selectedDayButtonTextStyle: selectedDayTextStyle,
+      calendarHeaderTextStyle: styles.header,
+      weekdaysTextStyle: styles.weekdays,
+      dayButtonTextStyle: styles.day,
+      selectedDayButtonTextStyle: styles.selectedDay,
       dayButtonSize: daySize,
-      calendarDecoration: calendarDecoration,
+      calendarDecoration: styles.decoration,
       backgroundColor: colors.surface,
       foregroundColor: colors.textPrimary,
       hoverBackgroundColor: colors.surfaceAlt,
-      buttonDecoration: ShadDecoration(
-        border: ShadBorder.all(
-          color: colors.border,
-          radius: SealRadius.borderRadiusMd,
-        ),
-      ),
+      buttonDecoration: styles.decoration,
     );
   }
 }

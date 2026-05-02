@@ -153,8 +153,9 @@ class SealFilledIconButton extends StatelessWidget
     final scaledIconSize = dimension.scaled(iconSize);
     final buttonSize = scaledIconSize + dimension.sm * 2;
 
-    if (_variant.isGradientVariant(_gradient))
+    if (_variant.isGradientVariant(_gradient)) {
       return _buildGradientButton(context);
+    }
 
     final Color backgroundColor;
     final Color foregroundColor;

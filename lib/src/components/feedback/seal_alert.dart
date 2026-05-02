@@ -2,23 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme_provider.dart';
-import '../../tokens/abstractions/color_palette.dart';
 import '../../tokens/base/seal_dimension.dart';
+import 'seal_semantic_variant_enum.dart';
 
 /// The semantic variant of a [SealAlert].
-enum SealAlertVariant {
-  /// Informational message.
-  info,
-
-  /// Success confirmation.
-  success,
-
-  /// Non-critical warning.
-  warning,
-
-  /// Error or failure.
-  error,
-}
+typedef SealAlertVariant = SealSemanticVariant;
 
 /// An inline alert banner styled with Seal UI tokens, built on [ShadAlert].
 ///
@@ -94,21 +82,6 @@ class SealAlert extends StatelessWidget {
   /// Border opacity for the alert container.
   static const double _kBorderOpacity = 0.35;
 
-  static IconData _iconFor(SealAlertVariant variant) => switch (variant) {
-    SealAlertVariant.info => LucideIcons.info,
-    SealAlertVariant.success => LucideIcons.circleCheck,
-    SealAlertVariant.warning => LucideIcons.triangleAlert,
-    SealAlertVariant.error => LucideIcons.circleX,
-  };
-
-  static Color _accentColorFor(SealAlertVariant variant, ColorPalette colors) =>
-      switch (variant) {
-        SealAlertVariant.info => colors.info,
-        SealAlertVariant.success => colors.success,
-        SealAlertVariant.warning => colors.warning,
-        SealAlertVariant.error => colors.error,
-      };
-
   @override
   Widget build(BuildContext context) {
     final tokens = context.themeTokens;
@@ -116,8 +89,8 @@ class SealAlert extends StatelessWidget {
     final typo = tokens.typography;
     final dimension = context.dimension;
 
-    final accentColor = _accentColorFor(_variant, colors);
-    final icon = _iconFor(_variant);
+    final accentColor = _variant.accentColor(colors);
+    final icon = _variant.icon;
 
     return ShadAlert.raw(
       variant: ShadAlertVariant.primary,
