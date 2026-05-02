@@ -37,6 +37,6 @@ dev_dependencies:
   lint_staged: ^0.5.1
 
 lint_staged:
-  'lib/**.dart': dart format --fix
+  'lib/**.dart': dart format
 
 

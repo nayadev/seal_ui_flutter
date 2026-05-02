@@ -7,16 +7,7 @@ import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import 'button_loading_content_mixin.dart';
 import 'gradient_shader_mask_mixin.dart';
-
-/// The visual variant of a [SealOutlineButton].
-enum _SealOutlineButtonVariant {
-  primary,
-  accent,
-  accentSecondary,
-  gradient,
-  accentGradient,
-  custom,
-}
+import 'seal_button_variant_enum.dart';
 
 /// An outlined action button styled with Seal UI tokens, built on [ShadButton].
 ///
@@ -51,7 +42,7 @@ class SealOutlineButton extends StatelessWidget
   const SealOutlineButton._({
     super.key,
     required this.label,
-    required _SealOutlineButtonVariant variant,
+    required SealButtonVariant variant,
     this.onPressed,
     this.isLoading = false,
     this.icon,
@@ -133,7 +124,7 @@ class SealOutlineButton extends StatelessWidget
   /// Optional leading icon.
   final IconData? icon;
 
-  final _SealOutlineButtonVariant _variant;
+  final SealButtonVariant _variant;
   final Color? _color;
   final LinearGradient? _gradient;
 
@@ -151,26 +142,22 @@ class SealOutlineButton extends StatelessWidget
     final colors = tokens.colors;
     final typo = tokens.typography;
 
-    final bool isGradient =
-        _variant == _SealOutlineButtonVariant.gradient ||
-        _variant == _SealOutlineButtonVariant.accentGradient ||
-        (_variant == _SealOutlineButtonVariant.custom && _gradient != null);
-
-    if (isGradient) return _buildGradientButton(context);
+    if (_variant.isGradientVariant(_gradient))
+      return _buildGradientButton(context);
 
     final Color foregroundColor;
 
     switch (_variant) {
-      case _SealOutlineButtonVariant.primary:
+      case SealButtonVariant.primary:
         foregroundColor = colors.foreground.active;
-      case _SealOutlineButtonVariant.accent:
+      case SealButtonVariant.accent:
         foregroundColor = colors.accent;
-      case _SealOutlineButtonVariant.accentSecondary:
+      case SealButtonVariant.accentSecondary:
         foregroundColor = colors.accentSecondary;
-      case _SealOutlineButtonVariant.gradient:
-      case _SealOutlineButtonVariant.accentGradient:
+      case SealButtonVariant.gradient:
+      case SealButtonVariant.accentGradient:
         foregroundColor = colors.foreground.active;
-      case _SealOutlineButtonVariant.custom:
+      case SealButtonVariant.custom:
         foregroundColor = _color!;
     }
 
@@ -206,12 +193,7 @@ class SealOutlineButton extends StatelessWidget
   Widget _buildGradientButton(BuildContext context) {
     final tokens = context.themeTokens;
 
-    final gradient = switch (_variant) {
-      _SealOutlineButtonVariant.gradient => tokens.gradients.primaryGradient,
-      _SealOutlineButtonVariant.accentGradient =>
-        tokens.gradients.accentGradient,
-      _ => _gradient!,
-    };
+    final gradient = _variant.resolveGradient(tokens.gradients, _gradient);
 
     // Use white as the base color; ShaderMask replaces it with the gradient.
     const baseColor = ColorX.white;
@@ -263,7 +245,7 @@ class _PrimarySealOutlineButton extends SealOutlineButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealOutlineButtonVariant.primary);
+  }) : super._(variant: SealButtonVariant.primary);
 }
 
 /// Redirecting factory for [SealOutlineButton.accent].
@@ -274,7 +256,7 @@ class _AccentSealOutlineButton extends SealOutlineButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealOutlineButtonVariant.accent);
+  }) : super._(variant: SealButtonVariant.accent);
 }
 
 /// Redirecting factory for [SealOutlineButton.accentSecondary].
@@ -285,7 +267,7 @@ class _AccentSecondarySealOutlineButton extends SealOutlineButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealOutlineButtonVariant.accentSecondary);
+  }) : super._(variant: SealButtonVariant.accentSecondary);
 }
 
 /// Redirecting factory for [SealOutlineButton.gradient].
@@ -296,7 +278,7 @@ class _GradientSealOutlineButton extends SealOutlineButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealOutlineButtonVariant.gradient);
+  }) : super._(variant: SealButtonVariant.gradient);
 }
 
 /// Redirecting factory for [SealOutlineButton.accentGradient].
@@ -307,7 +289,7 @@ class _AccentGradientSealOutlineButton extends SealOutlineButton {
     super.onPressed,
     super.isLoading,
     super.icon,
-  }) : super._(variant: _SealOutlineButtonVariant.accentGradient);
+  }) : super._(variant: SealButtonVariant.accentGradient);
 }
 
 /// Redirecting factory for [SealOutlineButton.custom].
@@ -324,5 +306,5 @@ class _CustomSealOutlineButton extends SealOutlineButton {
          color != null || gradient != null,
          'SealOutlineButton.custom requires either color or gradient.',
        ),
-       super._(variant: _SealOutlineButtonVariant.custom);
+       super._(variant: SealButtonVariant.custom);
 }

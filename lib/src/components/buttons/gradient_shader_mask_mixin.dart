@@ -1,11 +1,18 @@
 import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-/// Provides gradient [ShaderMask] wrapping for buttons.
+/// Provides gradient [ShaderMask] wrapping and tooltip helpers for buttons.
 ///
 /// Mix into a widget and call [wrapWithGradientShaderMask] to apply an
-/// [AnimatedOpacity] + [ShaderMask] + optional [ShadTooltip] around any child.
+/// [AnimatedOpacity] + [ShaderMask] + optional [ShadTooltip] around any child,
+/// or call [wrapWithTooltip] for a plain tooltip wrap without a shader.
 mixin GradientShaderMaskMixin {
+  /// Wraps [child] in a [ShadTooltip] when [tooltip] is non-null.
+  Widget wrapWithTooltip(Widget child, String? tooltip) {
+    if (tooltip == null) return child;
+    return ShadTooltip(builder: (_) => Text(tooltip), child: child);
+  }
+
   /// Wraps [child] in [AnimatedOpacity] + [ShaderMask] to apply a gradient fill.
   ///
   /// Optionally wraps the result in a [ShadTooltip] when [tooltip] is non-null.
