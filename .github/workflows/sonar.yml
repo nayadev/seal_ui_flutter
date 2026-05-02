@@ -25,11 +25,17 @@ jobs:
       - name: Install dependencies
         run: flutter pub get --enforce-lockfile
 
+      - name: Extract version from pubspec.yaml
+        id: version
+        run: echo "value=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f1)" >> "$GITHUB_OUTPUT"
+
       - name: Run tests with coverage
         run: flutter test --coverage
 
       - name: SonarCloud Scan
-        uses: sonarsource/sonarqube-scan-action@v7 
+        uses: sonarsource/sonarqube-scan-action@v7
+        with:
+          args: -Dsonar.projectVersion=${{ steps.version.outputs.value }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
