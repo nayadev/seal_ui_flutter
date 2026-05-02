@@ -2,8 +2,12 @@
 
 > Flutter implementation of the SealUI design system — token-driven components built on shadcn_ui primitives.
 
+[![Release](https://img.shields.io/github/v/release/nayadev/seal_ui_flutter)](https://github.com/nayadev/seal_ui_flutter/releases)
 [![License](https://img.shields.io/badge/license-MIT-32b88c)](./LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-%E2%89%A53.29-54c5f8)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-%5E3.11-0175c2)](https://dart.dev)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nayadev_seal_ui_flutter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=nayadev_seal_ui_flutter)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nayadev_seal_ui_flutter&metric=coverage)](https://sonarcloud.io/summary/new_code?id=nayadev_seal_ui_flutter)
 
 ---
 
@@ -195,6 +199,85 @@ Typography and spacing scale proportionally across breakpoints via `SealResponsi
 final scaleFactor = SealResponsive.scaleOf(context); // 1.0 mobile · 1.125 tablet · 1.333 desktop
 SealThemeScope(tokens: NebulaThemeFactory.tokens(scaleFactor: scaleFactor), ...)
 ```
+
+### Pre-commit Hooks
+
+[`husky`](https://pub.dev/packages/husky) (Dart-native, no Node.js required) runs two hooks on every commit:
+
+- **pre-commit** — [`lint_staged`](https://pub.dev/packages/lint_staged) runs `dart format --fix` on staged `.dart` files.
+- **commit-msg** — [`commitlint_cli`](https://pub.dev/packages/commitlint_cli) enforces [Conventional Commits](https://www.conventionalcommits.org/).
+
+Valid commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `revert`.
+
+### Test Coverage
+
+`flutter test --coverage` generates an LCOV report consumed by SonarCloud. Coverage is tracked per push to `main` and on pull requests.
+
+### Versioning
+
+[release-please](https://github.com/googleapis/release-please) automates versioning and changelog generation based on [Conventional Commits](https://www.conventionalcommits.org/).
+
+On every push to `main`, the workflow inspects commits since the last release and opens (or updates) a release PR with the proposed version bump and CHANGELOG entry. The release PR stays open until the maintainer merges it — no release happens automatically.
+
+On merge of the release PR, the git tag and GitHub Release are created automatically.
+
+| Commit type | Version bump (pre-1.0) |
+| --- | --- |
+| `fix` | patch |
+| `feat` | patch |
+| `feat!` / `BREAKING CHANGE` | minor |
+
+Workflow: `.github/workflows/release-please.yml` — config in `release-please-config.json`.
+
+---
+
+## CI/CD
+
+### SonarCloud
+
+Every push to `main` and every pull request triggers a SonarCloud analysis that checks:
+
+- Code quality (cognitive complexity, duplication, code smells)
+- Test coverage (linked to LCOV report from `flutter test --coverage`)
+- Security hotspots
+
+Workflow: `.github/workflows/sonar.yml` — uses `SONAR_TOKEN` repository secret.
+
+**Dashboard:** https://sonarcloud.io/project/overview?id=nayadev_seal_ui_flutter
+
+### Release Please
+
+Automated release PR and GitHub Release creation on every push to `main`.
+
+Workflow: `.github/workflows/release-please.yml` — uses `GITHUB_TOKEN` (no additional secret required).
+
+---
+
+## Project Structure
+
+```
+seal_ui_flutter/
+├── lib/
+│   ├── src/
+│   │   ├── foundation/       # Breakpoints, responsive utilities
+│   │   ├── tokens/           # Color, typography, gradient, spacing, radius tokens
+│   │   ├── theme/            # SealThemeTokens, SealThemeFactory, SealThemeProvider
+│   │   └── components/       # Seal* widget wrappers
+│   └── seal_ui.dart          # Public barrel exports
+├── test/                     # Widget tests mirroring lib/src/ structure
+├── example/
+│   ├── lib/main.dart         # Example app
+│   └── widgetbook/           # Widgetbook component catalog
+├── docs/adr/                 # Architecture Decision Records
+├── .github/workflows/        # sonar.yml, release-please.yml
+├── .husky/                   # pre-commit, commit-msg hooks
+├── commitlint.yaml
+├── release-please-config.json
+├── pubspec.yaml
+└── AGENTS.md                 # Instructions for AI agents working on this repo
+```
+
+**Dependency direction:** `seal_ui_tokens → tokens/ → theme/ → components/` — no layer may depend on a higher layer.
 
 ---
 
