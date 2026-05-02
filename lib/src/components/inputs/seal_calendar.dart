@@ -164,68 +164,65 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
     final daySize = dimension.scaled(_kDayButtonSize);
     final styles = resolveCalendarStyles(context);
 
-    switch (_variant) {
-      case ShadCalendarVariant.multiple:
-        return ShadCalendar.multiple(
-          selected: _multipleSelected,
-          onChanged: _onMultipleChanged,
-          initialMonth: initialMonth,
-          numberOfMonths: numberOfMonths,
-          showOutsideDays: showOutsideDays,
-          fromMonth: fromMonth,
-          toMonth: toMonth,
-          selectableDayPredicate: selectableDayPredicate,
-          captionLayout: captionLayout,
-          min: _min,
-          max: _max,
-          headerTextStyle: styles.header,
-          weekdaysTextStyle: styles.weekdays,
-          dayButtonTextStyle: styles.day,
-          selectedDayButtonTextStyle: styles.selectedDay,
-          dayButtonSize: daySize,
-          decoration: styles.decoration,
-        );
+    final calendar = switch (_variant) {
+      ShadCalendarVariant.multiple => ShadCalendar.multiple(
+        selected: _multipleSelected,
+        onChanged: _onMultipleChanged,
+        initialMonth: initialMonth,
+        numberOfMonths: numberOfMonths,
+        showOutsideDays: showOutsideDays,
+        fromMonth: fromMonth,
+        toMonth: toMonth,
+        selectableDayPredicate: selectableDayPredicate,
+        captionLayout: captionLayout,
+        min: _min,
+        max: _max,
+        headerTextStyle: styles.header,
+        weekdaysTextStyle: styles.weekdays,
+        dayButtonTextStyle: styles.day,
+        selectedDayButtonTextStyle: styles.selectedDay,
+        dayButtonSize: daySize,
+        decoration: styles.decoration,
+      ),
+      ShadCalendarVariant.range => ShadCalendar.range(
+        selected: _selectedRange,
+        onChanged: _onRangeChanged,
+        initialMonth: initialMonth,
+        numberOfMonths: numberOfMonths,
+        showOutsideDays: showOutsideDays,
+        fromMonth: fromMonth,
+        toMonth: toMonth,
+        selectableDayPredicate: selectableDayPredicate,
+        captionLayout: captionLayout,
+        min: _min,
+        max: _max,
+        headerTextStyle: styles.header,
+        weekdaysTextStyle: styles.weekdays,
+        dayButtonTextStyle: styles.day,
+        selectedDayButtonTextStyle: styles.selectedDay,
+        dayButtonSize: daySize,
+        decoration: styles.decoration,
+      ),
+      ShadCalendarVariant.single => ShadCalendar(
+        selected: selected,
+        onChanged: onChanged,
+        initialMonth: initialMonth,
+        numberOfMonths: numberOfMonths,
+        showOutsideDays: showOutsideDays,
+        fromMonth: fromMonth,
+        toMonth: toMonth,
+        selectableDayPredicate: selectableDayPredicate,
+        allowDeselection: allowDeselection,
+        captionLayout: captionLayout,
+        headerTextStyle: styles.header,
+        weekdaysTextStyle: styles.weekdays,
+        dayButtonTextStyle: styles.day,
+        selectedDayButtonTextStyle: styles.selectedDay,
+        dayButtonSize: daySize,
+        decoration: styles.decoration,
+      ),
+    };
 
-      case ShadCalendarVariant.range:
-        return ShadCalendar.range(
-          selected: _selectedRange,
-          onChanged: _onRangeChanged,
-          initialMonth: initialMonth,
-          numberOfMonths: numberOfMonths,
-          showOutsideDays: showOutsideDays,
-          fromMonth: fromMonth,
-          toMonth: toMonth,
-          selectableDayPredicate: selectableDayPredicate,
-          captionLayout: captionLayout,
-          min: _min,
-          max: _max,
-          headerTextStyle: styles.header,
-          weekdaysTextStyle: styles.weekdays,
-          dayButtonTextStyle: styles.day,
-          selectedDayButtonTextStyle: styles.selectedDay,
-          dayButtonSize: daySize,
-          decoration: styles.decoration,
-        );
-
-      case ShadCalendarVariant.single:
-        return ShadCalendar(
-          selected: selected,
-          onChanged: onChanged,
-          initialMonth: initialMonth,
-          numberOfMonths: numberOfMonths,
-          showOutsideDays: showOutsideDays,
-          fromMonth: fromMonth,
-          toMonth: toMonth,
-          selectableDayPredicate: selectableDayPredicate,
-          allowDeselection: allowDeselection,
-          captionLayout: captionLayout,
-          headerTextStyle: styles.header,
-          weekdaysTextStyle: styles.weekdays,
-          dayButtonTextStyle: styles.day,
-          selectedDayButtonTextStyle: styles.selectedDay,
-          dayButtonSize: daySize,
-          decoration: styles.decoration,
-        );
-    }
+    return wrapWithCalendarTheme(context, calendar);
   }
 }

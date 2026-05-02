@@ -133,8 +133,8 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
     final daySize = dimension.scaled(_kDatePickerDayButtonSize);
     final styles = resolveCalendarStyles(context);
 
-    if (_variant == ShadDatePickerVariant.range) {
-      return ShadDatePicker.range(
+    final picker = switch (_variant) {
+      ShadDatePickerVariant.range => ShadDatePicker.range(
         selected: _selectedRange,
         onRangeChanged: _onRangeChanged,
         placeholder: placeholder,
@@ -156,32 +156,33 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
         foregroundColor: colors.textPrimary,
         hoverBackgroundColor: colors.surfaceAlt,
         buttonDecoration: styles.decoration,
-      );
-    }
+      ),
+      ShadDatePickerVariant.single => ShadDatePicker(
+        selected: selected,
+        onChanged: onChanged,
+        placeholder: placeholder,
+        formatDate: formatDate,
+        closeOnSelection: closeOnSelection,
+        allowDeselection: allowDeselection,
+        initialMonth: initialMonth,
+        numberOfMonths: numberOfMonths,
+        fromMonth: fromMonth,
+        toMonth: toMonth,
+        selectableDayPredicate: selectableDayPredicate,
+        enabled: enabled,
+        calendarHeaderTextStyle: styles.header,
+        weekdaysTextStyle: styles.weekdays,
+        dayButtonTextStyle: styles.day,
+        selectedDayButtonTextStyle: styles.selectedDay,
+        dayButtonSize: daySize,
+        calendarDecoration: styles.decoration,
+        backgroundColor: colors.surface,
+        foregroundColor: colors.textPrimary,
+        hoverBackgroundColor: colors.surfaceAlt,
+        buttonDecoration: styles.decoration,
+      ),
+    };
 
-    return ShadDatePicker(
-      selected: selected,
-      onChanged: onChanged,
-      placeholder: placeholder,
-      formatDate: formatDate,
-      closeOnSelection: closeOnSelection,
-      allowDeselection: allowDeselection,
-      initialMonth: initialMonth,
-      numberOfMonths: numberOfMonths,
-      fromMonth: fromMonth,
-      toMonth: toMonth,
-      selectableDayPredicate: selectableDayPredicate,
-      enabled: enabled,
-      calendarHeaderTextStyle: styles.header,
-      weekdaysTextStyle: styles.weekdays,
-      dayButtonTextStyle: styles.day,
-      selectedDayButtonTextStyle: styles.selectedDay,
-      dayButtonSize: daySize,
-      calendarDecoration: styles.decoration,
-      backgroundColor: colors.surface,
-      foregroundColor: colors.textPrimary,
-      hoverBackgroundColor: colors.surfaceAlt,
-      buttonDecoration: styles.decoration,
-    );
+    return wrapWithCalendarTheme(context, picker);
   }
 }
