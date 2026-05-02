@@ -1,1 +1,4 @@
 include: package:commitlint_cli/commitlint.yaml
+
+# Ignore merge, revert and fixup commits automatically
+defaultIgnores: true
