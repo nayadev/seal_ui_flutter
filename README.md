@@ -200,10 +200,7 @@ SealThemeScope(tokens: NebulaThemeFactory.tokens(scaleFactor: scaleFactor), ...)
 
 ## Architecture Decisions
 
-Architectural decisions are documented as ADRs in [`docs/adr/`](./docs/adr/). Recorded decisions:
-
-- **ADR-0001** — Use `shadcn_ui` as the Flutter component primitive layer instead of Material or custom implementations.
-- **ADR-0002** — Use Widgetbook as the Flutter component catalog for isolated development, interactive exploration, and documentation.
+Architectural decisions are documented as ADRs in [`docs/adr/`](./docs/adr/).
 
 ---
 
