@@ -2,3 +2,19 @@ include: package:commitlint_cli/commitlint.yaml
 
 # Ignore merge, revert and fixup commits automatically
 defaultIgnores: true
+
+rules:
+  scope-enum:
+    - 0
+    - always
+  subject-case:
+    - 0
+    - always
+  subject-max-length:
+    - 2
+    - always
+    - 100
+  body-max-line-length:
+    - 2
+    - always
+    - 200
