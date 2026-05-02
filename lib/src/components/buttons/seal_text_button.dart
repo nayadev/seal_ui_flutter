@@ -5,7 +5,8 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../feedback/seal_bouncing_dots.dart';
+import 'button_loading_content_mixin.dart';
+import 'gradient_shader_mask_mixin.dart';
 
 /// The visual variant of a [SealTextButton].
 enum _SealTextButtonVariant {
@@ -46,7 +47,8 @@ enum _SealTextButtonVariant {
 ///   onPressed: () {},
 /// )
 /// ```
-class SealTextButton extends StatelessWidget {
+class SealTextButton extends StatelessWidget
+    with ButtonLoadingContentMixin, GradientShaderMaskMixin {
   const SealTextButton._({
     super.key,
     required this.label,
@@ -126,12 +128,14 @@ class SealTextButton extends StatelessWidget {
   }) = _CustomSealTextButton;
 
   /// Button label widget.
+  @override
   final Widget label;
 
   /// Callback when the button is tapped. If `null` the button is disabled.
   final VoidCallback? onPressed;
 
   /// Shows a loading indicator and disables interaction.
+  @override
   final bool isLoading;
 
   /// Optional leading icon.
@@ -191,33 +195,7 @@ class SealTextButton extends StatelessWidget {
       leading: (!isLoading && icon != null)
           ? Icon(icon, size: context.dimension.scaled(iconSize))
           : null,
-      child: _buildContent(context, foregroundColor, typo),
-    );
-  }
-
-  Widget _buildContent(
-    BuildContext context,
-    Color foreground,
-    TypographyTokens typography,
-  ) {
-    if (!isLoading) return label;
-
-    final style = typography.small;
-    final lineHeight =
-        (style.fontSize ?? TypographyTokens.kSmallFontSize) *
-        (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Visibility(
-          visible: false,
-          maintainSize: true,
-          maintainAnimation: true,
-          maintainState: true,
-          child: label,
-        ),
-        SealBouncingDots(color: foreground, height: lineHeight),
-      ],
+      child: buildContent(foregroundColor, typo),
     );
   }
 
@@ -244,17 +222,14 @@ class SealTextButton extends StatelessWidget {
       leading: (!isLoading && icon != null)
           ? Icon(icon, size: context.dimension.scaled(iconSize))
           : null,
-      child: _buildContent(context, baseColor, context.themeTokens.typography),
+      child: buildContent(baseColor, context.themeTokens.typography),
     );
 
-    return AnimatedOpacity(
-      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-      duration: const Duration(milliseconds: 200),
-      child: ShaderMask(
-        shaderCallback: (bounds) => gradient.createShader(bounds),
-        blendMode: BlendMode.srcIn,
-        child: button,
-      ),
+    return wrapWithGradientShaderMask(
+      button,
+      gradient,
+      isDisabled: _isDisabled,
+      disabledOpacity: _kDisabledOpacity,
     );
   }
 }

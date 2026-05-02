@@ -5,7 +5,8 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../feedback/seal_bouncing_dots.dart';
+import 'button_loading_content_mixin.dart';
+import 'gradient_shader_mask_mixin.dart';
 
 /// The visual variant of a [SealOutlineButton].
 enum _SealOutlineButtonVariant {
@@ -45,7 +46,8 @@ enum _SealOutlineButtonVariant {
 ///   onPressed: () {},
 /// )
 /// ```
-class SealOutlineButton extends StatelessWidget {
+class SealOutlineButton extends StatelessWidget
+    with ButtonLoadingContentMixin, GradientShaderMaskMixin {
   const SealOutlineButton._({
     super.key,
     required this.label,
@@ -118,12 +120,14 @@ class SealOutlineButton extends StatelessWidget {
   }) = _CustomSealOutlineButton;
 
   /// Button label widget.
+  @override
   final Widget label;
 
   /// Callback when the button is tapped. If `null` the button is disabled.
   final VoidCallback? onPressed;
 
   /// Shows a loading indicator and disables interaction.
+  @override
   final bool isLoading;
 
   /// Optional leading icon.
@@ -195,7 +199,7 @@ class SealOutlineButton extends StatelessWidget {
               ),
             )
           : null,
-      child: _buildContent(context, foregroundColor, typo),
+      child: buildContent(foregroundColor, typo),
     );
   }
 
@@ -239,43 +243,14 @@ class SealOutlineButton extends StatelessWidget {
               ),
             )
           : null,
-      child: _buildContent(context, baseColor, tokens.typography),
+      child: buildContent(baseColor, tokens.typography),
     );
 
-    return AnimatedOpacity(
-      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-      duration: const Duration(milliseconds: 200),
-      child: ShaderMask(
-        shaderCallback: (bounds) => gradient.createShader(bounds),
-        blendMode: BlendMode.srcIn,
-        child: button,
-      ),
-    );
-  }
-
-  Widget _buildContent(
-    BuildContext context,
-    Color foreground,
-    TypographyTokens typography,
-  ) {
-    if (!isLoading) return label;
-
-    final style = typography.small;
-    final lineHeight =
-        (style.fontSize ?? TypographyTokens.kSmallFontSize) *
-        (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Visibility(
-          visible: false,
-          maintainSize: true,
-          maintainAnimation: true,
-          maintainState: true,
-          child: label,
-        ),
-        SealBouncingDots(color: foreground, height: lineHeight),
-      ],
+    return wrapWithGradientShaderMask(
+      button,
+      gradient,
+      isDisabled: _isDisabled,
+      disabledOpacity: _kDisabledOpacity,
     );
   }
 }

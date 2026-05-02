@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
+import 'overlay_content_mixin.dart';
 
 /// The edge from which a [SealSheet] slides in.
 enum SealSheetSide {
@@ -105,7 +106,7 @@ class _SealSheetEdgePadding extends InheritedWidget {
 ///   child: const _FilterForm(),
 /// )
 /// ```
-class SealSheet extends StatelessWidget {
+class SealSheet extends StatelessWidget with OverlayContentMixin {
   /// Creates a Seal-themed sheet.
   const SealSheet({
     super.key,
@@ -142,22 +143,12 @@ class SealSheet extends StatelessWidget {
     final typo = tokens.typography;
     final dimension = context.dimension;
 
-    final titleWidget = title != null
-        ? DefaultTextStyle.merge(
-            style: typo.large.copyWith(
-              color: colors.textPrimary,
-              fontWeight: FontWeight.w600,
-            ),
-            child: title!,
-          )
-        : null;
-
-    final descriptionWidget = description != null
-        ? DefaultTextStyle.merge(
-            style: typo.small.copyWith(color: colors.textSecondary),
-            child: description!,
-          )
-        : null;
+    final titleWidget = buildOverlayTitle(title, typo, colors);
+    final descriptionWidget = buildOverlayDescription(
+      description,
+      typo,
+      colors,
+    );
 
     final edgePadding = _SealSheetEdgePadding.of(context);
 

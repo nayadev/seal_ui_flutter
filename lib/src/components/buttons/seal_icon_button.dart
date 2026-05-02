@@ -5,6 +5,7 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
+import 'gradient_shader_mask_mixin.dart';
 
 /// The visual variant of a [SealIconButton].
 enum _SealIconButtonVariant {
@@ -52,7 +53,7 @@ enum _SealIconButtonVariant {
 ///   tooltip: 'Favorite',
 /// )
 /// ```
-class SealIconButton extends StatelessWidget {
+class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
   /// Default icon size for ghost icon buttons.
   static const double _kIconSize = 24.0;
 
@@ -236,19 +237,13 @@ class SealIconButton extends StatelessWidget {
       padding: EdgeInsets.all(dimension.sm),
     );
 
-    Widget result = AnimatedOpacity(
-      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-      duration: const Duration(milliseconds: 200),
-      child: ShaderMask(
-        shaderCallback: (bounds) => gradient.createShader(bounds),
-        blendMode: BlendMode.srcIn,
-        child: button,
-      ),
+    return wrapWithGradientShaderMask(
+      button,
+      gradient,
+      isDisabled: _isDisabled,
+      disabledOpacity: _kDisabledOpacity,
+      tooltip: tooltip,
     );
-    if (tooltip != null) {
-      result = ShadTooltip(builder: (_) => Text(tooltip!), child: result);
-    }
-    return result;
   }
 }
 
