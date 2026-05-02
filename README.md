@@ -1,20 +1,46 @@
-# Seal UI
+# SealUI Flutter
 
-A **token-driven Flutter Design System** with bold, curated themes, layered architecture, and responsive scaling.
+> Flutter implementation of the SealUI design system — token-driven components built on shadcn_ui primitives.
 
-Expressive palettes, subtle gradients, and a dark-first experience — designed to be reusable across multiple applications.
+[![License](https://img.shields.io/badge/license-MIT-32b88c)](./LICENSE)
+[![Flutter](https://img.shields.io/badge/Flutter-%E2%89%A53.29-54c5f8)](https://flutter.dev)
 
-## Features
+---
 
-- **Design Tokens** — colors, typography, gradients, spacing, and radius managed as structured tokens
-- **Dark & Light Themes** — dark mode is the primary experience, with full light theme support
-- **4 Built-in Themes** — Nebula, Arctic, Deep Ocean, and Terminal, each with dark and light variants
-- **Responsive Scaling** — typography and spacing scale proportionally across mobile, tablet, and desktop
-- **Layered Architecture** — strict `foundation → tokens → theme → components` dependency direction
-- **shadcn_ui Integration** — thin, token-driven wrappers over `shadcn_ui` primitives with no Material dependency
-- **Widgetbook Catalog** — visual component catalog for browsing and testing every component
+## Overview
 
-## Quick Start
+SealUI Flutter is the Flutter implementation of the SealUI design system. It consumes design tokens from [`seal_ui_tokens`](https://github.com/nayadev/seal_ui_tokens) and provides a library of Flutter widgets built on [shadcn_ui](https://pub.dev/packages/shadcn_ui) primitives.
+
+**Dark mode is the primary experience.** Light mode is fully supported across all themes.
+
+### Architecture
+
+```
+seal_ui_tokens  ──►  seal_ui_react
+                ──►  seal_ui_flutter  (this repo)
+```
+
+Tokens are the single source of truth. Both the Flutter and React implementations consume them independently, ensuring visual consistency across platforms.
+
+---
+
+## Getting Started
+
+### Installation
+
+Add to `pubspec.yaml`:
+
+```yaml
+dependencies:
+  seal_ui:
+    git:
+      url: https://github.com/nayadev/seal_ui_flutter.git
+      ref: main
+```
+
+### Setup
+
+Wrap your application with `ShadApp` and `SealThemeScope`:
 
 ```dart
 import 'package:seal_ui/seal_ui.dart';
@@ -41,124 +67,155 @@ padding: EdgeInsets.all(context.dimension.lg),
 context.dimension.md.verticalGap,
 ```
 
-## Architecture
+---
 
-```
-foundation → tokens → theme → components
-```
+## Theming
 
-| Layer | Purpose |
-|---|---|
-| **foundation** | Breakpoints, responsive utilities |
-| **tokens** | Color palettes, typography, gradients, spacing, radius |
-| **theme** | Token container, theme factory, InheritedWidget |
-| **components** | Buttons, inputs, layout, feedback, overlay, interaction |
+SealUI ships **4 themes × 2 modes**. Each theme has its own distinct visual identity:
 
-## Themes
+| Theme | Personality |
+| ----- | ----------- |
+| `NebulaThemeFactory` | Cosmic purple — the default; deep space with violet brand |
+| `ArcticThemeFactory` | Icy blue — clean and crisp, inspired by frozen tundra |
+| `DeepOceanThemeFactory` | Abyssal blue — darker and more dramatic than arctic |
+| `TerminalThemeFactory` | Hacker green — vintage terminal aesthetic |
 
-| Factory | Palette |
-|---|---|
-| `NebulaThemeFactory` | Cosmic purples and deep space blues |
-| `ArcticThemeFactory` | Icy blues and crisp whites |
-| `DeepOceanThemeFactory` | Deep teals and ocean depths |
-| `TerminalThemeFactory` | Vintage terminal greens and amber |
-
-All themes support dark and light brightness:
+### Switching at Runtime
 
 ```dart
 NebulaThemeFactory.tokens(brightness: Brightness.light)
 ```
 
+---
+
 ## Components
 
-### Buttons
+> Component library is being built progressively across sessions. ✅ = shipped · 🔜 = coming soon
 
-| Component | Description |
-|---|---|
-| `SealFilledButton` | Solid filled button — primary, accent, gradient, and custom variants |
-| `SealOutlineButton` | Border-only button with matching variant set |
-| `SealTextButton` | Label-only button with matching variant set |
-| `SealFilledIconButton` | Filled icon-only button |
-| `SealOutlineIconButton` | Outline icon-only button |
-| `SealIconButton` | Ghost icon-only button |
+| Component | Category | Status |
+| --------- | -------- | ------ |
+| `SealFilledButton` | Buttons | ✅ |
+| `SealFilledIconButton` | Buttons | ✅ |
+| `SealIconButton` | Buttons | ✅ |
+| `SealOutlineButton` | Buttons | ✅ |
+| `SealOutlineIconButton` | Buttons | ✅ |
+| `SealTextButton` | Buttons | ✅ |
+| `SealAlert` | Feedback | ✅ |
+| `SealBouncingDots` | Feedback | ✅ |
+| `SealLoader` | Feedback | ✅ |
+| `SealProgress` | Feedback | ✅ |
+| `SealSonner` | Feedback | ✅ |
+| `SealToast` | Feedback | ✅ |
+| `SealCalendar` | Inputs | ✅ |
+| `SealCheckbox` | Inputs | ✅ |
+| `SealDatePicker` | Inputs | ✅ |
+| `SealForm` | Inputs | ✅ |
+| `SealInputOtp` | Inputs | ✅ |
+| `SealRadioGroup` | Inputs | ✅ |
+| `SealSelect` | Inputs | ✅ |
+| `SealSlider` | Inputs | ✅ |
+| `SealSwitch` | Inputs | ✅ |
+| `SealTextarea` | Inputs | ✅ |
+| `SealTextField` | Inputs | ✅ |
+| `SealTimePicker` | Inputs | ✅ |
+| `SealAccordion` | Layout | ✅ |
+| `SealAvatar` | Layout | ✅ |
+| `SealBadge` | Layout | ✅ |
+| `SealBreadcrumb` | Layout | ✅ |
+| `SealCard` | Layout | ✅ |
+| `SealContainer` | Layout | ✅ |
+| `SealMenubar` | Layout | ✅ |
+| `SealResizable` | Layout | ✅ |
+| `SealSeparator` | Layout | ✅ |
+| `SealTable` | Layout | ✅ |
+| `SealTabs` | Layout | ✅ |
+| `SealContextMenu` | Overlay | ✅ |
+| `SealDialog` | Overlay | ✅ |
+| `SealPopover` | Overlay | ✅ |
+| `SealSheet` | Overlay | ✅ |
+| `SealPressable` | Interaction | ✅ |
+| `SealTooltip` | Interaction | ✅ |
 
 All six button types share the same variant factories: `.primary`, `.accent`, `.accentSecondary`, `.gradient`, `.accentGradient`, `.custom(color:)`, `.custom(gradient:)`.
 
-### Inputs
+---
 
-| Component | Description |
-|---|---|
-| `SealForm` | Form state manager; integrates with any `ShadFormField` for coordinated validation and value collection |
-| `SealCalendar` | Token-styled date picker; `.multiple` for multi-select, `.range` for date ranges |
-| `SealDatePicker` | Button-triggered popover date picker; `.range` for date-range selection |
-| `SealTimePicker` | Hour/minute/second input fields; `.period` for 12-hour AM/PM format |
-| `SealInputOTP` / `SealInputOTPGroup` / `SealInputOTPSlot` | Token-styled OTP input; compose groups and slots for any digit layout |
-| `SealCheckbox` | Token-styled checkbox with optional label and sublabel |
-| `SealRadioGroup` / `SealRadioItem` | Radio button group, horizontal or vertical |
-| `SealSelect` / `SealSelectOption` | Dropdown selector with optional label |
-| `SealSlider` | Continuous or stepped range slider |
-| `SealSwitch` | Toggle switch with optional label and sublabel |
-| `SealTextarea` | Multi-line text input with optional label |
-| `SealTextField` | Single-line text input with prefix/suffix icon support |
+## Token Integration
 
-### Layout
+Tokens flow from `seal_ui_tokens` via the `SealThemeScope` inherited widget. Access them through context extensions:
 
-| Component | Description |
-|---|---|
-| `SealAccordion` / `SealAccordionItem` | Collapsible content sections |
-| `SealMenubar` / `SealMenubarItem` | Horizontal menu bar with dropdown menus; compose with `SealContextMenuItem` |
-| `SealResizablePanelGroup` / `SealResizablePanel` | Drag-to-resize panel layout; horizontal or vertical axis |
-| `SealBreadcrumb` / `SealBreadcrumbLink` | Token-styled breadcrumb navigation with separator, ellipsis, and dropdown support |
-| `SealAvatar` | Circular avatar with image or placeholder fallback |
-| `SealBadge` | Semantic status pill — primary, accent, secondary, outline, success, warning, error |
-| `SealCard` | Themed surface card with header, body, footer, gradient, and tap support |
-| `SealContainer` | Surface box with optional gradient and border |
-| `SealSeparator` | Token-styled horizontal divider |
-| `SealTable` / `SealTableCell` | Token-styled data table; `.list` for static data, builder constructor for large datasets |
-| `SealTabs` / `SealTab` | Tabbed content switcher |
+```dart
+// Color tokens
+final primary = context.themeTokens.colors.brand.primary;
+final surface = context.themeTokens.colors.surface.background;
 
-### Feedback
+// Typography tokens
+final bodyStyle = context.themeTokens.typography.body;
 
-| Component | Description |
-|---|---|
-| `SealAlert` | Inline semantic banner — `.info`, `.success`, `.warning`, `.error` |
-| `SealBouncingDots` | Animated three-dot bouncing indicator; used internally by button loading states |
-| `SealLoader` | Animated spinner with size presets (`small`, `medium`, `large`) and optional label |
-| `SealProgress` | Determinate and indeterminate progress bar |
-| `SealToast` | Transient notification — `.info`, `.success`, `.warning`, `.error`; shown via `.show(context)` |
-| `SealSonner` | Stacked Sonner-style toasts; shown via `showSealSonner(context, title:, description:)` |
+// Dimension tokens (responsive — auto-scaled per breakpoint)
+final spacing = context.dimension.md;  // 16px on mobile, 18px on tablet, 21px on desktop
+```
 
-### Overlay
+Never hardcode color, typography, or spacing values — always reference a token via context extensions.
 
-| Component | Description |
-|---|---|
-| `SealContextMenuRegion` | Right-click / long-press triggered menu; compose with `SealContextMenuItem` for items and nested submenus |
-| `SealDialog` | Modal dialog with title, description, and actions; `.alert` variant for destructive confirmations |
-| `SealPopover` | Token-styled floating panel anchored to any widget; controlled via `SealPopoverController` or `visible` |
-| `SealSheet` | Slide-in panel from any edge via `showSealSheet`; smart safe-area padding per side |
+---
 
-`SealSheetSide` controls the sheet edge: `top`, `right`, `bottom` (default), `left`.
+## Development
 
-### Interaction
+| Command | Purpose |
+| ------- | ------- |
+| `flutter analyze` | Static analysis — zero warnings |
+| `flutter test` | Run package tests |
+| `cd example && flutter run` | Run the example app |
+| `cd example && flutter run -t widgetbook/widgetbook_app.dart` | Open Widgetbook component catalog |
 
-| Component | Description |
-|---|---|
-| `SealPressable` | Press-feedback wrapper — scales and fades on tap-down, springs back on release; no Material ripple |
-| `SealTooltip` | Token-styled tooltip wrapping any widget |
+---
 
-## Key Dependencies
+## Quality & Tooling
 
-| Package | Purpose |
-|---|---|
-| `seal_ui_tokens` | External token package — single source of truth for all raw values (colors, gradients, typography, spacing, radius) |
-| `shadcn_ui` | Component primitives and base theme system |
-| `google_fonts` | Inter font family |
+### Static Analysis
 
-## Commands
+`analysis_options.yaml` extends `flutter_lints` with strict additional rules. `flutter analyze` must pass with zero warnings — enforced before every commit.
+
+### Widgetbook
+
+Every component has at least one [Widgetbook](https://www.widgetbook.io/) use case with interactive knobs (string, boolean, dropdown) for exploring variants. The catalog entry point is `example/widgetbook/widgetbook_app.dart`.
+
+Run it with:
 
 ```sh
-flutter analyze                                          # Static analysis
-flutter test                                             # Package tests
-cd example && flutter run                                # Example app
-cd example && flutter run -t widgetbook/widgetbook_app.dart  # Component catalog
+cd example && flutter run -t widgetbook/widgetbook_app.dart
 ```
+
+### Responsive Scaling
+
+Typography and spacing scale proportionally across breakpoints via `SealResponsive` and `SealDimension`. Pass the current scale factor when constructing the token set:
+
+```dart
+final scaleFactor = SealResponsive.scaleOf(context); // 1.0 mobile · 1.125 tablet · 1.333 desktop
+SealThemeScope(tokens: NebulaThemeFactory.tokens(scaleFactor: scaleFactor), ...)
+```
+
+---
+
+## Architecture Decisions
+
+Architectural decisions are documented as ADRs in [`docs/adr/`](./docs/adr/). Recorded decisions:
+
+- **ADR-0001** — Use `shadcn_ui` as the Flutter component primitive layer instead of Material or custom implementations.
+- **ADR-0002** — Use Widgetbook as the Flutter component catalog for isolated development, interactive exploration, and documentation.
+
+---
+
+## Related Packages
+
+| Package | Description |
+| ------- | ----------- |
+| [`seal_ui_tokens`](https://github.com/nayadev/seal_ui_tokens) | Token source of truth — CSS variables, JS constants, Tailwind config, Flutter tokens |
+| [`seal_ui_react`](https://github.com/nayadev/seal_ui_react) | React implementation of SealUI — token-driven components built on shadcn/ui |
+
+---
+
+## License
+
+MIT
