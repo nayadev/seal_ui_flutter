@@ -152,24 +152,11 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     final dimension = context.dimension;
     final scaledIconSize = dimension.scaled(iconSize);
 
-    if (_variant.isGradientVariant(_gradient))
+    if (_variant.isGradientVariant(_gradient)) {
       return _buildGradientButton(context);
-
-    final Color foregroundColor;
-
-    switch (_variant) {
-      case SealButtonVariant.primary:
-        foregroundColor = colors.foreground.active;
-      case SealButtonVariant.accent:
-        foregroundColor = colors.accent;
-      case SealButtonVariant.accentSecondary:
-        foregroundColor = colors.accentSecondary;
-      case SealButtonVariant.gradient:
-      case SealButtonVariant.accentGradient:
-        foregroundColor = colors.foreground.active;
-      case SealButtonVariant.custom:
-        foregroundColor = _color!;
     }
+
+    final foregroundColor = _variant.resolveForegroundColor(colors, _color);
 
     final buttonSize = scaledIconSize + dimension.sm * 2;
     final button = ShadIconButton.raw(

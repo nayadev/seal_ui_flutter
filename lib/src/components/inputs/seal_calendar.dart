@@ -1,9 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
-import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../../tokens/base/seal_radius.dart';
+import 'calendar_styles_mixin.dart';
 
 // Default day-button size matching shadcn_ui's default (36 × 36).
 const double _kDayButtonSize = 36.0;
@@ -39,7 +38,7 @@ typedef SealDateTimeRange = ShadDateTimeRange;
 ///   onChanged: (range) => setState(() => _range = range),
 /// )
 /// ```
-class SealCalendar extends StatelessWidget {
+class SealCalendar extends StatelessWidget with CalendarStylesMixin {
   /// Creates a single-date selection calendar.
   const SealCalendar({
     super.key,
@@ -161,18 +160,9 @@ class SealCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.themeTokens.colors;
-    final typo = context.themeTokens.typography;
     final dimension = context.dimension;
     final daySize = dimension.scaled(_kDayButtonSize);
-
-    final headerTextStyle = typo.small.copyWith(
-      color: colors.textPrimary,
-      fontWeight: FontWeight.w600,
-    );
-    final weekdaysTextStyle = typo.small.copyWith(color: colors.textSecondary);
-    final dayTextStyle = typo.small.copyWith(color: colors.textPrimary);
-    final selectedDayTextStyle = typo.small.copyWith(color: colors.surface);
+    final styles = resolveCalendarStyles(context);
 
     switch (_variant) {
       case ShadCalendarVariant.multiple:
@@ -188,17 +178,12 @@ class SealCalendar extends StatelessWidget {
           captionLayout: captionLayout,
           min: _min,
           max: _max,
-          headerTextStyle: headerTextStyle,
-          weekdaysTextStyle: weekdaysTextStyle,
-          dayButtonTextStyle: dayTextStyle,
-          selectedDayButtonTextStyle: selectedDayTextStyle,
+          headerTextStyle: styles.header,
+          weekdaysTextStyle: styles.weekdays,
+          dayButtonTextStyle: styles.day,
+          selectedDayButtonTextStyle: styles.selectedDay,
           dayButtonSize: daySize,
-          decoration: ShadDecoration(
-            border: ShadBorder.all(
-              color: colors.border,
-              radius: SealRadius.borderRadiusMd,
-            ),
-          ),
+          decoration: styles.decoration,
         );
 
       case ShadCalendarVariant.range:
@@ -214,17 +199,12 @@ class SealCalendar extends StatelessWidget {
           captionLayout: captionLayout,
           min: _min,
           max: _max,
-          headerTextStyle: headerTextStyle,
-          weekdaysTextStyle: weekdaysTextStyle,
-          dayButtonTextStyle: dayTextStyle,
-          selectedDayButtonTextStyle: selectedDayTextStyle,
+          headerTextStyle: styles.header,
+          weekdaysTextStyle: styles.weekdays,
+          dayButtonTextStyle: styles.day,
+          selectedDayButtonTextStyle: styles.selectedDay,
           dayButtonSize: daySize,
-          decoration: ShadDecoration(
-            border: ShadBorder.all(
-              color: colors.border,
-              radius: SealRadius.borderRadiusMd,
-            ),
-          ),
+          decoration: styles.decoration,
         );
 
       case ShadCalendarVariant.single:
@@ -239,17 +219,12 @@ class SealCalendar extends StatelessWidget {
           selectableDayPredicate: selectableDayPredicate,
           allowDeselection: allowDeselection,
           captionLayout: captionLayout,
-          headerTextStyle: headerTextStyle,
-          weekdaysTextStyle: weekdaysTextStyle,
-          dayButtonTextStyle: dayTextStyle,
-          selectedDayButtonTextStyle: selectedDayTextStyle,
+          headerTextStyle: styles.header,
+          weekdaysTextStyle: styles.weekdays,
+          dayButtonTextStyle: styles.day,
+          selectedDayButtonTextStyle: styles.selectedDay,
           dayButtonSize: daySize,
-          decoration: ShadDecoration(
-            border: ShadBorder.all(
-              color: colors.border,
-              radius: SealRadius.borderRadiusMd,
-            ),
-          ),
+          decoration: styles.decoration,
         );
     }
   }
