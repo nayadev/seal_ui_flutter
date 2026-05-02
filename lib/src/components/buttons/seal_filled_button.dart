@@ -5,7 +5,7 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/abstractions/typography_tokens.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
-import '../feedback/seal_bouncing_dots.dart';
+import 'button_loading_content_mixin.dart';
 
 /// The visual variant of a [SealFilledButton].
 enum _SealFilledButtonVariant {
@@ -45,7 +45,7 @@ enum _SealFilledButtonVariant {
 ///   onPressed: () {},
 /// )
 /// ```
-class SealFilledButton extends StatelessWidget {
+class SealFilledButton extends StatelessWidget with ButtonLoadingContentMixin {
   /// Opacity applied to gradient variants when disabled.
   static const double _kDisabledButtonOpacity = 0.45;
 
@@ -121,12 +121,14 @@ class SealFilledButton extends StatelessWidget {
   }) = _CustomSealFilledButton;
 
   /// Button label widget.
+  @override
   final Widget label;
 
   /// Callback when the button is tapped. If `null` the button is disabled.
   final VoidCallback? onPressed;
 
   /// Shows a loading indicator and disables interaction.
+  @override
   final bool isLoading;
 
   /// Optional leading icon.
@@ -192,7 +194,7 @@ class SealFilledButton extends StatelessWidget {
               ),
             )
           : null,
-      child: _buildContent(context, foregroundColor, typo),
+      child: buildContent(foregroundColor, typo),
     );
   }
 
@@ -230,34 +232,8 @@ class SealFilledButton extends StatelessWidget {
                 ),
               )
             : null,
-        child: _buildContent(context, foregroundColor, tokens.typography),
+        child: buildContent(foregroundColor, tokens.typography),
       ),
-    );
-  }
-
-  Widget _buildContent(
-    BuildContext context,
-    Color textColor,
-    TypographyTokens typography,
-  ) {
-    if (!isLoading) return label;
-
-    final style = typography.small;
-    final lineHeight =
-        (style.fontSize ?? TypographyTokens.kSmallFontSize) *
-        (style.height ?? TypographyTokens.kDefaultLineHeightMultiplier);
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Visibility(
-          visible: false,
-          maintainSize: true,
-          maintainAnimation: true,
-          maintainState: true,
-          child: label,
-        ),
-        SealBouncingDots(color: textColor, height: lineHeight),
-      ],
     );
   }
 }

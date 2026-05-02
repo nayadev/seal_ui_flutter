@@ -5,6 +5,7 @@ import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
+import 'gradient_shader_mask_mixin.dart';
 
 /// The visual variant of a [SealOutlineIconButton].
 enum _SealOutlineIconButtonVariant {
@@ -51,7 +52,8 @@ enum _SealOutlineIconButtonVariant {
 ///   tooltip: 'Warning',
 /// )
 /// ```
-class SealOutlineIconButton extends StatelessWidget {
+class SealOutlineIconButton extends StatelessWidget
+    with GradientShaderMaskMixin {
   /// Default icon size for outline icon buttons.
   static const double _kIconSize = 20.0;
 
@@ -248,19 +250,13 @@ class SealOutlineIconButton extends StatelessWidget {
       padding: EdgeInsets.all(dimension.sm),
     );
 
-    Widget result = AnimatedOpacity(
-      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-      duration: const Duration(milliseconds: 200),
-      child: ShaderMask(
-        shaderCallback: (bounds) => gradient.createShader(bounds),
-        blendMode: BlendMode.srcIn,
-        child: button,
-      ),
+    return wrapWithGradientShaderMask(
+      button,
+      gradient,
+      isDisabled: _isDisabled,
+      disabledOpacity: _kDisabledOpacity,
+      tooltip: tooltip,
     );
-    if (tooltip != null) {
-      result = ShadTooltip(builder: (_) => Text(tooltip!), child: result);
-    }
-    return result;
   }
 }
 
