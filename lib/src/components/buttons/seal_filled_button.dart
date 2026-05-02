@@ -149,40 +149,7 @@ class SealFilledButton extends StatelessWidget {
         _variant == _SealFilledButtonVariant.accentGradient ||
         (_variant == _SealFilledButtonVariant.custom && _gradient != null);
 
-    if (isGradient) {
-      final gradient = _variant == _SealFilledButtonVariant.gradient
-          ? tokens.gradients.primaryGradient
-          : _variant == _SealFilledButtonVariant.accentGradient
-          ? tokens.gradients.accentGradient
-          : _gradient!;
-      final foregroundColor =
-          _variant == _SealFilledButtonVariant.accentGradient
-          ? colors.onAccent
-          : colors.onPrimary;
-
-      return AnimatedOpacity(
-        opacity: _isDisabled ? _kDisabledButtonOpacity : 1.0,
-        duration: const Duration(milliseconds: 200),
-        child: ShadButton.raw(
-          variant: ShadButtonVariant.primary,
-          onPressed: _isDisabled ? null : onPressed,
-          enabled: !_isDisabled,
-          gradient: gradient,
-          foregroundColor: foregroundColor,
-          hoverForegroundColor: foregroundColor,
-          pressedForegroundColor: foregroundColor,
-          leading: (!isLoading && icon != null)
-              ? Icon(
-                  icon,
-                  size: context.dimension.scaled(
-                    TypographyTokens.kDefaultButtonIconSize,
-                  ),
-                )
-              : null,
-          child: _buildContent(context, foregroundColor, typo),
-        ),
-      );
-    }
+    if (isGradient) return _buildGradientButton(context);
 
     final Color backgroundColor;
     final Color foregroundColor;
@@ -226,6 +193,45 @@ class SealFilledButton extends StatelessWidget {
             )
           : null,
       child: _buildContent(context, foregroundColor, typo),
+    );
+  }
+
+  Widget _buildGradientButton(BuildContext context) {
+    final tokens = context.themeTokens;
+    final colors = tokens.colors;
+
+    final gradient = switch (_variant) {
+      _SealFilledButtonVariant.gradient => tokens.gradients.primaryGradient,
+      _SealFilledButtonVariant.accentGradient =>
+        tokens.gradients.accentGradient,
+      _ => _gradient!,
+    };
+
+    final foregroundColor = _variant == _SealFilledButtonVariant.accentGradient
+        ? colors.onAccent
+        : colors.onPrimary;
+
+    return AnimatedOpacity(
+      opacity: _isDisabled ? _kDisabledButtonOpacity : 1.0,
+      duration: const Duration(milliseconds: 200),
+      child: ShadButton.raw(
+        variant: ShadButtonVariant.primary,
+        onPressed: _isDisabled ? null : onPressed,
+        enabled: !_isDisabled,
+        gradient: gradient,
+        foregroundColor: foregroundColor,
+        hoverForegroundColor: foregroundColor,
+        pressedForegroundColor: foregroundColor,
+        leading: (!isLoading && icon != null)
+            ? Icon(
+                icon,
+                size: context.dimension.scaled(
+                  TypographyTokens.kDefaultButtonIconSize,
+                ),
+              )
+            : null,
+        child: _buildContent(context, foregroundColor, tokens.typography),
+      ),
     );
   }
 

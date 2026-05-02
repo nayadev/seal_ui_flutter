@@ -160,41 +160,7 @@ class SealTextButton extends StatelessWidget {
         _variant == _SealTextButtonVariant.accentGradient ||
         (_variant == _SealTextButtonVariant.custom && _gradient != null);
 
-    if (isGradient) {
-      final gradient = _variant == _SealTextButtonVariant.gradient
-          ? tokens.gradients.primaryGradient
-          : _variant == _SealTextButtonVariant.accentGradient
-          ? tokens.gradients.accentGradient
-          : _gradient!;
-
-      const baseColor = ColorX.white;
-
-      Widget button = ShadButton.raw(
-        variant: ShadButtonVariant.ghost,
-        onPressed: _isDisabled ? null : onPressed,
-        enabled: !_isDisabled,
-        foregroundColor: baseColor,
-        hoverForegroundColor: baseColor,
-        pressedForegroundColor: baseColor,
-        backgroundColor: ColorX.transparent,
-        hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
-        textDecoration: isLoading ? null : TextDecoration.underline,
-        leading: (!isLoading && icon != null)
-            ? Icon(icon, size: context.dimension.scaled(iconSize))
-            : null,
-        child: _buildContent(context, baseColor, typo),
-      );
-
-      return AnimatedOpacity(
-        opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-        duration: const Duration(milliseconds: 200),
-        child: ShaderMask(
-          shaderCallback: (bounds) => gradient.createShader(bounds),
-          blendMode: BlendMode.srcIn,
-          child: button,
-        ),
-      );
-    }
+    if (isGradient) return _buildGradientButton(context);
 
     final Color foregroundColor;
 
@@ -252,6 +218,43 @@ class SealTextButton extends StatelessWidget {
         ),
         SealBouncingDots(color: foreground, height: lineHeight),
       ],
+    );
+  }
+
+  Widget _buildGradientButton(BuildContext context) {
+    final tokens = context.themeTokens;
+
+    final gradient = switch (_variant) {
+      _SealTextButtonVariant.gradient => tokens.gradients.primaryGradient,
+      _SealTextButtonVariant.accentGradient => tokens.gradients.accentGradient,
+      _ => _gradient!,
+    };
+
+    const baseColor = ColorX.white;
+    final button = ShadButton.raw(
+      variant: ShadButtonVariant.ghost,
+      onPressed: _isDisabled ? null : onPressed,
+      enabled: !_isDisabled,
+      foregroundColor: baseColor,
+      hoverForegroundColor: baseColor,
+      pressedForegroundColor: baseColor,
+      backgroundColor: ColorX.transparent,
+      hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
+      textDecoration: isLoading ? null : TextDecoration.underline,
+      leading: (!isLoading && icon != null)
+          ? Icon(icon, size: context.dimension.scaled(iconSize))
+          : null,
+      child: _buildContent(context, baseColor, context.themeTokens.typography),
+    );
+
+    return AnimatedOpacity(
+      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
+      duration: const Duration(milliseconds: 200),
+      child: ShaderMask(
+        shaderCallback: (bounds) => gradient.createShader(bounds),
+        blendMode: BlendMode.srcIn,
+        child: button,
+      ),
     );
   }
 }

@@ -111,19 +111,7 @@ class SealCard extends StatelessWidget {
     final effectiveShadowColor =
         shadowColor ?? ColorX.black.withValues(alpha: SealCard._kShadowOpacity);
 
-    // Build the section content that ShadCard expects as child.
-    final sections = <Widget>[];
-
-    if (header != null) sections.add(header!);
-
-    if (body != null) {
-      if (sections.isNotEmpty) {
-        sections.add(SealSeparator(
-          margin: EdgeInsets.symmetric(vertical: dimension.sm),
-        ));
-      }
-      sections.add(body!);
-    }
+    final sections = _buildSections(context);
 
     // Build the ShadCard shadows list from the elevation token.
     final shadows = elevation > 0
@@ -155,13 +143,7 @@ class SealCard extends StatelessWidget {
           : ShadBorder.none,
       shadows: shadows,
       footer: wrappedFooter,
-      child: sections.isEmpty
-          ? null
-          : Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: sections,
-            ),
+      child: _buildContentChild(sections),
     );
 
     // Wrap with a gradient container when a gradient is requested.
@@ -182,13 +164,7 @@ class SealCard extends StatelessWidget {
             border: ShadBorder.none,
             shadows: const [],
             footer: wrappedFooter,
-            child: sections.isEmpty
-                ? null
-                : Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: sections,
-                  ),
+            child: _buildContentChild(sections),
           ),
         ),
       );
@@ -201,5 +177,30 @@ class SealCard extends StatelessWidget {
     if (onTap == null) return card;
 
     return SealPressable(onTap: onTap, child: card);
+  }
+
+  List<Widget> _buildSections(BuildContext context) {
+    final dimension = context.dimension;
+    final sections = <Widget>[];
+    if (header != null) sections.add(header!);
+    if (body == null) return sections;
+    if (sections.isNotEmpty) {
+      sections.add(
+        SealSeparator(
+          margin: EdgeInsets.symmetric(vertical: dimension.sm),
+        ),
+      );
+    }
+    sections.add(body!);
+    return sections;
+  }
+
+  Widget? _buildContentChild(List<Widget> sections) {
+    if (sections.isEmpty) return null;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: sections,
+    );
   }
 }

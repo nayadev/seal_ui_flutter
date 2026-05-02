@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../theme/seal_theme_provider.dart';
+import '../../theme/seal_theme_tokens.dart';
 import '../../tokens/base/seal_dimension.dart';
 
 /// A styled text field for the Seal UI design system, built on [ShadInput].
@@ -101,23 +102,7 @@ class _SealTextFieldState extends State<SealTextField> {
     final typo = tokens.typography;
     final iconSize = context.dimension.scaled(SealTextField._kIconSize);
 
-    Widget? trailing;
-    if (widget.obscureText) {
-      trailing = GestureDetector(
-        onTap: () => setState(() => _isObscured = !_isObscured),
-        child: Icon(
-          _isObscured ? LucideIcons.eyeOff : LucideIcons.eye,
-          color: colors.textSecondary,
-          size: iconSize,
-        ),
-      );
-    } else if (widget.suffixIcon != null) {
-      trailing = Icon(
-        widget.suffixIcon,
-        color: colors.textSecondary,
-        size: iconSize,
-      );
-    }
+    Widget? trailing = _buildTrailingIcon(tokens);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,5 +147,27 @@ class _SealTextFieldState extends State<SealTextField> {
         ),
       ],
     );
+  }
+
+  Widget? _buildTrailingIcon(SealThemeTokens tokens) {
+    if (widget.obscureText) {
+      return GestureDetector(
+        onTap: () => setState(() => _isObscured = !_isObscured),
+        child: Icon(
+          _isObscured ? LucideIcons.eyeOff : LucideIcons.eye,
+          color: tokens.colors.textSecondary,
+          size: context.dimension.scaled(SealTextField._kIconSize),
+        ),
+      );
+    }
+
+    if (widget.suffixIcon != null) {
+      return Icon(
+        widget.suffixIcon,
+        color: tokens.colors.textSecondary,
+        size: context.dimension.scaled(SealTextField._kIconSize),
+      );
+    }
+    return null;
   }
 }

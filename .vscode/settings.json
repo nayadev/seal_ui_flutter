@@ -1,0 +1,6 @@
+{
+  "sonarlint.connectedMode.project": {
+    "connectionId": "nayadev",
+    "projectKey": "nayadev_seal_ui_flutter"
+  }
+}
