@@ -83,7 +83,7 @@ class _SealBouncingDotsState extends State<SealBouncingDots>
           children: List.generate(3, (index) {
             final delay = index * SealBouncingDots.kDelayMultiplier;
             final raw = (_controller.value - delay) % 1.0;
-            final activeFraction = SealBouncingDots.kActiveCycleFraction;
+            const activeFraction = SealBouncingDots.kActiveCycleFraction;
             final active = raw < activeFraction;
             final bounce = active
                 ? math.sin((raw / activeFraction) * math.pi) * widget.size

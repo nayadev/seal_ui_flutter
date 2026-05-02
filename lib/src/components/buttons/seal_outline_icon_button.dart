@@ -167,52 +167,7 @@ class SealOutlineIconButton extends StatelessWidget {
         _variant == _SealOutlineIconButtonVariant.accentGradient ||
         (_variant == _SealOutlineIconButtonVariant.custom && _gradient != null);
 
-    if (isGradient) {
-      final gradient = _variant == _SealOutlineIconButtonVariant.gradient
-          ? tokens.gradients.primaryGradient
-          : _variant == _SealOutlineIconButtonVariant.accentGradient
-          ? tokens.gradients.accentGradient
-          : _gradient!;
-
-      const baseColor = ColorX.white;
-
-      final buttonSize = scaledIconSize + dimension.sm * 2;
-      Widget button = ShadIconButton.raw(
-        variant: ShadButtonVariant.outline,
-        icon: Icon(icon, size: scaledIconSize),
-        onPressed: _isDisabled ? null : onPressed,
-        enabled: !_isDisabled,
-        width: buttonSize,
-        height: buttonSize,
-        decoration: ShadDecoration(
-          border: ShadBorder.all(
-            radius: SealRadius.borderRadiusSm,
-            color: baseColor.withValues(alpha: _kBorderOpacity),
-            width: 1,
-          ),
-        ),
-        foregroundColor: baseColor,
-        hoverForegroundColor: baseColor,
-        pressedForegroundColor: baseColor,
-        backgroundColor: ColorX.transparent,
-        hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
-        padding: EdgeInsets.all(dimension.sm),
-      );
-
-      Widget result = AnimatedOpacity(
-        opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-        duration: const Duration(milliseconds: 200),
-        child: ShaderMask(
-          shaderCallback: (bounds) => gradient.createShader(bounds),
-          blendMode: BlendMode.srcIn,
-          child: button,
-        ),
-      );
-      if (tooltip != null) {
-        result = ShadTooltip(builder: (_) => Text(tooltip!), child: result);
-      }
-      return result;
-    }
+    if (isGradient) return _buildGradientButton(context);
 
     final Color foregroundColor;
 
@@ -254,6 +209,58 @@ class SealOutlineIconButton extends StatelessWidget {
     );
     if (tooltip == null) return button;
     return ShadTooltip(builder: (_) => Text(tooltip!), child: button);
+  }
+
+  Widget _buildGradientButton(BuildContext context) {
+    final tokens = context.themeTokens;
+    final dimension = context.dimension;
+    final scaledIconSize = dimension.scaled(iconSize);
+    final buttonSize = scaledIconSize + dimension.sm * 2;
+
+    final gradient = switch (_variant) {
+      _SealOutlineIconButtonVariant.gradient =>
+        tokens.gradients.primaryGradient,
+      _SealOutlineIconButtonVariant.accentGradient =>
+        tokens.gradients.accentGradient,
+      _ => _gradient!,
+    };
+
+    const baseColor = ColorX.white;
+    final button = ShadIconButton.raw(
+      variant: ShadButtonVariant.outline,
+      icon: Icon(icon, size: scaledIconSize),
+      onPressed: _isDisabled ? null : onPressed,
+      enabled: !_isDisabled,
+      width: buttonSize,
+      height: buttonSize,
+      decoration: ShadDecoration(
+        border: ShadBorder.all(
+          radius: SealRadius.borderRadiusSm,
+          color: baseColor.withValues(alpha: _kBorderOpacity),
+          width: 1,
+        ),
+      ),
+      foregroundColor: baseColor,
+      hoverForegroundColor: baseColor,
+      pressedForegroundColor: baseColor,
+      backgroundColor: ColorX.transparent,
+      hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
+      padding: EdgeInsets.all(dimension.sm),
+    );
+
+    Widget result = AnimatedOpacity(
+      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
+      duration: const Duration(milliseconds: 200),
+      child: ShaderMask(
+        shaderCallback: (bounds) => gradient.createShader(bounds),
+        blendMode: BlendMode.srcIn,
+        child: button,
+      ),
+    );
+    if (tooltip != null) {
+      result = ShadTooltip(builder: (_) => Text(tooltip!), child: result);
+    }
+    return result;
   }
 }
 

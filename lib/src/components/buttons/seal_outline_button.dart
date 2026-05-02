@@ -152,52 +152,7 @@ class SealOutlineButton extends StatelessWidget {
         _variant == _SealOutlineButtonVariant.accentGradient ||
         (_variant == _SealOutlineButtonVariant.custom && _gradient != null);
 
-    if (isGradient) {
-      final gradient = _variant == _SealOutlineButtonVariant.gradient
-          ? tokens.gradients.primaryGradient
-          : _variant == _SealOutlineButtonVariant.accentGradient
-          ? tokens.gradients.accentGradient
-          : _gradient!;
-
-      // Use white as the base color; ShaderMask replaces it with the gradient.
-      const baseColor = ColorX.white;
-
-      Widget button = ShadButton.raw(
-        variant: ShadButtonVariant.outline,
-        onPressed: _isDisabled ? null : onPressed,
-        enabled: !_isDisabled,
-        foregroundColor: baseColor,
-        hoverForegroundColor: baseColor,
-        pressedForegroundColor: baseColor,
-        backgroundColor: ColorX.transparent,
-        hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
-        // ShaderMask applies the gradient over white, so the border must also
-        // be white so the gradient covers it uniformly.
-        decoration: ShadDecoration(
-          border: ShadBorder.all(color: baseColor.withValues(alpha: _kBorderOpacity)),
-          focusedBorder: ShadBorder.all(color: baseColor.withValues(alpha: _kBorderOpacity)),
-        ),
-        leading: (!isLoading && icon != null)
-            ? Icon(
-                icon,
-                size: context.dimension.scaled(
-                  TypographyTokens.kDefaultButtonIconSize,
-                ),
-              )
-            : null,
-        child: _buildContent(context, baseColor, typo),
-      );
-
-      return AnimatedOpacity(
-        opacity: _isDisabled ? _kDisabledOpacity : 1.0,
-        duration: const Duration(milliseconds: 200),
-        child: ShaderMask(
-          shaderCallback: (bounds) => gradient.createShader(bounds),
-          blendMode: BlendMode.srcIn,
-          child: button,
-        ),
-      );
-    }
+    if (isGradient) return _buildGradientButton(context);
 
     final Color foregroundColor;
 
@@ -225,8 +180,12 @@ class SealOutlineButton extends StatelessWidget {
       backgroundColor: ColorX.transparent,
       hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
       decoration: ShadDecoration(
-        border: ShadBorder.all(color: foregroundColor.withValues(alpha: _kBorderOpacity)),
-        focusedBorder: ShadBorder.all(color: foregroundColor.withValues(alpha: _kBorderOpacity)),
+        border: ShadBorder.all(
+          color: foregroundColor.withValues(alpha: _kBorderOpacity),
+        ),
+        focusedBorder: ShadBorder.all(
+          color: foregroundColor.withValues(alpha: _kBorderOpacity),
+        ),
       ),
       leading: (!isLoading && icon != null)
           ? Icon(
@@ -237,6 +196,60 @@ class SealOutlineButton extends StatelessWidget {
             )
           : null,
       child: _buildContent(context, foregroundColor, typo),
+    );
+  }
+
+  Widget _buildGradientButton(BuildContext context) {
+    final tokens = context.themeTokens;
+
+    final gradient = switch (_variant) {
+      _SealOutlineButtonVariant.gradient => tokens.gradients.primaryGradient,
+      _SealOutlineButtonVariant.accentGradient =>
+        tokens.gradients.accentGradient,
+      _ => _gradient!,
+    };
+
+    // Use white as the base color; ShaderMask replaces it with the gradient.
+    const baseColor = ColorX.white;
+
+    final button = ShadButton.raw(
+      variant: ShadButtonVariant.outline,
+      onPressed: _isDisabled ? null : onPressed,
+      enabled: !_isDisabled,
+      foregroundColor: baseColor,
+      hoverForegroundColor: baseColor,
+      pressedForegroundColor: baseColor,
+      backgroundColor: ColorX.transparent,
+      hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
+      // ShaderMask applies the gradient over white, so the border must also
+      // be white so the gradient covers it uniformly.
+      decoration: ShadDecoration(
+        border: ShadBorder.all(
+          color: baseColor.withValues(alpha: _kBorderOpacity),
+        ),
+        focusedBorder: ShadBorder.all(
+          color: baseColor.withValues(alpha: _kBorderOpacity),
+        ),
+      ),
+      leading: (!isLoading && icon != null)
+          ? Icon(
+              icon,
+              size: context.dimension.scaled(
+                TypographyTokens.kDefaultButtonIconSize,
+              ),
+            )
+          : null,
+      child: _buildContent(context, baseColor, tokens.typography),
+    );
+
+    return AnimatedOpacity(
+      opacity: _isDisabled ? _kDisabledOpacity : 1.0,
+      duration: const Duration(milliseconds: 200),
+      child: ShaderMask(
+        shaderCallback: (bounds) => gradient.createShader(bounds),
+        blendMode: BlendMode.srcIn,
+        child: button,
+      ),
     );
   }
 
