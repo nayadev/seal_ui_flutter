@@ -27,6 +27,10 @@ jobs:
         working-directory: example
         run: flutter pub get --enforce-lockfile
 
+      - name: Generate Widgetbook Cache
+        working-directory: example
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
       - name: Build Widgetbook
         working-directory: example
         run: |

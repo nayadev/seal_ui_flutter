@@ -1,0 +1,7 @@
+targets:
+  $default:
+    sources:
+      include:
+        - lib/**
+        - widgetbook/**
+        - $package$

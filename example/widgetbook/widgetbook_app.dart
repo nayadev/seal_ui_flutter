@@ -3,14 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' show App;
 
 import 'package:seal_ui/seal_ui.dart';
 
 import 'seal_documentation_addon.dart';
-
-import 'categories/components/components.dart';
-import 'categories/layout/layout.dart';
-import 'categories/tokens/tokens.dart';
+import 'widgetbook_app.directories.g.dart';
 
 /// Entry point for the Seal UI Widgetbook catalog.
 ///
@@ -22,6 +20,7 @@ void main() {
   runApp(const SealWidgetbook());
 }
 
+@App()
 class SealWidgetbook extends StatelessWidget {
   const SealWidgetbook({super.key});
 
@@ -87,16 +86,16 @@ class SealWidgetbook extends StatelessWidget {
         ),
         ViewportAddon([
           ViewportData(
-            name: 'iPhone 13',
-            width: 390,
-            height: 844,
+            name: 'iPhone 17',
+            width: 402,
+            height: 874,
             pixelRatio: 3,
             platform: TargetPlatform.iOS,
           ),
           ViewportData(
-            name: 'iPad Pro 11"',
+            name: 'iPad Pro 11" M4',
             width: 834,
-            height: 1194,
+            height: 1210,
             pixelRatio: 2,
             platform: TargetPlatform.iOS,
           ),
@@ -110,11 +109,7 @@ class SealWidgetbook extends StatelessWidget {
         ]),
         AlignmentAddon(),
       ],
-      directories: [
-        ComponentsCategory(),
-        LayoutCategory(),
-        TokensCategory(),
-      ],
+      directories: directories,
     );
   }
 }
