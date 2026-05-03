@@ -108,7 +108,6 @@ class SealWidgetbook extends StatelessWidget {
             platform: TargetPlatform.macOS,
           ),
         ]),
-        GridAddon(50),
         AlignmentAddon(),
       ],
       directories: [
