@@ -8,6 +8,7 @@
 [![Dart](https://img.shields.io/badge/Dart-%5E3.11-0175c2)](https://dart.dev)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nayadev_seal_ui_flutter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=nayadev_seal_ui_flutter)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nayadev_seal_ui_flutter&metric=coverage)](https://sonarcloud.io/summary/new_code?id=nayadev_seal_ui_flutter)
+[![Widgetbook](https://img.shields.io/badge/Widgetbook-Cloud-7B61FF)](https://app.widgetbook.io/b1c97d57-43bb-4b99-bab7-d24dc6d6d04f/286a4330-8ac0-4a29-b851-25e58209a1ab/branches/main/latest)
 
 ---
 
@@ -192,7 +193,7 @@ cd example && flutter pub run build_runner build --delete-conflicting-outputs
 cd example && flutter run -t widgetbook/widgetbook_app.dart
 ```
 
-The catalog is also deployed to [Widgetbook Cloud](https://app.widgetbook.io/) on every push to `main` and on pull requests via the CI workflow.
+The catalog is deployed to Widgetbook Cloud on every push to `main` and on pull requests — see [CI/CD](#cicd) below.
 
 ### Responsive Scaling
 
@@ -235,6 +236,14 @@ Workflow: `.github/workflows/release-please.yml` — config in `release-please-c
 ---
 
 ## CI/CD
+
+### Widgetbook Cloud
+
+Component use cases are published automatically to [Widgetbook Cloud](https://app.widgetbook.io/) on every push to `main` and on pull requests.
+
+**Live catalog:** https://app.widgetbook.io/b1c97d57-43bb-4b99-bab7-d24dc6d6d04f/286a4330-8ac0-4a29-b851-25e58209a1ab/branches/main/latest
+
+Workflow: `.github/workflows/widgetbook.yml` — uses `WIDGETBOOK_API_KEY` repository secret.
 
 ### SonarCloud
 
