@@ -114,7 +114,7 @@ NebulaThemeFactory.tokens(brightness: Brightness.light)
 | `SealCheckbox` | Inputs | ✅ |
 | `SealDatePicker` | Inputs | ✅ |
 | `SealForm` | Inputs | ✅ |
-| `SealInputOtp` | Inputs | ✅ |
+| `SealInputOTP` | Inputs | ✅ |
 | `SealRadioGroup` | Inputs | ✅ |
 | `SealSelect` | Inputs | ✅ |
 | `SealSlider` | Inputs | ✅ |
