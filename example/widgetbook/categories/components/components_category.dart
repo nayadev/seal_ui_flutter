@@ -7,15 +7,16 @@ import 'interaction/interaction.dart';
 import 'overlay/overlay.dart';
 
 /// Builds the **Components** category for the Widgetbook catalog.
-WidgetbookCategory buildComponentsCategory() {
-  return WidgetbookCategory(
-    name: 'Components',
-    children: [
-      ButtonsFolder(),
-      FeedbackFolder(),
-      InputsFolder(),
-      InteractionFolder(),
-      OverlayFolder(),
-    ],
-  );
+class ComponentsCategory extends WidgetbookCategory {
+  ComponentsCategory()
+    : super(
+        name: 'Components',
+        children: [
+          ButtonsFolder(),
+          FeedbackFolder(),
+          InputsFolder(),
+          InteractionFolder(),
+          OverlayFolder(),
+        ],
+      );
 }

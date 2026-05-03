@@ -9,8 +9,8 @@ import 'package:seal_ui/seal_ui.dart';
 import 'seal_documentation_addon.dart';
 
 import 'categories/components/components.dart';
-import 'categories/layout_category.dart';
-import 'categories/tokens_category.dart';
+import 'categories/layout/layout.dart';
+import 'categories/tokens/tokens.dart';
 
 /// Entry point for the Seal UI Widgetbook catalog.
 ///
@@ -111,9 +111,9 @@ class SealWidgetbook extends StatelessWidget {
         AlignmentAddon(),
       ],
       directories: [
-        buildComponentsCategory(),
-        buildLayoutCategory(),
-        buildTokensCategory(),
+        ComponentsCategory(),
+        LayoutCategory(),
+        TokensCategory(),
       ],
     );
   }
