@@ -8,7 +8,7 @@ import 'package:seal_ui/seal_ui.dart';
 
 import 'seal_documentation_addon.dart';
 
-import 'categories/components_category.dart';
+import 'categories/components/components.dart';
 import 'categories/layout_category.dart';
 import 'categories/tokens_category.dart';
 

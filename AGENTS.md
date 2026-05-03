@@ -382,11 +382,13 @@ final lineHeight = (style.fontSize ?? TypographyTokens.kSmallFontSize) * ...;
 ### Widgetbook
 
 - The component catalog lives in `example/widgetbook/widgetbook_app.dart`.
-- Each category lives in its own folder under `example/widgetbook/categories/<category>/`.
+- Each top-level category lives in its own folder: `example/widgetbook/categories/<category>/` (e.g., `components/`).
+- Inside a category folder: a `<category>_category.dart` entry point, a `<category>.dart` barrel, and sub-folders for each component group (e.g., `buttons/`, `feedback/`).
+- Sub-folders live at `example/widgetbook/categories/<category>/<folder>/`.
 - Each component has its own `Seal<Name>Component extends WidgetbookComponent` class in `seal_<name>_component.dart` — no inline `WidgetbookComponent(...)` definitions inside folder files.
 - Folder files (e.g., `buttons_folder.dart`) import and instantiate the component classes in their `children` list.
 - Barrel files (e.g., `buttons.dart`) re-export the folder file and all component files.
-- Components are organized into categories: **Components**, **Tokens**, **Layout**.
+- Categories: **Components**, **Tokens**, **Layout**.
 - Every new component should include at least one Widgetbook use case.
 - Run with: `cd example && flutter run -t widgetbook/widgetbook_app.dart`
 
@@ -412,9 +414,9 @@ When adding a new component to Seal UI, follow these steps in order:
    - Use `pump()` instead of `pumpAndSettle()` when indefinite animations are present.
 
 4. **Add Widgetbook use cases** for the new component:
-   - Create `example/widgetbook/categories/<category>/seal_<name>_component.dart` with a `Seal<Name>Component extends WidgetbookComponent` class.
-   - Register it in the corresponding `<category>_folder.dart` children list.
-   - Export it from the `<category>.dart` barrel file.
+   - Create `example/widgetbook/categories/<category>/<folder>/seal_<name>_component.dart` with a `Seal<Name>Component extends WidgetbookComponent` class.
+   - Register it in the corresponding `<folder>_folder.dart` children list.
+   - Export it from the `<folder>.dart` barrel file.
    - Include at least one use case with relevant knobs (string, boolean, dropdown).
 
 5. **Create Widgetbook documentation snippets** for every use case added in the previous step.
