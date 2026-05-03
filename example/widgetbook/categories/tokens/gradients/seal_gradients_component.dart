@@ -1,47 +1,44 @@
 import 'package:flutter/widgets.dart';
 import 'package:seal_ui/seal_ui.dart';
-import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' show UseCase;
 
-class SealGradientsComponent extends WidgetbookComponent {
-  SealGradientsComponent()
-    : super(
-        name: 'Gradient Preview',
-        useCases: [
-          WidgetbookUseCase(
-            name: 'All Gradients',
-            builder: (context) {
-              final tokens = context.themeTokens;
-              final dimension = context.dimension;
-              final gradients = tokens.gradients;
+/// Marker type for the gradient preview widgetbook component.
+abstract class GradientPreview {}
 
-              return SingleChildScrollView(
-                padding: EdgeInsets.all(dimension.lg),
-                child: Column(
-                  children: [
-                    _GradientPreview(
-                      label: 'Primary Gradient',
-                      gradient: gradients.primaryGradient,
-                      textColor: tokens.colors.textPrimary,
-                    ),
-                    dimension.md.verticalGap,
-                    _GradientPreview(
-                      label: 'Accent Gradient',
-                      gradient: gradients.accentGradient,
-                      textColor: tokens.colors.textPrimary,
-                    ),
-                    dimension.md.verticalGap,
-                    _GradientPreview(
-                      label: 'Surface Gradient',
-                      gradient: gradients.surfaceGradient,
-                      textColor: tokens.colors.textPrimary,
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ],
-      );
+@UseCase(
+  name: 'All Gradients',
+  type: GradientPreview,
+  path: '[Tokens]/Gradients',
+)
+Widget buildGradientPreviewAllGradients(BuildContext context) {
+  final tokens = context.themeTokens;
+  final dimension = context.dimension;
+  final gradients = tokens.gradients;
+
+  return SingleChildScrollView(
+    padding: EdgeInsets.all(dimension.lg),
+    child: Column(
+      children: [
+        _GradientPreview(
+          label: 'Primary Gradient',
+          gradient: gradients.primaryGradient,
+          textColor: tokens.colors.textPrimary,
+        ),
+        dimension.md.verticalGap,
+        _GradientPreview(
+          label: 'Accent Gradient',
+          gradient: gradients.accentGradient,
+          textColor: tokens.colors.textPrimary,
+        ),
+        dimension.md.verticalGap,
+        _GradientPreview(
+          label: 'Surface Gradient',
+          gradient: gradients.surfaceGradient,
+          textColor: tokens.colors.textPrimary,
+        ),
+      ],
+    ),
+  );
 }
 
 class _GradientPreview extends StatelessWidget {

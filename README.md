@@ -183,13 +183,16 @@ Never hardcode color, typography, or spacing values — always reference a token
 
 ### Widgetbook
 
-Every component has at least one [Widgetbook](https://www.widgetbook.io/) use case with interactive knobs (string, boolean, dropdown) for exploring variants. The catalog entry point is `example/widgetbook/widgetbook_app.dart`.
+Every component has at least one [Widgetbook](https://www.widgetbook.io/) use case with interactive knobs (string, boolean, dropdown) for exploring variants. The catalog uses the `@UseCase` annotation approach — `widgetbook_generator` + `build_runner` generate the component directory at build time.
 
 Run it with:
 
 ```sh
+cd example && flutter pub run build_runner build --delete-conflicting-outputs
 cd example && flutter run -t widgetbook/widgetbook_app.dart
 ```
+
+The catalog is also deployed to [Widgetbook Cloud](https://app.widgetbook.io/) on every push to `main` and on pull requests via the CI workflow.
 
 ### Responsive Scaling
 
