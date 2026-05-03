@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.2](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.1...v0.3.2) (2026-05-03)
+
+
+### Features
+
+* **widgetbook:** add GitHub Actions workflow for Widgetbook Cloud Hosting ([bee211d](https://github.com/nayadev/seal_ui_flutter/commit/bee211d3e8c78b914ece6305964166b528f4a5ba))
+* **widgetbook:** migrate catalog to @UseCase annotation approach ([acec22d](https://github.com/nayadev/seal_ui_flutter/commit/acec22d45ff9347256fbd61051806de8a329c428))
+
+
+### Bug Fixes
+
+* **inputs:** correct calendar day-button press and selected-day colors ([48f7707](https://github.com/nayadev/seal_ui_flutter/commit/48f77077bb8bcb1f2eec67536bee47071a18a7d7))
+* **widgetbook:** remove GridAddon from SealWidgetbook ([bcbb029](https://github.com/nayadev/seal_ui_flutter/commit/bcbb0293d2f2084bfafa9be9bb6a31a1d870b4a7))
+
 ## [0.3.1](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.0...v0.3.1) (2026-05-02)
 
 
