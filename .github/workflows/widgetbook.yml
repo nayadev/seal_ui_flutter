@@ -1,0 +1,37 @@
+name: Widgetbook Cloud Hosting
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  widgetbook-cloud-hosting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+            channel: stable
+
+      - name: Bootstrap App
+        run: |
+            flutter pub get --enforce-lockfile
+
+      - name: Build Widgetbook
+        working-directory: example
+        run: |
+            flutter build web -t widgetbook/widgetbook_app.dart --dart-define=FLUTTER_WEB_USE_SKIA=true
+
+      - name: Install Widgetbook CLI
+        run: dart pub global activate widgetbook_cli
+
+      - name: Push Widgetbook Build
+        working-directory: example/widgetbook
+        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }}
