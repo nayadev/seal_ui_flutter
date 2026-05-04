@@ -6,3 +6,4 @@
 | [ADR-0002](0002-use-widgetbook-as-component-catalog.md) | Use Widgetbook as the Flutter component catalog | Accepted |
 | [ADR-0003](0003-adopt-sonarcloud-for-continuous-code-quality.md) | Adopt SonarCloud for continuous code quality analysis | Accepted |
 | [ADR-0004](0004-use-release-please-for-automated-versioning.md) | Use Release Please for automated versioning and changelog generation | Accepted |
+| [ADR-0005](0005-publish-widgetbook-to-widgetbook-cloud.md) | Publish Widgetbook to Widgetbook Cloud | Accepted |
