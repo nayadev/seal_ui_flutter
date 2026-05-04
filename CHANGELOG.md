@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.3](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.2...v0.3.3) (2026-05-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency shadcn_ui to ^0.54.0 ([#7](https://github.com/nayadev/seal_ui_flutter/issues/7)) ([ff5f842](https://github.com/nayadev/seal_ui_flutter/commit/ff5f8423d0027d33fa7e8001220c338ed4a589b0))
+* **deps:** update Kotlin options to use the new DSL for jvmTarget ([512b804](https://github.com/nayadev/seal_ui_flutter/commit/512b804f972357e52c89cca7bbfc51a471390b81))
+
 ## [0.3.2](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.1...v0.3.2) (2026-05-03)
 
 
