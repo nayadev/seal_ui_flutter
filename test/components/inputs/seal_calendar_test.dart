@@ -121,26 +121,26 @@ void main() {
 
     testWidgets('multiple variant forwards weekStartsOn', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealCalendar.multiple(weekStartsOn: DateTime.sunday)),
+        _wrap(const SealCalendar.multiple(weekStartsOn: DateTime.monday)),
       );
       await tester.pump();
 
       final shad = tester.widget<ShadCalendar>(
         find.byType(ShadCalendar).first,
       );
-      expect(shad.weekStartsOn, DateTime.sunday);
+      expect(shad.weekStartsOn, DateTime.monday);
     });
 
     testWidgets('range variant forwards weekStartsOn', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealCalendar.range(weekStartsOn: DateTime.sunday)),
+        _wrap(const SealCalendar.range(weekStartsOn: DateTime.monday)),
       );
       await tester.pump();
 
       final shad = tester.widget<ShadCalendar>(
         find.byType(ShadCalendar).first,
       );
-      expect(shad.weekStartsOn, DateTime.sunday);
+      expect(shad.weekStartsOn, DateTime.monday);
     });
   });
 }
