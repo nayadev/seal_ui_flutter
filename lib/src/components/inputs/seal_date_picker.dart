@@ -50,6 +50,7 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
     this.toMonth,
     this.selectableDayPredicate,
     this.enabled = true,
+    this.weekStartsOn = DateTime.sunday,
   }) : _variant = ShadDatePickerVariant.single,
        _selectedRange = null,
        _onRangeChanged = null,
@@ -69,6 +70,7 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
     this.toMonth,
     this.selectableDayPredicate,
     this.enabled = true,
+    this.weekStartsOn = DateTime.sunday,
   }) : _variant = ShadDatePickerVariant.range,
        _selectedRange = selected,
        _onRangeChanged = onChanged,
@@ -126,6 +128,12 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
   /// Whether the picker is interactive. Defaults to `true`.
   final bool enabled;
 
+  /// Which day of the week is displayed first.
+  ///
+  /// Uses ISO 8601 weekday numbers: Monday = 1 … Sunday = 7.
+  /// Defaults to [DateTime.sunday] (7).
+  final int weekStartsOn;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.themeTokens.colors;
@@ -146,6 +154,7 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
         toMonth: toMonth,
         selectableDayPredicate: selectableDayPredicate,
         enabled: enabled,
+        weekStartsOn: weekStartsOn,
         calendarHeaderTextStyle: styles.header,
         weekdaysTextStyle: styles.weekdays,
         dayButtonTextStyle: styles.day,
@@ -170,6 +179,7 @@ class SealDatePicker extends StatelessWidget with CalendarStylesMixin {
         toMonth: toMonth,
         selectableDayPredicate: selectableDayPredicate,
         enabled: enabled,
+        weekStartsOn: weekStartsOn,
         calendarHeaderTextStyle: styles.header,
         weekdaysTextStyle: styles.weekdays,
         dayButtonTextStyle: styles.day,

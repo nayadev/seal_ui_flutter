@@ -103,4 +103,43 @@ void main() {
       expect(find.text('Pick a date range'), findsOneWidget);
     });
   });
+
+  group('SealDatePicker weekStartsOn', () {
+    testWidgets('default is Sunday (7)', (tester) async {
+      await tester.pumpWidget(_wrap(const SealDatePicker()));
+      await tester.pump();
+
+      final shad = tester.widget<ShadDatePicker>(
+        find.byType(ShadDatePicker).first,
+      );
+      expect(shad.weekStartsOn, DateTime.sunday);
+    });
+
+    testWidgets('accepts explicit weekStartsOn', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const SealDatePicker(weekStartsOn: DateTime.monday)),
+      );
+      await tester.pump();
+
+      final shad = tester.widget<ShadDatePicker>(
+        find.byType(ShadDatePicker).first,
+      );
+      expect(shad.weekStartsOn, DateTime.monday);
+    });
+
+    testWidgets('range variant forwards weekStartsOn', (tester) async {
+      Widget wrapWide(Widget child) =>
+          _wrap(SizedBox(width: 600, child: child));
+
+      await tester.pumpWidget(
+        wrapWide(const SealDatePicker.range(weekStartsOn: DateTime.monday)),
+      );
+      await tester.pump();
+
+      final shad = tester.widget<ShadDatePicker>(
+        find.byType(ShadDatePicker).first,
+      );
+      expect(shad.weekStartsOn, DateTime.monday);
+    });
+  });
 }
