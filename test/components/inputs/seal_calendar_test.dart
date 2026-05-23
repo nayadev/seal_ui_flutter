@@ -95,4 +95,52 @@ void main() {
       expect(find.byType(SealCalendar), findsOneWidget);
     });
   });
+
+  group('SealCalendar weekStartsOn', () {
+    testWidgets('default is Sunday (7)', (tester) async {
+      await tester.pumpWidget(_wrap(const SealCalendar()));
+      await tester.pump();
+
+      final shad = tester.widget<ShadCalendar>(
+        find.byType(ShadCalendar).first,
+      );
+      expect(shad.weekStartsOn, DateTime.sunday);
+    });
+
+    testWidgets('accepts explicit weekStartsOn', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const SealCalendar(weekStartsOn: DateTime.monday)),
+      );
+      await tester.pump();
+
+      final shad = tester.widget<ShadCalendar>(
+        find.byType(ShadCalendar).first,
+      );
+      expect(shad.weekStartsOn, DateTime.monday);
+    });
+
+    testWidgets('multiple variant forwards weekStartsOn', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const SealCalendar.multiple(weekStartsOn: DateTime.sunday)),
+      );
+      await tester.pump();
+
+      final shad = tester.widget<ShadCalendar>(
+        find.byType(ShadCalendar).first,
+      );
+      expect(shad.weekStartsOn, DateTime.sunday);
+    });
+
+    testWidgets('range variant forwards weekStartsOn', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const SealCalendar.range(weekStartsOn: DateTime.sunday)),
+      );
+      await tester.pump();
+
+      final shad = tester.widget<ShadCalendar>(
+        find.byType(ShadCalendar).first,
+      );
+      expect(shad.weekStartsOn, DateTime.sunday);
+    });
+  });
 }

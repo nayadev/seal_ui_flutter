@@ -52,6 +52,7 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
     this.selectableDayPredicate,
     this.allowDeselection,
     this.captionLayout,
+    this.weekStartsOn = DateTime.sunday,
   }) : _variant = ShadCalendarVariant.single,
        _multipleSelected = null,
        _onMultipleChanged = null,
@@ -74,6 +75,7 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
     this.captionLayout,
     int? min,
     int? max,
+    this.weekStartsOn = DateTime.sunday,
   }) : _variant = ShadCalendarVariant.multiple,
        selected = null,
        onChanged = null,
@@ -99,6 +101,7 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
     this.captionLayout,
     int? min,
     int? max,
+    this.weekStartsOn = DateTime.sunday,
   }) : _variant = ShadCalendarVariant.range,
        selected = null,
        onChanged = null,
@@ -158,6 +161,12 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
   final int? _min;
   final int? _max;
 
+  /// Which day of the week is displayed first.
+  ///
+  /// Uses ISO 8601 weekday numbers: Monday = 1 … Sunday = 7.
+  /// Defaults to [DateTime.sunday] (7).
+  final int weekStartsOn;
+
   @override
   Widget build(BuildContext context) {
     final dimension = context.dimension;
@@ -177,6 +186,7 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
         captionLayout: captionLayout,
         min: _min,
         max: _max,
+        weekStartsOn: weekStartsOn,
         headerTextStyle: styles.header,
         weekdaysTextStyle: styles.weekdays,
         dayButtonTextStyle: styles.day,
@@ -196,6 +206,7 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
         captionLayout: captionLayout,
         min: _min,
         max: _max,
+        weekStartsOn: weekStartsOn,
         headerTextStyle: styles.header,
         weekdaysTextStyle: styles.weekdays,
         dayButtonTextStyle: styles.day,
@@ -214,6 +225,7 @@ class SealCalendar extends StatelessWidget with CalendarStylesMixin {
         selectableDayPredicate: selectableDayPredicate,
         allowDeselection: allowDeselection,
         captionLayout: captionLayout,
+        weekStartsOn: weekStartsOn,
         headerTextStyle: styles.header,
         weekdaysTextStyle: styles.weekdays,
         dayButtonTextStyle: styles.day,
