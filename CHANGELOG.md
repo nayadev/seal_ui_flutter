@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.4](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.3...v0.3.4) (2026-05-23)
+
+
+### Features
+
+* **calendar:** expose weekStartsOn, default to Sunday ([0fea8b9](https://github.com/nayadev/seal_ui_flutter/commit/0fea8b9719c40e380cc20d8bd27174e21a176867))
+* **date-picker:** expose weekStartsOn, default to Sunday ([77adb40](https://github.com/nayadev/seal_ui_flutter/commit/77adb402a3d4808d03035b7c344b5aedfc570a4b))
+* **ios:** integrate FlutterGeneratedPluginSwiftPackage and update Runner scheme ([2a2e4ce](https://github.com/nayadev/seal_ui_flutter/commit/2a2e4cec464ba483813ac58a37c760950f0281d5))
+
+
+### Bug Fixes
+
+* **android:** update lucide_icons_flutter and Kotlin version ([67e6638](https://github.com/nayadev/seal_ui_flutter/commit/67e6638684ff08c1555e0bb49f661bed3c02cf5e))
+* **ci:** update pubspec.lock to match Flutter 3.44.0 resolution ([cbbcbc1](https://github.com/nayadev/seal_ui_flutter/commit/cbbcbc15d672809d7b3ceb966e02e6726995c545))
+
 ## [0.3.3](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.2...v0.3.3) (2026-05-04)
 
 
