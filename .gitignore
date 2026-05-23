@@ -50,3 +50,5 @@ COMPONENT_ROADMAP.md
 # Example app
 example/build/
 example/pubspec.lock
+
+docs/superpowers/*
