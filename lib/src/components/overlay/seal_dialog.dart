@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
+import '../buttons/seal_icon_button.dart';
 import 'overlay_content_mixin.dart';
 
 /// Shows a Seal-themed dialog and returns the value passed to
@@ -112,6 +113,18 @@ class SealDialog extends StatelessWidget with OverlayContentMixin {
       colors,
     );
 
+    final closeIcon = SealIconButton.primary(
+      icon: LucideIcons.x,
+      onPressed: () => Navigator.of(context).pop(),
+      tooltip: 'Close',
+    );
+
+    final closeIconPosition = ShadPosition.directional(
+      top: dimension.sm,
+      end: dimension.sm,
+      textDirection: Directionality.of(context),
+    );
+
     if (_isAlert) {
       return ShadDialog.alert(
         title: titleWidget,
@@ -123,6 +136,8 @@ class SealDialog extends StatelessWidget with OverlayContentMixin {
         border: Border.all(color: colors.border),
         scrollable: scrollable,
         useSafeArea: false,
+        closeIcon: closeIcon,
+        closeIconPosition: closeIconPosition,
         child: child,
       );
     }
@@ -137,6 +152,8 @@ class SealDialog extends StatelessWidget with OverlayContentMixin {
       border: Border.all(color: colors.border),
       scrollable: scrollable,
       useSafeArea: false,
+      closeIcon: closeIcon,
+      closeIconPosition: closeIconPosition,
       child: child,
     );
   }
