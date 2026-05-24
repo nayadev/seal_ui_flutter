@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../theme/seal_theme_provider.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
+import '../buttons/seal_icon_button.dart';
 import 'overlay_content_mixin.dart';
 
 /// The edge from which a [SealSheet] slides in.
@@ -18,8 +19,7 @@ enum SealSheetSide {
   bottom,
 
   /// Sheet slides in from the left.
-  left
-  ;
+  left;
 
   /// Converts this [SealSheetSide] to the equivalent [ShadSheetSide].
   ShadSheetSide toShadSide() => switch (this) {
@@ -152,6 +152,18 @@ class SealSheet extends StatelessWidget with OverlayContentMixin {
 
     final edgePadding = _SealSheetEdgePadding.of(context);
 
+    final closeIcon = SealIconButton.primary(
+      icon: LucideIcons.x,
+      onPressed: () => Navigator.of(context).pop(),
+      tooltip: 'Close',
+    );
+
+    final closeIconPosition = ShadPosition.directional(
+      top: edgePadding.top + dimension.xs,
+      end: dimension.sm,
+      textDirection: Directionality.of(context),
+    );
+
     return ShadSheet(
       title: titleWidget,
       description: descriptionWidget,
@@ -163,6 +175,8 @@ class SealSheet extends StatelessWidget with OverlayContentMixin {
       useSafeArea: false,
       scrollable: scrollable,
       draggable: draggable,
+      closeIcon: closeIcon,
+      closeIconPosition: closeIconPosition,
       child: child,
     );
   }
