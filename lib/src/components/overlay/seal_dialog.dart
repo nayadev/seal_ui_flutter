@@ -37,6 +37,7 @@ Future<T?> showSealDialog<T>({
     context: context,
     builder: builder,
     barrierDismissible: barrierDismissible,
+    useRootNavigator: false,
   );
 }
 
