@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.6](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.5...v0.3.6) (2026-05-24)
+
+
+### Bug Fixes
+
+* **tooltip:** adjust tooltip display duration and align anchor position ([75491c5](https://github.com/nayadev/seal_ui_flutter/commit/75491c5dc98eb631cea79f9f4cd3ea7dd4e78a43))
+
 ## [0.3.5](https://github.com/nayadev/seal_ui_flutter/compare/v0.3.4...v0.3.5) (2026-05-24)
 
 
