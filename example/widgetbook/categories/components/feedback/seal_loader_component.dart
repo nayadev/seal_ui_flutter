@@ -15,5 +15,8 @@ Widget buildSealLoaderDefault(BuildContext context) {
     label: 'Show Label',
     initialValue: false,
   );
-  return SealLoader(size: size, label: showLabel ? 'Loading…' : null);
+  return SealLoader(
+    size: size,
+    label: showLabel ? const Text('Loading…') : null,
+  );
 }

@@ -23,7 +23,7 @@ void main() {
     });
 
     testWidgets('displays label text', (tester) async {
-      await tester.pumpWidget(_wrap(const SealTextField(label: 'Email')));
+      await tester.pumpWidget(_wrap(const SealTextField(label: Text('Email'))));
       await tester.pump();
 
       expect(find.text('Email'), findsOneWidget);
@@ -31,7 +31,7 @@ void main() {
 
     testWidgets('displays hint text', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealTextField(hint: 'you@example.com')),
+        _wrap(const SealTextField(hint: Text('you@example.com'))),
       );
       await tester.pump();
 

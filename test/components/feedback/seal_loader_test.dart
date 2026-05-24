@@ -76,7 +76,9 @@ void main() {
     });
 
     testWidgets('shows label text below spinner', (tester) async {
-      await tester.pumpWidget(_wrap(const SealLoader(label: 'Loading...')));
+      await tester.pumpWidget(
+        _wrap(const SealLoader(label: Text('Loading...'))),
+      );
       await tester.pump();
 
       expect(find.text('Loading...'), findsOneWidget);

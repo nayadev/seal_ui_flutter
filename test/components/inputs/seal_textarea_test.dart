@@ -25,7 +25,7 @@ void main() {
 
     testWidgets('renders hint text', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealTextarea(hint: 'Enter a description…')),
+        _wrap(const SealTextarea(hint: Text('Enter a description…'))),
       );
       await tester.pump();
 
@@ -34,7 +34,7 @@ void main() {
 
     testWidgets('renders label above the field', (tester) async {
       await tester.pumpWidget(
-        _wrap(const SealTextarea(label: 'Description')),
+        _wrap(const SealTextarea(label: Text('Description'))),
       );
       await tester.pump();
 
@@ -61,7 +61,7 @@ void main() {
         _wrap(
           const SealTextarea(
             enabled: false,
-            hint: 'Disabled',
+            hint: Text('Disabled'),
           ),
         ),
       );

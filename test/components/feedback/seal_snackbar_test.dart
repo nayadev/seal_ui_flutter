@@ -27,8 +27,8 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           builder: (_) => const SealAlert.info(
-            title: 'Heads up!',
-            description: 'Something to note.',
+            title: Text('Heads up!'),
+            description: Text('Something to note.'),
           ),
         ),
       );
@@ -41,8 +41,8 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           builder: (_) => const SealAlert.success(
-            title: 'Saved',
-            description: 'Changes have been saved.',
+            title: Text('Saved'),
+            description: Text('Changes have been saved.'),
           ),
         ),
       );
@@ -55,8 +55,8 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           builder: (_) => const SealAlert.warning(
-            title: 'Low storage',
-            description: 'Less than 1 GB remaining.',
+            title: Text('Low storage'),
+            description: Text('Less than 1 GB remaining.'),
           ),
         ),
       );
@@ -69,8 +69,8 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           builder: (_) => const SealAlert.error(
-            title: 'Upload failed',
-            description: 'Please try again.',
+            title: Text('Upload failed'),
+            description: Text('Please try again.'),
           ),
         ),
       );
@@ -82,7 +82,8 @@ void main() {
     testWidgets('renders without title when title is null', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          builder: (_) => const SealAlert.info(description: 'No title here.'),
+          builder: (_) =>
+              const SealAlert.info(description: Text('No title here.')),
         ),
       );
 
@@ -223,7 +224,10 @@ void main() {
         ),
       );
 
-      SealToast.info(message: const Text('No action'), onAction: () {}).show(ctx);
+      SealToast.info(
+        message: const Text('No action'),
+        onAction: () {},
+      ).show(ctx);
       await tester.pump();
 
       expect(find.text('Retry'), findsNothing);

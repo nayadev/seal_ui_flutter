@@ -20,29 +20,39 @@ class FeedbackSection extends StatelessWidget {
         dimension.md.verticalGap,
 
         // ── Alert ────────────────────────────────────────────────────────
-        Text('Alert', style: typo.subtitle.copyWith(color: colors.textSecondary)),
+        Text(
+          'Alert',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
         dimension.xs.verticalGap,
         Column(
           children: [
             SealAlert.info(
-              title: 'Heads up!',
-              description: 'You can add components to your app using the CLI.',
+              title: const Text('Heads up!'),
+              description: const Text(
+                'You can add components to your app using the CLI.',
+              ),
             ),
             dimension.sm.verticalGap,
             SealAlert.success(
-              title: 'Profile updated',
-              description: 'Your changes have been saved successfully.',
+              title: const Text('Profile updated'),
+              description: const Text(
+                'Your changes have been saved successfully.',
+              ),
             ),
             dimension.sm.verticalGap,
             SealAlert.warning(
-              title: 'Low storage',
-              description:
-                  'You have less than 1 GB remaining. Consider clearing cache.',
+              title: const Text('Low storage'),
+              description: const Text(
+                'You have less than 1 GB remaining. Consider clearing cache.',
+              ),
             ),
             dimension.sm.verticalGap,
             SealAlert.error(
-              title: 'Upload failed',
-              description: 'The file could not be uploaded. Please try again.',
+              title: const Text('Upload failed'),
+              description: const Text(
+                'The file could not be uploaded. Please try again.',
+              ),
             ),
           ],
         ),
@@ -50,7 +60,10 @@ class FeedbackSection extends StatelessWidget {
         dimension.xl.verticalGap,
 
         // ── Loader ───────────────────────────────────────────────────────
-        Text('Loader', style: typo.subtitle.copyWith(color: colors.textSecondary)),
+        Text(
+          'Loader',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
         dimension.xs.verticalGap,
         Row(
           spacing: dimension.lg,
@@ -58,7 +71,10 @@ class FeedbackSection extends StatelessWidget {
             SealLoader(size: SealLoaderSize.small),
             SealLoader(size: SealLoaderSize.medium),
             SealLoader(size: SealLoaderSize.large),
-            SealLoader(size: SealLoaderSize.medium, label: 'Loading…'),
+            SealLoader(
+              size: SealLoaderSize.medium,
+              label: const Text('Loading…'),
+            ),
           ],
         ),
 
@@ -81,7 +97,10 @@ class FeedbackSection extends StatelessWidget {
         dimension.xl.verticalGap,
 
         // ── Toast ────────────────────────────────────────────────────────
-        Text('Toast', style: typo.subtitle.copyWith(color: colors.textSecondary)),
+        Text(
+          'Toast',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
         dimension.xs.verticalGap,
         Wrap(
           spacing: dimension.sm,
@@ -123,7 +142,10 @@ class FeedbackSection extends StatelessWidget {
         dimension.xl.verticalGap,
 
         // ── Sonner ───────────────────────────────────────────────────────
-        Text('Sonner', style: typo.subtitle.copyWith(color: colors.textSecondary)),
+        Text(
+          'Sonner',
+          style: typo.subtitle.copyWith(color: colors.textSecondary),
+        ),
         dimension.xs.verticalGap,
         SealSonner(
           child: Builder(

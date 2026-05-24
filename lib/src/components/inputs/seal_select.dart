@@ -14,8 +14,8 @@ class SealSelectOption<T> {
   /// The value represented by this option.
   final T value;
 
-  /// Human-readable label shown in the dropdown and the trigger.
-  final String label;
+  /// Label widget shown in the dropdown and the trigger.
+  final Widget label;
 }
 
 /// A styled dropdown select input for the Seal UI design system,
@@ -61,11 +61,11 @@ class SealSelect<T> extends StatelessWidget {
   /// Called when the user selects a different option.
   final ValueChanged<T?>? onChanged;
 
-  /// Text shown in the trigger when no option is selected.
-  final String? placeholder;
+  /// Widget shown in the trigger when no option is selected.
+  final Widget? placeholder;
 
   /// Optional label rendered above the control.
-  final String? label;
+  final Widget? label;
 
   /// Whether the control is interactive.
   final bool enabled;
@@ -79,9 +79,9 @@ class SealSelect<T> extends StatelessWidget {
 
     Widget select = ShadSelect<T>(
       placeholder: placeholder != null
-          ? Text(
-              placeholder!,
+          ? DefaultTextStyle.merge(
               style: typo.small.copyWith(color: colors.textSecondary),
+              child: placeholder!,
             )
           : null,
       initialValue: value,
@@ -89,17 +89,17 @@ class SealSelect<T> extends StatelessWidget {
       enabled: enabled,
       selectedOptionBuilder: (context, val) {
         final match = options.where((o) => o.value == val).firstOrNull;
-        return Text(
-          match?.label ?? '',
+        return DefaultTextStyle.merge(
           style: typo.small.copyWith(color: colors.textPrimary),
+          child: match?.label ?? const SizedBox.shrink(),
         );
       },
       options: options.map(
         (o) => ShadOption<T>(
           value: o.value,
-          child: Text(
-            o.label,
+          child: DefaultTextStyle.merge(
             style: typo.small.copyWith(color: colors.textPrimary),
+            child: o.label,
           ),
         ),
       ),
@@ -113,9 +113,9 @@ class SealSelect<T> extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(bottom: dimension.xs),
-          child: Text(
-            label!,
+          child: DefaultTextStyle.merge(
             style: typo.small.copyWith(color: colors.textSecondary),
+            child: label!,
           ),
         ),
         select,

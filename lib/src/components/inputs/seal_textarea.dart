@@ -46,10 +46,10 @@ class SealTextarea extends StatelessWidget {
   final TextEditingController? controller;
 
   /// Label displayed above the field.
-  final String? label;
+  final Widget? label;
 
   /// Hint displayed inside the empty field.
-  final String? hint;
+  final Widget? hint;
 
   /// Whether the field is interactive.
   final bool enabled;
@@ -88,7 +88,10 @@ class SealTextarea extends StatelessWidget {
     Widget textarea = ShadTextarea(
       controller: controller,
       placeholder: hint != null
-          ? Text(hint!, style: typo.small.copyWith(color: colors.textSecondary))
+          ? DefaultTextStyle.merge(
+              style: typo.small.copyWith(color: colors.textSecondary),
+              child: hint!,
+            )
           : null,
       enabled: enabled,
       onChanged: onChanged,
@@ -110,9 +113,9 @@ class SealTextarea extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(bottom: dimension.xs),
-          child: Text(
-            label!,
+          child: DefaultTextStyle.merge(
             style: typo.small.copyWith(color: colors.textSecondary),
+            child: label!,
           ),
         ),
         textarea,

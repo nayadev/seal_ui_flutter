@@ -200,7 +200,10 @@ class _ThemeSelector extends StatelessWidget {
         if (option != null) onThemeChanged(option);
       },
       options: SealThemeOption.values
-          .map((option) => SealSelectOption(value: option, label: option.label))
+          .map(
+            (option) =>
+                SealSelectOption(value: option, label: Text(option.label)),
+          )
           .toList(),
     );
   }

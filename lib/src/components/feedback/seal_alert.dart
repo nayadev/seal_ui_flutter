@@ -43,36 +43,36 @@ class SealAlert extends StatelessWidget {
   /// Creates an **informational** alert.
   const factory SealAlert.info({
     Key? key,
-    String? title,
-    required String description,
+    Widget? title,
+    required Widget description,
   }) = _InfoSealAlert;
 
   /// Creates a **success** alert.
   const factory SealAlert.success({
     Key? key,
-    String? title,
-    required String description,
+    Widget? title,
+    required Widget description,
   }) = _SuccessSealAlert;
 
   /// Creates a **warning** alert.
   const factory SealAlert.warning({
     Key? key,
-    String? title,
-    required String description,
+    Widget? title,
+    required Widget description,
   }) = _WarningSealAlert;
 
   /// Creates an **error** alert.
   const factory SealAlert.error({
     Key? key,
-    String? title,
-    required String description,
+    Widget? title,
+    required Widget description,
   }) = _ErrorSealAlert;
 
   /// Optional bold title shown above [description].
-  final String? title;
+  final Widget? title;
 
   /// The primary descriptive message.
-  final String description;
+  final Widget description;
 
   final SealAlertVariant _variant;
 
@@ -101,21 +101,21 @@ class SealAlert extends StatelessWidget {
       iconColor: accentColor,
       iconSize: dimension.scaled(16),
       title: title != null
-          ? Text(
-              title!,
+          ? DefaultTextStyle.merge(
               style: typo.small.copyWith(
                 color: colors.textPrimary,
                 fontWeight: FontWeight.w600,
               ),
+              child: title!,
             )
           : null,
       description: Padding(
         padding: EdgeInsets.only(top: title != null ? dimension.xxs : 0),
-        child: Text(
-          description,
+        child: DefaultTextStyle.merge(
           style: typo.small.copyWith(
             color: title != null ? colors.textSecondary : colors.textPrimary,
           ),
+          child: description,
         ),
       ),
       decoration: ShadDecoration(

@@ -49,10 +49,10 @@ class SealTextField extends StatefulWidget {
   final TextEditingController? controller;
 
   /// Label displayed above the field.
-  final String? label;
+  final Widget? label;
 
   /// Hint displayed inside the empty field.
-  final String? hint;
+  final Widget? hint;
 
   /// Whether the text is obscured (e.g. passwords).
   ///
@@ -111,14 +111,19 @@ class _SealTextFieldState extends State<SealTextField> {
         if (widget.label != null)
           Padding(
             padding: EdgeInsets.only(bottom: context.dimension.xs),
-            child: Text(
-              widget.label!,
+            child: DefaultTextStyle.merge(
               style: typo.small.copyWith(color: colors.textSecondary),
+              child: widget.label!,
             ),
           ),
         ShadInput(
           controller: widget.controller,
-          placeholder: widget.hint != null ? Text(widget.hint!) : null,
+          placeholder: widget.hint != null
+              ? DefaultTextStyle.merge(
+                  style: typo.small.copyWith(color: colors.textSecondary),
+                  child: widget.hint!,
+                )
+              : null,
           obscureText: _isObscured,
           enabled: widget.enabled,
           onChanged: widget.onChanged,

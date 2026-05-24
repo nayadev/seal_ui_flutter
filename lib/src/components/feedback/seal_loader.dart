@@ -61,8 +61,8 @@ class SealLoader extends StatelessWidget {
   /// large.
   final double? strokeWidth;
 
-  /// Optional text label shown below the spinner.
-  final String? label;
+  /// Optional label shown below the spinner.
+  final Widget? label;
 
   double get _strokeWidth {
     if (strokeWidth != null) return strokeWidth!;
@@ -89,11 +89,11 @@ class SealLoader extends StatelessWidget {
       children: [
         indicator,
         context.dimension.sm.verticalGap,
-        Text(
-          label!,
+        DefaultTextStyle.merge(
           style: tokens.typography.caption.copyWith(
             color: tokens.colors.textSecondary,
           ),
+          child: label!,
         ),
       ],
     );

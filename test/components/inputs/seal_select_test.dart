@@ -13,9 +13,9 @@ Widget _wrap(Widget child) {
 }
 
 const _options = [
-  SealSelectOption(value: 'nebula', label: 'Nebula'),
-  SealSelectOption(value: 'arctic', label: 'Arctic'),
-  SealSelectOption(value: 'ocean', label: 'Deep Ocean'),
+  SealSelectOption(value: 'nebula', label: Text('Nebula')),
+  SealSelectOption(value: 'arctic', label: Text('Arctic')),
+  SealSelectOption(value: 'ocean', label: Text('Deep Ocean')),
 ];
 
 void main() {
@@ -24,7 +24,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealSelect<String>(
-            placeholder: 'Choose a theme',
+            placeholder: const Text('Choose a theme'),
             options: _options,
             onChanged: (_) {},
           ),
@@ -39,8 +39,8 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealSelect<String>(
-            label: 'Theme',
-            placeholder: 'Pick one',
+            label: const Text('Theme'),
+            placeholder: const Text('Pick one'),
             options: _options,
             onChanged: (_) {},
           ),
@@ -70,7 +70,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealSelect<String>(
-            placeholder: 'Pick one',
+            placeholder: const Text('Pick one'),
             options: _options,
             onChanged: (_) {},
           ),
@@ -90,7 +90,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealSelect<String>(
-            placeholder: 'Pick one',
+            placeholder: const Text('Pick one'),
             enabled: false,
             options: _options,
             onChanged: null,

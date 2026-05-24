@@ -11,8 +11,8 @@ Widget buildSealAlertInfo(BuildContext context) {
     initialValue: 'You can add components using the CLI.',
   );
   return SealAlert.info(
-    title: title.isEmpty ? null : title,
-    description: description,
+    title: title.isEmpty ? null : Text(title),
+    description: Text(description),
   );
 }
 
@@ -27,8 +27,8 @@ Widget buildSealAlertSuccess(BuildContext context) {
     initialValue: 'Your changes have been saved successfully.',
   );
   return SealAlert.success(
-    title: title.isEmpty ? null : title,
-    description: description,
+    title: title.isEmpty ? null : Text(title),
+    description: Text(description),
   );
 }
 
@@ -43,8 +43,8 @@ Widget buildSealAlertWarning(BuildContext context) {
     initialValue: 'You have less than 1 GB remaining.',
   );
   return SealAlert.warning(
-    title: title.isEmpty ? null : title,
-    description: description,
+    title: title.isEmpty ? null : Text(title),
+    description: Text(description),
   );
 }
 
@@ -59,7 +59,7 @@ Widget buildSealAlertError(BuildContext context) {
     initialValue: 'The file could not be uploaded. Please try again.',
   );
   return SealAlert.error(
-    title: title.isEmpty ? null : title,
-    description: description,
+    title: title.isEmpty ? null : Text(title),
+    description: Text(description),
   );
 }
