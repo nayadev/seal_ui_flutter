@@ -7,7 +7,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' show UseCase;
 Widget buildSealIconButtonPrimary(BuildContext context) {
   return SealIconButton.primary(
     icon: LucideIcons.x,
-    tooltip: context.knobs.string(label: 'Tooltip', initialValue: 'Close'),
+    tooltip: Text(context.knobs.string(label: 'Tooltip', initialValue: 'Close')),
     onPressed:
         context.knobs.boolean(label: 'Enabled', initialValue: true)
             ? () {}
@@ -19,7 +19,7 @@ Widget buildSealIconButtonPrimary(BuildContext context) {
 Widget buildSealIconButtonAccent(BuildContext context) {
   return SealIconButton.accent(
     icon: LucideIcons.ellipsisVertical,
-    tooltip: context.knobs.string(label: 'Tooltip', initialValue: 'More'),
+    tooltip: Text(context.knobs.string(label: 'Tooltip', initialValue: 'More')),
     onPressed:
         context.knobs.boolean(label: 'Enabled', initialValue: true)
             ? () {}
@@ -35,7 +35,7 @@ Widget buildSealIconButtonAccent(BuildContext context) {
 Widget buildSealIconButtonAccentSecondary(BuildContext context) {
   return SealIconButton.accentSecondary(
     icon: LucideIcons.info,
-    tooltip: context.knobs.string(label: 'Tooltip', initialValue: 'Info'),
+    tooltip: Text(context.knobs.string(label: 'Tooltip', initialValue: 'Info')),
     onPressed:
         context.knobs.boolean(label: 'Enabled', initialValue: true)
             ? () {}
@@ -47,7 +47,7 @@ Widget buildSealIconButtonAccentSecondary(BuildContext context) {
 Widget buildSealIconButtonGradient(BuildContext context) {
   return SealIconButton.gradient(
     icon: LucideIcons.slidersHorizontal,
-    tooltip: context.knobs.string(label: 'Tooltip', initialValue: 'Filter'),
+    tooltip: Text(context.knobs.string(label: 'Tooltip', initialValue: 'Filter')),
     onPressed:
         context.knobs.boolean(label: 'Enabled', initialValue: true)
             ? () {}
@@ -63,7 +63,7 @@ Widget buildSealIconButtonGradient(BuildContext context) {
 Widget buildSealIconButtonAccentGradient(BuildContext context) {
   return SealIconButton.accentGradient(
     icon: LucideIcons.search,
-    tooltip: context.knobs.string(label: 'Tooltip', initialValue: 'Search'),
+    tooltip: Text(context.knobs.string(label: 'Tooltip', initialValue: 'Search')),
     onPressed:
         context.knobs.boolean(label: 'Enabled', initialValue: true)
             ? () {}
@@ -87,7 +87,7 @@ Widget buildSealIconButtonCustom(BuildContext context) {
       initialOption: ColorX.teal,
       labelBuilder: (v) => v.toString(),
     ),
-    tooltip: context.knobs.string(label: 'Tooltip', initialValue: 'Favorite'),
+    tooltip: Text(context.knobs.string(label: 'Tooltip', initialValue: 'Favorite')),
     onPressed:
         context.knobs.boolean(label: 'Enabled', initialValue: true)
             ? () {}

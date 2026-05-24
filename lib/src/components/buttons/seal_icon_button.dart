@@ -6,6 +6,7 @@ import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 import 'gradient_shader_mask_mixin.dart';
+import '../interaction/tooltip_mixin.dart';
 import 'seal_button_variant_enum.dart';
 
 /// A compact ghost icon-only button — no background, no border — styled with
@@ -44,12 +45,35 @@ import 'seal_button_variant_enum.dart';
 ///   tooltip: 'Favorite',
 /// )
 /// ```
-class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
+class SealIconButton extends StatelessWidget
+    with TooltipMixin, GradientShaderMaskMixin {
   /// Default icon size for ghost icon buttons.
   static const double _kIconSize = 24.0;
 
   /// Opacity applied to the button when disabled.
   static const double _kDisabledOpacity = 0.4;
+
+  /// Hover strategies that clear the pressed highlight on [ShadHoverStrategy.onTap],
+  /// in addition to the defaults, so the effect never lingers after a tap.
+  ///
+  /// These are applied via [copyWith] on the ambient [ShadTheme] strategies so
+  /// that any [ShadTooltip] wrapping this button retains its [onHoverChange]
+  /// callback.
+  static const Set<ShadHoverStrategy> _kHoverSet = {
+    ShadHoverStrategy.onTapDown,
+    ShadHoverStrategy.onLongPressDown,
+    ShadHoverStrategy.onLongPressStart,
+  };
+
+  static const Set<ShadHoverStrategy> _kUnhoverSet = {
+    ShadHoverStrategy.onTap,
+    ShadHoverStrategy.onTapUp,
+    ShadHoverStrategy.onTapOutside,
+    ShadHoverStrategy.onTapCancel,
+    ShadHoverStrategy.onLongPressUp,
+    ShadHoverStrategy.onLongPressEnd,
+    ShadHoverStrategy.onLongPressCancel,
+  };
 
   const SealIconButton._({
     super.key,
@@ -69,7 +93,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _PrimarySealIconButton;
 
@@ -78,7 +102,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _AccentSealIconButton;
 
@@ -87,7 +111,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _AccentSecondarySealIconButton;
 
@@ -96,7 +120,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _GradientSealIconButton;
 
@@ -105,7 +129,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _AccentGradientSealIconButton;
 
@@ -118,7 +142,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     Color? color,
     LinearGradient? gradient,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _CustomSealIconButton;
 
@@ -131,7 +155,7 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
   /// Optional label for accessibility and hover tooltips.
   ///
   /// Strongly recommended for icon-only buttons to ensure screen-reader support.
-  final String? tooltip;
+  final Widget? tooltip;
 
   /// The size of the icon in logical pixels before responsive scaling.
   ///
@@ -159,22 +183,33 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     final foregroundColor = _variant.resolveForegroundColor(colors, _color);
 
     final buttonSize = scaledIconSize + dimension.sm * 2;
-    final button = ShadIconButton.raw(
-      variant: ShadButtonVariant.ghost,
-      icon: Icon(icon, size: scaledIconSize),
-      onPressed: _isDisabled ? null : onPressed,
-      enabled: !_isDisabled,
-      width: buttonSize,
-      height: buttonSize,
-      decoration: ShadDecoration(
-        border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
-      ),
-      foregroundColor: foregroundColor,
-      hoverForegroundColor: foregroundColor,
-      pressedForegroundColor: foregroundColor,
-      backgroundColor: ColorX.transparent,
-      hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
-      padding: EdgeInsets.all(dimension.sm),
+    // Builder is used so ShadIconButton.raw reads hoverStrategies from the
+    // context INSIDE ShadTooltip's ShadTheme override, which injects the
+    // onHoverChange callback needed to show/hide the tooltip.
+    final button = Builder(
+      builder: (innerContext) {
+        final hoverStrategies = ShadTheme.of(
+          innerContext,
+        ).hoverStrategies.copyWith(hover: _kHoverSet, unhover: _kUnhoverSet);
+        return ShadIconButton.raw(
+          variant: ShadButtonVariant.ghost,
+          icon: Icon(icon, size: scaledIconSize),
+          onPressed: _isDisabled ? null : onPressed,
+          enabled: !_isDisabled,
+          width: buttonSize,
+          height: buttonSize,
+          decoration: ShadDecoration(
+            border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
+          ),
+          foregroundColor: foregroundColor,
+          hoverForegroundColor: foregroundColor,
+          pressedForegroundColor: foregroundColor,
+          backgroundColor: ColorX.transparent,
+          hoverBackgroundColor: foregroundColor.withValues(alpha: 0.08),
+          hoverStrategies: hoverStrategies,
+          padding: EdgeInsets.all(dimension.sm),
+        );
+      },
     );
     return wrapWithTooltip(button, tooltip);
   }
@@ -188,22 +223,32 @@ class SealIconButton extends StatelessWidget with GradientShaderMaskMixin {
     final gradient = _variant.resolveGradient(tokens.gradients, _gradient);
 
     const baseColor = ColorX.white;
-    final button = ShadIconButton.raw(
-      variant: ShadButtonVariant.ghost,
-      icon: Icon(icon, size: scaledIconSize),
-      onPressed: _isDisabled ? null : onPressed,
-      enabled: !_isDisabled,
-      width: buttonSize,
-      height: buttonSize,
-      decoration: ShadDecoration(
-        border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
-      ),
-      foregroundColor: baseColor,
-      hoverForegroundColor: baseColor,
-      pressedForegroundColor: baseColor,
-      backgroundColor: ColorX.transparent,
-      hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
-      padding: EdgeInsets.all(dimension.sm),
+    // Builder ensures hoverStrategies are read inside ShadTooltip's theme
+    // subtree, preserving any onHoverChange callback injected by the tooltip.
+    final button = Builder(
+      builder: (innerContext) {
+        final hoverStrategies = ShadTheme.of(
+          innerContext,
+        ).hoverStrategies.copyWith(hover: _kHoverSet, unhover: _kUnhoverSet);
+        return ShadIconButton.raw(
+          variant: ShadButtonVariant.ghost,
+          icon: Icon(icon, size: scaledIconSize),
+          onPressed: _isDisabled ? null : onPressed,
+          enabled: !_isDisabled,
+          width: buttonSize,
+          height: buttonSize,
+          decoration: ShadDecoration(
+            border: ShadBorder.all(radius: SealRadius.borderRadiusSm, width: 0),
+          ),
+          foregroundColor: baseColor,
+          hoverForegroundColor: baseColor,
+          pressedForegroundColor: baseColor,
+          backgroundColor: ColorX.transparent,
+          hoverBackgroundColor: ColorX.white.withValues(alpha: 0.08),
+          hoverStrategies: hoverStrategies,
+          padding: EdgeInsets.all(dimension.sm),
+        );
+      },
     );
 
     return wrapWithGradientShaderMask(

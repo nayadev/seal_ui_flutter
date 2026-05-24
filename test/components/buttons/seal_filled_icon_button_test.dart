@@ -17,7 +17,10 @@ void main() {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealFilledIconButton.primary(icon: LucideIcons.plus, onPressed: () {}),
+          SealFilledIconButton.primary(
+            icon: LucideIcons.plus,
+            onPressed: () {},
+          ),
         ),
       );
       await tester.pump();
@@ -60,7 +63,10 @@ void main() {
     testWidgets('renders ShadIconButton internally', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealFilledIconButton.primary(icon: LucideIcons.plus, onPressed: () {}),
+          SealFilledIconButton.primary(
+            icon: LucideIcons.plus,
+            onPressed: () {},
+          ),
         ),
       );
       await tester.pump();
@@ -74,7 +80,7 @@ void main() {
           SealFilledIconButton.primary(
             icon: LucideIcons.plus,
             onPressed: () {},
-            tooltip: 'Add item',
+            tooltip: const Text('Add item'),
           ),
         ),
       );
@@ -221,7 +227,7 @@ void main() {
           SealFilledIconButton.gradient(
             icon: LucideIcons.rocket,
             onPressed: () {},
-            tooltip: 'Launch',
+            tooltip: const Text('Launch'),
           ),
         ),
       );

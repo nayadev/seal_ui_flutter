@@ -23,12 +23,16 @@ import '../../tokens/base/seal_radius.dart';
 /// )
 /// ```
 class SealTooltip extends StatelessWidget {
-  /// Creates a Seal-styled tooltip with a plain-text [message].
+  /// Creates a Seal-styled tooltip with a [Widget] [message].
+  ///
+  /// The message widget is wrapped in a [DefaultTextStyle] so plain [Text]
+  /// widgets inherit the correct Seal typography automatically.
   const SealTooltip({
     super.key,
     required this.child,
-    required String message,
+    required Widget message,
     this.waitDuration,
+    this.showDuration,
     this.anchor,
   }) : _message = message,
        _builder = null;
@@ -39,6 +43,7 @@ class SealTooltip extends StatelessWidget {
     required this.child,
     required WidgetBuilder builder,
     this.waitDuration,
+    this.showDuration,
     this.anchor,
   }) : _message = null,
        _builder = builder;
@@ -49,10 +54,13 @@ class SealTooltip extends StatelessWidget {
   /// Delay before the tooltip appears after the pointer enters.
   final Duration? waitDuration;
 
+  /// How long the tooltip stays visible after the cursor/focus leaves.
+  final Duration? showDuration;
+
   /// Where the tooltip floats relative to [child].
   final ShadAnchorBase? anchor;
 
-  final String? _message;
+  final Widget? _message;
   final WidgetBuilder? _builder;
 
   @override
@@ -62,16 +70,19 @@ class SealTooltip extends StatelessWidget {
     final typo = tokens.typography;
     final dimension = context.dimension;
 
+    final defaultStyle = typo.small.copyWith(color: colors.textPrimary);
+
     final effectiveBuilder =
         _builder ??
-        (ctx) => Text(
-          _message!,
-          style: typo.small.copyWith(color: colors.textPrimary),
+        (ctx) => DefaultTextStyle(
+          style: defaultStyle,
+          child: _message!,
         );
 
     return ShadTooltip(
       builder: effectiveBuilder,
       waitDuration: waitDuration,
+      showDuration: showDuration,
       anchor:
           anchor ??
           ShadAnchor(

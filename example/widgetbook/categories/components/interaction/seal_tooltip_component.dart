@@ -6,9 +6,11 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' show UseCase;
 @UseCase(name: 'Default', type: SealTooltip, path: '[Components]/Interaction')
 Widget buildSealTooltipDefault(BuildContext context) {
   return SealTooltip(
-    message: context.knobs.string(
-      label: 'Message',
-      initialValue: 'Delete item',
+    message: Text(
+      context.knobs.string(
+        label: 'Message',
+        initialValue: 'Delete item',
+      ),
     ),
     child: SealFilledButton.primary(
       label: const Text('Hover me'),

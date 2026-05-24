@@ -155,7 +155,7 @@ class SealSheet extends StatelessWidget with OverlayContentMixin {
     final closeIcon = SealIconButton.primary(
       icon: LucideIcons.x,
       onPressed: () => Navigator.of(context).pop(),
-      tooltip: 'Close',
+      tooltip: const Text('Close'),
     );
 
     final closeIconPosition = ShadPosition.directional(

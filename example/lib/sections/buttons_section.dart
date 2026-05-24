@@ -27,13 +27,22 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            SealFilledButton.primary(label: const Text('Primary'), onPressed: () {}),
-            SealFilledButton.accent(label: const Text('Accent'), onPressed: () {}),
+            SealFilledButton.primary(
+              label: const Text('Primary'),
+              onPressed: () {},
+            ),
+            SealFilledButton.accent(
+              label: const Text('Accent'),
+              onPressed: () {},
+            ),
             SealFilledButton.accentSecondary(
               label: const Text('Accent Secondary'),
               onPressed: () {},
             ),
-            SealFilledButton.gradient(label: const Text('Gradient'), onPressed: () {}),
+            SealFilledButton.gradient(
+              label: const Text('Gradient'),
+              onPressed: () {},
+            ),
             SealFilledButton.accentGradient(
               label: const Text('Accent Gradient'),
               onPressed: () {},
@@ -61,13 +70,22 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            SealOutlineButton.primary(label: const Text('Primary'), onPressed: () {}),
-            SealOutlineButton.accent(label: const Text('Accent'), onPressed: () {}),
+            SealOutlineButton.primary(
+              label: const Text('Primary'),
+              onPressed: () {},
+            ),
+            SealOutlineButton.accent(
+              label: const Text('Accent'),
+              onPressed: () {},
+            ),
             SealOutlineButton.accentSecondary(
               label: const Text('Accent Secondary'),
               onPressed: () {},
             ),
-            SealOutlineButton.gradient(label: const Text('Gradient'), onPressed: () {}),
+            SealOutlineButton.gradient(
+              label: const Text('Gradient'),
+              onPressed: () {},
+            ),
             SealOutlineButton.accentGradient(
               label: const Text('Accent Gradient'),
               onPressed: () {},
@@ -95,13 +113,22 @@ class ButtonsSection extends StatelessWidget {
           spacing: dimension.sm,
           runSpacing: dimension.sm,
           children: [
-            SealTextButton.primary(label: const Text('Primary'), onPressed: () {}),
-            SealTextButton.accent(label: const Text('Accent'), onPressed: () {}),
+            SealTextButton.primary(
+              label: const Text('Primary'),
+              onPressed: () {},
+            ),
+            SealTextButton.accent(
+              label: const Text('Accent'),
+              onPressed: () {},
+            ),
             SealTextButton.accentSecondary(
               label: const Text('Accent Secondary'),
               onPressed: () {},
             ),
-            SealTextButton.gradient(label: const Text('Gradient'), onPressed: () {}),
+            SealTextButton.gradient(
+              label: const Text('Gradient'),
+              onPressed: () {},
+            ),
             SealTextButton.accentGradient(
               label: const Text('Accent Gradient'),
               onPressed: () {},
@@ -132,32 +159,32 @@ class ButtonsSection extends StatelessWidget {
             SealIconButton.primary(
               icon: LucideIcons.x,
               onPressed: () {},
-              tooltip: 'Close',
+              tooltip: const Text('Close'),
             ),
             SealIconButton.accent(
               icon: LucideIcons.ellipsisVertical,
               onPressed: () {},
-              tooltip: 'More',
+              tooltip: const Text('More'),
             ),
             SealIconButton.accentSecondary(
               icon: LucideIcons.info,
               onPressed: () {},
-              tooltip: 'Info',
+              tooltip: const Text('Info'),
             ),
             SealIconButton.gradient(
               icon: LucideIcons.slidersHorizontal,
               onPressed: () {},
-              tooltip: 'Filter',
+              tooltip: const Text('Filter'),
             ),
             SealIconButton.accentGradient(
               icon: LucideIcons.search,
               onPressed: () {},
-              tooltip: 'Search',
+              tooltip: const Text('Search'),
             ),
             const SealIconButton.primary(
               icon: LucideIcons.ban,
               onPressed: null,
-              tooltip: 'Disabled',
+              tooltip: Text('Disabled'),
             ),
           ],
         ),
@@ -174,32 +201,32 @@ class ButtonsSection extends StatelessWidget {
             SealFilledIconButton.primary(
               icon: LucideIcons.plus,
               onPressed: () {},
-              tooltip: 'Add',
+              tooltip: const Text('Add'),
             ),
             SealFilledIconButton.accent(
               icon: LucideIcons.star,
               onPressed: () {},
-              tooltip: 'Favorite',
+              tooltip: const Text('Favorite'),
             ),
             SealFilledIconButton.accentSecondary(
               icon: LucideIcons.pencil,
               onPressed: () {},
-              tooltip: 'Edit',
+              tooltip: const Text('Edit'),
             ),
             SealFilledIconButton.gradient(
               icon: LucideIcons.rocket,
               onPressed: () {},
-              tooltip: 'Launch',
+              tooltip: const Text('Launch'),
             ),
             SealFilledIconButton.accentGradient(
               icon: LucideIcons.zap,
               onPressed: () {},
-              tooltip: 'Boost',
+              tooltip: const Text('Boost'),
             ),
             const SealFilledIconButton.primary(
               icon: LucideIcons.ban,
               onPressed: null,
-              tooltip: 'Disabled',
+              tooltip: Text('Disabled'),
             ),
           ],
         ),
@@ -216,32 +243,32 @@ class ButtonsSection extends StatelessWidget {
             SealOutlineIconButton.primary(
               icon: LucideIcons.share,
               onPressed: () {},
-              tooltip: 'Share',
+              tooltip: const Text('Share'),
             ),
             SealOutlineIconButton.accent(
               icon: LucideIcons.bookmark,
               onPressed: () {},
-              tooltip: 'Save',
+              tooltip: const Text('Save'),
             ),
             SealOutlineIconButton.accentSecondary(
               icon: LucideIcons.slidersHorizontal,
               onPressed: () {},
-              tooltip: 'Filter',
+              tooltip: const Text('Filter'),
             ),
             SealOutlineIconButton.gradient(
               icon: LucideIcons.sparkles,
               onPressed: () {},
-              tooltip: 'Magic',
+              tooltip: const Text('Magic'),
             ),
             SealOutlineIconButton.accentGradient(
               icon: LucideIcons.zap,
               onPressed: () {},
-              tooltip: 'Boost',
+              tooltip: const Text('Boost'),
             ),
             const SealOutlineIconButton.primary(
               icon: LucideIcons.ban,
               onPressed: null,
-              tooltip: 'Disabled',
+              tooltip: Text('Disabled'),
             ),
           ],
         ),
@@ -257,7 +284,7 @@ class ButtonsSection extends StatelessWidget {
           runSpacing: dimension.sm,
           children: [
             SealTooltip(
-              message: 'Save your work',
+              message: Text('Save your work'),
               child: SealFilledButton.primary(
                 label: const Text('Save'),
                 icon: LucideIcons.save,
@@ -265,7 +292,7 @@ class ButtonsSection extends StatelessWidget {
               ),
             ),
             SealTooltip(
-              message: 'Delete permanently',
+              message: Text('Delete permanently'),
               child: SealFilledButton.custom(
                 label: const Text('Delete'),
                 color: ColorX.red,

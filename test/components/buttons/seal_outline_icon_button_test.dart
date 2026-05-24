@@ -17,7 +17,10 @@ void main() {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealOutlineIconButton.primary(icon: LucideIcons.share, onPressed: () {}),
+          SealOutlineIconButton.primary(
+            icon: LucideIcons.share,
+            onPressed: () {},
+          ),
         ),
       );
       await tester.pump();
@@ -60,7 +63,10 @@ void main() {
     testWidgets('renders icon correctly', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealOutlineIconButton.primary(icon: LucideIcons.share, onPressed: () {}),
+          SealOutlineIconButton.primary(
+            icon: LucideIcons.share,
+            onPressed: () {},
+          ),
         ),
       );
       await tester.pump();
@@ -74,7 +80,7 @@ void main() {
           SealOutlineIconButton.primary(
             icon: LucideIcons.share,
             onPressed: () {},
-            tooltip: 'Share',
+            tooltip: const Text('Share'),
           ),
         ),
       );

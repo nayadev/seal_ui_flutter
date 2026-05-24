@@ -6,6 +6,7 @@ import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import '../../tokens/base/seal_radius.dart';
 import 'gradient_shader_mask_mixin.dart';
+import '../interaction/tooltip_mixin.dart';
 import 'seal_button_variant_enum.dart';
 
 /// A compact icon-only button with a filled background, styled with Seal UI
@@ -44,7 +45,7 @@ import 'seal_button_variant_enum.dart';
 /// )
 /// ```
 class SealFilledIconButton extends StatelessWidget
-    with GradientShaderMaskMixin {
+    with TooltipMixin, GradientShaderMaskMixin {
   /// Default icon size for filled icon buttons.
   static const double _kIconSize = 20.0;
 
@@ -69,7 +70,7 @@ class SealFilledIconButton extends StatelessWidget
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _PrimarySealFilledIconButton;
 
@@ -78,7 +79,7 @@ class SealFilledIconButton extends StatelessWidget
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _AccentSealFilledIconButton;
 
@@ -87,7 +88,7 @@ class SealFilledIconButton extends StatelessWidget
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _AccentSecondarySealFilledIconButton;
 
@@ -96,7 +97,7 @@ class SealFilledIconButton extends StatelessWidget
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _GradientSealFilledIconButton;
 
@@ -105,7 +106,7 @@ class SealFilledIconButton extends StatelessWidget
     Key? key,
     required IconData icon,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _AccentGradientSealFilledIconButton;
 
@@ -118,7 +119,7 @@ class SealFilledIconButton extends StatelessWidget
     Color? color,
     LinearGradient? gradient,
     VoidCallback? onPressed,
-    String? tooltip,
+    Widget? tooltip,
     double iconSize,
   }) = _CustomSealFilledIconButton;
 
@@ -131,7 +132,7 @@ class SealFilledIconButton extends StatelessWidget
   /// Optional label for accessibility and hover tooltips.
   ///
   /// Strongly recommended for icon-only buttons to ensure screen-reader support.
-  final String? tooltip;
+  final Widget? tooltip;
 
   /// The size of the icon in logical pixels before responsive scaling.
   ///

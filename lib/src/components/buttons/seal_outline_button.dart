@@ -7,6 +7,7 @@ import '../../tokens/base/seal_colors.dart';
 import '../../tokens/base/seal_dimension.dart';
 import 'button_loading_content_mixin.dart';
 import 'gradient_shader_mask_mixin.dart';
+import '../interaction/tooltip_mixin.dart';
 import 'seal_button_variant_enum.dart';
 
 /// An outlined action button styled with Seal UI tokens, built on [ShadButton].
@@ -38,7 +39,7 @@ import 'seal_button_variant_enum.dart';
 /// )
 /// ```
 class SealOutlineButton extends StatelessWidget
-    with ButtonLoadingContentMixin, GradientShaderMaskMixin {
+    with ButtonLoadingContentMixin, TooltipMixin, GradientShaderMaskMixin {
   const SealOutlineButton._({
     super.key,
     required this.label,

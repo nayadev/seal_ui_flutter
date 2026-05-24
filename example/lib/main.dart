@@ -55,8 +55,9 @@ class _SealExampleAppState extends State<SealExampleApp> {
       setState(() => _activeTheme = option);
 
   void _toggleBrightness() => setState(() {
-    _brightness =
-        _brightness == Brightness.dark ? Brightness.light : Brightness.dark;
+    _brightness = _brightness == Brightness.dark
+        ? Brightness.light
+        : Brightness.dark;
   });
 
   SealThemeTokens _buildSealTokens(double scaleFactor) =>
@@ -146,9 +147,11 @@ class _ExampleHome extends StatelessWidget {
                             ? LucideIcons.sun
                             : LucideIcons.moon,
                         onPressed: onToggleBrightness,
-                        tooltip: brightness == Brightness.dark
-                            ? 'Switch to light mode'
-                            : 'Switch to dark mode',
+                        tooltip: Text(
+                          brightness == Brightness.dark
+                              ? 'Switch to light mode'
+                              : 'Switch to dark mode',
+                        ),
                       ),
                     ],
                   ),

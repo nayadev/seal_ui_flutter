@@ -67,7 +67,7 @@ void main() {
           SealIconButton.primary(
             icon: LucideIcons.x,
             onPressed: () {},
-            tooltip: 'Close',
+            tooltip: const Text('Close'),
           ),
         ),
       );
@@ -80,7 +80,12 @@ void main() {
   group('SealIconButton.accent', () {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealIconButton.accent(icon: LucideIcons.ellipsisVertical, onPressed: () {})),
+        _wrap(
+          SealIconButton.accent(
+            icon: LucideIcons.ellipsisVertical,
+            onPressed: () {},
+          ),
+        ),
       );
       await tester.pump();
 
@@ -105,7 +110,12 @@ void main() {
 
     testWidgets('renders icon correctly', (tester) async {
       await tester.pumpWidget(
-        _wrap(SealIconButton.accent(icon: LucideIcons.ellipsisVertical, onPressed: () {})),
+        _wrap(
+          SealIconButton.accent(
+            icon: LucideIcons.ellipsisVertical,
+            onPressed: () {},
+          ),
+        ),
       );
       await tester.pump();
 
@@ -147,7 +157,10 @@ void main() {
     testWidgets('renders the icon', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealIconButton.gradient(icon: LucideIcons.slidersHorizontal, onPressed: () {}),
+          SealIconButton.gradient(
+            icon: LucideIcons.slidersHorizontal,
+            onPressed: () {},
+          ),
         ),
       );
       await tester.pump();
@@ -158,7 +171,10 @@ void main() {
     testWidgets('uses ShaderMask for gradient effect', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          SealIconButton.gradient(icon: LucideIcons.slidersHorizontal, onPressed: () {}),
+          SealIconButton.gradient(
+            icon: LucideIcons.slidersHorizontal,
+            onPressed: () {},
+          ),
         ),
       );
       await tester.pump();
@@ -204,7 +220,7 @@ void main() {
           SealIconButton.gradient(
             icon: LucideIcons.slidersHorizontal,
             onPressed: () {},
-            tooltip: 'Filter',
+            tooltip: const Text('Filter'),
           ),
         ),
       );

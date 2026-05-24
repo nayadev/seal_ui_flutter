@@ -1,18 +1,13 @@
 import 'package:flutter/widgets.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
-/// Provides gradient [ShaderMask] wrapping and tooltip helpers for buttons.
+import '../interaction/tooltip_mixin.dart';
+
+/// Provides gradient [ShaderMask] wrapping for buttons.
 ///
 /// Mix into a widget and call [wrapWithGradientShaderMask] to apply an
-/// [AnimatedOpacity] + [ShaderMask] + optional [ShadTooltip] around any child,
-/// or call [wrapWithTooltip] for a plain tooltip wrap without a shader.
-mixin GradientShaderMaskMixin {
-  /// Wraps [child] in a [ShadTooltip] when [tooltip] is non-null.
-  Widget wrapWithTooltip(Widget child, String? tooltip) {
-    if (tooltip == null) return child;
-    return ShadTooltip(builder: (_) => Text(tooltip), child: child);
-  }
-
+/// [AnimatedOpacity] + [ShaderMask] + optional [ShadTooltip] around any child.
+/// For plain tooltip wrapping use [TooltipMixin.wrapWithTooltip] directly.
+mixin GradientShaderMaskMixin on TooltipMixin {
   /// Wraps [child] in [AnimatedOpacity] + [ShaderMask] to apply a gradient fill.
   ///
   /// Optionally wraps the result in a [ShadTooltip] when [tooltip] is non-null.
@@ -21,7 +16,7 @@ mixin GradientShaderMaskMixin {
     LinearGradient gradient, {
     required bool isDisabled,
     required double disabledOpacity,
-    String? tooltip,
+    Widget? tooltip,
   }) {
     final Widget masked = AnimatedOpacity(
       opacity: isDisabled ? disabledOpacity : 1.0,
@@ -33,6 +28,6 @@ mixin GradientShaderMaskMixin {
       ),
     );
     if (tooltip == null) return masked;
-    return ShadTooltip(builder: (_) => Text(tooltip), child: masked);
+    return wrapWithTooltip(masked, tooltip);
   }
 }

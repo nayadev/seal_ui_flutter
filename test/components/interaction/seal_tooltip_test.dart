@@ -18,7 +18,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           SealTooltip(
-            message: 'Delete item',
+            message: const Text('Delete item'),
             child: SealFilledButton.primary(
               label: const Text('Hover me'),
               onPressed: () {},
@@ -31,12 +31,13 @@ void main() {
       expect(find.text('Hover me'), findsOneWidget);
     });
 
-    testWidgets('does not show message by default (before hover)',
-        (tester) async {
+    testWidgets('does not show message by default (before hover)', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(
           const SealTooltip(
-            message: 'Tooltip text',
+            message: Text('Tooltip text'),
             child: Text('Target'),
           ),
         ),
@@ -51,7 +52,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           const SealTooltip(
-            message: 'Tooltip text',
+            message: Text('Tooltip text'),
             child: Text('Target'),
           ),
         ),
