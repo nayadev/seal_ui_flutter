@@ -86,6 +86,7 @@ class SealTooltip extends StatelessWidget {
       anchor:
           anchor ??
           ShadAnchor(
+            childAlignment: Alignment.bottomCenter,
             overlayAlignment: Alignment.topCenter,
             offset: Offset(0, -dimension.xs),
           ),
