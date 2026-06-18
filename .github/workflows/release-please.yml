@@ -27,7 +27,7 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           config-file: release-please-config.json
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         if: steps.release-please.outputs.prs_created == 'true'
         with:
           ref: ${{ fromJson(steps.release-please.outputs.prs)[0].headBranchName }}
